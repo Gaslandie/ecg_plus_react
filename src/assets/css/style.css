@@ -1,0 +1,916 @@
+/* ==========================
+   Design system & typographie
+   ========================== */
+:root {
+    --gas-primary: #2f2a24; /* slightly darker for contrast */
+    --gas-secondary: #ff8a00; /* vivid orange */
+    --gas-accent: #6b4f3a;
+    --gas-light: #fafafa;
+    --text-color: #222222;
+    --muted: #6b6b6b;
+    --surface: #ffffff;
+}
+
+/* Base typography */
+body {
+    scroll-behavior: smooth;
+    background-color: var(--gas-light);
+    color: var(--text-color);
+    font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container helper (centers and constrains content) */
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Sections layout */
+section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    min-height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1, .display-2 {
+    font-family: 'Montserrat', 'Georgia', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    line-height: 1.05;
+    margin-bottom: 0.5rem;
+}
+
+h2, h3 {
+    font-family: 'Montserrat', serif;
+    font-weight: 600;
+}
+
+p { line-height: 1.7; color: var(--muted); }
+
+/* Focus visible for keyboard users */
+:focus-visible {
+    outline: 3px solid rgba(255,138,0,0.35);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* Navbar polish */
+.navbar {
+    background-color: rgba(47,42,36,0.98);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    backdrop-filter: blur(6px);
+}
+
+/* Primary CTAs */
+.btn-custom, .btn-contact {
+    background: linear-gradient(90deg, var(--gas-secondary), #ff6a00);
+    color: var(--gas-primary) !important;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 32px;
+    box-shadow: 0 8px 20px rgba(255,138,0,0.12);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-custom:hover, .btn-contact:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px rgba(47,42,36,0.12);
+}
+
+/* Card enhancements */
+.service-box, .portfolio-card, .card-vvm {
+    border-radius: 12px;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+.service-box:hover, .portfolio-card:hover, .card-vvm:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12) !important;
+}
+
+/* Imagery */
+img { max-width: 100%; height: auto; display: block; }
+
+/* subtle utilities */
+.text-muted { color: var(--muted); }
+
+/* Preloader */
+.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+} 
+
+@media (max-width: 768px) {
+    section {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        min-height: 50vh;
+        /* Légère réduction sur mobile pour éviter des sections trop longues */
+    }
+}
+
+/* ==========================
+     Navbar
+     ========================== */
+
+.navbar {
+    background-color: var(--gas-primary);
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+.navbar img {
+    transition: transform 0.3s ease;
+}
+
+.navbar img:hover {
+    transform: scale(1.1);
+}
+
+.nav-link {
+    color: var(--gas-light) !important;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--gas-secondary) !important;
+    transform: scale(1.1);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--gas-secondary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-link.active {
+    color: var(--gas-secondary) !important;
+}
+
+.navbar-brand-custom {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    font-family: 'Georgia', serif;
+    transition: transform 0.3s ease, color 0.3s ease;
+    text-shadow: 8px 8px 4px #000000;
+
+}
+
+.navbar-brand-custom:hover {
+    color: var(--gas-secondary);
+    transform: scale(1.1);
+}
+
+/* diminuer le fontsize du navbar-brand-custom sur mobile */
+@media (max-width: 768px) {
+    .navbar-brand-custom {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* ==========================
+     Hero Section
+     ========================== */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/bgAccueil.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    /* Verticalement centré */
+    justify-content: center;
+    color: white;
+    position: relative;
+    text-align: left;
+}
+
+.hero-section {
+    background: url('../img/bgAccueil.jpg') no-repeat center center/cover;
+    color: var(--light-color);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.5s ease-out;
+    /* height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.hero-section:hover::before {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+    max-width: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* centre verticalement */
+    align-items: center;
+}
+
+/* Ajout de spans pour contrôler les lignes du h1 */
+.hero-content h1 span {
+    display: inline-block;
+    /* Permet de contrôler chaque ligne comme un bloc */
+}
+
+/* h1 sur deux lignes fixes */
+.hero-content h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    white-space: normal;
+    /* permet les retours à la ligne */
+}
+
+.hero-content h3 {
+    margin-bottom: 20px;
+    max-width: 100%;
+    text-align: center;
+    white-space: normal;
+}
+
+
+.hero-content .btn-contact {
+    align-self: center;
+    /* Centre le bouton par rapport au contenu de .hero-content */
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    background-color: var(--gas-secondary);
+    border: none;
+    color: var(--gas-primary);
+    border-radius: 25px;
+    transition: transform 0.3s ease;
+}
+
+.btn-contact:hover {
+    transform: scale(1.05);
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    color: white;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+.scroll-down:hover {
+    color: var(--gas-secondary);
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, -10px);
+    }
+}
+
+/*texte un peu à droite sur ecran plus de 992px*/
+@media (min-width: 992px) {
+    .hero-content {
+        /* margin-left: 80px; */
+        /* décalage vers la droite */
+    }
+}
+
+
+/* Ajustements pour les écrans plus petits */
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 1.2rem;
+        /* Réduit la taille sur mobile pour éviter un débordement */
+        font-weight: bold;
+        margin-bottom: 3rem;
+    }
+
+    .hero-content h3 {
+        font-size: 1rem;
+        /* Réduit la taille sur mobile */
+        margin-bottom: 1rem;
+    }
+
+    .hero-content {
+        width: auto;
+        /* S’assure que le contenu reste lisible sur mobile */
+        align-items: center;
+        /* Centre tout sur mobile */
+        text-align: center;
+        /* Centre le texte sur mobile */
+    }
+
+    .hero {
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* Centre tout horizontalement sur mobile */
+        text-align: center;
+        background: url('../img/bgAccueil.jpg') left center/cover no-repeat;
+        /* Centre l’image sur le côté gauche */
+    }
+}
+
+
+/* ==========================
+     À propos Section
+     ========================== */
+#apropos {
+    background-color: var(--gas-light);
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+#apropos h2 {
+    font-family: 'Roboto', sans-serif;
+    color: var(--gas-primary);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.apropos-content {
+    max-width: 65vw;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-left: 6px solid var(--gas-primary);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.apropos-content p {
+    font-family: 'Roboto', sans-serif;
+    color: #222;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+    transition: transform 0.3s ease-in-out;
+}
+
+.apropos-content p:hover {
+    transform: translateX(10px);
+}
+
+
+@media (max-width: 768px) {
+    .apropos-content {
+        max-width: 85%;
+        padding: 20px;
+    }
+}
+
+
+.btn-custom {
+    /* Correction de la variable et ajout de !important */
+    background-color: var(--gas-secondary) !important;
+    border-color: var(--gas-secondary) !important;
+    /* CORRECTION DE LA VARIABLE */
+    color: var(--gas-primary) !important;
+    font-weight: bold !important;
+    border-radius: 0.5rem !important;
+    /* Optionnel: Ajoutez un petit arrondi */
+    transition: all 0.3s ease;
+    /* Assure une transition douce */
+    padding: 15px 30px !important;
+    /* Pour que le bouton soit bien grand */
+    text-transform: uppercase;
+}
+
+.btn-custom:hover {
+    /* Ajout de !important pour écraser les styles de survol de Bootstrap */
+    background-color: var(--gas-primary) !important;
+    border-color: var(--gas-secondary) !important;
+    color: var(--gas-secondary) !important;
+}
+
+/* Style pour l'image du logo dans la Navbar (optionnel) */
+.logo-navbar-img {
+    cursor: pointer;
+    /* Indique qu'on peut cliquer sur l'image */
+}
+
+/* Rendre le fond de la modale encore plus sombre si le thème Bootstrap par défaut n'est pas suffisant */
+.modal-backdrop {
+    background-color: #000000;
+    opacity: 0.9 !important;
+    /* Rendre le fond très sombre */
+}
+
+/* Cacher le fond blanc par défaut du modal-content pour un effet lightbox pur */
+#logoModal .modal-content {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* Style du bouton de fermeture (en blanc pour contraster sur l'image) */
+#logoModal .btn-close {
+    /* Mettre le bouton de fermeture au-dessus et en dehors de l'image */
+    position: absolute;
+    top: -40px;
+    right: -20px;
+    filter: invert(1);
+    /* Rend l'icône X blanche */
+    opacity: 1;
+}
+
+/* Assurez-vous que l'image elle-même ne dépasse pas 100% de la fenêtre */
+.logo-modal-zoom {
+    max-height: 90vh;
+    /* Limite la hauteur à 90% de la vue pour qu'elle soit bien visible */
+    width: auto;
+}
+
+
+/* services et expertises */
+/* ==========================
+     Services Section
+     ========================== */
+#services,
+#construction,
+#multitechnique {
+    background-color: var(--gas-primary) !important;
+}
+
+#services h2,
+#construction h3,
+#multitechnique h3 {
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: white;
+    /* Met le titre et les sous-titres en blanc pour contraster avec le fond */
+}
+
+#services h5 {
+    color: var(--gas-accent);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+#services img {
+    transition: transform 0.3s ease;
+    margin-bottom: 10px;
+}
+
+#services img:hover {
+    transform: scale(1.1);
+}
+
+/* Affichage vertical des services et projets, et autres */
+@media (max-width: 991px) {
+    #services .row {
+        flex-direction: column !important;
+    }
+
+    #services .col-md-6 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #services .col-md-6 {
+        margin: 20px 0px;
+    }
+}
+
+/* Animation de rotation au survol des images
+  .service-box img {
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .service-box:hover img {
+    transform: rotate(15deg);
+  } */
+
+
+
+/* footer section */
+.footer-section,
+#contact {
+    background-color: var(--gas-primary);
+    color: var(--gas-light);
+    /* border-radius: 15px; */
+}
+
+/* pour petit ecran centrer les elements du footer */
+@media (max-width: 576px) {
+    .footer-section .col-md-4 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+.contact-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/bgAccueil.jpg') center/cover no-repeat;
+    color: var(--gas-light);
+}
+
+/* section realisation */
+.realisation-image {
+    height: 250px;
+    /* Hauteur fixe pour que toutes les cartes aient la même taille d'image */
+    object-fit: cover;
+}
+
+.realisation-card {
+    border: 1px solid var(--gas-light);
+    transition: transform 0.3s ease;
+}
+
+.realisation-card:hover {
+    transform: translateY(-5px);
+    /* Léger soulèvement au survol */
+}
+
+.realisations-section h2 {
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: var(--gas-primary);
+}
+
+.realisations-section h5 {
+    color: var(--gas-primary);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+
+.btn-outline-primary {
+    color: var(--gas-primary);
+    border-color: var(--gas-primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--gas-primary);
+    color: white;
+}
+
+/* Conteneur principal qui couvre toute la fenêtre */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    /* Utilisation de la couleur primaire pour le fond */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+    /* Transition pour la disparition */
+}
+
+/* Classe pour masquer le preloader après le chargement (conservée) */
+.preloader-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.spinner-border {
+    color: var(--gas-primary);
+    width: 4rem;
+    height: 4rem;
+}
+
+.portfolio-image {
+    height: 300px;
+    /* Taille fixe pour une grille uniforme */
+    object-fit: cover;
+}
+
+.portfolio-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    /* Effet de soulèvement */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.portfolio-card .badge {
+    font-size: 0.85rem;
+}
+
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    /* Ratio 16:9 pour la carte */
+    position: relative;
+    height: 0;
+}
+
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: 0;
+}
+
+/* Style optionnel pour les liens sociaux */
+.social-links a:hover i {
+    color: var(--color-accent) !important;
+    /* Change la couleur au survol pour l'accent */
+    transition: color 0.3s ease;
+}
+
+
+
+/* page presentation */
+
+/* --- Typographie & Corps de texte --- */
+.presentation-text {
+    font-family: 'Roboto', sans-serif;
+    color: #444;
+    /* Légèrement plus doux que le noir pur */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: left;
+    /* Plus professionnel pour la lecture */
+    border-left: 5px solid var(--gas-secondary);
+    /* Orange pour le dynamisme */
+    padding-left: 15px;
+    border-radius: 4px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.presentation-text:hover {
+    transform: translateX(10px);
+}
+
+/* --- Éléments Visuels --- */
+.presentation img {
+    transition: transform 0.3s ease;
+}
+
+.presentation img:hover {
+    transform: scale(1.05);
+}
+
+/* --- Plaque Signalétique & Identité --- */
+.plaque-info {
+    background: #fff;
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+.plaque-info td {
+    padding: 8px 0;
+    font-size: 0.95rem;
+}
+
+/* Badge "18 ans" */
+.experience-badge {
+    background: linear-gradient(135deg, var(--gas-light) 0%, #ffffff 100%);
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.experience-badge .number {
+    line-height: 1;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Sections & Titres --- */
+.presentation-page section {
+    padding: 80px 0;
+}
+
+.section-title {
+    position: relative;
+    padding-bottom: 15px;
+    color: var(--gas-primary);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--gas-secondary);
+}
+
+/* --- Cartes Vision / Mission / Valeurs --- */
+.card-vvm {
+    border: none;
+    border-top: 5px solid var(--gas-primary);
+    border-radius: 15px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-vvm:hover {
+    transform: translateY(-12px);
+    border-top-color: var(--gas-secondary);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.icon-box {
+    width: 80px;
+    height: 80px;
+    background-color: var(--gas-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px auto 10px;
+    color: var(--gas-primary);
+    font-size: 2.5rem;
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.card-vvm:hover .icon-box {
+    background-color: var(--gas-secondary);
+    color: white;
+    transform: rotateY(360deg);
+}
+
+.accent-line {
+    width: 40px;
+    height: 3px;
+    background-color: var(--gas-secondary);
+    margin: 10px auto;
+    opacity: 1;
+}
+
+.card-vvm ul li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+.card-vvm ul li i {
+    color: var(--gas-secondary);
+    font-size: 1.1rem;
+}
+
+/* --- Utilitaires & Moyens Humains --- */
+.text-orange {
+    color: var(--gas-secondary) !important;
+}
+
+.text-primary {
+    color: var(--gas-primary) !important;
+}
+
+.border-orange {
+    border-color: var(--gas-secondary) !important;
+}
+
+.col-md-3 .shadow-sm {
+    transition: all 0.3s ease;
+}
+
+.col-md-3 .shadow-sm:hover {
+    transform: scale(1.05);
+    background-color: var(--gas-light) !important;
+}
+
+/* --- Responsive Desktop --- */
+@media (min-width: 992px) {
+    .card-vvm.featured {
+        transform: scale(1.05);
+        z-index: 2;
+        border-top-color: var(--gas-secondary);
+    }
+}
+
+/* Je règle la hauteur pour que mes 5 images soient uniformes */
+.carousel-img {
+    height: 550px;
+    /* J'augmente un peu la hauteur pour bien voir les détails */
+    object-fit: cover;
+    /* Je m'assure que mes images ne sont pas déformées */
+    width: 100%;
+}
+
+/* Je personnalise les flèches pour qu'elles collent à mon style */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Un petit fond sombre pour la visibilité */
+    border-radius: 50%;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: var(--gas-secondary);
+    /* J'utilise mon orange pour les indicateurs */
+}
+
+/* J'ajuste pour le mobile */
+@media (max-width: 768px) {
+    .carousel-img {
+        height: 350px;
+    }
+}
+
+
+
+
+
+/* Style spécifique pour la page réalisations */
+/* Style des cartes de réalisation */
+.portfolio-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Gestion de l'image dans la carte */
+.project-img-container {
+    height: 350px;
+    /* J'augmente la hauteur pour plus d'impact */
+    overflow: hidden;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover .project-img {
+    transform: scale(1.1);
+}
+
+/* Bordure de rappel sur le corps de la carte */
+.border-orange {
+    border-color: var(--gas-secondary) !important;
+}
+
+/* Ajustements pour les mobiles */
+@media (max-width: 768px) {
+    .project-img-container {
+        height: 250px;
+    }
+}
