@@ -117,10 +117,6 @@ const Contact = () => (
                   <label htmlFor="inputProjectDetails" className="form-label fw-bold"><i className="bi bi-pencil-fill me-2"></i>Détails du projet / Message <span className="text-danger">*</span></label>
                   <textarea className="form-control form-control-lg" id="inputProjectDetails" name="message" rows="5" placeholder="Décrivez votre besoin (type de construction, localisation, délai souhaité, etc.)" required></textarea>
                 </div>
-                <div className="col-12">
-                  <label htmlFor="inputFile" className="form-label fw-bold"><i className="bi bi-paperclip me-2"></i>Joindre un fichier (optionnel)</label>
-                  <input type="file" className="form-control" id="inputFile" name="file" />
-                </div>
                 <div className="col-12 d-grid">
                   <button type="submit" className="btn btn-custom btn-lg mt-2">Envoyer votre message</button>
                 </div>
