@@ -11,6 +11,45 @@ import nongo from '../assets/img/nongo.jpeg';
 function Home() {
   return (
     <main>
+      {/* Section Présentation stylée */}
+      <section className="presentation-section py-5" style={{background: 'linear-gradient(120deg, #fafafa 60%, #ffe5c2 100%)'}}>
+        <div className="container">
+          <div className="row align-items-center g-4">
+            <div className="col-md-7">
+              <h1 className="display-3 fw-bold mb-3 gradient-text">ECG PLUS SARL</h1>
+              <h2 className="mb-2 text-dark">Entreprise de Construction Générale et Travaux Publics</h2>
+              <ul className="list-unstyled fs-5 mb-3">
+                <li><strong>Adresse :</strong> Maneah / Coyah</li>
+                <li><strong>Téléphone :</strong> 623 96 62 78 / 628 33 86 41</li>
+                <li><strong>E-mail :</strong> <a href="mailto:daoudafofanadf66@gmail.com">daoudafofanadf66@gmail.com</a></li>
+                <li><strong>Capital social :</strong> 10.000.000 GNF</li>
+                <li><strong>RCCM :</strong> GN.TCC.2021.00364</li>
+                <li><strong>Site web :</strong> <a href="https://ecgplus.com" target="_blank" rel="noopener noreferrer">ecgplus.com</a></li>
+              </ul>
+              <div className="d-flex flex-wrap gap-3 mt-4">
+                <span className="badge bg-primary fs-6">Construction</span>
+                <span className="badge bg-secondary fs-6">Expertise</span>
+                <span className="badge bg-warning text-dark fs-6">Génie Civil</span>
+                <span className="badge bg-success fs-6">Commerce Général</span>
+              </div>
+            </div>
+            <div className="col-md-5 text-center">
+              <div className="presentation-card shadow-lg rounded-4 p-4 bg-white">
+                <h4 className="mb-3 text-primary">Plaque Signalétique</h4>
+                <ul className="list-unstyled text-start fs-6">
+                  <li><strong>Raison sociale :</strong> ECG PLUS</li>
+                  <li><strong>Sigle :</strong> ECG PLUS</li>
+                  <li><strong>Statut légal :</strong> SARL</li>
+                  <li><strong>Capital social :</strong> 10.000.000 GNF</li>
+                  <li><strong>Siège social :</strong> Maneah / Pref. Coyah / Guinée</li>
+                  <li><strong>Références bancaires :</strong> FIRSTBANK: 302203000027011</li>
+                  <li><strong>N° Entreprise :</strong> RCCM/GN.TCC.2021.B.00331</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Section Hero */}
       <header className="hero">
         <div className="hero-content">
