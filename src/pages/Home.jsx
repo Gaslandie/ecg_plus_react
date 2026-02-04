@@ -133,50 +133,47 @@ function Home() {
         </div>
       </section>
 
-      {/* Section réalisations */}
+      {/* Section réalisations modernisée */}
       <section className="realisations-section py-5 my-md-5" data-aos="fade-up">
         <div className="container">
-          <h2 className="text-center mb-5 display-5 fw-bold">Nos Réalisations</h2>
-          <div className="row g-4 text-center">
+          <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Nos Réalisations</h2>
+          <div className="row g-4 justify-content-center">
             <div className="col-md-4">
-              <div className="card realisation-card h-100">
-                <h5>Bibliothèque Municipale de Kankan</h5>
-                <img src={kankan} className="card-img-top realisation-image" alt="Réalisation 1" />
-                <div className="card-body">
-                  <p className="card-text">
-                    Ville de Kankan (05.2023 – 11.2023). Ouvrage public majeur
-                    illustrant notre engagement dans le développement des infrastructures
-                    communautaires et culturelles en Guinée.
-                  </p>
-                  <Link to="/realisations#kankan" className="btn btn-sm btn-outline-primary">Détails du Projet</Link>
+              <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
+                <div className="realisation-img-wrapper">
+                  <img src={kankan} className="realisation-image" alt="Réalisation 1" />
+                  <span className="badge bg-success position-absolute top-0 start-0 m-3 fs-6">Public</span>
+                  <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
+                    <h5 className="fw-bold text-white mb-2">Bibliothèque Municipale de Kankan</h5>
+                    <p className="mb-2 text-white-50 small">Kankan • 05.2023 – 11.2023</p>
+                    <Link to="/realisations#kankan" className="btn btn-sm btn-light fw-bold">Détails du Projet</Link>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="col-md-4">
-              <div className="card realisation-card h-100">
-                <h5>Projet Résidentiel à Dubréka Fihaima</h5>
-                <img src={dubreka} className="card-img-top realisation-image" alt="Réalisation 2" />
-                <div className="card-body">
-                  <p className="card-text">
-                    Projet réalisé entre 2020 et 2021. Illustration de notre expertise
-                    en construction résidentielle de qualité, conforme aux standards
-                    techniques et architecturaux les plus exigeants.
-                  </p>
-                  <Link to="/realisations#dubreka" className="btn btn-sm btn-outline-primary">Détails du Projet</Link>
+              <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
+                <div className="realisation-img-wrapper">
+                  <img src={dubreka} className="realisation-image" alt="Réalisation 2" />
+                  <span className="badge bg-warning text-dark position-absolute top-0 start-0 m-3 fs-6">Résidentiel</span>
+                  <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
+                    <h5 className="fw-bold text-white mb-2">Projet Résidentiel à Dubréka Fihaima</h5>
+                    <p className="mb-2 text-white-50 small">Dubréka • 2020 – 2021</p>
+                    <Link to="/realisations#dubreka" className="btn btn-sm btn-light fw-bold">Détails du Projet</Link>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="col-md-4">
-              <div className="card realisation-card h-100">
-                <h5>Immeuble R+2 et Rénovation de Résidence Privée</h5>
-                <img src={nongo} className="card-img-top realisation-image" alt="Réalisation 3" />
-                <div className="card-body">
-                  <p className="card-text">
-                    Projets réalisés entre 2018 et 2024. Illustration de notre double
-                    compétence en construction neuve (immeuble R+2 à la Cimenterie
-                    d'Ansoumaniah Village) et en rénovation de résidences privées à Nongo.
-                  </p>
-                  <Link to="/realisations#renovation" className="btn btn-sm btn-outline-primary">Détails du Projet</Link>
+              <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
+                <div className="realisation-img-wrapper">
+                  <img src={nongo} className="realisation-image" alt="Réalisation 3" />
+                  <span className="badge bg-primary position-absolute top-0 start-0 m-3 fs-6">Mixte</span>
+                  <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
+                    <h5 className="fw-bold text-white mb-2">Immeuble R+2 & Rénovation Privée</h5>
+                    <p className="mb-2 text-white-50 small">Ansoumaniah & Nongo • 2018 – 2024</p>
+                    <Link to="/realisations#renovation" className="btn btn-sm btn-light fw-bold">Détails du Projet</Link>
+                  </div>
                 </div>
               </div>
             </div>
