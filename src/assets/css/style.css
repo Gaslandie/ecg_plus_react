@@ -1,17 +1,17 @@
 /* ===== Réalisations Modernes ===== */
 .realisation-modern-card {
-    background: linear-gradient(120deg, #fff 70%, #ffe5c2 100%);
+    background: var(--surface);
     border-radius: 1.5rem;
-    box-shadow: 0 8px 32px rgba(47,42,36,0.10);
+    box-shadow: 0 8px 32px rgba(26,79,176,0.12);
     position: relative;
     overflow: hidden;
     transition: transform 0.22s cubic-bezier(.4,2,.6,1), box-shadow 0.22s;
-    border: 1.5px solid #f3e2c2;
+    border: 1.5px solid rgba(26,79,176,0.2);
 }
 .realisation-modern-card:hover {
     transform: translateY(-10px) scale(1.04);
-    box-shadow: 0 18px 40px rgba(255,138,0,0.13);
-    border-color: var(--gas-secondary);
+    box-shadow: 0 18px 40px rgba(26,79,176,0.18);
+    border-color: var(--gas-primary);
 }
 .realisation-img-wrapper {
     position: relative;
@@ -36,7 +36,7 @@
     bottom: 0;
     width: 100%;
     min-height: 110px;
-    background: linear-gradient(0deg, rgba(47,42,36,0.92) 80%, rgba(255,255,255,0.01) 100%);
+    background: rgba(13,31,61,0.85);
     color: #fff;
     border-radius: 0 0 1.5rem 1.5rem;
     z-index: 2;
@@ -48,7 +48,7 @@
     font-size: 1rem;
     padding: 0.5em 1em;
     border-radius: 1rem;
-    box-shadow: 0 2px 8px rgba(255,138,0,0.10);
+    box-shadow: 0 2px 8px rgba(26,79,176,0.12);
 }
 .realisation-modern-card h5 {
     font-size: 1.18rem;
@@ -57,7 +57,7 @@
     color: #fff;
 }
 .realisation-modern-card p {
-    color: #eaeaea;
+    color: var(--gas-complement);
     font-size: 0.98rem;
     margin-bottom: 0.7rem;
 }
@@ -77,15 +77,25 @@
 }
 /* ===== Modern Services & Expertises Section ===== */
 .services-modern-section {
-    background: linear-gradient(120deg, #fafafa 60%, #ffe5c2 100%);
+    background: var(--gas-light);
     position: relative;
     overflow-x: hidden;
 }
+
+.services-modern-section.section-alt-white {
+    background: #fff !important;
+    color: var(--text-color);
+}
+
+#services {
+    background: white !important;
+}
 .gradient-text {
-    background: linear-gradient(90deg, var(--gas-primary), var(--gas-secondary));
+    background: none;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: currentColor;
     background-clip: text;
+    color: var(--gas-primary);
 }
 .services-cards-wrapper {
     display: flex;
@@ -94,36 +104,36 @@
     gap: 2.5rem;
     padding-bottom: 0.5rem;
     scrollbar-width: thin;
-    scrollbar-color: var(--gas-secondary) #ffe5c2;
+    scrollbar-color: var(--gas-primary) var(--gas-primary);
 }
 .services-cards-wrapper::-webkit-scrollbar {
     height: 8px;
 }
 .services-cards-wrapper::-webkit-scrollbar-thumb {
-    background: var(--gas-secondary);
+    background: var(--gas-primary);
     border-radius: 4px;
 }
 .service-modern-card {
     min-width: 320px;
     max-width: 340px;
-    background: linear-gradient(120deg, #fff 70%, #ffe5c2 100%);
+    background: white;
     border-radius: 1.5rem;
-    box-shadow: 0 8px 32px rgba(47,42,36,0.08);
+    box-shadow: 0 8px 32px rgba(26,79,176,0.12);
     padding: 2.2rem 1.5rem 1.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     transition: transform 0.22s cubic-bezier(.4,2,.6,1), box-shadow 0.22s;
-    border: 1.5px solid #f3e2c2;
+    border: 1.5px solid rgba(26,79,176,0.2);
     position: relative;
 }
 .service-modern-card:hover {
     transform: translateY(-10px) scale(1.04);
-    box-shadow: 0 18px 40px rgba(255,138,0,0.13);
-    border-color: var(--gas-secondary);
+    box-shadow: 0 18px 40px rgba(26,79,176,0.18);
+    border-color: var(--gas-primary);
 }
 .service-icon-bg {
-    background: linear-gradient(135deg, var(--gas-secondary) 60%, #fffbe6 100%);
+    background: var(--gas-complement);
     color: var(--gas-primary);
     border-radius: 1rem;
     width: 56px;
@@ -132,7 +142,7 @@
     align-items: center;
     justify-content: center;
     font-size: 2.2rem;
-    box-shadow: 0 4px 16px rgba(255,138,0,0.10);
+    box-shadow: 0 4px 16px rgba(26,79,176,0.12);
 }
 .service-modern-card h5 {
     font-size: 1.18rem;
@@ -141,12 +151,12 @@
     color: var(--gas-primary);
 }
 .service-modern-card p {
-    color: var(--muted);
+    color: #333;
     font-size: 1rem;
     margin-bottom: 1.2rem;
 }
 .service-link {
-    color: var(--gas-secondary);
+    color: var(--gas-primary);
     font-weight: 600;
     text-decoration: none;
     letter-spacing: 0.5px;
@@ -209,13 +219,15 @@
    Design system & typographie
    ========================== */
 :root {
-    --gas-primary: #1a237e; /* bleu foncé */
-    --gas-secondary: #1976d2; /* bleu moyen */
-    --gas-accent: #00bcd4; /* turquoise accent */
-    --gas-light: #f5f7fa;
-    --text-color: #222222;
-    --muted: #6b6b6b;
-    --surface: #ffffff;
+    --gas-primary: #1a4fb0; /* bleu principal */
+    --gas-secondary: var(--gas-primary); /* bleu principal */
+    --gas-accent: var(--gas-primary); /* accent bleu */
+    --gas-complement: #e9f1ff; /* bleu très clair */
+    --gas-light: #ffffff; /* blanc */
+    --text-color: #0d1f3d; /* texte principal bleu foncé */
+    --muted: #2a3f63; /* texte secondaire bleu */
+    --surface: #ffffff; /* surface blanche */
+    --color-accent: var(--gas-primary);
 }
 
 
@@ -227,6 +239,213 @@ body {
     font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Alternance des sections (bleu / blanc) */
+.section-alt-white {
+    background: var(--surface);
+    color: var(--text-color);
+}
+
+.section-alt-blue {
+    background: var(--gas-primary);
+    color: var(--gas-light);
+}
+
+.section-alt-blue h1,
+.section-alt-blue h2,
+.section-alt-blue h3,
+.section-alt-blue h4,
+.section-alt-blue h5,
+.section-alt-blue h6 {
+    color: var(--gas-light);
+}
+
+.section-alt-blue p,
+.section-alt-blue li,
+.section-alt-blue small,
+.section-alt-blue .text-muted {
+    color: var(--gas-light) !important;
+}
+
+.section-alt-blue a {
+    color: var(--gas-light);
+}
+
+.section-alt-blue .text-primary,
+.section-alt-blue .text-dark {
+    color: var(--gas-light) !important;
+}
+
+.section-alt-blue .gradient-text {
+    color: var(--gas-light);
+}
+
+.section-alt-blue .badge {
+    background-color: var(--surface) !important;
+    color: var(--gas-primary) !important;
+}
+
+/* Restore dark text inside white cards within blue sections */
+.section-alt-blue .bg-white,
+.section-alt-blue .portfolio-card,
+.section-alt-blue .process-timeline-item,
+.section-alt-blue .region-card {
+    color: var(--text-color);
+}
+
+.section-alt-blue .bg-white .text-primary,
+.section-alt-blue .portfolio-card .text-primary,
+.section-alt-blue .process-timeline-item .text-primary,
+.section-alt-blue .region-card .text-primary {
+    color: var(--gas-primary) !important;
+}
+
+.section-alt-blue .bg-white .text-dark,
+.section-alt-blue .portfolio-card .text-dark,
+.section-alt-blue .process-timeline-item .text-dark,
+.section-alt-blue .region-card .text-dark {
+    color: var(--text-color) !important;
+}
+
+.section-alt-blue .bg-white .text-muted,
+.section-alt-blue .portfolio-card .text-muted,
+.section-alt-blue .process-timeline-item .text-muted,
+.section-alt-blue .region-card .text-muted {
+    color: var(--muted) !important;
+}
+
+.section-alt-blue .process-timeline-item,
+.section-alt-blue .process-timeline-item h5,
+.section-alt-blue .process-timeline-item p,
+.section-alt-blue .process-timeline-item small {
+    color: var(--text-color) !important;
+}
+
+.section-alt-blue .bg-white p,
+.section-alt-blue .bg-white li,
+.section-alt-blue .bg-white small,
+.section-alt-blue .bg-white .blockquote,
+.section-alt-blue .bg-white .blockquote-footer {
+    color: var(--text-color) !important;
+}
+
+.section-alt-blue .schedule-item i {
+    color: var(--gas-light) !important;
+}
+
+/* Force dark text inside Team section (Home) */
+.team-section.section-alt-blue .team-category p,
+.team-section.section-alt-blue .team-stats small,
+.team-section.section-alt-blue .text-muted,
+.team-section.section-alt-blue .text-dark {
+    color: var(--text-color) !important;
+}
+
+/* Carte "Plaque Signalétique" sur fond bleu */
+.section-alt-blue .presentation-card {
+    background: var(--surface) !important;
+    color: var(--text-color);
+}
+
+.section-alt-blue .presentation-card .text-primary,
+.section-alt-blue .presentation-card h4 {
+    color: var(--gas-primary) !important;
+}
+
+.section-alt-blue .presentation-card li,
+.section-alt-blue .presentation-card strong,
+.section-alt-blue .presentation-card a {
+    color: var(--text-color);
+}
+
+.section-alt-blue .presentation-card a:hover {
+    color: var(--gas-primary);
+}
+
+/* Services & Expertises en fond blanc */
+#services.section-alt-white {
+    background: var(--surface);
+    color: var(--text-color);
+}
+
+#services.section-alt-white .gradient-text {
+    color: var(--gas-primary);
+}
+
+/* Presentation page: text on blue sections */
+.experience-badge,
+.experience-badge h3,
+.experience-badge p,
+.experience-badge .number {
+    color: var(--gas-light) !important;
+}
+
+.identity-section .stat-card {
+    color: var(--gas-light);
+}
+
+.values-section,
+.documents-section {
+    color: var(--gas-light);
+}
+
+.values-section .gradient-text,
+.documents-section .gradient-text {
+    color: var(--gas-light) !important;
+}
+
+.documents-section .document-number,
+.documents-section .document-number strong,
+.documents-section .document-number small {
+    color: var(--gas-light);
+}
+
+/* Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.gallery-item {
+    background: var(--surface);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+@media (min-width: 992px) {
+    .gallery-item img {
+        height: 200px;
+    }
+}
+
+/* Espacement & bloc "Notre Expertise" dans À propos */
+#apropos .apropos-block + .apropos-block {
+    margin-top: 3rem;
+}
+
+#apropos .apropos-expertise {
+    padding: 2.5rem;
+    border-radius: 1rem;
+}
+
+#apropos .section-alt-blue .expertise-card {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.25);
+    color: var(--gas-light);
+}
+
+#apropos .section-alt-blue .expertise-card p {
+    color: var(--gas-complement);
 }
 
 
@@ -279,7 +498,7 @@ main.page-without-hero {
 /* Team Section */
 .team-category {
     padding: 1rem;
-    background: white;
+    background: var(--surface);
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -333,8 +552,8 @@ main.page-without-hero {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('../img/bgAccueil.jpg') center/cover no-repeat;
-    opacity: 0.1;
+    background: none;
+    opacity: 0;
     z-index: 0;
 }
 
@@ -380,15 +599,15 @@ p { line-height: 1.7; color: var(--muted); }
 
 /* Focus visible for keyboard users */
 :focus-visible {
-    outline: 3px solid rgba(255,138,0,0.35);
+    outline: 3px solid rgba(26,79,176,0.35);
     outline-offset: 3px;
     border-radius: 6px;
 }
 
 /* Navbar améliorée (glassmorphism avancé, floating effect, hover sophistiqué) */
 .navbar {
-    background: linear-gradient(135deg, rgba(26,35,126,0.88) 0%, rgba(25,118,210,0.82) 100%);
-    box-shadow: 0 10px 40px rgba(26,35,126,0.25), 0 2px 10px rgba(0,0,0,0.1);
+    background: var(--gas-primary);
+    box-shadow: 0 10px 40px rgba(26,79,176,0.25), 0 2px 10px rgba(0,0,0,0.1);
     backdrop-filter: blur(15px) saturate(1.4);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -406,28 +625,28 @@ p { line-height: 1.7; color: var(--muted); }
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(255,255,255,0.05) 0%, transparent 50%, rgba(255,255,255,0.05) 100%);
+    background: rgba(26,79,176,0.08);
     border-radius: inherit;
     pointer-events: none;
 }
 .navbar:hover {
-    box-shadow: 0 20px 60px rgba(26,35,126,0.35), 0 4px 15px rgba(0,0,0,0.15);
-    background: linear-gradient(135deg, rgba(26,35,126,0.95) 0%, rgba(25,118,210,0.9) 100%);
+    box-shadow: 0 20px 60px rgba(26,79,176,0.35), 0 4px 15px rgba(0,0,0,0.15);
+    background: var(--gas-primary);
 }
 
 /* Primary CTAs */
 .btn-custom, .btn-contact {
-    background: var(--gas-secondary);
+    background: var(--gas-primary);
     color: #fff !important;
     border: none;
     padding: 12px 26px;
     border-radius: 32px;
-    box-shadow: 0 8px 20px rgba(25,118,210,0.12);
+    box-shadow: 0 8px 20px rgba(26,79,176,0.12);
     transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 .btn-custom:hover, .btn-contact:hover {
     transform: translateY(-4px);
-    box-shadow: 0 18px 30px rgba(25,118,210,0.18);
+    box-shadow: 0 18px 30px rgba(26,79,176,0.18);
 }
 
 /* Card enhancements */
@@ -510,10 +729,10 @@ img { max-width: 100%; height: auto; display: block; }
     font-family: 'Montserrat', 'Georgia', serif;
     font-weight: 800;
     color: var(--gas-light);
-    text-shadow: 0 3px 20px rgba(26,35,126,0.3);
+    text-shadow: 0 3px 20px rgba(26,79,176,0.3);
     padding: 0.3em 0.8em;
     border-radius: 15px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+    background: rgba(26,79,176,0.12);
     border: 1px solid rgba(255,255,255,0.2);
     transition: all 0.4s cubic-bezier(.4,2,.6,1);
     position: relative;
@@ -526,7 +745,7 @@ img { max-width: 100%; height: auto; display: block; }
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: rgba(26,79,176,0.2);
     transition: left 0.5s;
 }
 .navbar-brand-custom:hover::before {
@@ -534,10 +753,10 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .navbar-brand-custom:hover {
     color: var(--gas-accent);
-    background: linear-gradient(135deg, rgba(0,188,212,0.2) 0%, rgba(255,255,255,0.1) 100%);
+    background: rgba(26,79,176,0.15);
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0,188,212,0.3);
-    text-shadow: 0 4px 25px rgba(0,188,212,0.4);
+    box-shadow: 0 6px 20px rgba(26,79,176,0.3);
+    text-shadow: 0 4px 25px rgba(26,79,176,0.35);
 }
 
 /* diminuer le fontsize du navbar-brand-custom sur mobile */
@@ -553,7 +772,8 @@ img { max-width: 100%; height: auto; display: block; }
      ========================== */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../img/bgAccueil.jpg') center/cover no-repeat;
+    background: url('../img/bgAccueil.jpg') center/cover no-repeat;
+    background-color: var(--gas-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -570,7 +790,7 @@ img { max-width: 100%; height: auto; display: block; }
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(26,35,126,0.3) 0%, rgba(25,118,210,0.2) 100%);
+    background: rgba(0,0,0,0.35);
     z-index: 1;
 }
 
@@ -656,7 +876,7 @@ img { max-width: 100%; height: auto; display: block; }
 .btn-contact-primary {
     padding: 15px 30px;
     font-size: 1.1rem;
-    background: linear-gradient(135deg, var(--gas-secondary) 0%, #1976d2 100%);
+    background: var(--gas-primary);
     border: none;
     color: white;
     border-radius: 50px;
@@ -664,7 +884,7 @@ img { max-width: 100%; height: auto; display: block; }
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(25,118,210,0.3);
+    box-shadow: 0 8px 25px rgba(26,79,176,0.3);
     position: relative;
     overflow: hidden;
 }
@@ -676,7 +896,7 @@ img { max-width: 100%; height: auto; display: block; }
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: rgba(26,79,176,0.2);
     transition: left 0.5s;
 }
 
@@ -686,7 +906,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .btn-contact-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(25,118,210,0.4);
+    box-shadow: 0 15px 35px rgba(26,79,176,0.4);
 }
 
 .btn-contact-secondary {
@@ -704,7 +924,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .btn-contact-secondary:hover {
-    background: white;
+    background: var(--surface);
     color: var(--gas-primary);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(255,255,255,0.3);
@@ -761,7 +981,7 @@ img { max-width: 100%; height: auto; display: block; }
 .shape {
     position: absolute;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    background: rgba(26,79,176,0.12);
     animation: float 6s ease-in-out infinite;
 }
 
@@ -805,7 +1025,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .scroll-down:hover {
-    color: var(--gas-secondary);
+    color: var(--gas-primary);
 }
 
 @keyframes bounce {
@@ -968,7 +1188,7 @@ img { max-width: 100%; height: auto; display: block; }
 .apropos-content {
     max-width: 65vw;
     margin: 0 auto;
-    background-color: white;
+    background-color: var(--surface);
     padding: 30px;
     border-left: 6px solid var(--gas-primary);
     border-radius: 8px;
@@ -977,7 +1197,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .apropos-content p {
     font-family: 'Roboto', sans-serif;
-    color: #222;
+    color: var(--text-color);
     font-size: 1.05rem;
     line-height: 1.8;
     margin-bottom: 20px;
@@ -1000,10 +1220,10 @@ img { max-width: 100%; height: auto; display: block; }
 
 .btn-custom {
     /* Correction de la variable et ajout de !important */
-    background-color: var(--gas-secondary) !important;
-    border-color: var(--gas-secondary) !important;
+    background-color: var(--gas-primary) !important;
+    border-color: var(--gas-primary) !important;
     /* CORRECTION DE LA VARIABLE */
-    color: var(--gas-primary) !important;
+    color: var(--gas-light) !important;
     font-weight: bold !important;
     border-radius: 0.5rem !important;
     /* Optionnel: Ajoutez un petit arrondi */
@@ -1017,8 +1237,8 @@ img { max-width: 100%; height: auto; display: block; }
 .btn-custom:hover {
     /* Ajout de !important pour écraser les styles de survol de Bootstrap */
     background-color: var(--gas-primary) !important;
-    border-color: var(--gas-secondary) !important;
-    color: var(--gas-secondary) !important;
+    border-color: var(--gas-primary) !important;
+    color: var(--gas-light) !important;
 }
 
 /* Style pour l'image du logo dans la Navbar (optionnel) */
@@ -1040,7 +1260,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* Rendre le fond de la modale encore plus sombre si le thème Bootstrap par défaut n'est pas suffisant */
 .modal-backdrop {
-    background-color: #000000;
+    background-color: #0d1f3d;
     opacity: 0.9 !important;
     /* Rendre le fond très sombre */
 }
@@ -1074,7 +1294,9 @@ img { max-width: 100%; height: auto; display: block; }
 /* ==========================
      Services Section
      ========================== */
-#services,
+#services {
+    background-color: white !important;
+}
 #construction,
 #multitechnique {
     background-color: var(--gas-primary) !important;
@@ -1137,7 +1359,7 @@ img { max-width: 100%; height: auto; display: block; }
 /* footer section */
 .footer-section,
 #contact {
-    background-color: var(--gas-primary);
+    background: var(--gas-primary);
     color: var(--gas-light);
     /* border-radius: 15px; */
 }
@@ -1162,7 +1384,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .contact-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/bgAccueil.jpg') center/cover no-repeat;
+    background: var(--gas-primary);
     color: var(--gas-light);
 }
 
@@ -1216,7 +1438,7 @@ img { max-width: 100%; height: auto; display: block; }
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: white;
+    background-color: var(--surface);
     /* Utilisation de la couleur primaire pour le fond */
     display: flex;
     justify-content: center;
@@ -1291,14 +1513,14 @@ img { max-width: 100%; height: auto; display: block; }
 /* --- Typographie & Corps de texte --- */
 .presentation-text {
     font-family: 'Roboto', sans-serif;
-    color: #444;
+    color: var(--text-color);
     /* Légèrement plus doux que le noir pur */
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 20px;
     text-align: left;
     /* Plus professionnel pour la lecture */
-    border-left: 5px solid var(--gas-secondary);
+    border-left: 5px solid var(--gas-primary);
     /* Orange pour le dynamisme */
     padding-left: 15px;
     border-radius: 4px;
@@ -1320,7 +1542,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* --- Plaque Signalétique & Identité --- */
 .plaque-info {
-    background: #fff;
+    background: var(--surface);
     transition: transform 0.3s ease;
     border-radius: 15px;
 }
@@ -1332,7 +1554,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* Badge "18 ans" */
 .experience-badge {
-    background: linear-gradient(135deg, var(--gas-light) 0%, #ffffff 100%);
+    background: var(--gas-light);
     border-radius: 20px;
     margin-bottom: 20px;
 }
@@ -1361,7 +1583,7 @@ img { max-width: 100%; height: auto; display: block; }
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: var(--gas-secondary);
+    background-color: var(--gas-primary);
 }
 
 /* --- Cartes Vision / Mission / Valeurs --- */
@@ -1374,7 +1596,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .card-vvm:hover {
     transform: translateY(-12px);
-    border-top-color: var(--gas-secondary);
+    border-top-color: var(--gas-primary);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
 }
 
@@ -1390,11 +1612,11 @@ img { max-width: 100%; height: auto; display: block; }
     color: var(--gas-primary);
     font-size: 2.5rem;
     transition: 0.3s;
-    border: 1px solid #eee;
+    border: 1px solid rgba(26,79,176,0.15);
 }
 
 .card-vvm:hover .icon-box {
-    background-color: var(--gas-secondary);
+    background-color: var(--gas-primary);
     color: white;
     transform: rotateY(360deg);
 }
@@ -1402,7 +1624,7 @@ img { max-width: 100%; height: auto; display: block; }
 .accent-line {
     width: 40px;
     height: 3px;
-    background-color: var(--gas-secondary);
+    background-color: var(--gas-primary);
     margin: 10px auto;
     opacity: 1;
 }
@@ -1410,19 +1632,23 @@ img { max-width: 100%; height: auto; display: block; }
 .card-vvm ul li {
     margin-bottom: 12px;
     font-size: 0.95rem;
-    color: #555;
+    color: var(--muted);
     display: flex;
     align-items: center;
 }
 
 .card-vvm ul li i {
-    color: var(--gas-secondary);
+    color: var(--gas-primary);
     font-size: 1.1rem;
 }
 
 /* --- Utilitaires & Moyens Humains --- */
 .text-orange {
-    color: var(--gas-secondary) !important;
+    color: var(--gas-primary) !important;
+}
+
+.text-accent {
+    color: var(--gas-accent) !important;
 }
 
 .text-primary {
@@ -1430,7 +1656,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .border-orange {
-    border-color: var(--gas-secondary) !important;
+    border-color: var(--gas-primary) !important;
 }
 
 .col-md-3 .shadow-sm {
@@ -1447,7 +1673,7 @@ img { max-width: 100%; height: auto; display: block; }
     .card-vvm.featured {
         transform: scale(1.05);
         z-index: 2;
-        border-top-color: var(--gas-secondary);
+        border-top-color: var(--gas-primary);
     }
 }
 
@@ -1470,7 +1696,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .carousel-indicators [data-bs-target] {
-    background-color: var(--gas-secondary);
+    background-color: var(--gas-primary);
     /* J'utilise mon orange pour les indicateurs */
 }
 
@@ -1491,7 +1717,7 @@ img { max-width: 100%; height: auto; display: block; }
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 15px;
     overflow: hidden;
-    background: #fff;
+    background: var(--surface);
 }
 
 .portfolio-card:hover {
@@ -1519,7 +1745,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* Bordure de rappel sur le corps de la carte */
 .border-orange {
-    border-color: var(--gas-secondary) !important;
+    border-color: var(--gas-primary) !important;
 }
 
 /* Ajustements pour les mobiles */
@@ -1527,4 +1753,540 @@ img { max-width: 100%; height: auto; display: block; }
     .project-img-container {
         height: 250px;
     }
+}
+
+/* ===== Styles pour la page ExpertiseServices ===== */
+
+/* Cartes de certification */
+.certification-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.certification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
+
+.certification-icon {
+    transition: transform 0.3s ease;
+}
+
+.certification-card:hover .certification-icon {
+    transform: scale(1.1);
+}
+
+/* Cartes d'équipement */
+.equipment-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.equipment-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+}
+
+.equipment-icon {
+    transition: transform 0.3s ease;
+}
+
+.equipment-card:hover .equipment-icon {
+    transform: scale(1.1);
+}
+
+/* Étapes du processus */
+.process-step {
+    padding: 2rem 1rem;
+    background: var(--surface);
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.process-number {
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.process-step:hover .process-number {
+    transform: scale(1.05);
+}
+
+/* Badge de garantie */
+.guarantee-badge {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.guarantee-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+/* Items de garantie */
+.guarantee-item {
+    padding: 1rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.guarantee-item:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Animations AOS pour les nouvelles sections */
+[data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Délais d'animation */
+[data-aos-delay="100"] {
+    transition-delay: 0.1s;
+}
+
+[data-aos-delay="200"] {
+    transition-delay: 0.2s;
+}
+
+[data-aos-delay="300"] {
+    transition-delay: 0.3s;
+}
+
+/* Responsive pour les cartes de certification */
+@media (max-width: 768px) {
+    .certification-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .equipment-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .process-step {
+        margin-bottom: 2rem;
+    }
+
+    .guarantee-badge {
+        width: 120px !important;
+        height: 120px !important;
+    }
+}
+
+/* Styles pour les boutons CTA */
+.btn-custom {
+    background: var(--gas-primary);
+    border: none;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+    background: var(--gas-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    color: white;
+}
+
+/* ===== Styles pour la page Realisations ===== */
+
+/* Cartes de statistiques */
+.stats-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.stats-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+}
+
+.stats-icon {
+    transition: transform 0.3s ease;
+}
+
+.stats-card:hover .stats-icon {
+    transform: scale(1.1);
+}
+
+/* Section achievement highlight */
+.achievement-highlight {
+    border: 2px solid var(--gas-primary);
+    background: var(--surface);
+}
+
+/* Cartes de domaine */
+.domain-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.domain-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12) !important;
+}
+
+.domain-icon {
+    transition: transform 0.3s ease;
+}
+
+.domain-card:hover .domain-icon {
+    transform: scale(1.1);
+}
+
+/* Cartes de région */
+.region-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.region-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12) !important;
+}
+
+.region-icon {
+    transition: transform 0.3s ease;
+}
+
+.region-card:hover .region-icon {
+    transform: scale(1.05);
+}
+
+/* Cartes de témoignages */
+.testimonial-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12) !important;
+}
+
+.testimonial-avatar {
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-avatar {
+    transform: scale(1.1);
+}
+
+/* Timeline du processus */
+.process-timeline {
+    position: relative;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    background: var(--gas-primary);
+    z-index: 1;
+}
+
+.process-timeline-item {
+    position: relative;
+    z-index: 2;
+    background: var(--surface);
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-timeline-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.process-timeline-circle {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    margin: 0 auto;
+}
+
+.process-timeline-item:hover .process-timeline-circle {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+/* Cartes CTA */
+.cta-feature {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.cta-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12) !important;
+}
+
+/* Responsive pour les nouvelles sections */
+@media (max-width: 768px) {
+    .stats-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .domain-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .region-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .testimonial-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .process-timeline-item {
+        margin-bottom: 2rem;
+    }
+
+    .timeline-line {
+        display: none; /* Masquer la ligne sur mobile */
+    }
+
+    .achievement-highlight .row {
+        margin-top: 1rem;
+    }
+
+    .achievement-highlight .metric {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .stats-number {
+        font-size: 2.5rem !important;
+    }
+
+    .domain-icon,
+    .region-icon {
+        font-size: 2rem !important;
+    }
+
+    .process-timeline-circle {
+        width: 60px !important;
+        height: 60px !important;
+    }
+}
+
+/* ===== Styles pour la page Contact ===== */
+
+/* Cartes équipe de contact */
+.contact-person-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.contact-person-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+}
+
+.contact-avatar {
+    transition: transform 0.3s ease;
+}
+
+.contact-person-card:hover .contact-avatar {
+    transform: scale(1.1);
+}
+
+/* Badge de disponibilité */
+.availability-badge {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.availability-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+/* Items d'horaire */
+.schedule-item {
+    padding: 1rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.schedule-item:hover {
+    background: rgba(26,79,176,0.12);
+}
+
+/* Accordéon FAQ */
+.accordion-button {
+    background: var(--gas-light);
+    border: none;
+    font-size: 1rem;
+}
+
+.accordion-button:not(.collapsed) {
+    background: var(--gas-primary);
+    color: white;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.accordion-item {
+    border: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    margin-bottom: 1rem;
+    border-radius: 0.5rem !important;
+    overflow: hidden;
+}
+
+/* Cartes moyens de paiement */
+.payment-method-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.payment-method-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12) !important;
+}
+
+.payment-icon {
+    transition: transform 0.3s ease;
+}
+
+.payment-method-card:hover .payment-icon {
+    transform: scale(1.1);
+}
+
+/* Section paiement info */
+.payment-info {
+    border: 2px solid var(--gas-primary);
+    background: var(--surface);
+}
+
+/* Liens sociaux */
+.social-link {
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+}
+
+.social-icon {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.social-link:hover .social-icon {
+    transform: scale(1.1);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+/* Section newsletter */
+.newsletter-section {
+    border: 2px solid var(--gas-primary);
+}
+
+/* Responsive pour les nouvelles sections */
+@media (max-width: 768px) {
+    .contact-person-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .payment-method-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .social-link {
+        margin-bottom: 1.5rem;
+    }
+
+    .availability-badge {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    .contact-avatar {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    .social-icon {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    .payment-icon {
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .accordion-button {
+        font-size: 0.9rem;
+    }
+
+    .contact-person-card .contact-info p {
+        font-size: 0.9rem;
+    }
+
+    .schedule-item {
+        padding: 0.75rem;
+    }
+}
+
+/* === Uniform blue palette overrides (Bootstrap helpers) === */
+.text-success,
+.text-warning,
+.text-danger,
+.text-info,
+.text-primary {
+    color: var(--gas-primary) !important;
+}
+
+.bg-success,
+.bg-warning,
+.bg-danger,
+.bg-info,
+.bg-primary {
+    background-color: var(--gas-primary) !important;
+    color: #fff !important;
+}
+
+.bg-white {
+    background-color: var(--surface) !important;
+}
+
+.text-dark {
+    color: var(--text-color) !important;
+}
+
+.bg-gradient {
+    background-image: none !important;
 }

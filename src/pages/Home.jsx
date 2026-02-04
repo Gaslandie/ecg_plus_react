@@ -57,12 +57,12 @@ function Home() {
       </header>
 
       {/* Section about enrichie */}
-      <section id="apropos" className="section-spacing" data-aos="fade-up" data-aos-delay="300">
+      <section id="apropos" className="section-spacing section-alt-white" data-aos="fade-up" data-aos-delay="300">
         <div className="container">
           <h2 className="fw-bold text-center mb-5">À propos d'ECG PLUS</h2>
 
           {/* Historique */}
-          <div className="row mb-5">
+          <div className="row apropos-block">
             <div className="col-lg-8 mx-auto">
               <div className="card shadow-lg border-0">
                 <div className="card-body p-4">
@@ -82,19 +82,19 @@ function Home() {
                   </p>
                   <div className="row text-center mt-4">
                     <div className="col-md-4">
-                      <div className="stat-box p-3 bg-primary text-white rounded">
+                      <div className="stat-box p-3 text-white rounded" style={{backgroundColor: 'var(--gas-primary)'}}>
                         <h4 className="mb-1">18+</h4>
                         <small>Années d'Expérience</small>
                       </div>
                     </div>
                     <div className="col-md-4">
-                      <div className="stat-box p-3 bg-secondary text-white rounded">
+                      <div className="stat-box p-3 text-white rounded" style={{backgroundColor: 'var(--gas-primary)'}}>
                         <h4 className="mb-1">50+</h4>
                         <small>Projets Réalisés</small>
                       </div>
                     </div>
                     <div className="col-md-4">
-                      <div className="stat-box p-3 bg-success text-white rounded">
+                      <div className="stat-box p-3 text-white rounded" style={{backgroundColor: 'var(--gas-primary)'}}>
                         <h4 className="mb-1">100%</h4>
                         <small>Satisfaction Client</small>
                       </div>
@@ -106,34 +106,36 @@ function Home() {
           </div>
 
           {/* Notre Expertise */}
-          <div className="row mb-5">
-            <div className="col-lg-10 mx-auto">
-              <h3 className="text-primary text-center mb-4">
-                <i className="bi bi-tools me-2"></i>Notre Expertise
-              </h3>
-              <div className="row g-4">
-                <div className="col-md-6">
-                  <div className="expertise-card h-100 p-4 border rounded shadow-sm">
-                    <h5 className="text-primary mb-3">
-                      <i className="bi bi-house-door me-2"></i>Construction & Bâtiment
-                    </h5>
-                    <p>
-                      Nous réalisons des projets de construction variés, allant des complexes résidentiels
-                      aux structures commerciales et industrielles. Nous déployons des systèmes autonomes
-                      hydriques pour une indépendance totale des bâtiments en électricité.
-                    </p>
+          <div className="apropos-expertise section-alt-blue apropos-block">
+            <div className="row g-4">
+              <div className="col-lg-10 mx-auto">
+                <h3 className="text-primary text-center mb-4">
+                  <i className="bi bi-tools me-2"></i>Notre Expertise
+                </h3>
+                <div className="row g-4">
+                  <div className="col-md-6">
+                    <div className="expertise-card h-100 p-4 border rounded shadow-sm">
+                      <h5 className="text-primary mb-3">
+                        <i className="bi bi-house-door me-2"></i>Construction & Bâtiment
+                      </h5>
+                      <p>
+                        Nous réalisons des projets de construction variés, allant des complexes résidentiels
+                        aux structures commerciales et industrielles. Nous déployons des systèmes autonomes
+                        hydriques pour une indépendance totale des bâtiments en électricité.
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="expertise-card h-100 p-4 border rounded shadow-sm">
-                    <h5 className="text-primary mb-3">
-                      <i className="bi bi-search me-2"></i>Étude & Expertise
-                    </h5>
-                    <p>
-                      Notre équipe d'experts réalise des études approfondies et des analyses précises
-                      pour évaluer l'état des bâtiments et recommander les meilleures pratiques de
-                      rénovation et de maintenance.
-                    </p>
+                  <div className="col-md-6">
+                    <div className="expertise-card h-100 p-4 border rounded shadow-sm">
+                      <h5 className="text-primary mb-3">
+                        <i className="bi bi-search me-2"></i>Étude & Expertise
+                      </h5>
+                      <p>
+                        Notre équipe d'experts réalise des études approfondies et des analyses précises
+                        pour évaluer l'état des bâtiments et recommander les meilleures pratiques de
+                        rénovation et de maintenance.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -141,7 +143,7 @@ function Home() {
           </div>
 
           {/* Nos Valeurs */}
-          <div className="row">
+          <div className="row apropos-block">
             <div className="col-lg-10 mx-auto">
               <h3 className="text-primary text-center mb-4">
                 <i className="bi bi-heart me-2"></i>Nos Valeurs & Engagements
@@ -161,9 +163,9 @@ function Home() {
                 <div className="col-md-4">
                   <div className="value-card text-center p-4 h-100 border rounded shadow-sm">
                     <div className="value-icon mb-3">
-                      <i className="bi bi-shield-check text-success" style={{fontSize: '2rem'}}></i>
+                      <i className="bi bi-shield-check" style={{fontSize: '2rem', color: 'var(--gas-primary)'}}></i>
                     </div>
-                    <h6 className="text-success mb-2">Qualité & Sécurité</h6>
+                    <h6 className="mb-2" style={{color: 'var(--gas-primary)'}}>Qualité & Sécurité</h6>
                     <p className="small">
                       L'habilité dans le travail avec zéro accident et respect des normes internationales.
                     </p>
@@ -172,9 +174,9 @@ function Home() {
                 <div className="col-md-4">
                   <div className="value-card text-center p-4 h-100 border rounded shadow-sm">
                     <div className="value-icon mb-3">
-                      <i className="bi bi-tree text-warning" style={{fontSize: '2rem'}}></i>
+                      <i className="bi bi-tree" style={{fontSize: '2rem', color: 'var(--gas-primary)'}}></i>
                     </div>
-                    <h6 className="text-warning mb-2">Environnement</h6>
+                    <h6 className="mb-2" style={{color: 'var(--gas-primary)'}}>Environnement</h6>
                     <p className="small">
                       Protection de l'environnement et contribution à la préservation de l'écosystème.
                     </p>
@@ -188,25 +190,25 @@ function Home() {
 
 
       {/* Section Présentation stylée */}
-      <section className="presentation-section py-5" style={{background: 'linear-gradient(120deg, #fafafa 60%, #ffe5c2 100%)'}}>
+      <section className="presentation-section py-5 section-alt-blue">
         <div className="container">
           <div className="row align-items-center g-4">
             <div className="col-md-7">
-              <h1 className="display-3 fw-bold mb-3 gradient-text">ECG PLUS SARL</h1>
-              <h2 className="mb-2 text-dark">Entreprise de Construction Générale et Travaux Publics</h2>
-              <ul className="list-unstyled fs-5 mb-3">
+              <h1 className="display-3 fw-bold mb-3 text-white">ECG PLUS SARL</h1>
+              <h2 className="mb-2 text-white">Entreprise de Construction Générale et Travaux Publics</h2>
+              <ul className="list-unstyled fs-5 mb-3 text-white">
                 <li><strong>Adresse :</strong> Maneah / Coyah</li>
                 <li><strong>Téléphone :</strong> 623 96 62 78 / 628 33 86 41</li>
-                  <li><strong>E-mail :</strong> <a href="mailto:daoudafofanadf66@gmail.com">daoudafofanadf66@gmail.com</a></li>
+                  <li><strong>E-mail :</strong> <a href="mailto:contact@ecgplusgn.com" className="text-white">contact@ecgplusgn.com</a></li>
                 <li><strong>Capital social :</strong> 10.000.000 GNF</li>
                 <li><strong>RCCM :</strong> GN.TCC.2021.00364</li>
-                <li><strong>Site web :</strong> <a href="https://ecgplus.com" target="_blank" rel="noopener noreferrer">ecgplus.com</a></li>
+                <li><strong>Site web :</strong> <a href="https://ecgplus.com" target="_blank" rel="noopener noreferrer" className="text-white">ecgplus.com</a></li>
               </ul>
               <div className="d-flex flex-wrap gap-3 mt-4">
-                <span className="badge bg-primary fs-6">Construction</span>
-                <span className="badge bg-secondary fs-6">Expertise</span>
-                <span className="badge bg-warning text-dark fs-6">Génie Civil</span>
-                <span className="badge bg-success fs-6">Commerce Général</span>
+                <span className="badge fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Construction</span>
+                <span className="badge fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Expertise</span>
+                <span className="badge fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Génie Civil</span>
+                <span className="badge fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Commerce Général</span>
               </div>
             </div>
             <div className="col-md-5 text-center">
@@ -228,9 +230,9 @@ function Home() {
       </section>
 
       {/* Section Services & Expertises - Modern Design */}
-      <section id="services" className="services-modern-section py-5" data-aos="fade-up">
+      <section id="services" className="services-modern-section my-3 py-5" style={{backgroundColor: 'white'}} data-aos="fade-up">
         <div className="container">
-          <h2 className="mb-5 display-4 fw-bold text-center gradient-text">Services & Expertises</h2>
+          <h2 className="mb-5 display-4 fw-bold text-center" style={{color: 'var(--gas-primary)'}}>Services & Expertises</h2>
           <div className="services-cards-wrapper d-flex flex-nowrap overflow-auto pb-3">
             <div className="service-modern-card mx-3">
               <div className="service-icon-bg mb-3"><i className="bi bi-lightning-charge"></i></div>
@@ -269,14 +271,14 @@ function Home() {
       </section>
 
       {/* Section Équipe & Moyens Humains */}
-      <section className="team-section py-5 bg-light" data-aos="fade-up">
+      <section className="team-section py-5 section-alt-blue" data-aos="fade-up">
         <div className="container">
-          <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Notre Équipe</h2>
+          <h2 className="text-center mb-5 display-4 fw-bold text-white">Notre Équipe</h2>
           <div className="row align-items-center g-5">
             <div className="col-lg-6">
               <div className="team-content">
-                <h3 className="text-primary mb-4">Une Équipe Multidisciplinaire d'Experts</h3>
-                <p className="lead mb-4">
+                <h3 className="text-white mb-4">Une Équipe Multidisciplinaire d'Experts</h3>
+                <p className="lead mb-4 text-white">
                   ECG PLUS travaille de commun accord avec une équipe multidisciplinaire composée
                   d'ingénieurs, d'administrateurs, de gestionnaires, de techniciens, pétrie d'expériences
                   dans plusieurs domaines.
@@ -285,54 +287,54 @@ function Home() {
                 <div className="team-categories mb-4">
                   <div className="team-category d-flex align-items-center mb-3">
                     <div className="category-icon me-3">
-                      <i className="bi bi-gear-fill text-primary" style={{fontSize: '1.5rem'}}></i>
+                      <i className="bi bi-tools" style={{fontSize: '1.5rem', color: 'var(--gas-primary)'}}></i>
                     </div>
                     <div>
-                      <h6 className="mb-1 text-primary">Personnel Technique de Chantier</h6>
-                      <p className="small mb-0 text-muted">Ingénieurs, techniciens superviseurs, ouvriers qualifiés, équipe de dépannage</p>
+                      <h6 className="mb-1" style={{color: 'var(--gas-primary)'}}>Personnel Technique de Chantier</h6>
+                      <p className="small mb-0 text-dark">Ingénieurs, techniciens superviseurs, ouvriers qualifiés, équipe de dépannage</p>
                     </div>
                   </div>
 
                   <div className="team-category d-flex align-items-center mb-3">
                     <div className="category-icon me-3">
-                      <i className="bi bi-people-fill text-success" style={{fontSize: '1.5rem'}}></i>
+                      <i className="bi bi-people-fill" style={{fontSize: '1.5rem', color: 'var(--gas-primary)'}}></i>
                     </div>
                     <div>
-                      <h6 className="mb-1 text-success">Personnel d'Appui</h6>
-                      <p className="small mb-0 text-muted">Conseillers, ingénieurs en génie civil, gestionnaires de projet</p>
+                      <h6 className="mb-1" style={{color: 'var(--gas-primary)'}}>Personnel d'Appui</h6>
+                      <p className="small mb-0 text-dark">Conseillers, ingénieurs en génie civil, gestionnaires de projet</p>
                     </div>
                   </div>
 
                   <div className="team-category d-flex align-items-center">
                     <div className="category-icon me-3">
-                      <i className="bi bi-tools text-warning" style={{fontSize: '1.5rem'}}></i>
+                      <i className="bi bi-tools" style={{fontSize: '1.5rem', color: 'var(--gas-primary)'}}></i>
                     </div>
                     <div>
-                      <h6 className="mb-1 text-warning">Équipe de Maintenance</h6>
-                      <p className="small mb-0 text-muted">Mécaniciens, soudeurs, électriciens spécialisés</p>
+                      <h6 className="mb-1" style={{color: 'var(--gas-primary)'}}>Équipe de Maintenance</h6>
+                      <p className="small mb-0 text-dark">Mécaniciens, soudeurs, électriciens spécialisés</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="team-stats d-flex justify-content-around">
                   <div className="stat text-center">
-                    <h4 className="text-primary mb-1">50+</h4>
-                    <small className="text-muted">Collaborateurs</small>
+                    <h4 className="mb-1 text-white">50+</h4>
+                    <small className="text-white-50">Collaborateurs</small>
                   </div>
                   <div className="stat text-center">
-                    <h4 className="text-success mb-1">18</h4>
-                    <small className="text-muted">Années d'Expérience</small>
+                    <h4 className="mb-1 text-white">18</h4>
+                    <small className="text-white-50">Années d'Expérience</small>
                   </div>
                   <div className="stat text-center">
-                    <h4 className="text-warning mb-1">100%</h4>
-                    <small className="text-muted">Engagement</small>
+                    <h4 className="mb-1 text-white">100%</h4>
+                    <small className="text-white-50">Engagement</small>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-6">
               <div className="team-image-container text-center">
-                <div className="team-placeholder bg-primary text-white d-flex align-items-center justify-content-center rounded-4 shadow-lg" style={{height: '400px'}}>
+                <div className="team-placeholder text-white d-flex align-items-center justify-content-center rounded-4 shadow-lg" style={{height: '400px', backgroundColor: 'var(--gas-primary)'}}>
                   <div className="text-center">
                     <i className="bi bi-people-fill" style={{fontSize: '4rem', opacity: '0.3'}}></i>
                     <h5 className="mt-3">Notre Équipe d'Experts</h5>
@@ -346,7 +348,7 @@ function Home() {
       </section>
 
       {/* Section réalisations modernisée */}
-      <section className="realisations-section py-5 my-md-5" data-aos="fade-up">
+      <section className="realisations-section py-5 my-md-5 section-alt-white" data-aos="fade-up">
         <div className="container">
           <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Nos Réalisations</h2>
           <div className="row g-4 justify-content-center">
@@ -354,7 +356,7 @@ function Home() {
               <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
                 <div className="realisation-img-wrapper">
                   <img src={kankan} className="realisation-image" alt="Réalisation 1" />
-                  <span className="badge bg-success position-absolute top-0 start-0 m-3 fs-6">Public</span>
+                  <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Public</span>
                   <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                     <h5 className="fw-bold text-white mb-2">Bibliothèque Municipale de Kankan</h5>
                     <p className="mb-2 text-white-50 small">Kankan • 05.2023 – 11.2023</p>
@@ -367,7 +369,7 @@ function Home() {
               <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
                 <div className="realisation-img-wrapper">
                   <img src={dubreka} className="realisation-image" alt="Réalisation 2" />
-                  <span className="badge bg-warning text-dark position-absolute top-0 start-0 m-3 fs-6">Résidentiel</span>
+                  <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Résidentiel</span>
                   <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                     <h5 className="fw-bold text-white mb-2">Projet Résidentiel à Dubréka Fihaima</h5>
                     <p className="mb-2 text-white-50 small">Dubréka • 2020 – 2021</p>
@@ -380,7 +382,7 @@ function Home() {
               <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
                 <div className="realisation-img-wrapper">
                   <img src={nongo} className="realisation-image" alt="Réalisation 3" />
-                  <span className="badge bg-primary position-absolute top-0 start-0 m-3 fs-6">Mixte</span>
+                  <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Mixte</span>
                   <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                     <h5 className="fw-bold text-white mb-2">Immeuble R+2 & Rénovation Privée</h5>
                     <p className="mb-2 text-white-50 small">Ansoumaniah & Nongo • 2018 – 2024</p>
@@ -394,7 +396,7 @@ function Home() {
       </section>
 
       {/* Section contact avec fond uni */}
-      <section className="contact-section text-center py-5 my-md-5" style={{background: 'var(--gas-primary)'}} data-aos="fade-up">
+      <section className="contact-section text-center py-5 my-md-5 section-alt-blue" data-aos="fade-up">
         <div className="container">
           <div className="row">
             <div className="col-md-6 mx-auto py-3">
@@ -423,7 +425,7 @@ function Home() {
       </section>
 
       {/* Section Témoignages & Confiance */}
-      <section className="testimonials-section py-5" style={{background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)'}} data-aos="fade-up">
+      <section className="testimonials-section py-5 section-alt-white" data-aos="fade-up">
         <div className="container">
           <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Ils nous font confiance</h2>
           <div className="row g-4">
@@ -437,12 +439,12 @@ function Home() {
                 </div>
                 <div className="testimonial-author d-flex align-items-center">
                   <div className="author-avatar me-3">
-                    <div className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style={{width: '50px', height: '50px'}}>
+                    <div className="text-white rounded-circle d-flex align-items-center justify-content-center" style={{width: '50px', height: '50px', backgroundColor: 'var(--gas-primary)'}}>
                       <i className="bi bi-person-fill"></i>
                     </div>
                   </div>
                   <div>
-                    <h6 className="mb-1 text-primary">Client Résidentiel</h6>
+                    <h6 className="mb-1" style={{color: 'var(--gas-primary)'}}>Client Résidentiel</h6>
                     <small className="text-muted">Conakry, Guinée</small>
                   </div>
                 </div>
@@ -459,12 +461,12 @@ function Home() {
                 </div>
                 <div className="testimonial-author d-flex align-items-center">
                   <div className="author-avatar me-3">
-                    <div className="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style={{width: '50px', height: '50px'}}>
+                    <div className="text-white rounded-circle d-flex align-items-center justify-content-center" style={{width: '50px', height: '50px', backgroundColor: 'var(--gas-primary)'}}>
                       <i className="bi bi-building"></i>
                     </div>
                   </div>
                   <div>
-                    <h6 className="mb-1 text-success">Client Industriel</h6>
+                    <h6 className="mb-1" style={{color: 'var(--gas-primary)'}}>Client Industriel</h6>
                     <small className="text-muted">Kankan, Guinée</small>
                   </div>
                 </div>
@@ -498,7 +500,7 @@ function Home() {
           <div className="text-center mt-5">
             <div className="cta-final p-5 bg-primary text-white rounded-4 shadow-lg">
               <h3 className="mb-3">Prêt à réaliser votre projet ?</h3>
-              <p className="lead mb-4">
+              <p className="lead mb- text-white">
                 Contactez notre équipe d'experts pour une consultation gratuite et un devis personnalisé.
               </p>
               <div className="d-flex justify-content-center gap-3 flex-wrap">
