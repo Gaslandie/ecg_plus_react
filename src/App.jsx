@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import Navbar from './components/Navbar';
+import TopBar from './components/TopBar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Presentation from './pages/Presentation';
@@ -22,13 +23,22 @@ function App() {
     // Hide preloader after page load
     const preloader = document.getElementById('preloader');
     if (preloader) {
-      window.addEventListener('load', () => {
+      const hidePreloader = () => {
         setTimeout(() => {
           if (preloader) {
             preloader.classList.add('preloader-hidden');
+            // after the opacity transition, remove from flow
+            setTimeout(() => {
+              preloader.style.display = 'none';
+            }, 600);
           }
         }, 500);
-      });
+      };
+      if (document.readyState === 'complete') {
+        hidePreloader();
+      } else {
+        window.addEventListener('load', hidePreloader);
+      }
     }
   }, []);
 
@@ -39,6 +49,7 @@ function App() {
           <span className="visually-hidden">Chargement en cours...</span>
         </div>
       </div>
+      <TopBar />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

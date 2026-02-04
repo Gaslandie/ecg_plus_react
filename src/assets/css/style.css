@@ -1,3 +1,134 @@
+/* ===== Modern Services & Expertises Section ===== */
+.services-modern-section {
+    background: linear-gradient(120deg, #fafafa 60%, #ffe5c2 100%);
+    position: relative;
+    overflow-x: hidden;
+}
+.gradient-text {
+    background: linear-gradient(90deg, var(--gas-primary), var(--gas-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+.services-cards-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 2.5rem;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gas-secondary) #ffe5c2;
+}
+.services-cards-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+.services-cards-wrapper::-webkit-scrollbar-thumb {
+    background: var(--gas-secondary);
+    border-radius: 4px;
+}
+.service-modern-card {
+    min-width: 320px;
+    max-width: 340px;
+    background: linear-gradient(120deg, #fff 70%, #ffe5c2 100%);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(47,42,36,0.08);
+    padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.22s cubic-bezier(.4,2,.6,1), box-shadow 0.22s;
+    border: 1.5px solid #f3e2c2;
+    position: relative;
+}
+.service-modern-card:hover {
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 18px 40px rgba(255,138,0,0.13);
+    border-color: var(--gas-secondary);
+}
+.service-icon-bg {
+    background: linear-gradient(135deg, var(--gas-secondary) 60%, #fffbe6 100%);
+    color: var(--gas-primary);
+    border-radius: 1rem;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 4px 16px rgba(255,138,0,0.10);
+}
+.service-modern-card h5 {
+    font-size: 1.18rem;
+    font-weight: 700;
+    margin: 1.1rem 0 0.7rem 0;
+    color: var(--gas-primary);
+}
+.service-modern-card p {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+}
+.service-link {
+    color: var(--gas-secondary);
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.18s;
+    font-size: 1.05rem;
+}
+.service-link:hover {
+    color: var(--gas-primary);
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    .services-cards-wrapper {
+        gap: 1.2rem;
+    }
+    .service-modern-card {
+        min-width: 90vw;
+        max-width: 95vw;
+        padding: 1.5rem 1rem 1.2rem 1rem;
+    }
+}
+/* ===== Footer Modern Styles ===== */
+.logo-footer-img {
+    cursor: pointer;
+    height: 48px;
+    max-height: 64px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
+    transition: transform 0.2s;
+}
+.logo-footer-img:hover {
+    transform: scale(1.07);
+}
+
+.footer-link {
+    color: var(--gas-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-link:hover {
+    color: var(--gas-secondary);
+    text-decoration: underline;
+}
+
+.footer-icon-link {
+    color: var(--gas-light);
+    font-size: 2rem;
+    margin: 0 0.7rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, transform 0.2s;
+}
+.footer-icon-link:hover {
+    color: var(--gas-secondary);
+    transform: scale(1.15);
+}
 /* ==========================
    Design system & typographie
    ========================== */
@@ -11,7 +142,8 @@
     --surface: #ffffff;
 }
 
-/* Base typography */
+
+
 body {
     scroll-behavior: smooth;
     background-color: var(--gas-light);
@@ -19,6 +151,86 @@ body {
     font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+
+main {
+    padding-top: 120px; /* navbar (80px) + top bar (40px) */
+}
+
+/* Top Bar styles */
+.top-bar {
+    background: var(--gas-primary);
+    color: var(--gas-light);
+    font-size: 1rem;
+    min-height: 40px;
+    z-index: 1040;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Hidden state for the top bar when scrolling */
+.top-bar.topbar-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* When topbar is hidden, move navbar to top and reduce main padding */
+body.topbar-hidden .navbar.fixed-top {
+    top: 0 !important;
+}
+
+body.topbar-hidden main {
+    padding-top: 80px; /* only navbar height */
+}
+
+.navbar.fixed-top {
+    top: 40px;
+    z-index: 1030;
+}
+.topbar-contact i {
+    color: var(--gas-secondary);
+    margin-right: 6px;
+}
+.topbar-social a {
+    color: var(--gas-light);
+    font-size: 1.2rem;
+    transition: color 0.2s;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+.topbar-social a:hover {
+    color: var(--gas-secondary);
+}
+
+.topbar-link {
+    color: var(--gas-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.topbar-link:hover {
+    color: var(--gas-secondary);
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        font-size: 0.95rem;
+        padding: 6px 0;
+        text-align: center;
+    }
+    .topbar-contact, .topbar-social {
+        margin-bottom: 2px;
+    }
 }
 
 /* Container helper (centers and constrains content) */
@@ -309,12 +521,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /*texte un peu à droite sur ecran plus de 992px*/
-@media (min-width: 992px) {
-    .hero-content {
-        /* margin-left: 80px; */
-        /* décalage vers la droite */
-    }
-}
+
 
 
 /* Ajustements pour les écrans plus petits */
@@ -433,7 +640,18 @@ img { max-width: 100%; height: auto; display: block; }
 .logo-navbar-img {
     cursor: pointer;
     /* Indique qu'on peut cliquer sur l'image */
+    height: 64px;
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
 }
+
+/* Modal logo size */
+.logo-modal-zoom {
+    max-height: 80vh;
+    width: auto;
+}
+
 
 /* Rendre le fond de la modale encore plus sombre si le thème Bootstrap par défaut n'est pas suffisant */
 .modal-backdrop {

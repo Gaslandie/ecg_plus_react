@@ -55,58 +55,42 @@ function Home() {
         </div>
       </section>
 
-      {/* Section Services et expertises */}
-      <section id="services" className="section-spacing bg-light text-center" data-aos="fade-up">
+      {/* Section Services & Expertises - Modern Design */}
+      <section id="services" className="services-modern-section py-5" data-aos="fade-up">
         <div className="container">
-          <h2 className="mb-5">Services & Expertises</h2>
-          <div className="row g-4">
-            <div className="col-md-6">
-              <div className="service-box p-4 h-100 shadow-sm bg-white rounded">
-                <img src={ingeelectric} height="200" alt="Ingénierie Électrique et Systèmes Autonomes" loading="lazy" />
-                <h5>Ingénierie Électrique et Systèmes Autonomes</h5>
-                <p className="text-muted">
-                  Instrumentation, automatisme, installation de groupes électrogènes, de panneaux
-                  solaires et de systèmes hydriques, garantissant l'autonomie et l'indépendance
-                  énergétique de vos bâtiments.
-                </p>
-                <Link to="/expertiseservices">→ En savoir plus</Link>
-              </div>
+          <h2 className="mb-5 display-4 fw-bold text-center gradient-text">Services & Expertises</h2>
+          <div className="services-cards-wrapper d-flex flex-nowrap overflow-auto pb-3">
+            <div className="service-modern-card mx-3">
+              <div className="service-icon-bg mb-3"><i className="bi bi-lightning-charge"></i></div>
+              <h5>Ingénierie Électrique & Systèmes Autonomes</h5>
+              <p>
+                Instrumentation, automatisme, installation de groupes électrogènes, de panneaux solaires et de systèmes hydriques pour l'autonomie énergétique.
+              </p>
+              <Link to="/expertiseservices" className="service-link">En savoir plus</Link>
             </div>
-            <div className="col-md-6">
-              <div className="service-box p-4 h-100 shadow-sm bg-white rounded">
-                <img src={constructionImg} height="200" alt="Construction : Résidentielle, Commerciale et Industrielle" loading="lazy" />
-                <h5>Construction : Résidentielle, Commerciale et Industrielle</h5>
-                <p className="text-muted">
-                  Des complexes résidentiels aux infrastructures commerciales et industrielles,
-                  ECG PLUS réalise des projets de construction robustes et durables en Guinée et dans
-                  la sous-région.
-                </p>
-                <Link to="/expertiseservices">→ En savoir plus</Link>
-              </div>
+            <div className="service-modern-card mx-3">
+              <div className="service-icon-bg mb-3"><i className="bi bi-building"></i></div>
+              <h5>Construction Résidentielle, Commerciale & Industrielle</h5>
+              <p>
+                Complexes résidentiels, infrastructures commerciales et industrielles, projets robustes et durables en Guinée et sous-région.
+              </p>
+              <Link to="/expertiseservices" className="service-link">En savoir plus</Link>
             </div>
-            <div className="col-md-6">
-              <div className="service-box p-4 h-100 shadow-sm bg-white rounded">
-                <img src={industrie} height="200" alt="Génie Civil, Construction Métallique et Projets Miniers" />
-                <h5>Génie Civil, Construction Métallique et Projets Miniers</h5>
-                <p className="text-muted">
-                  Travaux de génie civil, construction métallique, chaudronnerie,
-                  isolation et étanchéité, ainsi que des solutions intégrées pour l'industrie minière,
-                  incluant la tuyauterie industrielle et les structures métalliques.
-                </p>
-                <Link to="/expertiseservices">→ En savoir plus</Link>
-              </div>
+            <div className="service-modern-card mx-3">
+              <div className="service-icon-bg mb-3"><i className="bi bi-diagram-3"></i></div>
+              <h5>Génie Civil, Métallique & Projets Miniers</h5>
+              <p>
+                Génie civil, construction métallique, chaudronnerie, isolation, tuyauterie industrielle et solutions pour l'industrie minière.
+              </p>
+              <Link to="/expertiseservices" className="service-link">En savoir plus</Link>
             </div>
-            <div className="col-md-6">
-              <div className="service-box p-4 h-100 shadow-sm bg-white rounded">
-                <img src={commerce} height="200" alt="Étude, Expertise Bâtiment et Commerce Général" />
-                <h5>Étude, Expertise Bâtiment et Commerce Général</h5>
-                <p className="text-muted">
-                  Études techniques et expertises approfondies pour la rénovation et la
-                  maintenance des bâtiments, ainsi que la fourniture de matériaux et d'équipements
-                  de construction dans le cadre de nos activités de commerce général.
-                </p>
-                <Link to="/expertiseservices">→ En savoir plus</Link>
-              </div>
+            <div className="service-modern-card mx-3">
+              <div className="service-icon-bg mb-3"><i className="bi bi-clipboard-data"></i></div>
+              <h5>Étude, Expertise Bâtiment & Commerce</h5>
+              <p>
+                Études techniques, expertises, rénovation, maintenance, fourniture de matériaux et équipements de construction.
+              </p>
+              <Link to="/expertiseservices" className="service-link">En savoir plus</Link>
             </div>
           </div>
         </div>

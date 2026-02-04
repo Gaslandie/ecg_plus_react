@@ -1,10 +1,36 @@
 
 const Contact = () => (
   <main>
+
+    {/* Hero & Intro Modernisé */}
     <section className="hero-section text-center d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">
       <div className="container position-relative" style={{zIndex: 1}}>
-        <h1 className="display-2 fw-bold text-white contact-title" data-aos="fade-up">Contactez notre équipe</h1>
-        <p className="lead text-white">Pour toute information ou demande relative à nos activités en Guinée et dans la sous-région.</p>
+        <h1 className="display-2 fw-bold gradient-text mb-3" data-aos="fade-up">Contactez notre équipe</h1>
+        <p className="lead text-white mb-4">Besoin d’un devis, d’un conseil ou d’un accompagnement sur-mesure ? Notre équipe vous répond rapidement et vous accompagne à chaque étape de votre projet.</p>
+        <div className="row justify-content-center g-4">
+          <div className="col-md-4">
+            <div className="engagement-box p-4 rounded shadow-sm bg-white h-100">
+              <h4 className="fw-bold text-primary mb-2"><i className="bi bi-hand-thumbs-up-fill text-orange me-2"></i> Nos Engagements</h4>
+              <ul className="list-unstyled mb-0">
+                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Réponse rapide et personnalisée</li>
+                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Confidentialité et respect de vos données</li>
+                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Suivi professionnel jusqu’à la livraison</li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="legal-box p-4 rounded shadow-sm bg-white h-100">
+              <h4 className="fw-bold text-primary mb-2"><i className="bi bi-file-earmark-text-fill text-accent me-2"></i> Infos Légales</h4>
+              <ul className="list-unstyled mb-0 small">
+                <li><strong>RCCM :</strong> GN.TCC.2021.B.00331</li>
+                <li><strong>Capital social :</strong> 10.000.000 GNF</li>
+                <li><strong>Adresse :</strong> Manéah, Coyah, Guinée</li>
+                <li><strong>Email :</strong> daoudafofanadf66@gmail.com</li>
+                <li><strong>Tél :</strong> +224 623 96 62 78 / 628 33 86 41</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

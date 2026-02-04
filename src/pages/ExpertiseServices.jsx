@@ -7,10 +7,55 @@ import commerce from '../assets/img/commerce.jpeg';
 
 const ExpertiseServices = () => (
   <main>
+
+    {/* Hero & Intro Modernisé */}
     <section className="hero-section text-center d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">
       <div className="container position-relative" style={{ zIndex: 1 }}>
-        <h1 className="display-2 fw-bold text-white contact-title" data-aos="fade-up">Nos Domaines d'Expertise</h1>
-        <p className="lead text-white">Des fondations solides aux solutions énergétiques autonomes et durables.</p>
+        <h1 className="display-2 fw-bold gradient-text mb-3" data-aos="fade-up">Nos Domaines d'Expertise</h1>
+        <p className="lead text-white mb-4">18 ans d’expérience, une équipe multidisciplinaire et des solutions innovantes pour tous vos projets de construction, d’énergie et d’industrie.</p>
+        <div className="row justify-content-center g-4">
+          <div className="col-md-4">
+            <div className="expertise-highlight-box p-4 rounded shadow-sm bg-white h-100">
+              <h4 className="fw-bold text-primary mb-2"><i className="bi bi-lightbulb-fill me-2 text-accent"></i> Nos Forces</h4>
+              <ul className="list-unstyled mb-0">
+                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Expertise technique reconnue</li>
+                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Solutions sur-mesure et innovantes</li>
+                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Respect des normes et délais</li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="expertise-highlight-box p-4 rounded shadow-sm bg-white h-100">
+              <h4 className="fw-bold text-primary mb-2"><i className="bi bi-shield-check me-2 text-accent"></i> Notre Engagement</h4>
+              <ul className="list-unstyled mb-0">
+                <li><i className="bi bi-hand-thumbs-up-fill text-orange me-2"></i> Satisfaction client prioritaire</li>
+                <li><i className="bi bi-globe2 text-orange me-2"></i> Respect de l’environnement</li>
+                <li><i className="bi bi-people-fill text-orange me-2"></i> Sécurité & bien-être du personnel</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {/* Section Moyens Humains & Équipe */}
+    <section className="py-5 bg-light">
+      <div className="container">
+        <div className="row g-4 align-items-center">
+          <div className="col-md-6">
+            <div className="team-box p-4 rounded shadow-sm bg-white h-100">
+              <h3 className="fw-bold mb-3 text-primary">Nos Moyens Humains</h3>
+              <p>Notre équipe est composée d’ingénieurs, techniciens, ouvriers qualifiés, conseillers et gestionnaires, tous animés par la passion de l’excellence et du service client.</p>
+              <ul className="list-unstyled mb-0">
+                <li><i className="bi bi-person-badge-fill text-secondary me-2"></i> Ingénieurs & techniciens spécialisés</li>
+                <li><i className="bi bi-tools text-secondary me-2"></i> Ouvriers qualifiés & équipe de dépannage</li>
+                <li><i className="bi bi-briefcase-fill text-secondary me-2"></i> Gestionnaires & administrateurs</li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-md-6 text-center">
+            <img src={batiment} alt="Notre équipe ECG PLUS" className="img-fluid rounded shadow-lg" style={{maxHeight: '320px', objectFit: 'cover'}} />
+          </div>
+        </div>
       </div>
     </section>
 

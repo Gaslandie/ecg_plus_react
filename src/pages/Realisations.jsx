@@ -10,11 +10,54 @@ import { Link } from 'react-router-dom';
 
 const Realisations = () => (
   <main>
-    {/* Hero Section */}
+
+    {/* Hero & Intro Modernisé */}
     <section className="hero-section text-center d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">
       <div className="container position-relative" style={{ zIndex: 1 }}>
-        <h1 className="display-2 fw-bold text-white contact-title" data-aos="fade-up">Nos Réalisations</h1>
-        <p className="lead text-white">Des ouvrages réalisés à travers les régions guinéennes, témoignant de notre engagement pour la qualité.</p>
+        <h1 className="display-2 fw-bold gradient-text mb-3" data-aos="fade-up">Nos Réalisations</h1>
+        <p className="lead text-white mb-4">Plus de 50 projets livrés en 18 ans, dans toutes les régions guinéennes et la sous-région. Notre expertise s’exprime à travers des ouvrages publics, résidentiels, industriels et des rénovations majeures.</p>
+        <div className="row justify-content-center g-4 mb-4">
+          <div className="col-md-3">
+            <div className="key-figure-box p-3 rounded shadow-sm bg-white">
+              <div className="display-5 fw-bold text-orange">50+</div>
+              <div className="fw-semibold">Projets réalisés</div>
+            </div>
+          </div>
+          <div className="col-md-3">
+            <div className="key-figure-box p-3 rounded shadow-sm bg-white">
+              <div className="display-5 fw-bold text-orange">18</div>
+              <div className="fw-semibold">Années d’expertise</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {/* Section Valeur Ajoutée / Témoignages */}
+    <section className="py-5 bg-light">
+      <div className="container">
+        <div className="row g-4 align-items-center">
+          <div className="col-md-6">
+            <div className="value-box p-4 rounded shadow-sm bg-white h-100">
+              <h3 className="fw-bold mb-3 text-primary">Notre Valeur Ajoutée</h3>
+              <ul className="list-unstyled mb-0">
+                <li><i className="bi bi-award-fill text-orange me-2"></i> Qualité et respect des normes</li>
+                <li><i className="bi bi-clock-history text-orange me-2"></i> Respect des délais et engagements</li>
+                <li><i className="bi bi-people-fill text-orange me-2"></i> Équipe multidisciplinaire expérimentée</li>
+                <li><i className="bi bi-globe2 text-orange me-2"></i> Projets sur tout le territoire guinéen</li>
+                <li><i className="bi bi-hand-thumbs-up-fill text-orange me-2"></i> Satisfaction client prioritaire</li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="testimonial-box p-4 rounded shadow-sm bg-white h-100">
+              <h4 className="fw-bold mb-3 text-secondary">Témoignage</h4>
+              <blockquote className="blockquote mb-0">
+                <p className="mb-2">“ECG PLUS a su livrer notre projet dans les délais, avec une qualité irréprochable et un accompagnement professionnel à chaque étape.”</p>
+                <footer className="blockquote-footer">Client institutionnel, 2023</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
