@@ -25,6 +25,33 @@ function Home() {
           ↓
         </div>
       </header>
+
+      {/* Section about */}
+      <section id="apropos" className="section-spacing" data-aos="fade-up" data-aos-delay="300">
+        <div className="container">
+          <h2 className="fw-bold text-center">À propos</h2>
+          <div className="apropos-content">
+            <p>
+              Votre projet de construction mérite une solution sur mesure, pensée pour répondre
+              précisément à vos attentes, qu'il s'agisse de bâtiments, de génie civil ou
+              d'infrastructures énergétiques. ECG PLUS conçoit et réalise des ouvrages modernes,
+              robustes et durables. Chaque projet est conçu pour garantir une excellence
+              technique, valoriser votre patrimoine et contribuer efficacement à l'atteinte de
+              vos objectifs professionnels.
+            </p>
+            <p>
+              Grâce à un accompagnement personnalisé, nos experts vous assistent à chaque étape :
+              de la réflexion initiale et des études de faisabilité jusqu'à la livraison finale du
+              chantier. Votre cahier des charges et votre vision sont au cœur de notre démarche.
+              Nous mettons un point d'honneur à transformer vos ambitions en résultats concrets,
+              en vous apportant un savoir-faire éprouvé, une écoute attentive et un suivi rigoureux
+              garantissant la réussite et la pérennité de vos projets.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
       {/* Section Présentation stylée */}
       <section className="presentation-section py-5" style={{background: 'linear-gradient(120deg, #fafafa 60%, #ffe5c2 100%)'}}>
         <div className="container">
@@ -61,31 +88,6 @@ function Home() {
                 </ul>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section about */}
-      <section id="apropos" className="section-spacing" data-aos="fade-up" data-aos-delay="300">
-        <div className="container">
-          <h2 className="fw-bold text-center">À propos</h2>
-          <div className="apropos-content">
-            <p>
-              Votre projet de construction mérite une solution sur mesure, pensée pour répondre
-              précisément à vos attentes, qu'il s'agisse de bâtiments, de génie civil ou
-              d'infrastructures énergétiques. ECG PLUS conçoit et réalise des ouvrages modernes,
-              robustes et durables. Chaque projet est conçu pour garantir une excellence
-              technique, valoriser votre patrimoine et contribuer efficacement à l'atteinte de
-              vos objectifs professionnels.
-            </p>
-            <p>
-              Grâce à un accompagnement personnalisé, nos experts vous assistent à chaque étape :
-              de la réflexion initiale et des études de faisabilité jusqu'à la livraison finale du
-              chantier. Votre cahier des charges et votre vision sont au cœur de notre démarche.
-              Nous mettons un point d'honneur à transformer vos ambitions en résultats concrets,
-              en vous apportant un savoir-faire éprouvé, une écoute attentive et un suivi rigoureux
-              garantissant la réussite et la pérennité de vos projets.
-            </p>
           </div>
         </div>
       </section>
@@ -196,20 +198,46 @@ function Home() {
                 <span className="d-block fs-5 text-primary">Téléphone : 623 96 62 78 / 628 33 86 41</span>
                 <span className="d-block fs-5 text-primary">E-mail : <a href="mailto:daoudafofanadf66@gmail.com">daoudafofanadf66@gmail.com</a></span>
               </p>
-              <form className="contact-form bg-white p-4 rounded-4 shadow-sm" style={{maxWidth: '480px', margin: '0 auto'}}>
-                <div className="mb-3 text-start">
-                  <label htmlFor="name" className="form-label">Nom</label>
-                  <input type="text" className="form-control" id="name" placeholder="Votre nom" required />
+              <form className="contact-form bg-white p-4 rounded-4 shadow-lg border border-2" style={{maxWidth: '520px', margin: '0 auto'}}>
+                <div className="row g-3">
+                  <div className="col-12 text-start">
+                    <label htmlFor="name" className="form-label">Nom complet</label>
+                    <input type="text" className="form-control form-control-lg" id="name" placeholder="Votre nom" required />
+                  </div>
+                  <div className="col-md-6 text-start">
+                    <label htmlFor="email" className="form-label">E-mail</label>
+                    <input type="email" className="form-control form-control-lg" id="email" placeholder="Votre e-mail" required />
+                  </div>
+                  <div className="col-md-6 text-start">
+                    <label htmlFor="phone" className="form-label">Téléphone</label>
+                    <input type="tel" className="form-control form-control-lg" id="phone" placeholder="Votre téléphone" required />
+                  </div>
+                  <div className="col-12 text-start">
+                    <label htmlFor="subject" className="form-label">Sujet</label>
+                    <input type="text" className="form-control form-control-lg" id="subject" placeholder="Sujet de votre demande" required />
+                  </div>
+                  <div className="col-12 text-start">
+                    <label htmlFor="type" className="form-label">Type de projet</label>
+                    <select className="form-select form-select-lg" id="type" required>
+                      <option value="">Sélectionnez...</option>
+                      <option value="construction">Construction</option>
+                      <option value="renovation">Rénovation</option>
+                      <option value="expertise">Expertise</option>
+                      <option value="autre">Autre</option>
+                    </select>
+                  </div>
+                  <div className="col-12 text-start">
+                    <label htmlFor="message" className="form-label">Message</label>
+                    <textarea className="form-control form-control-lg" id="message" rows="4" placeholder="Votre message" required></textarea>
+                  </div>
+                  <div className="col-12 text-start">
+                    <label htmlFor="file" className="form-label">Joindre un fichier (optionnel)</label>
+                    <input type="file" className="form-control" id="file" />
+                  </div>
+                  <div className="col-12">
+                    <button type="submit" className="btn btn-custom btn-lg w-100 mt-2">Envoyer la demande</button>
+                  </div>
                 </div>
-                <div className="mb-3 text-start">
-                  <label htmlFor="email" className="form-label">E-mail</label>
-                  <input type="email" className="form-control" id="email" placeholder="Votre e-mail" required />
-                </div>
-                <div className="mb-3 text-start">
-                  <label htmlFor="message" className="form-label">Message</label>
-                  <textarea className="form-control" id="message" rows="4" placeholder="Votre message" required></textarea>
-                </div>
-                <button type="submit" className="btn btn-custom btn-lg w-100 mt-2">Envoyer</button>
               </form>
             </div>
             <div className="col-lg-6 mx-auto">
