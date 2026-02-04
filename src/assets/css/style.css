@@ -237,7 +237,7 @@ main.page-with-hero {
 
 /* Other pages without hero section */
 main.page-without-hero {
-    padding-top: 48px; /* navbar height only */
+    padding-top: 80px; /* Increased navbar spacing to ensure no overlap */
 }
 
 .navbar.fixed-top {
@@ -245,13 +245,111 @@ main.page-without-hero {
     z-index: 1030;
 }
 
-/* Container helper (centers and constrains content) */
-.container {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+/* Enhanced Home Page Styles */
+
+/* Expertise Cards */
+.expertise-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--gas-primary) !important;
+}
+
+.expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+}
+
+/* Value Cards */
+.value-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.value-icon {
+    transition: transform 0.3s ease;
+}
+
+.value-card:hover .value-icon {
+    transform: scale(1.1);
+}
+
+/* Team Section */
+.team-category {
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-category:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.team-placeholder {
+    transition: transform 0.3s ease;
+}
+
+.team-placeholder:hover {
+    transform: scale(1.02);
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 4rem;
+    color: var(--gas-primary);
+    opacity: 0.1;
+    font-family: Georgia, serif;
+}
+
+/* CTA Final Section */
+.cta-final {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-final::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/bgAccueil.jpg') center/cover no-repeat;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.cta-final > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Stat Boxes */
+.stat-box {
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: scale(1.05);
 }
 
 /* Sections layout */

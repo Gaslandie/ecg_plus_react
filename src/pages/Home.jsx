@@ -56,27 +56,132 @@ function Home() {
         </div>
       </header>
 
-      {/* Section about */}
+      {/* Section about enrichie */}
       <section id="apropos" className="section-spacing" data-aos="fade-up" data-aos-delay="300">
         <div className="container">
-          <h2 className="fw-bold text-center">À propos</h2>
-          <div className="apropos-content">
-            <p>
-              Votre projet de construction mérite une solution sur mesure, pensée pour répondre
-              précisément à vos attentes, qu'il s'agisse de bâtiments, de génie civil ou
-              d'infrastructures énergétiques. ECG PLUS conçoit et réalise des ouvrages modernes,
-              robustes et durables. Chaque projet est conçu pour garantir une excellence
-              technique, valoriser votre patrimoine et contribuer efficacement à l'atteinte de
-              vos objectifs professionnels.
-            </p>
-            <p>
-              Grâce à un accompagnement personnalisé, nos experts vous assistent à chaque étape :
-              de la réflexion initiale et des études de faisabilité jusqu'à la livraison finale du
-              chantier. Votre cahier des charges et votre vision sont au cœur de notre démarche.
-              Nous mettons un point d'honneur à transformer vos ambitions en résultats concrets,
-              en vous apportant un savoir-faire éprouvé, une écoute attentive et un suivi rigoureux
-              garantissant la réussite et la pérennité de vos projets.
-            </p>
+          <h2 className="fw-bold text-center mb-5">À propos d'ECG PLUS</h2>
+
+          {/* Historique */}
+          <div className="row mb-5">
+            <div className="col-lg-8 mx-auto">
+              <div className="card shadow-lg border-0">
+                <div className="card-body p-4">
+                  <h3 className="text-primary mb-4">
+                    <i className="bi bi-clock-history me-2"></i>Notre Histoire - 18 Ans d'Excellence
+                  </h3>
+                  <p className="lead">
+                    Depuis sa fondation il y a 18 ans, ECG PLUS s'est imposé comme un acteur majeur
+                    dans le domaine de la construction et de l'expertise des bâtiments en Guinée et
+                    aujourd'hui dans la sous-région.
+                  </p>
+                  <p>
+                    Notre engagement envers l'excellence et notre expertise technique nous permettent
+                    de répondre aux défis les plus complexes de nos clients avec efficacité et innovation,
+                    ce qui nous a d'ailleurs permis la réalisation de plusieurs ouvrages un peu partout
+                    dans les régions guinéennes.
+                  </p>
+                  <div className="row text-center mt-4">
+                    <div className="col-md-4">
+                      <div className="stat-box p-3 bg-primary text-white rounded">
+                        <h4 className="mb-1">18+</h4>
+                        <small>Années d'Expérience</small>
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className="stat-box p-3 bg-secondary text-white rounded">
+                        <h4 className="mb-1">50+</h4>
+                        <small>Projets Réalisés</small>
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className="stat-box p-3 bg-success text-white rounded">
+                        <h4 className="mb-1">100%</h4>
+                        <small>Satisfaction Client</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Notre Expertise */}
+          <div className="row mb-5">
+            <div className="col-lg-10 mx-auto">
+              <h3 className="text-primary text-center mb-4">
+                <i className="bi bi-tools me-2"></i>Notre Expertise
+              </h3>
+              <div className="row g-4">
+                <div className="col-md-6">
+                  <div className="expertise-card h-100 p-4 border rounded shadow-sm">
+                    <h5 className="text-primary mb-3">
+                      <i className="bi bi-house-door me-2"></i>Construction & Bâtiment
+                    </h5>
+                    <p>
+                      Nous réalisons des projets de construction variés, allant des complexes résidentiels
+                      aux structures commerciales et industrielles. Nous déployons des systèmes autonomes
+                      hydriques pour une indépendance totale des bâtiments en électricité.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="expertise-card h-100 p-4 border rounded shadow-sm">
+                    <h5 className="text-primary mb-3">
+                      <i className="bi bi-search me-2"></i>Étude & Expertise
+                    </h5>
+                    <p>
+                      Notre équipe d'experts réalise des études approfondies et des analyses précises
+                      pour évaluer l'état des bâtiments et recommander les meilleures pratiques de
+                      rénovation et de maintenance.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Nos Valeurs */}
+          <div className="row">
+            <div className="col-lg-10 mx-auto">
+              <h3 className="text-primary text-center mb-4">
+                <i className="bi bi-heart me-2"></i>Nos Valeurs & Engagements
+              </h3>
+              <div className="row g-4">
+                <div className="col-md-4">
+                  <div className="value-card text-center p-4 h-100 border rounded shadow-sm">
+                    <div className="value-icon mb-3">
+                      <i className="bi bi-people-fill text-primary" style={{fontSize: '2rem'}}></i>
+                    </div>
+                    <h6 className="text-primary mb-2">Équipe Multidisciplinaire</h6>
+                    <p className="small">
+                      Mise en commun de nos compétences individuelles et collectives au service de l'entreprise.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="value-card text-center p-4 h-100 border rounded shadow-sm">
+                    <div className="value-icon mb-3">
+                      <i className="bi bi-shield-check text-success" style={{fontSize: '2rem'}}></i>
+                    </div>
+                    <h6 className="text-success mb-2">Qualité & Sécurité</h6>
+                    <p className="small">
+                      L'habilité dans le travail avec zéro accident et respect des normes internationales.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="value-card text-center p-4 h-100 border rounded shadow-sm">
+                    <div className="value-icon mb-3">
+                      <i className="bi bi-tree text-warning" style={{fontSize: '2rem'}}></i>
+                    </div>
+                    <h6 className="text-warning mb-2">Environnement</h6>
+                    <p className="small">
+                      Protection de l'environnement et contribution à la préservation de l'écosystème.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -163,6 +268,83 @@ function Home() {
         </div>
       </section>
 
+      {/* Section Équipe & Moyens Humains */}
+      <section className="team-section py-5 bg-light" data-aos="fade-up">
+        <div className="container">
+          <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Notre Équipe</h2>
+          <div className="row align-items-center g-5">
+            <div className="col-lg-6">
+              <div className="team-content">
+                <h3 className="text-primary mb-4">Une Équipe Multidisciplinaire d'Experts</h3>
+                <p className="lead mb-4">
+                  ECG PLUS travaille de commun accord avec une équipe multidisciplinaire composée
+                  d'ingénieurs, d'administrateurs, de gestionnaires, de techniciens, pétrie d'expériences
+                  dans plusieurs domaines.
+                </p>
+
+                <div className="team-categories mb-4">
+                  <div className="team-category d-flex align-items-center mb-3">
+                    <div className="category-icon me-3">
+                      <i className="bi bi-gear-fill text-primary" style={{fontSize: '1.5rem'}}></i>
+                    </div>
+                    <div>
+                      <h6 className="mb-1 text-primary">Personnel Technique de Chantier</h6>
+                      <p className="small mb-0 text-muted">Ingénieurs, techniciens superviseurs, ouvriers qualifiés, équipe de dépannage</p>
+                    </div>
+                  </div>
+
+                  <div className="team-category d-flex align-items-center mb-3">
+                    <div className="category-icon me-3">
+                      <i className="bi bi-people-fill text-success" style={{fontSize: '1.5rem'}}></i>
+                    </div>
+                    <div>
+                      <h6 className="mb-1 text-success">Personnel d'Appui</h6>
+                      <p className="small mb-0 text-muted">Conseillers, ingénieurs en génie civil, gestionnaires de projet</p>
+                    </div>
+                  </div>
+
+                  <div className="team-category d-flex align-items-center">
+                    <div className="category-icon me-3">
+                      <i className="bi bi-tools text-warning" style={{fontSize: '1.5rem'}}></i>
+                    </div>
+                    <div>
+                      <h6 className="mb-1 text-warning">Équipe de Maintenance</h6>
+                      <p className="small mb-0 text-muted">Mécaniciens, soudeurs, électriciens spécialisés</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="team-stats d-flex justify-content-around">
+                  <div className="stat text-center">
+                    <h4 className="text-primary mb-1">50+</h4>
+                    <small className="text-muted">Collaborateurs</small>
+                  </div>
+                  <div className="stat text-center">
+                    <h4 className="text-success mb-1">18</h4>
+                    <small className="text-muted">Années d'Expérience</small>
+                  </div>
+                  <div className="stat text-center">
+                    <h4 className="text-warning mb-1">100%</h4>
+                    <small className="text-muted">Engagement</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="team-image-container text-center">
+                <div className="team-placeholder bg-primary text-white d-flex align-items-center justify-content-center rounded-4 shadow-lg" style={{height: '400px'}}>
+                  <div className="text-center">
+                    <i className="bi bi-people-fill" style={{fontSize: '4rem', opacity: '0.3'}}></i>
+                    <h5 className="mt-3">Notre Équipe d'Experts</h5>
+                    <p className="mb-0">Professionnels qualifiés et expérimentés</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Section réalisations modernisée */}
       <section className="realisations-section py-5 my-md-5" data-aos="fade-up">
         <div className="container">
@@ -235,6 +417,98 @@ function Home() {
                 referrerPolicy="no-referrer-when-downgrade"
                 className="rounded shadow"
               ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Témoignages & Confiance */}
+      <section className="testimonials-section py-5" style={{background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)'}} data-aos="fade-up">
+        <div className="container">
+          <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Ils nous font confiance</h2>
+          <div className="row g-4">
+            <div className="col-md-4">
+              <div className="testimonial-card h-100 p-4 bg-white rounded-4 shadow-lg border-0">
+                <div className="testimonial-content mb-3">
+                  <p className="mb-3 fst-italic">
+                    "ECG PLUS a réalisé notre complexe résidentiel avec une qualité exceptionnelle.
+                    Leur équipe professionnelle et leur respect des délais nous ont pleinement satisfaits."
+                  </p>
+                </div>
+                <div className="testimonial-author d-flex align-items-center">
+                  <div className="author-avatar me-3">
+                    <div className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style={{width: '50px', height: '50px'}}>
+                      <i className="bi bi-person-fill"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h6 className="mb-1 text-primary">Client Résidentiel</h6>
+                    <small className="text-muted">Conakry, Guinée</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="testimonial-card h-100 p-4 bg-white rounded-4 shadow-lg border-0">
+                <div className="testimonial-content mb-3">
+                  <p className="mb-3 fst-italic">
+                    "Pour nos installations minières, ECG PLUS a fait preuve d'une expertise remarquable
+                    dans la construction métallique et les systèmes électriques. Travail de qualité supérieure."
+                  </p>
+                </div>
+                <div className="testimonial-author d-flex align-items-center">
+                  <div className="author-avatar me-3">
+                    <div className="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style={{width: '50px', height: '50px'}}>
+                      <i className="bi bi-building"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h6 className="mb-1 text-success">Client Industriel</h6>
+                    <small className="text-muted">Kankan, Guinée</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="testimonial-card h-100 p-4 bg-white rounded-4 shadow-lg border-0">
+                <div className="testimonial-content mb-3">
+                  <p className="mb-3 fst-italic">
+                    "L'expertise technique d'ECG PLUS dans le génie civil et les travaux publics
+                    nous a permis de réaliser notre projet d'infrastructure dans les délais impartis."
+                  </p>
+                </div>
+                <div className="testimonial-author d-flex align-items-center">
+                  <div className="author-avatar me-3">
+                    <div className="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style={{width: '50px', height: '50px'}}>
+                      <i className="bi bi-gear"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h6 className="mb-1 text-warning">Client Public</h6>
+                    <small className="text-muted">Dubréka, Guinée</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section CTA Finale */}
+          <div className="text-center mt-5">
+            <div className="cta-final p-5 bg-primary text-white rounded-4 shadow-lg">
+              <h3 className="mb-3">Prêt à réaliser votre projet ?</h3>
+              <p className="lead mb-4">
+                Contactez notre équipe d'experts pour une consultation gratuite et un devis personnalisé.
+              </p>
+              <div className="d-flex justify-content-center gap-3 flex-wrap">
+                <Link to="/contact" className="btn btn-light btn-lg">
+                  <i className="bi bi-envelope me-2"></i>Nous contacter
+                </Link>
+                <Link to="/expertiseservices" className="btn btn-outline-light btn-lg">
+                  <i className="bi bi-tools me-2"></i>Nos services
+                </Link>
+              </div>
             </div>
           </div>
         </div>
