@@ -184,63 +184,20 @@ function Home() {
         </div>
       </section>
 
-      {/* Section contact enrichie */}
+      {/* Section contact classique */}
       <section className="contact-section text-center py-5 my-md-5" data-aos="fade-up">
         <div className="container">
-          <div className="row g-5 align-items-center">
-            <div className="col-lg-6 mx-auto py-3">
+          <div className="row">
+            <div className="col-md-6 mx-auto py-3">
               <h2 className="mb-4 display-5 fw-bold">Prêt à Construire Votre Prochain Projet ?</h2>
               <p className="mb-4 lead">
                 Contactez ECG PLUS dès aujourd'hui pour discuter de vos besoins en
                 construction et découvrir comment nous pouvons transformer vos idées
-                en réalisations durables et concrètes.<br/>
-                <span className="d-block mt-3 fs-5 text-primary">Adresse : Maneah / Coyah</span>
-                <span className="d-block fs-5 text-primary">Téléphone : 623 96 62 78 / 628 33 86 41</span>
-                <span className="d-block fs-5 text-primary">E-mail : <a href="mailto:daoudafofanadf66@gmail.com">daoudafofanadf66@gmail.com</a></span>
+                en réalisations durables et concrètes.
               </p>
-              <form className="contact-form bg-white p-4 rounded-4 shadow-lg border border-2" style={{maxWidth: '520px', margin: '0 auto'}}>
-                <div className="row g-3">
-                  <div className="col-12 text-start">
-                    <label htmlFor="name" className="form-label">Nom complet</label>
-                    <input type="text" className="form-control form-control-lg" id="name" placeholder="Votre nom" required />
-                  </div>
-                  <div className="col-md-6 text-start">
-                    <label htmlFor="email" className="form-label">E-mail</label>
-                    <input type="email" className="form-control form-control-lg" id="email" placeholder="Votre e-mail" required />
-                  </div>
-                  <div className="col-md-6 text-start">
-                    <label htmlFor="phone" className="form-label">Téléphone</label>
-                    <input type="tel" className="form-control form-control-lg" id="phone" placeholder="Votre téléphone" required />
-                  </div>
-                  <div className="col-12 text-start">
-                    <label htmlFor="subject" className="form-label">Sujet</label>
-                    <input type="text" className="form-control form-control-lg" id="subject" placeholder="Sujet de votre demande" required />
-                  </div>
-                  <div className="col-12 text-start">
-                    <label htmlFor="type" className="form-label">Type de projet</label>
-                    <select className="form-select form-select-lg" id="type" required>
-                      <option value="">Sélectionnez...</option>
-                      <option value="construction">Construction</option>
-                      <option value="renovation">Rénovation</option>
-                      <option value="expertise">Expertise</option>
-                      <option value="autre">Autre</option>
-                    </select>
-                  </div>
-                  <div className="col-12 text-start">
-                    <label htmlFor="message" className="form-label">Message</label>
-                    <textarea className="form-control form-control-lg" id="message" rows="4" placeholder="Votre message" required></textarea>
-                  </div>
-                  <div className="col-12 text-start">
-                    <label htmlFor="file" className="form-label">Joindre un fichier (optionnel)</label>
-                    <input type="file" className="form-control" id="file" />
-                  </div>
-                  <div className="col-12">
-                    <button type="submit" className="btn btn-custom btn-lg w-100 mt-2">Envoyer la demande</button>
-                  </div>
-                </div>
-              </form>
+              <Link to="/contact" className="btn btn-custom btn-lg mt-3">Contactez-Nous</Link>
             </div>
-            <div className="col-lg-6 mx-auto">
+            <div className="col-md-6 mx-auto">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15758.121696245131!2d-13.628965751911964!3d9.695383188582042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfa27e997a9f936f%3A0xc39115c2d3858055!2sCoyah%2C%20Guin%C3%A9e!5e0!3m2!1sfr!2sca!4v1701547746419!5m2!1sfr!2sca"
                 width="100%"
