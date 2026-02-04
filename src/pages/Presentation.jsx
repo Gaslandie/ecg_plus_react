@@ -314,7 +314,7 @@ const Presentation = () => (
                 <div className="text-center">
                   <i className="bi bi-people-fill" style={{fontSize: '4rem', opacity: '0.7'}}></i>
                   <h4 className="mt-3">Notre Équipe d'Experts</h4>
-                  <p className="mb-0">Professionnels qualifiés et expérimentés</p>
+                  <p className="mb-0 text-white">Professionnels qualifiés et expérimentés</p>
                   <div className="mt-3">
                     <span className="badge bg-white text-primary me-2">50+ Collaborateurs</span>
                     <span className="badge bg-white text-primary">18 Ans d'Expérience</span>
@@ -483,16 +483,41 @@ const Presentation = () => (
     {/* Section Galerie */}
     <section className="py-5 section-alt-white">
       <div className="container">
-        <h2 className="text-center display-6 fw-bold mb-5">
+        <h2 className="text-center display-6 fw-bold mb-5" style={{color: 'var(--gas-primary)'}}>
           Galerie ECG PLUS
         </h2>
 
-        <div className="gallery-grid">
-          {galleryImages.map((image, index) => (
-            <div className="gallery-item" key={`${image.alt}-${index}`}>
-              <img src={image.src} alt={image.alt} loading="lazy" />
-            </div>
-          ))}
+        <div id="galleryCarousel" className="carousel slide carousel-fade gallery-carousel" data-bs-ride="carousel" data-bs-interval="3000">
+          <div className="carousel-indicators">
+            {galleryImages.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                data-bs-target="#galleryCarousel"
+                data-bs-slide-to={index}
+                className={index === 0 ? "active" : ""}
+                aria-current={index === 0 ? "true" : "false"}
+                aria-label={`Slide ${index + 1}`}
+              ></button>
+            ))}
+          </div>
+
+          <div className="carousel-inner rounded-4 overflow-hidden shadow-lg">
+            {galleryImages.map((image, index) => (
+              <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={`${image.alt}-${index}`}>
+                <img src={image.src} className="d-block w-100 carousel-img" alt={image.alt} />
+              </div>
+            ))}
+          </div>
+
+          <button className="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
     </section>

@@ -152,7 +152,7 @@ function Home() {
                 <div className="col-md-4">
                   <div className="value-card text-center p-4 h-100 border rounded shadow-sm">
                     <div className="value-icon mb-3">
-                      <i className="bi bi-people-fill text-primary" style={{fontSize: '2rem'}}></i>
+                      <i className="bi bi-people-fill" style={{fontSize: '2rem', color: '#dc3545'}}></i>
                     </div>
                     <h6 className="text-primary mb-2">Équipe Multidisciplinaire</h6>
                     <p className="small">
@@ -163,7 +163,7 @@ function Home() {
                 <div className="col-md-4">
                   <div className="value-card text-center p-4 h-100 border rounded shadow-sm">
                     <div className="value-icon mb-3">
-                      <i className="bi bi-shield-check" style={{fontSize: '2rem', color: 'var(--gas-primary)'}}></i>
+                      <i className="bi bi-shield-check" style={{fontSize: '2rem', color: '#ffc107'}}></i>
                     </div>
                     <h6 className="mb-2" style={{color: 'var(--gas-primary)'}}>Qualité & Sécurité</h6>
                     <p className="small">
@@ -174,7 +174,7 @@ function Home() {
                 <div className="col-md-4">
                   <div className="value-card text-center p-4 h-100 border rounded shadow-sm">
                     <div className="value-icon mb-3">
-                      <i className="bi bi-tree" style={{fontSize: '2rem', color: 'var(--gas-primary)'}}></i>
+                      <i className="bi bi-tree" style={{fontSize: '2rem', color: '#28a745'}}></i>
                     </div>
                     <h6 className="mb-2" style={{color: 'var(--gas-primary)'}}>Environnement</h6>
                     <p className="small">
@@ -235,7 +235,7 @@ function Home() {
           <h2 className="mb-5 display-4 fw-bold text-center" style={{color: 'var(--gas-primary)'}}>Services & Expertises</h2>
           <div className="services-cards-wrapper d-flex flex-nowrap overflow-auto pb-3">
             <div className="service-modern-card mx-3">
-              <div className="service-icon-bg mb-3"><i className="bi bi-lightning-charge"></i></div>
+              <div className="service-icon-bg mb-3"><i className="bi bi-lightning-charge" style={{color: '#dc3545'}}></i></div>
               <h5>Ingénierie Électrique & Systèmes Autonomes</h5>
               <p>
                 Instrumentation, automatisme, installation de groupes électrogènes, de panneaux solaires et de systèmes hydriques pour l'autonomie énergétique.
@@ -243,7 +243,7 @@ function Home() {
               <Link to="/expertiseservices" className="service-link">En savoir plus</Link>
             </div>
             <div className="service-modern-card mx-3">
-              <div className="service-icon-bg mb-3"><i className="bi bi-building"></i></div>
+              <div className="service-icon-bg mb-3"><i className="bi bi-building" style={{color: '#ffc107'}}></i></div>
               <h5>Construction Résidentielle, Commerciale & Industrielle</h5>
               <p>
                 Complexes résidentiels, infrastructures commerciales et industrielles, projets robustes et durables en Guinée et sous-région.
@@ -251,7 +251,7 @@ function Home() {
               <Link to="/expertiseservices" className="service-link">En savoir plus</Link>
             </div>
             <div className="service-modern-card mx-3">
-              <div className="service-icon-bg mb-3"><i className="bi bi-diagram-3"></i></div>
+              <div className="service-icon-bg mb-3"><i className="bi bi-diagram-3" style={{color: '#28a745'}}></i></div>
               <h5>Génie Civil, Métallique & Projets Miniers</h5>
               <p>
                 Génie civil, construction métallique, chaudronnerie, isolation, tuyauterie industrielle et solutions pour l'industrie minière.
@@ -259,7 +259,7 @@ function Home() {
               <Link to="/expertiseservices" className="service-link">En savoir plus</Link>
             </div>
             <div className="service-modern-card mx-3">
-              <div className="service-icon-bg mb-3"><i className="bi bi-clipboard-data"></i></div>
+              <div className="service-icon-bg mb-3"><i className="bi bi-clipboard-data" style={{color: '#dc3545'}}></i></div>
               <h5>Étude, Expertise Bâtiment & Commerce</h5>
               <p>
                 Études techniques, expertises, rénovation, maintenance, fourniture de matériaux et équipements de construction.
@@ -287,7 +287,7 @@ function Home() {
                 <div className="team-categories mb-4">
                   <div className="team-category d-flex align-items-center mb-3">
                     <div className="category-icon me-3">
-                      <i className="bi bi-tools" style={{fontSize: '1.5rem', color: 'var(--gas-primary)'}}></i>
+                      <i className="bi bi-tools" style={{fontSize: '1.5rem', color: '#dc3545'}}></i>
                     </div>
                     <div>
                       <h6 className="mb-1" style={{color: 'var(--gas-primary)'}}>Personnel Technique de Chantier</h6>
@@ -297,7 +297,7 @@ function Home() {
 
                   <div className="team-category d-flex align-items-center mb-3">
                     <div className="category-icon me-3">
-                      <i className="bi bi-people-fill" style={{fontSize: '1.5rem', color: 'var(--gas-primary)'}}></i>
+                      <i className="bi bi-people-fill" style={{fontSize: '1.5rem', color: '#ffc107'}}></i>
                     </div>
                     <div>
                       <h6 className="mb-1" style={{color: 'var(--gas-primary)'}}>Personnel d'Appui</h6>
@@ -307,7 +307,7 @@ function Home() {
 
                   <div className="team-category d-flex align-items-center">
                     <div className="category-icon me-3">
-                      <i className="bi bi-tools" style={{fontSize: '1.5rem', color: 'var(--gas-primary)'}}></i>
+                      <i className="bi bi-tools" style={{fontSize: '1.5rem', color: '#28a745'}}></i>
                     </div>
                     <div>
                       <h6 className="mb-1" style={{color: 'var(--gas-primary)'}}>Équipe de Maintenance</h6>
@@ -439,7 +439,7 @@ function Home() {
                 </div>
                 <div className="testimonial-author d-flex align-items-center">
                   <div className="author-avatar me-3">
-                    <div className="text-white rounded-circle d-flex align-items-center justify-content-center" style={{width: '50px', height: '50px', backgroundColor: 'var(--gas-primary)'}}>
+                    <div className="text-white rounded-circle d-flex align-items-center justify-content-center" style={{width: '50px', height: '50px', backgroundColor: '#dc3545'}}>
                       <i className="bi bi-person-fill"></i>
                     </div>
                   </div>
@@ -483,7 +483,7 @@ function Home() {
                 </div>
                 <div className="testimonial-author d-flex align-items-center">
                   <div className="author-avatar me-3">
-                    <div className="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style={{width: '50px', height: '50px'}}>
+                    <div className="text-white rounded-circle d-flex align-items-center justify-content-center" style={{width: '50px', height: '50px', backgroundColor: '#28a745'}}>
                       <i className="bi bi-gear"></i>
                     </div>
                   </div>

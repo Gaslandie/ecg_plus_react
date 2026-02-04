@@ -12,9 +12,9 @@ const Footer = () => {
           </div>
           <div className="col-md-4 mb-3 mb-md-0">
             <h5 className="mb-3">Contactez-Nous</h5>
-            <p className="mb-1"><i className="bi bi-geo-alt-fill me-2"></i>Manéah, Préfecture de Coyah, République de Guinée</p>
-            <p className="mb-1"><i className="bi bi-telephone me-2"></i><a href="tel:+224623966278" className="footer-link">+224 623 96 62 78</a></p>
-            <p className="mb-1"><i className="bi bi-envelope me-2"></i><a href="mailto:contact@ecgplusgn.com" className="footer-link">contact@ecgplusgn.com</a></p>
+            <p className="mb-1"><i className="bi bi-geo-alt-fill me-2" style={{color: '#ffc107'}}></i>Manéah, Préfecture de Coyah, République de Guinée</p>
+            <p className="mb-1"><i className="bi bi-telephone me-2" style={{color: '#28a745'}}></i><a href="tel:+224623966278" className="footer-link">+224 623 96 62 78</a></p>
+            <p className="mb-1"><i className="bi bi-envelope me-2" style={{color: '#dc3545'}}></i><a href="mailto:contact@ecgplusgn.com" className="footer-link">contact@ecgplusgn.com</a></p>
           </div>
           <div className="col-md-4">
             <h5>Liens Rapides</h5>
@@ -32,13 +32,13 @@ const Footer = () => {
           <div className="container text-center">
             <div className="d-flex justify-content-center flex-wrap gap-4 align-items-center">
               <a href="mailto:contact@ecgplusgn.com" aria-label="Envoyer un email à ECG PLUS" className="footer-icon-link">
-                <i className="bi bi-envelope-fill"></i>
+                <i className="bi bi-envelope-fill" style={{color: '#dc3545'}}></i>
               </a>
               <a href="https://wa.me/224623966278" target="_blank" rel="noopener noreferrer" aria-label="Contacter via WhatsApp" className="footer-icon-link">
-                <i className="bi bi-whatsapp"></i>
+                <i className="bi bi-whatsapp" style={{color: '#ffc107'}}></i>
               </a>
               <a href="https://www.linkedin.com/in/daouda-fofana-1b01261a8/" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn ECG PLUS" className="footer-icon-link">
-                <i className="bi bi-linkedin"></i>
+                <i className="bi bi-linkedin" style={{color: '#28a745'}}></i>
               </a>
             </div>
           </div>

@@ -19,14 +19,14 @@ const Contact = () => (
             <div className="p-4 rounded shadow-lg" style={{backgroundColor: 'var(--gas-primary)'}}>
               <h3 className="fw-bold mb-4">Nos Coordonnées</h3>
               <div className="d-flex align-items-start mb-4">
-                <i className="bi bi-geo-alt-fill fs-3 me-3"></i>
+                <i className="bi bi-geo-alt-fill fs-3 me-3" style={{color: '#dc3545'}}></i>
                 <div>
                   <h6 className="fw-bold mb-0">Siège Social</h6>
                   <p className="mb-0">MANEAH/PREF. COYAH, République de Guinée</p>
                 </div>
               </div>
               <div className="d-flex align-items-start mb-4">
-                <i className="bi bi-telephone-fill fs-3 me-3"></i>
+                <i className="bi bi-telephone-fill fs-3 me-3" style={{color: '#ffc107'}}></i>
                 <div>
                   <h6 className="fw-bold mb-0">Téléphone</h6>
                   <p className="mb-0"><a href="tel:+224623966278" className="text-decoration-none">+224 623 96 62 78</a></p>
@@ -34,14 +34,14 @@ const Contact = () => (
                 </div>
               </div>
               <div className="d-flex align-items-start mb-4">
-                <i className="bi bi-envelope-fill fs-3 me-3"></i>
+                <i className="bi bi-envelope-fill fs-3 me-3" style={{color: '#28a745'}}></i>
                 <div>
                   <h6 className="fw-bold mb-0">Email</h6>
                   <p className="mb-0"><a href="mailto:contact@ecgplusgn.com" className="text-decoration-none">contact@ecgplusgn.com</a></p>
                 </div>
               </div>
               <div className="d-flex align-items-start">
-                <i className="bi bi-clock-fill fs-3 me-3"></i>
+                <i className="bi bi-clock-fill fs-3 me-3" style={{color: '#dc3545'}}></i>
                 <div>
                   <h6 className="fw-bold mb-0">Horaires de Bureau</h6>
                   <p className="mb-0">Lundi au Vendredi : 8h00 - 17h00</p>
