@@ -11,6 +11,7 @@ import Presentation from './pages/Presentation';
 import Contact from './pages/Contact';
 import ExpertiseServices from './pages/ExpertiseServices';
 import Realisations from './pages/Realisations';
+import Confirmation from './pages/Confirmation';
 import logo from './assets/img/logo.jpeg';
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/expertiseservices" element={<ExpertiseServices />} />
         <Route path="/realisations" element={<Realisations />} />
+        <Route path="/confirmation" element={<Confirmation />} />
       </Routes>
       <Footer />
 

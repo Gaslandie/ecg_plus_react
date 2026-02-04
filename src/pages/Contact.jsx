@@ -81,6 +81,7 @@ const Contact = () => (
           </div>
           <div className="col-lg-8 order-lg-1" data-aos="fade-right" data-aos-delay="300">
             <form className="p-4 rounded-4 shadow-lg border border-2 bg-white" action="https://api.web3forms.com/submit" method="POST" style={{maxWidth: '700px', margin: '0 auto'}}>
+              <input type="hidden" name="redirect" value="/confirmation" />
               <input type="hidden" name="access_key" value="4cd0b824-f70a-4e1e-8f73-6a69021e83c8" />
               <div className="row g-3">
                 <div className="col-md-6">
