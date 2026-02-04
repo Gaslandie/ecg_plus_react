@@ -5,7 +5,7 @@ import hangar from '../assets/img/hangar.png';
 import nongo from '../assets/img/nongo.jpeg';
 
 const Presentation = () => (
-  <main className="presentation-page">
+  <main className="page-without-hero presentation-page">
 
     {/* Section Identité */}
     <section className="plaque-section py-5">

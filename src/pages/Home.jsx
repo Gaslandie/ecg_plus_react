@@ -6,7 +6,7 @@ import nongo from '../assets/img/nongo.jpeg';
 
 function Home() {
   return (
-    <main>
+    <main className="page-with-hero">
       {/* Section Hero Améliorée */}
       <header className="hero">
         <div className="hero-overlay"></div>

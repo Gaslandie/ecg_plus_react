@@ -9,7 +9,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Realisations = () => (
-  <main>
+  <main className="page-without-hero">
 
     {/* Hero & Intro Modernisé */}
     <section className="hero-section text-center d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">

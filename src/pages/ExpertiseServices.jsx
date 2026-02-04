@@ -6,7 +6,7 @@ import industrie from '../assets/img/industrie.jpeg';
 import commerce from '../assets/img/commerce.jpeg';
 
 const ExpertiseServices = () => (
-  <main>
+  <main className="page-without-hero">
 
     {/* Hero & Intro Modernisé */}
     <section className="hero-section text-center d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">

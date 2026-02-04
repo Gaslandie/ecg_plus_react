@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import Navbar from './components/Navbar';
-import TopBar from './components/TopBar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Presentation from './pages/Presentation';
@@ -50,7 +49,6 @@ function App() {
           <span className="visually-hidden">Chargement en cours...</span>
         </div>
       </div>
-      <TopBar />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
