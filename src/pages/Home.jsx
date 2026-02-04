@@ -181,13 +181,13 @@ function Home() {
         </div>
       </section>
 
-      {/* Section contact classique */}
-      <section className="contact-section text-center py-5 my-md-5" data-aos="fade-up">
+      {/* Section contact avec fond uni */}
+      <section className="contact-section text-center py-5 my-md-5" style={{background: 'var(--gas-primary)'}} data-aos="fade-up">
         <div className="container">
           <div className="row">
             <div className="col-md-6 mx-auto py-3">
-              <h2 className="mb-4 display-5 fw-bold">Prêt à Construire Votre Prochain Projet ?</h2>
-              <p className="mb-4 lead">
+              <h2 className="mb-4 display-5 fw-bold" style={{color: 'var(--gas-light)'}}>Prêt à Construire Votre Prochain Projet ?</h2>
+              <p className="mb-4 lead" style={{color: 'var(--gas-light)'}}>
                 Contactez ECG PLUS dès aujourd'hui pour discuter de vos besoins en
                 construction et découvrir comment nous pouvons transformer vos idées
                 en réalisations durables et concrètes.
