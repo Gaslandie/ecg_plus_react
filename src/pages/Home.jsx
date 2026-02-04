@@ -1,9 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ingeelectric from '../assets/img/ingeelectric.jpeg';
-import constructionImg from '../assets/img/construction.jpeg';
-import industrie from '../assets/img/industrie.jpeg';
-import commerce from '../assets/img/commerce.jpeg';
 import kankan from '../assets/img/kankan.jpeg';
 import dubreka from '../assets/img/dubreka.png';
 import nongo from '../assets/img/nongo.jpeg';
@@ -11,6 +7,24 @@ import nongo from '../assets/img/nongo.jpeg';
 function Home() {
   return (
     <main>
+      {/* Section Hero */}
+      <header className="hero">
+        <div className="hero-content">
+          <h1 className="display-4">
+            <span>Entreprise de Construction</span><br />
+            <span>Générale et Travaux Publics</span>
+          </h1>
+          <h3 className="text-white mt-3">Bâtir l'Avenir, Construire l'Excellence Durable.</h3>
+          <Link to="/contact" className="btn btn-contact mt-4">Contactez-Nous</Link>
+        </div>
+        <div
+          className="scroll-down"
+          onClick={() => document.getElementById('apropos').scrollIntoView({ behavior: 'smooth' })}
+          aria-label="Faire défiler vers la section À propos"
+        >
+          ↓
+        </div>
+      </header>
       {/* Section Présentation stylée */}
       <section className="presentation-section py-5" style={{background: 'linear-gradient(120deg, #fafafa 60%, #ffe5c2 100%)'}}>
         <div className="container">
@@ -50,24 +64,6 @@ function Home() {
           </div>
         </div>
       </section>
-      {/* Section Hero */}
-      <header className="hero">
-        <div className="hero-content">
-          <h1 className="display-4">
-            <span>Entreprise de Construction</span><br />
-            <span>Générale et Travaux Publics</span>
-          </h1>
-          <h3 className="text-white mt-3">Bâtir l'Avenir, Construire l'Excellence Durable.</h3>
-          <Link to="/contact" className="btn btn-contact mt-4">Contactez-Nous</Link>
-        </div>
-        <div
-          className="scroll-down"
-          onClick={() => document.getElementById('apropos').scrollIntoView({ behavior: 'smooth' })}
-          aria-label="Faire défiler vers la section À propos"
-        >
-          ↓
-        </div>
-      </header>
 
       {/* Section about */}
       <section id="apropos" className="section-spacing" data-aos="fade-up" data-aos-delay="300">
@@ -186,20 +182,37 @@ function Home() {
         </div>
       </section>
 
-      {/* Section contact */}
+      {/* Section contact enrichie */}
       <section className="contact-section text-center py-5 my-md-5" data-aos="fade-up">
         <div className="container">
-          <div className="row">
-            <div className="col-md-6 mx-auto py-3">
+          <div className="row g-5 align-items-center">
+            <div className="col-lg-6 mx-auto py-3">
               <h2 className="mb-4 display-5 fw-bold">Prêt à Construire Votre Prochain Projet ?</h2>
               <p className="mb-4 lead">
                 Contactez ECG PLUS dès aujourd'hui pour discuter de vos besoins en
                 construction et découvrir comment nous pouvons transformer vos idées
-                en réalisations durables et concrètes.
+                en réalisations durables et concrètes.<br/>
+                <span className="d-block mt-3 fs-5 text-primary">Adresse : Maneah / Coyah</span>
+                <span className="d-block fs-5 text-primary">Téléphone : 623 96 62 78 / 628 33 86 41</span>
+                <span className="d-block fs-5 text-primary">E-mail : <a href="mailto:daoudafofanadf66@gmail.com">daoudafofanadf66@gmail.com</a></span>
               </p>
-              <Link to="/contact" className="btn btn-custom btn-lg mt-3">Contactez-Nous</Link>
+              <form className="contact-form bg-white p-4 rounded-4 shadow-sm" style={{maxWidth: '480px', margin: '0 auto'}}>
+                <div className="mb-3 text-start">
+                  <label htmlFor="name" className="form-label">Nom</label>
+                  <input type="text" className="form-control" id="name" placeholder="Votre nom" required />
+                </div>
+                <div className="mb-3 text-start">
+                  <label htmlFor="email" className="form-label">E-mail</label>
+                  <input type="email" className="form-control" id="email" placeholder="Votre e-mail" required />
+                </div>
+                <div className="mb-3 text-start">
+                  <label htmlFor="message" className="form-label">Message</label>
+                  <textarea className="form-control" id="message" rows="4" placeholder="Votre message" required></textarea>
+                </div>
+                <button type="submit" className="btn btn-custom btn-lg w-100 mt-2">Envoyer</button>
+              </form>
             </div>
-            <div className="col-md-6 mx-auto">
+            <div className="col-lg-6 mx-auto">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15758.121696245131!2d-13.628965751911964!3d9.695383188582042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfa27e997a9f936f%3A0xc39115c2d3858055!2sCoyah%2C%20Guin%C3%A9e!5e0!3m2!1sfr!2sca!4v1701547746419!5m2!1sfr!2sca"
                 width="100%"
