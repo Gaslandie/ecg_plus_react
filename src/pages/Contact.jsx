@@ -80,27 +80,28 @@ const Contact = () => (
             </div>
           </div>
           <div className="col-lg-8 order-lg-1" data-aos="fade-right" data-aos-delay="300">
-            <form className="p-4 rounded-4 shadow-lg border border-2 bg-white" action="" style={{maxWidth: '700px', margin: '0 auto'}}>
+            <form className="p-4 rounded-4 shadow-lg border border-2 bg-white" action="https://api.web3forms.com/submit" method="POST" style={{maxWidth: '700px', margin: '0 auto'}}>
+              <input type="hidden" name="access_key" value="4cd0b824-f70a-4e1e-8f73-6a69021e83c8" />
               <div className="row g-3">
                 <div className="col-md-6">
                   <label htmlFor="inputName" className="form-label fw-bold"><i className="bi bi-person-fill me-2"></i>Nom complet <span className="text-danger">*</span></label>
-                  <input type="text" className="form-control form-control-lg" id="inputName" placeholder="Votre nom" required />
+                  <input type="text" className="form-control form-control-lg" id="inputName" name="name" placeholder="Votre nom" required />
                 </div>
                 <div className="col-md-6">
                   <label htmlFor="inputSociete" className="form-label fw-bold"><i className="bi bi-building me-2"></i>Société</label>
-                  <input type="text" className="form-control form-control-lg" id="inputSociete" placeholder="Nom de votre société (optionnel)" />
+                  <input type="text" className="form-control form-control-lg" id="inputSociete" name="societe" placeholder="Nom de votre société (optionnel)" />
                 </div>
                 <div className="col-md-6">
                   <label htmlFor="inputEmail" className="form-label fw-bold"><i className="bi bi-envelope-fill me-2"></i>Email <span className="text-danger">*</span></label>
-                  <input type="email" className="form-control form-control-lg" id="inputEmail" placeholder="Votre email" required />
+                  <input type="email" className="form-control form-control-lg" id="inputEmail" name="email" placeholder="Votre email" required />
                 </div>
                 <div className="col-md-6">
                   <label htmlFor="inputPhone" className="form-label fw-bold"><i className="bi bi-telephone-fill me-2"></i>Téléphone <span className="text-danger">*</span></label>
-                  <input type="tel" className="form-control form-control-lg" id="inputPhone" placeholder="Votre téléphone" required />
+                  <input type="tel" className="form-control form-control-lg" id="inputPhone" name="phone" placeholder="Votre téléphone" required />
                 </div>
                 <div className="col-md-6">
                   <label htmlFor="inputTypeProjet" className="form-label fw-bold"><i className="bi bi-diagram-3-fill me-2"></i>Type de projet <span className="text-danger">*</span></label>
-                  <select id="inputTypeProjet" className="form-select form-select-lg" required>
+                  <select id="inputTypeProjet" className="form-select form-select-lg" name="type_projet" required>
                     <option value="">Sélectionnez...</option>
                     <option value="construction">Construction</option>
                     <option value="renovation">Rénovation</option>
@@ -110,15 +111,15 @@ const Contact = () => (
                 </div>
                 <div className="col-md-6">
                   <label htmlFor="inputSubject" className="form-label fw-bold"><i className="bi bi-chat-left-text-fill me-2"></i>Objet de la demande <span className="text-danger">*</span></label>
-                  <input type="text" className="form-control form-control-lg" id="inputSubject" placeholder="Sujet de votre demande" required />
+                  <input type="text" className="form-control form-control-lg" id="inputSubject" name="subject" placeholder="Sujet de votre demande" required />
                 </div>
                 <div className="col-12">
                   <label htmlFor="inputProjectDetails" className="form-label fw-bold"><i className="bi bi-pencil-fill me-2"></i>Détails du projet / Message <span className="text-danger">*</span></label>
-                  <textarea className="form-control form-control-lg" id="inputProjectDetails" rows="5" placeholder="Décrivez votre besoin (type de construction, localisation, délai souhaité, etc.)" required></textarea>
+                  <textarea className="form-control form-control-lg" id="inputProjectDetails" name="message" rows="5" placeholder="Décrivez votre besoin (type de construction, localisation, délai souhaité, etc.)" required></textarea>
                 </div>
                 <div className="col-12">
                   <label htmlFor="inputFile" className="form-label fw-bold"><i className="bi bi-paperclip me-2"></i>Joindre un fichier (optionnel)</label>
-                  <input type="file" className="form-control" id="inputFile" />
+                  <input type="file" className="form-control" id="inputFile" name="file" />
                 </div>
                 <div className="col-12 d-grid">
                   <button type="submit" className="btn btn-custom btn-lg mt-2">Envoyer votre message</button>
