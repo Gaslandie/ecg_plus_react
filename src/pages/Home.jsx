@@ -7,22 +7,52 @@ import nongo from '../assets/img/nongo.jpeg';
 function Home() {
   return (
     <main>
-      {/* Section Hero */}
+      {/* Section Hero Améliorée */}
       <header className="hero">
+        <div className="hero-overlay"></div>
         <div className="hero-content">
-          <h1 className="display-4">
-            <span>Entreprise de Construction</span><br />
-            <span>Générale et Travaux Publics</span>
-          </h1>
-          <h3 className="text-white mt-3">Bâtir l'Avenir, Construire l'Excellence Durable.</h3>
-          <Link to="/contact" className="btn btn-contact mt-4">Contactez-Nous</Link>
+          <div className="hero-text-container" data-aos="fade-up" data-aos-delay="200">
+            <h1 className="display-4 hero-title">
+              <span className="hero-line-1">Entreprise de Construction</span><br />
+              <span className="hero-line-2">Générale et Travaux Publics</span>
+            </h1>
+            <h3 className="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
+              Bâtir l'Avenir, Construire l'Excellence Durable.
+            </h3>
+            <div className="hero-stats" data-aos="fade-up" data-aos-delay="600">
+              <div className="stat-item">
+                <span className="stat-number">5+</span>
+                <span className="stat-label">Années d'Expérience</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">50+</span>
+                <span className="stat-label">Projets Réalisés</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">100%</span>
+                <span className="stat-label">Satisfaction Client</span>
+              </div>
+            </div>
+            <div className="hero-buttons" data-aos="fade-up" data-aos-delay="800">
+              <Link to="/contact" className="btn btn-contact-primary">Contactez-Nous</Link>
+              <Link to="/realisations" className="btn btn-contact-secondary">Voir Nos Réalisations</Link>
+            </div>
+          </div>
         </div>
-        <div
-          className="scroll-down"
-          onClick={() => document.getElementById('apropos').scrollIntoView({ behavior: 'smooth' })}
-          aria-label="Faire défiler vers la section À propos"
-        >
-          ↓
+        <div className="hero-scroll-indicator">
+          <div
+            className="scroll-down"
+            onClick={() => document.getElementById('apropos').scrollIntoView({ behavior: 'smooth' })}
+            aria-label="Faire défiler vers la section À propos"
+          >
+            <span className="scroll-text">Découvrir</span>
+            <div className="scroll-arrow">↓</div>
+          </div>
+        </div>
+        <div className="hero-shapes">
+          <div className="shape shape-1"></div>
+          <div className="shape shape-2"></div>
+          <div className="shape shape-3"></div>
         </div>
       </header>
 
