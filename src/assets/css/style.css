@@ -210,10 +210,10 @@
    Design system & typographie
    ========================== */
 :root {
-    --gas-primary: #2f2a24; /* slightly darker for contrast */
-    --gas-secondary: #ff8a00; /* vivid orange */
-    --gas-accent: #6b4f3a;
-    --gas-light: #fafafa;
+    --gas-primary: #1a237e; /* bleu foncé */
+    --gas-secondary: #1976d2; /* bleu moyen */
+    --gas-accent: #00bcd4; /* turquoise accent */
+    --gas-light: #f5f7fa;
     --text-color: #222222;
     --muted: #6b6b6b;
     --surface: #ffffff;
