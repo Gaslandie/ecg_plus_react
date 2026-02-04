@@ -62,7 +62,7 @@ function Home() {
               <ul className="list-unstyled fs-5 mb-3">
                 <li><strong>Adresse :</strong> Maneah / Coyah</li>
                 <li><strong>Téléphone :</strong> 623 96 62 78 / 628 33 86 41</li>
-                <li><strong>E-mail :</strong> <a href="mailto:daoudafofanadf66@gmail.com">daoudafofanadf66@gmail.com</a></li>
+                  <li><strong>E-mail :</strong> <a href="mailto:daoudafofanadf66@gmail.com">daoudafofanadf66@gmail.com</a></li>
                 <li><strong>Capital social :</strong> 10.000.000 GNF</li>
                 <li><strong>RCCM :</strong> GN.TCC.2021.00364</li>
                 <li><strong>Site web :</strong> <a href="https://ecgplus.com" target="_blank" rel="noopener noreferrer">ecgplus.com</a></li>

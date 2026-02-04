@@ -25,7 +25,7 @@ const Contact = () => (
                 <li><strong>RCCM :</strong> GN.TCC.2021.B.00331</li>
                 <li><strong>Capital social :</strong> 10.000.000 GNF</li>
                 <li><strong>Adresse :</strong> Manéah, Coyah, Guinée</li>
-                <li><strong>Email :</strong> daoudafofanadf66@gmail.com</li>
+                <li><strong>Email :</strong> contact@ecgplusgn.com</li>
                 <li><strong>Tél :</strong> +224 623 96 62 78 / 628 33 86 41</li>
               </ul>
             </div>
@@ -60,7 +60,7 @@ const Contact = () => (
                 <i className="bi bi-envelope-fill fs-3 me-3"></i>
                 <div>
                   <h6 className="fw-bold mb-0">Email</h6>
-                  <p className="mb-0"><a href="mailto:daoudafofanadf66@gmail.com" className="text-decoration-none">daoudafofanadf66@gmail.com</a></p>
+                  <p className="mb-0"><a href="mailto:contact@ecgplusgn.com" className="text-decoration-none">contact@ecgplusgn.com</a></p>
                 </div>
               </div>
               <div className="d-flex align-items-start">
@@ -80,36 +80,53 @@ const Contact = () => (
             </div>
           </div>
           <div className="col-lg-8 order-lg-1" data-aos="fade-right" data-aos-delay="300">
-            <form className="p-4 rounded shadow-lg" action="">
-              <div className="row">
-                <div className="col-md-6 mb-3">
-                  <label htmlFor="inputName" className="form-label fw-bold">Votre Nom Complet <span className="text-danger">*</span></label>
-                  <input type="text" className="form-control" id="inputName" required />
+            <form className="p-4 rounded-4 shadow-lg border border-2 bg-white" action="" style={{maxWidth: '700px', margin: '0 auto'}}>
+              <div className="row g-3">
+                <div className="col-md-6">
+                  <label htmlFor="inputName" className="form-label fw-bold"><i className="bi bi-person-fill me-2"></i>Nom complet <span className="text-danger">*</span></label>
+                  <input type="text" className="form-control form-control-lg" id="inputName" placeholder="Votre nom" required />
                 </div>
-                <div className="col-md-6 mb-3">
-                  <label htmlFor="inputEmail" className="form-label fw-bold">Votre Email <span className="text-danger">*</span></label>
-                  <input type="email" className="form-control" id="inputEmail" required />
+                <div className="col-md-6">
+                  <label htmlFor="inputSociete" className="form-label fw-bold"><i className="bi bi-building me-2"></i>Société</label>
+                  <input type="text" className="form-control form-control-lg" id="inputSociete" placeholder="Nom de votre société (optionnel)" />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="inputEmail" className="form-label fw-bold"><i className="bi bi-envelope-fill me-2"></i>Email <span className="text-danger">*</span></label>
+                  <input type="email" className="form-control form-control-lg" id="inputEmail" placeholder="Votre email" required />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="inputPhone" className="form-label fw-bold"><i className="bi bi-telephone-fill me-2"></i>Téléphone <span className="text-danger">*</span></label>
+                  <input type="tel" className="form-control form-control-lg" id="inputPhone" placeholder="Votre téléphone" required />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="inputTypeProjet" className="form-label fw-bold"><i className="bi bi-diagram-3-fill me-2"></i>Type de projet <span className="text-danger">*</span></label>
+                  <select id="inputTypeProjet" className="form-select form-select-lg" required>
+                    <option value="">Sélectionnez...</option>
+                    <option value="construction">Construction</option>
+                    <option value="renovation">Rénovation</option>
+                    <option value="expertise">Expertise</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="inputSubject" className="form-label fw-bold"><i className="bi bi-chat-left-text-fill me-2"></i>Objet de la demande <span className="text-danger">*</span></label>
+                  <input type="text" className="form-control form-control-lg" id="inputSubject" placeholder="Sujet de votre demande" required />
+                </div>
+                <div className="col-12">
+                  <label htmlFor="inputProjectDetails" className="form-label fw-bold"><i className="bi bi-pencil-fill me-2"></i>Détails du projet / Message <span className="text-danger">*</span></label>
+                  <textarea className="form-control form-control-lg" id="inputProjectDetails" rows="5" placeholder="Décrivez votre besoin (type de construction, localisation, délai souhaité, etc.)" required></textarea>
+                </div>
+                <div className="col-12">
+                  <label htmlFor="inputFile" className="form-label fw-bold"><i className="bi bi-paperclip me-2"></i>Joindre un fichier (optionnel)</label>
+                  <input type="file" className="form-control" id="inputFile" />
+                </div>
+                <div className="col-12 d-grid">
+                  <button type="submit" className="btn btn-custom btn-lg mt-2">Envoyer votre message</button>
+                </div>
+                <div className="col-12">
+                  <p className="form-text mt-3 text-end"><span className="text-danger">*</span> Champs obligatoires</p>
                 </div>
               </div>
-              <div className="mb-3">
-                <label htmlFor="inputSubject" className="form-label fw-bold">Objet de votre demande <span className="text-danger">*</span></label>
-                <select id="inputSubject" className="form-select" required>
-                  <option defaultValue>Choisir l'objet...</option>
-                  <option>Demande de devis – Construction / BTP</option>
-                  <option>Demande de devis – Travaux de rénovation</option>
-                  <option>Demande d’information générale</option>
-                  <option>Proposition de partenariat</option>
-                  <option>Autre demande</option>
-                </select>
-              </div>
-              <div className="mb-3">
-                <label htmlFor="inputProjectDetails" className="form-label fw-bold">Détails de votre projet / Message <span className="text-danger">*</span></label>
-                <textarea className="form-control" id="inputProjectDetails" rows="6" placeholder="Décrivez votre besoin (type de construction, localisation, délai souhaité, etc.)" required></textarea>
-              </div>
-              <div className="d-grid">
-                <button type="submit" className="btn btn-custom btn-lg mt-3">Envoyer votre message</button>
-              </div>
-              <p className="form-text mt-3 text-end"><span className="text-danger">*</span> Champs obligatoires</p>
             </form>
           </div>
         </div>
