@@ -4,19 +4,6 @@ import commerce from '../assets/img/commerce.jpeg';
 import hangar from '../assets/img/hangar.png';
 import nongo from '../assets/img/nongo.jpeg';
 
-const galleryImages = [
-  { src: ecgbg, alt: "ECG PLUS - Chantier 1" },
-  { src: batiment, alt: "ECG PLUS - Batiment 2" },
-  { src: commerce, alt: "ECG PLUS - Commerce 3" },
-  { src: hangar, alt: "ECG PLUS - Hangar 4" },
-  { src: nongo, alt: "ECG PLUS - Nongo 5" },
-  { src: ecgbg, alt: "ECG PLUS - Chantier 6" },
-  { src: batiment, alt: "ECG PLUS - Batiment 7" },
-  { src: commerce, alt: "ECG PLUS - Commerce 8" },
-  { src: hangar, alt: "ECG PLUS - Hangar 9" },
-  { src: nongo, alt: "ECG PLUS - Nongo 10" },
-];
-
 const Presentation = () => (
   <main className="page-without-hero presentation-page">
 
@@ -476,48 +463,6 @@ const Presentation = () => (
               <div>GN.TCC.2021.B.00331</div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Section Galerie */}
-    <section className="py-5 section-alt-white">
-      <div className="container">
-        <h2 className="text-center display-6 fw-bold mb-5" style={{color: 'var(--gas-primary)'}}>
-          Galerie ECG PLUS
-        </h2>
-
-        <div id="galleryCarousel" className="carousel slide carousel-fade gallery-carousel" data-bs-ride="carousel" data-bs-interval="3000">
-          <div className="carousel-indicators">
-            {galleryImages.map((_, index) => (
-              <button
-                key={index}
-                type="button"
-                data-bs-target="#galleryCarousel"
-                data-bs-slide-to={index}
-                className={index === 0 ? "active" : ""}
-                aria-current={index === 0 ? "true" : "false"}
-                aria-label={`Slide ${index + 1}`}
-              ></button>
-            ))}
-          </div>
-
-          <div className="carousel-inner rounded-4 overflow-hidden shadow-lg">
-            {galleryImages.map((image, index) => (
-              <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={`${image.alt}-${index}`}>
-                <img src={image.src} className="d-block w-100 carousel-img" alt={image.alt} />
-              </div>
-            ))}
-          </div>
-
-          <button className="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
         </div>
       </div>
     </section>
