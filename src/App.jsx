@@ -1,6 +1,6 @@
 
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import Navbar from './components/Navbar';
@@ -14,6 +14,8 @@ import Confirmation from './pages/Confirmation';
 import logo from './assets/img/logo.jpeg';
 
 function App() {
+  const location = useLocation();
+
   useEffect(() => {
     AOS.init({
       offset: 120,
@@ -50,14 +52,16 @@ function App() {
         </div>
       </div>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/presentation" element={<Presentation />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/expertiseservices" element={<ExpertiseServices />} />
-        <Route path="/realisations" element={<Realisations />} />
-        <Route path="/confirmation" element={<Confirmation />} />
-      </Routes>
+      <div className="page-transition" key={location.pathname}>
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/presentation" element={<Presentation />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/expertiseservices" element={<ExpertiseServices />} />
+          <Route path="/realisations" element={<Realisations />} />
+          <Route path="/confirmation" element={<Confirmation />} />
+        </Routes>
+      </div>
       <Footer />
 
       <div className="modal fade" id="logoModal" tabIndex="-1" aria-labelledby="logoModalLabel" aria-hidden="true">
