@@ -7,8 +7,10 @@ import hangar from '../assets/img/hangar.png';
 import ansoumania from '../assets/img/ansoumania.png';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useI18n } from '../i18n/I18nContext.jsx';
 
 function Realisations() {
+  const { t } = useI18n();
   React.useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const counters = document.querySelectorAll('.stat-value[data-target]');
@@ -37,8 +39,8 @@ function Realisations() {
     <section className="hero-section hero-section-realisations text-center d-flex align-items-center section-alt-white" data-aos="fade-up" data-aos-delay="100">
       <div className="hero-section-overlay" aria-hidden="true"></div>
       <div className="container position-relative" style={{ zIndex: 1 }}>
-        <h1 className="display-2 fw-bold gradient-text mb-3" data-aos="fade-up">Nos Réalisations</h1>
-        <p className="lead text-dark mb-4">Plus de 25 projets livrés en 18 ans, dans toutes les régions guinéennes et la sous-région. Notre expertise s'exprime à travers des ouvrages publics, résidentiels, industriels et des rénovations majeures.</p>
+        <h1 className="display-2 fw-bold gradient-text mb-3" data-aos="fade-up">{t('realisationsPage.hero.title')}</h1>
+        <p className="lead text-dark mb-4">{t('realisationsPage.hero.subtitle')}</p>
         <div className="row justify-content-center g-4 mb-4">
           <div className="col-md-3" data-aos="fade-up" data-aos-delay="100">
             <div className="key-figure-box p-3 rounded shadow-sm bg-white text-center">
@@ -48,7 +50,7 @@ function Realisations() {
               <div className="display-5 fw-bold text-orange">
                 <span className="stat-value" data-target="25">0</span>+
               </div>
-              <div className="fw-semibold">Projets réalisés</div>
+              <div className="fw-semibold">{t('realisationsPage.hero.stats.projects')}</div>
             </div>
           </div>
           <div className="col-md-3" data-aos="fade-up" data-aos-delay="200">
@@ -59,7 +61,7 @@ function Realisations() {
               <div className="display-5 fw-bold text-orange">
                 <span className="stat-value" data-target="18">0</span>
               </div>
-              <div className="fw-semibold">Années d’expertise</div>
+              <div className="fw-semibold">{t('realisationsPage.hero.stats.years')}</div>
             </div>
           </div>
         </div>
@@ -71,26 +73,26 @@ function Realisations() {
         <div className="row g-4 align-items-center">
           <div className="col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div className="value-box value-box-premium p-4 rounded shadow-sm bg-white h-100">
-              <h3 className="fw-bold mb-3 text-primary">Notre Valeur Ajoutée</h3>
+              <h3 className="fw-bold mb-3 text-primary">{t('realisationsPage.valueAdded.title')}</h3>
               <ul className="list-unstyled mb-0 value-list">
-                <li><i className="bi bi-award-fill icon-yellow me-2"></i> Qualité et respect des normes</li>
-                <li><i className="bi bi-clock-history icon-red me-2"></i> Respect des délais et engagements</li>
-                <li><i className="bi bi-people-fill icon-green me-2"></i> Équipe multidisciplinaire expérimentée</li>
-                <li><i className="bi bi-globe2 icon-yellow me-2"></i> Projets sur tout le territoire guinéen</li>
-                <li><i className="bi bi-hand-thumbs-up-fill icon-red me-2"></i> Satisfaction client prioritaire</li>
+                <li><i className="bi bi-award-fill icon-yellow me-2"></i> {t('realisationsPage.valueAdded.items.0')}</li>
+                <li><i className="bi bi-clock-history icon-red me-2"></i> {t('realisationsPage.valueAdded.items.1')}</li>
+                <li><i className="bi bi-people-fill icon-green me-2"></i> {t('realisationsPage.valueAdded.items.2')}</li>
+                <li><i className="bi bi-globe2 icon-yellow me-2"></i> {t('realisationsPage.valueAdded.items.3')}</li>
+                <li><i className="bi bi-hand-thumbs-up-fill icon-red me-2"></i> {t('realisationsPage.valueAdded.items.4')}</li>
               </ul>
             </div>
           </div>
           <div className="col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div className="testimonial-box testimonial-box-premium p-4 rounded shadow-sm bg-white h-100">
-              <h4 className="fw-bold mb-3 text-secondary">Témoignage</h4>
+              <h4 className="fw-bold mb-3 text-secondary">{t('realisationsPage.testimonial.title')}</h4>
               <div className="testimonial-header d-flex align-items-center mb-3">
                 <div className="testimonial-avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style={{width: '52px', height: '52px'}}>
                   <i className="bi bi-building"></i>
                 </div>
                 <div>
-                  <h6 className="fw-bold mb-0">Client institutionnel</h6>
-                  <small className="text-muted">Projet public</small>
+                  <h6 className="fw-bold mb-0">{t('realisationsPage.testimonial.clientTitle')}</h6>
+                  <small className="text-muted">{t('realisationsPage.testimonial.clientSubtitle')}</small>
                 </div>
               </div>
               <div className="testimonial-stars mb-3">
@@ -101,8 +103,8 @@ function Realisations() {
                 <i className="bi bi-star-fill text-warning"></i>
               </div>
               <blockquote className="blockquote mb-0">
-                <p className="mb-2">“ECG PLUS a su livrer notre projet dans les délais, avec une qualité irréprochable et un accompagnement professionnel à chaque étape.”</p>
-                <footer className="blockquote-footer">Client institutionnel, 2023</footer>
+                <p className="mb-2">“{t('realisationsPage.testimonial.quote')}”</p>
+                <footer className="blockquote-footer">{t('realisationsPage.testimonial.footer')}</footer>
               </blockquote>
             </div>
           </div>
@@ -113,18 +115,18 @@ function Realisations() {
     {/* Projets réalisés */}
     <section className="py-5 section-alt-white">
       <div className="container">
-        <h2 className="text-center display-4 fw-bold mb-5 section-title">Quelques projets réalisés</h2>
+        <h2 className="text-center display-4 fw-bold mb-5 section-title">{t('realisationsPage.projects.title')}</h2>
         <div className="row g-4">
           {/* Projet 1 */}
           <div className="col-lg-6 col-md-12" data-aos="zoom-in" data-aos-delay="100">
             <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
               <div className="realisation-img-wrapper">
                 <img src={kankan} className="realisation-image" alt="Bibliothèque Municipale de Kankan" loading="lazy" decoding="async" />
-                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Ouvrage Public</span>
+                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>{t('realisationsPage.projects.cards.kankan.badge')}</span>
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
-                  <h5 className="fw-bold text-white mb-2">Bibliothèque Municipale de Kankan</h5>
-                  <p className="mb-2 text-white-50 small">Kankan • 2023</p>
-                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <h5 className="fw-bold text-white mb-2">{t('realisationsPage.projects.cards.kankan.title')}</h5>
+                  <p className="mb-2 text-white-50 small">{t('realisationsPage.projects.cards.kankan.meta')}</p>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">{t('realisationsPage.projects.view')}</Link>
                 </div>
               </div>
             </div>
@@ -134,11 +136,11 @@ function Realisations() {
             <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
               <div className="realisation-img-wrapper">
                 <img src={dubreka} className="realisation-image" alt="Résidence Privée Dubréka Fihaima" loading="lazy" decoding="async" />
-                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Résidentiel</span>
+                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>{t('realisationsPage.projects.cards.dubreka.badge')}</span>
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
-                  <h5 className="fw-bold text-white mb-2">Résidence Privée Dubréka Fihaima</h5>
-                  <p className="mb-2 text-white-50 small">Dubréka • 2020 - 2021</p>
-                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <h5 className="fw-bold text-white mb-2">{t('realisationsPage.projects.cards.dubreka.title')}</h5>
+                  <p className="mb-2 text-white-50 small">{t('realisationsPage.projects.cards.dubreka.meta')}</p>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">{t('realisationsPage.projects.view')}</Link>
                 </div>
               </div>
             </div>
@@ -148,11 +150,11 @@ function Realisations() {
             <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
               <div className="realisation-img-wrapper">
                 <img src={kagbelen} className="realisation-image" alt="Projet Kagbelen Dondolikhouré" loading="lazy" decoding="async" />
-                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Génie Civil</span>
+                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>{t('realisationsPage.projects.cards.kagbelen.badge')}</span>
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
-                  <h5 className="fw-bold text-white mb-2">Projet Kagbelen Dondolikhouré</h5>
-                  <p className="mb-2 text-white-50 small">Kagbelen • Construction durable</p>
-                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <h5 className="fw-bold text-white mb-2">{t('realisationsPage.projects.cards.kagbelen.title')}</h5>
+                  <p className="mb-2 text-white-50 small">{t('realisationsPage.projects.cards.kagbelen.meta')}</p>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">{t('realisationsPage.projects.view')}</Link>
                 </div>
               </div>
             </div>
@@ -162,11 +164,11 @@ function Realisations() {
             <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
               <div className="realisation-img-wrapper">
                 <img src={r4} className="realisation-image" alt="Conceptions & Modélisations R+4" loading="lazy" decoding="async" />
-                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Bureau d'Études</span>
+                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>{t('realisationsPage.projects.cards.r4.badge')}</span>
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
-                  <h5 className="fw-bold text-white mb-2">Conceptions & Modélisations R+4</h5>
-                  <p className="mb-2 text-white-50 small">Optimisation structurelle</p>
-                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <h5 className="fw-bold text-white mb-2">{t('realisationsPage.projects.cards.r4.title')}</h5>
+                  <p className="mb-2 text-white-50 small">{t('realisationsPage.projects.cards.r4.meta')}</p>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">{t('realisationsPage.projects.view')}</Link>
                 </div>
               </div>
             </div>
@@ -176,11 +178,11 @@ function Realisations() {
             <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
               <div className="realisation-img-wrapper">
                 <img src={hangar} className="realisation-image" alt="Hangars & Bâtiments Logistiques" loading="lazy" decoding="async" />
-                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Industriel</span>
+                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>{t('realisationsPage.projects.cards.hangar.badge')}</span>
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
-                  <h5 className="fw-bold text-white mb-2">Hangars & Bâtiments Logistiques</h5>
-                  <p className="mb-2 text-white-50 small">Zone industrielle • Construction métallique</p>
-                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <h5 className="fw-bold text-white mb-2">{t('realisationsPage.projects.cards.hangar.title')}</h5>
+                  <p className="mb-2 text-white-50 small">{t('realisationsPage.projects.cards.hangar.meta')}</p>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">{t('realisationsPage.projects.view')}</Link>
                 </div>
               </div>
             </div>
@@ -190,19 +192,19 @@ function Realisations() {
             <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
               <div className="realisation-img-wrapper">
                 <img src={ansoumania} className="realisation-image" alt="Immeuble R+2 Ansoumaniah" loading="lazy" decoding="async" />
-                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Bâtiment Mixte</span>
+                <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>{t('realisationsPage.projects.cards.ansoumania.badge')}</span>
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
-                  <h5 className="fw-bold text-white mb-2">Immeuble R+2 Ansoumaniah</h5>
-                  <p className="mb-2 text-white-50 small">Cimenterie • 2023 - 2024</p>
-                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <h5 className="fw-bold text-white mb-2">{t('realisationsPage.projects.cards.ansoumania.title')}</h5>
+                  <p className="mb-2 text-white-50 small">{t('realisationsPage.projects.cards.ansoumania.meta')}</p>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">{t('realisationsPage.projects.view')}</Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="text-center mt-5">
-          <p className="lead text-muted">D’autres références peuvent être communiquées sur demande.</p>
-          <Link to="/contact" className="btn btn-custom btn-lg">Parlez-nous de votre projet</Link>
+          <p className="lead text-muted">{t('realisationsPage.projects.more')}</p>
+          <Link to="/contact" className="btn btn-custom btn-lg">{t('realisationsPage.projects.cta')}</Link>
         </div>
       </div>
     </section>
@@ -211,8 +213,8 @@ function Realisations() {
       <div className="container">
         <div className="row text-center mb-5">
           <div className="col-12">
-            <h2 className="display-5 fw-bold mb-3">ECG PLUS en Chiffres</h2>
-            <p className="lead">18 ans d'excellence et de réalisations concrètes</p>
+            <h2 className="display-5 fw-bold mb-3">{t('realisationsPage.stats.title')}</h2>
+            <p className="lead">{t('realisationsPage.stats.subtitle')}</p>
           </div>
         </div>
 
@@ -225,8 +227,8 @@ function Realisations() {
               <div className="stats-number display-4 fw-bold text-primary mb-2">
                 <span className="stat-value" data-target="25">0</span>+
               </div>
-              <div className="stats-label fw-semibold text-black">Projets Réalisés</div>
-              <div className="stats-subtitle small text-muted mt-1">Dans tous les secteurs</div>
+              <div className="stats-label fw-semibold text-black">{t('realisationsPage.stats.projects')}</div>
+              <div className="stats-subtitle small text-muted mt-1">{t('realisationsPage.stats.sectors')}</div>
             </div>
           </div>
 
@@ -238,8 +240,8 @@ function Realisations() {
               <div className="stats-number display-4 fw-bold text-success mb-2">
                 <span className="stat-value" data-target="4">0</span>
               </div>
-              <div className="stats-label fw-semibold text-black">Régions Couvertes</div>
-              <div className="stats-subtitle small text-muted mt-1">Toute la Guinée</div>
+              <div className="stats-label fw-semibold text-black">{t('realisationsPage.stats.regions')}</div>
+              <div className="stats-subtitle small text-muted mt-1">{t('realisationsPage.stats.guinea')}</div>
             </div>
           </div>
 
@@ -251,8 +253,8 @@ function Realisations() {
               <div className="stats-number display-4 fw-bold text-warning mb-2">
                 <span className="stat-value" data-target="50">0</span>+
               </div>
-              <div className="stats-label fw-semibold text-black">Professionnels</div>
-              <div className="stats-subtitle small text-muted mt-1">Équipe qualifiée</div>
+              <div className="stats-label fw-semibold text-black">{t('realisationsPage.stats.professionals')}</div>
+              <div className="stats-subtitle small text-muted mt-1">{t('realisationsPage.stats.qualified')}</div>
             </div>
           </div>
 
@@ -264,8 +266,8 @@ function Realisations() {
               <div className="stats-number display-4 fw-bold text-danger mb-2">
                 <span className="stat-value" data-target="100">0</span>%
               </div>
-              <div className="stats-label fw-semibold text-black">Satisfaction Client</div>
-              <div className="stats-subtitle small text-muted mt-1">Taux de réussite</div>
+              <div className="stats-label fw-semibold text-black">{t('realisationsPage.stats.satisfaction')}</div>
+              <div className="stats-subtitle small text-muted mt-1">{t('realisationsPage.stats.success')}</div>
             </div>
           </div>
         </div>
@@ -273,10 +275,9 @@ function Realisations() {
         <div className="row mt-5">
           <div className="col-lg-8 mx-auto text-center">
             <div className="achievement-highlight p-4 bg-white text-dark rounded shadow-lg border-start border-5 border-orange">
-              <h4 className="fw-bold mb-3 text-primary">Notre Plus Grande Réussite</h4>
+              <h4 className="fw-bold mb-3 text-primary">{t('realisationsPage.achievement.title')}</h4>
               <p className="lead mb-3">
-                <strong>0 réclamation majeure</strong> sur nos projets livrés ces 5 dernières années,
-                attestant de notre engagement qualité et de la satisfaction de nos clients.
+                {t('realisationsPage.achievement.lead')}
               </p>
               <div className="row text-center g-3">
                 <div className="col-4">
@@ -284,7 +285,7 @@ function Realisations() {
                     <div className="h3 fw-bold text-success mb-1">
                       <span className="stat-value" data-target="98">0</span>%
                     </div>
-                    <small className="text-muted">Projets dans les délais</small>
+                    <small className="text-muted">{t('realisationsPage.achievement.onTime')}</small>
                     <div className="metric-progress mt-2">
                       <span style={{width: '98%'}}></span>
                     </div>
@@ -295,7 +296,7 @@ function Realisations() {
                     <div className="h3 fw-bold text-primary mb-1">
                       <span className="stat-value" data-target="95">0</span>%
                     </div>
-                    <small className="text-muted">Dans le budget prévu</small>
+                    <small className="text-muted">{t('realisationsPage.achievement.budget')}</small>
                     <div className="metric-progress mt-2">
                       <span style={{width: '95%'}}></span>
                     </div>
@@ -306,7 +307,7 @@ function Realisations() {
                     <div className="h3 fw-bold text-warning mb-1">
                       <span className="stat-value" data-target="100">0</span>%
                     </div>
-                    <small className="text-muted">Conformité normes</small>
+                    <small className="text-muted">{t('realisationsPage.achievement.standards')}</small>
                     <div className="metric-progress mt-2">
                       <span style={{width: '100%'}}></span>
                     </div>
@@ -324,8 +325,8 @@ function Realisations() {
       <div className="container">
         <div className="row text-center mb-5">
           <div className="col-12">
-            <h2 className="display-5 fw-bold gradient-text mb-3">Nos Domaines d'Intervention</h2>
-            <p className="lead">Une expertise transversale au service de tous les secteurs</p>
+            <h2 className="display-5 fw-bold gradient-text mb-3">{t('realisationsPage.domains.title')}</h2>
+            <p className="lead">{t('realisationsPage.domains.subtitle')}</p>
           </div>
         </div>
 
@@ -335,12 +336,12 @@ function Realisations() {
               <div className="domain-icon mb-3">
                 <i className="bi bi-building icon-red domain-icon-pulse"></i>
               </div>
-              <h5 className="fw-bold mb-3">Bâtiment & Construction</h5>
+              <h5 className="fw-bold mb-3">{t('realisationsPage.domains.building')}</h5>
               <ul className="list-unstyled small text-start domain-list">
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Résidentiel (R+1 à R+4)</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Commercial & Bureaux</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Rénovation & Extension</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Ouvrages publics</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.building.0')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.building.1')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.building.2')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.building.3')}</li>
               </ul>
             </div>
           </div>
@@ -350,12 +351,12 @@ function Realisations() {
               <div className="domain-icon mb-3">
                 <i className="bi bi-lightning-fill icon-yellow domain-icon-pulse"></i>
               </div>
-              <h5 className="fw-bold mb-3">Énergie & Électricité</h5>
+              <h5 className="fw-bold mb-3">{t('realisationsPage.domains.energy')}</h5>
               <ul className="list-unstyled small text-start domain-list">
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Groupes électrogènes</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Panneaux solaires</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Réseaux électriques</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Systèmes autonomes</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.energy.0')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.energy.1')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.energy.2')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.energy.3')}</li>
               </ul>
             </div>
           </div>
@@ -365,12 +366,12 @@ function Realisations() {
               <div className="domain-icon mb-3">
                 <i className="bi bi-gear-fill icon-red domain-icon-pulse"></i>
               </div>
-              <h5 className="fw-bold mb-3">Génie Civil & Industrie</h5>
+              <h5 className="fw-bold mb-3">{t('realisationsPage.domains.civil')}</h5>
               <ul className="list-unstyled small text-start domain-list">
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Travaux publics</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Construction métallique</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Infrastructures industrielles</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Zones logistiques</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.civil.0')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.civil.1')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.civil.2')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.civil.3')}</li>
               </ul>
             </div>
           </div>
@@ -380,12 +381,12 @@ function Realisations() {
               <div className="domain-icon mb-3">
                 <i className="bi bi-clipboard-data icon-green domain-icon-pulse"></i>
               </div>
-              <h5 className="fw-bold mb-3">Études & Expertise</h5>
+              <h5 className="fw-bold mb-3">{t('realisationsPage.domains.studies')}</h5>
               <ul className="list-unstyled small text-start domain-list">
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Bureau d'études</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Plans & Devis</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Expertise bâtiment</li>
-                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>Conseil technique</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.studies.0')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.studies.1')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.studies.2')}</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i>{t('realisationsPage.domains.lists.studies.3')}</li>
               </ul>
             </div>
           </div>
@@ -398,10 +399,9 @@ function Realisations() {
       <div className="container">
         <div className="row align-items-center mb-5">
           <div className="col-lg-6">
-            <h2 className="display-5 fw-bold gradient-text mb-3">Notre Présence en Guinée</h2>
+            <h2 className="display-5 fw-bold gradient-text mb-3">{t('realisationsPage.presence.title')}</h2>
             <p className="lead">
-              ECG PLUS intervient sur l'ensemble du territoire guinéen, de Conakry aux régions les plus reculées,
-              garantissant proximité et réactivité pour tous vos projets.
+              {t('realisationsPage.presence.text')}
             </p>
           </div>
           <div className="col-lg-6 text-center">
@@ -415,10 +415,10 @@ function Realisations() {
               <div className="region-icon mb-3">
                 <i className="bi bi-house-fill icon-red"></i>
               </div>
-              <h6 className="fw-bold mb-2 text-black">Conakry & Région</h6>
-              <p className="small mb-2">Zone principale d'intervention</p>
+              <h6 className="fw-bold mb-2 text-black">{t('realisationsPage.presence.conakry')}</h6>
+              <p className="small mb-2">{t('realisationsPage.presence.conakryText')}</p>
               <div className="region-stats">
-                <span className="badge bg-primary region-badge">35+ projets</span>
+                <span className="badge bg-primary region-badge">{t('realisationsPage.presence.badges.conakry')}</span>
               </div>
             </div>
           </div>
@@ -428,10 +428,10 @@ function Realisations() {
               <div className="region-icon mb-3">
                 <i className="bi bi-tree-fill icon-green"></i>
               </div>
-              <h6 className="fw-bold mb-2 text-black">Régions Intérieures</h6>
-              <p className="small mb-2">Kankan, Nzérékoré, etc.</p>
+              <h6 className="fw-bold mb-2 text-black">{t('realisationsPage.presence.regions')}</h6>
+              <p className="small mb-2">{t('realisationsPage.presence.regionsText')}</p>
               <div className="region-stats">
-                <span className="badge bg-success region-badge">12+ projets</span>
+                <span className="badge bg-success region-badge">{t('realisationsPage.presence.badges.regions')}</span>
               </div>
             </div>
           </div>
@@ -441,10 +441,10 @@ function Realisations() {
               <div className="region-icon mb-3">
                 <i className="bi bi-water icon-yellow"></i>
               </div>
-              <h6 className="fw-bold mb-2 text-black">Zones Côtières</h6>
-              <p className="small mb-2">Boffa, Boké, Dubréka</p>
+              <h6 className="fw-bold mb-2 text-black">{t('realisationsPage.presence.coast')}</h6>
+              <p className="small mb-2">{t('realisationsPage.presence.coastText')}</p>
               <div className="region-stats">
-                <span className="badge bg-info region-badge">4+ projets</span>
+                <span className="badge bg-info region-badge">{t('realisationsPage.presence.badges.coast')}</span>
               </div>
             </div>
           </div>
@@ -454,10 +454,10 @@ function Realisations() {
               <div className="region-icon mb-3">
                 <i className="bi bi-hammer icon-red"></i>
               </div>
-              <h6 className="fw-bold mb-2 text-black">Zones Minières</h6>
-              <p className="small mb-2">Projets industriels</p>
+              <h6 className="fw-bold mb-2 text-black">{t('realisationsPage.presence.mining')}</h6>
+              <p className="small mb-2">{t('realisationsPage.presence.miningText')}</p>
               <div className="region-stats">
-                <span className="badge bg-warning region-badge">5+ projets</span>
+                <span className="badge bg-warning region-badge">{t('realisationsPage.presence.badges.mining')}</span>
               </div>
             </div>
           </div>
@@ -470,8 +470,8 @@ function Realisations() {
       <div className="container">
         <div className="row text-center mb-5">
           <div className="col-12">
-            <h2 className="display-5 fw-bold gradient-text mb-3">Ils Nous Font Confiance</h2>
-            <p className="lead">Découvrez les témoignages de nos clients satisfaits</p>
+            <h2 className="display-5 fw-bold gradient-text mb-3">{t('realisationsPage.trust.title')}</h2>
+            <p className="lead">{t('realisationsPage.trust.subtitle')}</p>
           </div>
         </div>
 
@@ -483,8 +483,8 @@ function Realisations() {
                   <i className="bi bi-building"></i>
                 </div>
                 <div>
-                  <h6 className="fw-bold mb-0">Projet Public</h6>
-                  <small className="text-muted">Bibliothèque Municipale de Kankan</small>
+                  <h6 className="fw-bold mb-0">{t('realisationsPage.trust.t1title')}</h6>
+                  <small className="text-muted">{t('realisationsPage.trust.t1subtitle')}</small>
                 </div>
               </div>
               <div className="testimonial-stars mb-3">
@@ -495,8 +495,8 @@ function Realisations() {
                 <i className="bi bi-star-fill text-warning"></i>
               </div>
               <blockquote className="blockquote mb-0">
-                <p className="mb-3 fst-italic">"La Bibliothèque Municipale de Kankan a été livrée dans les délais, avec une qualité d’exécution exemplaire et un suivi rigoureux du chantier."</p>
-                <footer className="blockquote-footer text-end testimonial-signature">Kankan, 2023</footer>
+                <p className="mb-3 fst-italic">"{t('realisationsPage.trust.t1quote')}"</p>
+                <footer className="blockquote-footer text-end testimonial-signature">{t('realisationsPage.trust.t1footer')}</footer>
               </blockquote>
             </div>
           </div>
@@ -508,8 +508,8 @@ function Realisations() {
                   <i className="bi bi-house"></i>
                 </div>
                 <div>
-                  <h6 className="fw-bold mb-0">Client Résidentiel</h6>
-                  <small className="text-muted">Résidence Privée Dubréka Fihaima</small>
+                  <h6 className="fw-bold mb-0">{t('realisationsPage.trust.t2title')}</h6>
+                  <small className="text-muted">{t('realisationsPage.trust.t2subtitle')}</small>
                 </div>
               </div>
               <div className="testimonial-stars mb-3">
@@ -520,8 +520,8 @@ function Realisations() {
                 <i className="bi bi-star-fill text-warning"></i>
               </div>
               <blockquote className="blockquote mb-0">
-                <p className="mb-3 fst-italic">"Notre résidence à Dubréka a été réalisée avec soin. L’équipe a assuré un accompagnement complet, des études à la livraison."</p>
-                <footer className="blockquote-footer text-end testimonial-signature">Dubréka, 2020 - 2021</footer>
+                <p className="mb-3 fst-italic">"{t('realisationsPage.trust.t2quote')}"</p>
+                <footer className="blockquote-footer text-end testimonial-signature">{t('realisationsPage.trust.t2footer')}</footer>
               </blockquote>
             </div>
           </div>
@@ -533,8 +533,8 @@ function Realisations() {
                   <i className="bi bi-factory"></i>
                 </div>
                 <div>
-                  <h6 className="fw-bold mb-0">Projet Industriel</h6>
-                  <small className="text-muted">Hangars & Bâtiments Logistiques</small>
+                  <h6 className="fw-bold mb-0">{t('realisationsPage.trust.t3title')}</h6>
+                  <small className="text-muted">{t('realisationsPage.trust.t3subtitle')}</small>
                 </div>
               </div>
               <div className="testimonial-stars mb-3">
@@ -545,8 +545,8 @@ function Realisations() {
                 <i className="bi bi-star-fill text-warning"></i>
               </div>
               <blockquote className="blockquote mb-0">
-                <p className="mb-3 fst-italic">"Le hangar logistique a été livré avec une structure métallique robuste et des finitions soignées, parfaitement adaptées à nos besoins industriels."</p>
-                <footer className="blockquote-footer text-end testimonial-signature">Zone industrielle, 2023 - 2024</footer>
+                <p className="mb-3 fst-italic">"{t('realisationsPage.trust.t3quote')}"</p>
+                <footer className="blockquote-footer text-end testimonial-signature">{t('realisationsPage.trust.t3footer')}</footer>
               </blockquote>
             </div>
           </div>
@@ -559,8 +559,8 @@ function Realisations() {
       <div className="container">
         <div className="row text-center mb-5">
           <div className="col-12">
-            <h2 className="display-5 fw-bold gradient-text mb-3">Notre Méthode de Travail</h2>
-            <p className="lead">Un processus rigoureux pour garantir l'excellence de chaque projet</p>
+            <h2 className="display-5 fw-bold gradient-text mb-3">{t('realisationsPage.process.title')}</h2>
+            <p className="lead">{t('realisationsPage.process.subtitle')}</p>
           </div>
         </div>
 
@@ -568,32 +568,32 @@ function Realisations() {
           <div className="col-md-6 col-lg-3">
             <div className="process-step-card text-center" data-aos="fade-up">
               <div className="process-number-circle">1</div>
-              <h5 className="fw-bold mb-2">Étude & Devis</h5>
-              <p className="small">Analyse détaillée de vos besoins, visite du site, établissement d'un devis précis et planning prévisionnel.</p>
+              <h5 className="fw-bold mb-2">{t('realisationsPage.process.step1')}</h5>
+              <p className="small">{t('realisationsPage.process.step1text')}</p>
             </div>
           </div>
 
           <div className="col-md-6 col-lg-3">
             <div className="process-step-card text-center" data-aos="fade-up" data-aos-delay="100">
               <div className="process-number-circle">2</div>
-              <h5 className="fw-bold mb-2">Conception</h5>
-              <p className="small">Réalisation des plans techniques, obtention des autorisations administratives et préparation du chantier.</p>
+              <h5 className="fw-bold mb-2">{t('realisationsPage.process.step2')}</h5>
+              <p className="small">{t('realisationsPage.process.step2text')}</p>
             </div>
           </div>
 
           <div className="col-md-6 col-lg-3">
             <div className="process-step-card text-center" data-aos="fade-up" data-aos-delay="200">
               <div className="process-number-circle">3</div>
-              <h5 className="fw-bold mb-2">Exécution</h5>
-              <p className="small">Mobilisation des équipes et du matériel, suivi quotidien du chantier, contrôles qualité réguliers.</p>
+              <h5 className="fw-bold mb-2">{t('realisationsPage.process.step3')}</h5>
+              <p className="small">{t('realisationsPage.process.step3text')}</p>
             </div>
           </div>
 
           <div className="col-md-6 col-lg-3">
             <div className="process-step-card text-center" data-aos="fade-up" data-aos-delay="300">
               <div className="process-number-circle">4</div>
-              <h5 className="fw-bold mb-2">Livraison</h5>
-              <p className="small">Réception définitive, remise des garanties, formation à l'utilisation et service après-vente.</p>
+              <h5 className="fw-bold mb-2">{t('realisationsPage.process.step4')}</h5>
+              <p className="small">{t('realisationsPage.process.step4text')}</p>
             </div>
           </div>
         </div>
@@ -603,34 +603,33 @@ function Realisations() {
     {/* Section CTA Finale Étendue */}
     <section className="py-5 section-alt-white">
       <div className="container text-center">
-        <h2 className="display-5 fw-bold mb-4 text-primary">Votre Projet, Notre Expertise</h2>
+        <h2 className="display-5 fw-bold mb-4 text-primary">{t('realisationsPage.cta.title')}</h2>
         <p className="lead mb-5 text-dark">
-          Avec plus de 50 réalisations réussies et une présence dans toute la Guinée,
-          ECG PLUS est le partenaire idéal pour concrétiser vos ambitions.
+          {t('realisationsPage.cta.text')}
         </p>
 
         <div className="row justify-content-center g-4 mb-5">
           <div className="col-md-4" data-aos="zoom-in">
             <div className="cta-feature cta-feature-premium p-4 bg-white text-dark rounded shadow-lg">
               <i className="bi bi-lightbulb-fill icon-yellow cta-feature-icon mb-3"></i>
-              <h5 className="fw-bold mb-2">Conseil Gratuit</h5>
-              <p className="small mb-0">Étude préliminaire et conseils techniques sans engagement</p>
+              <h5 className="fw-bold mb-2">{t('realisationsPage.cta.feature1')}</h5>
+              <p className="small mb-0">{t('realisationsPage.cta.feature1text')}</p>
             </div>
           </div>
 
           <div className="col-md-4" data-aos="zoom-in" data-aos-delay="100">
             <div className="cta-feature cta-feature-premium p-4 bg-white text-dark rounded shadow-lg">
               <i className="bi bi-calculator-fill icon-red cta-feature-icon mb-3"></i>
-              <h5 className="fw-bold mb-2">Devis Détaillé</h5>
-              <p className="small mb-0">Estimation précise et transparente de votre projet</p>
+              <h5 className="fw-bold mb-2">{t('realisationsPage.cta.feature2')}</h5>
+              <p className="small mb-0">{t('realisationsPage.cta.feature2text')}</p>
             </div>
           </div>
 
           <div className="col-md-4" data-aos="zoom-in" data-aos-delay="200">
             <div className="cta-feature cta-feature-premium p-4 bg-white text-dark rounded shadow-lg">
               <i className="bi bi-clock-fill icon-green cta-feature-icon mb-3"></i>
-              <h5 className="fw-bold mb-2">Accompagnement Complet</h5>
-              <p className="small mb-0">Du concept à la livraison, nous vous accompagnons</p>
+              <h5 className="fw-bold mb-2">{t('realisationsPage.cta.feature3')}</h5>
+              <p className="small mb-0">{t('realisationsPage.cta.feature3text')}</p>
             </div>
           </div>
         </div>
@@ -638,19 +637,19 @@ function Realisations() {
         <div className="row justify-content-center g-3">
           <div className="col-auto">
             <Link to="/contact" className="btn btn-custom btn-lg px-5 py-3">
-              <i className="bi bi-envelope-fill me-2"></i>Démarrer Mon Projet
+              <i className="bi bi-envelope-fill me-2"></i>{t('realisationsPage.cta.primary')}
             </Link>
           </div>
           <div className="col-auto">
             <Link to="/expertise-services" className="btn btn-outline-primary btn-lg px-5 py-3">
-              <i className="bi bi-tools me-2"></i>Découvrir Nos Services
+              <i className="bi bi-tools me-2"></i>{t('realisationsPage.cta.secondary')}
             </Link>
           </div>
         </div>
 
         <div className="mt-4">
           <small className="text-muted">
-            Réponse sous 24h • Devis gratuit • Accompagnement personnalisé
+            {t('common.response24h')}
           </small>
         </div>
       </div>

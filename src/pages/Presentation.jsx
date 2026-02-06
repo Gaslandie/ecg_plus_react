@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import ecgbg from '../assets/img/ecgbg.jpeg';
+import { useI18n } from '../i18n/I18nContext.jsx';
 
 
 const Presentation = () => {
+  const { t } = useI18n();
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const el = document.querySelector('.experience-number[data-target]');
@@ -32,33 +34,33 @@ const Presentation = () => {
     <section className="hero-section presentation-hero text-center d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">
       <div className="container position-relative" style={{ zIndex: 1 }}>
         <h1 className="display-2 fw-bold mb-3 presentation-hero-title">
-          <span className="hero-line-1">Présentation d'</span>
-          <span className="hero-line-2">ECG PLUS</span>
+          <span className="hero-line-1">{t('presentationPage.hero.titleLine1')}</span>
+          <span className="hero-line-2">{t('presentationPage.hero.titleLine2')}</span>
         </h1>
-        <p className="lead text-dark mb-4 presentation-hero-subtitle">18 ans d'excellence dans la construction et les travaux publics en Guinée</p>
+        <p className="lead text-dark mb-4 presentation-hero-subtitle">{t('presentationPage.hero.subtitle')}</p>
         <div className="row justify-content-center g-4">
           <div className="col-md-4">
             <div className="presentation-highlight p-4 rounded-4 shadow-lg bg-white">
               <h4 className="fw-bold text-primary mb-2">
-                <i className="bi bi-building me-2 icon-red"></i>Construction
+                <i className="bi bi-building me-2 icon-red"></i>{t('presentationPage.hero.cards.constructionTitle')}
               </h4>
-              <p className="small mb-0">Bâtiments résidentiels, commerciaux et industriels</p>
+              <p className="small mb-0">{t('presentationPage.hero.cards.constructionText')}</p>
             </div>
           </div>
           <div className="col-md-4">
             <div className="presentation-highlight p-4 rounded-4 shadow-lg bg-white">
               <h4 className="fw-bold text-primary mb-2">
-                <i className="bi bi-lightning-charge me-2 icon-yellow"></i>Énergie
+                <i className="bi bi-lightning-charge me-2 icon-yellow"></i>{t('presentationPage.hero.cards.energyTitle')}
               </h4>
-              <p className="small mb-0">Solutions électriques et systèmes autonomes</p>
+              <p className="small mb-0">{t('presentationPage.hero.cards.energyText')}</p>
             </div>
           </div>
           <div className="col-md-4">
             <div className="presentation-highlight p-4 rounded-4 shadow-lg bg-white">
               <h4 className="fw-bold text-primary mb-2">
-                <i className="bi bi-tools me-2 icon-green"></i>Génie Civil
+                <i className="bi bi-tools me-2 icon-green"></i>{t('presentationPage.hero.cards.civilTitle')}
               </h4>
-              <p className="small mb-0">Travaux publics et infrastructures</p>
+              <p className="small mb-0">{t('presentationPage.hero.cards.civilText')}</p>
             </div>
           </div>
         </div>
@@ -72,41 +74,41 @@ const Presentation = () => {
           <div className="col-lg-6">
             <div className="plaque-info shadow-lg p-4 rounded border-start border-primary border-5 bg-white identity-card">
               <h2 className="text-primary fw-bold mb-4">
-                <i className="bi bi-building me-2"></i>Identité de l'Entreprise
+                <i className="bi bi-building me-2"></i>{t('presentationPage.identity.title')}
               </h2>
               <div className="table-responsive">
                 <table className="table table-sm table-borderless mb-0 identity-table">
                   <tbody>
                     <tr>
-                      <td><i className="bi bi-building me-2 text-primary"></i><strong>Raison Sociale :</strong></td>
+                      <td><i className="bi bi-building me-2 text-primary"></i><strong>{t('presentationPage.identity.companyName')} :</strong></td>
                       <td>ECG PLUS SARL</td>
                     </tr>
                     <tr>
-                      <td><i className="bi bi-shield-check me-2 text-primary"></i><strong>Statut Légal :</strong></td>
+                      <td><i className="bi bi-shield-check me-2 text-primary"></i><strong>{t('presentationPage.identity.legalStatus')} :</strong></td>
                       <td>SARL</td>
                     </tr>
                     <tr>
-                      <td><i className="bi bi-cash-stack me-2 text-primary"></i><strong>Capital Social :</strong></td>
+                      <td><i className="bi bi-cash-stack me-2 text-primary"></i><strong>{t('presentationPage.identity.capital')} :</strong></td>
                       <td>10.000.000 GNF</td>
                     </tr>
                     <tr>
-                      <td><i className="bi bi-file-earmark-text me-2 text-primary"></i><strong>RCCM :</strong></td>
+                      <td><i className="bi bi-file-earmark-text me-2 text-primary"></i><strong>{t('presentationPage.identity.rccm')} :</strong></td>
                       <td>GN.TCC.2021.B.00331</td>
                     </tr>
                     <tr>
-                      <td><i className="bi bi-geo-alt me-2 text-primary"></i><strong>Siège Social :</strong></td>
+                      <td><i className="bi bi-geo-alt me-2 text-primary"></i><strong>{t('presentationPage.identity.headOffice')} :</strong></td>
                       <td>Manéah / Préfecture de Coyah / Guinée</td>
                     </tr>
                     <tr>
-                      <td><i className="bi bi-telephone me-2 text-primary"></i><strong>Téléphone :</strong></td>
+                      <td><i className="bi bi-telephone me-2 text-primary"></i><strong>{t('presentationPage.identity.phone')} :</strong></td>
                       <td>(+224) 623 96 62 78 / 628 33 86 41</td>
                     </tr>
                     <tr>
-                      <td><i className="bi bi-envelope me-2 text-primary"></i><strong>E-mail :</strong></td>
+                      <td><i className="bi bi-envelope me-2 text-primary"></i><strong>{t('presentationPage.identity.email')} :</strong></td>
                       <td>contact@ecgplusgn.com</td>
                     </tr>
                     <tr>
-                      <td><i className="bi bi-globe me-2 text-primary"></i><strong>Site web :</strong></td>
+                      <td><i className="bi bi-globe me-2 text-primary"></i><strong>{t('presentationPage.identity.website')} :</strong></td>
                       <td>www.ecgplusgn.com</td>
                     </tr>
                   </tbody>
@@ -120,9 +122,9 @@ const Presentation = () => {
               <div className="experience-badge d-flex align-items-center p-4 mb-4 text-white rounded-4 shadow-lg">
                 <div className="number display-2 fw-bold me-4 experience-number" data-target="18">0</div>
                 <div>
-                  <h3 className="fw-bold mb-1">Ans d'Expertise</h3>
+                  <h3 className="fw-bold mb-1">{t('presentationPage.experience.years')}</h3>
                   <p className="mb-0 opacity-75">
-                    Un acteur majeur en Guinée et dans la sous-région
+                    {t('presentationPage.experience.subtitle')}
                   </p>
                 </div>
               </div>
@@ -132,13 +134,13 @@ const Presentation = () => {
                   <div className="col-6">
                     <div className="stat-card text-center p-3 bg-success text-white rounded-3">
                       <h4 className="mb-1">25+</h4>
-                      <small>Projets Réalisés</small>
+                      <small>{t('presentationPage.experience.projects')}</small>
                     </div>
                   </div>
                   <div className="col-6">
                     <div className="stat-card text-center p-3 bg-warning rounded-3">
                       <h4 className="mb-1">100%</h4>
-                      <small>Satisfaction Client</small>
+                      <small>{t('presentationPage.experience.satisfaction')}</small>
                     </div>
                   </div>
                 </div>
@@ -152,35 +154,29 @@ const Presentation = () => {
     {/* Section Présentation Détaillée */}
     <section className="presentation-detailed py-5" aria-label="Présentation détaillée">
       <div className="container">
-        <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Notre Présentation</h2>
+        <h2 className="text-center mb-5 display-4 fw-bold gradient-text">{t('presentationPage.presentation.title')}</h2>
 
         <div className="row g-5">
           <div className="col-lg-8 mx-auto">
             <div className="presentation-content">
               <div className="content-section mb-5 section-divider">
                 <h3 className="text-primary mb-4 section-title">
-                  <i className="bi bi-clock-history me-2 section-icon"></i>Historique
+                  <i className="bi bi-clock-history me-2 section-icon"></i>{t('presentationPage.presentation.historyTitle')}
                 </h3>
                 <p className="lead lead-enhanced">
-                  Depuis sa fondation il y a 18 ans, ECG PLUS s'est imposé comme un acteur majeur
-                  dans le domaine de la construction et de l'expertise des bâtiments en Guinée et
-                  aujourd'hui dans la sous-région.
+                  {t('presentationPage.presentation.historyLead')}
                 </p>
                 <p className="paragraph-animate">
-                  Notre engagement envers l'excellence et notre expertise technique nous permettent
-                  de répondre aux défis les plus complexes de nos clients avec efficacité et innovation,
-                  ce qui nous a d'ailleurs permis la réalisation de plusieurs ouvrages un peu partout
-                  dans les régions guinéennes.
+                  {t('presentationPage.presentation.historyText')}
                 </p>
               </div>
 
               <div className="content-section mb-5 section-divider">
                 <h3 className="text-primary mb-4 section-title">
-                  <i className="bi bi-tools me-2 section-icon"></i>Notre Expertise
+                  <i className="bi bi-tools me-2 section-icon"></i>{t('presentationPage.presentation.expertiseTitle')}
                 </h3>
                 <p className="paragraph-animate">
-                  À ECG PLUS, nous combinons une connaissance approfondie du secteur avec une
-                  expérience pratique étendue pour offrir des solutions de construction robustes et durables.
+                  {t('presentationPage.presentation.expertiseText')}
                 </p>
                 <div className="expertise-list cards-alt">
                   <div className="expertise-item-card">
@@ -188,9 +184,9 @@ const Presentation = () => {
                       <i className="bi bi-check-circle-fill icon-green"></i>
                     </div>
                     <div>
-                      <h6 className="expertise-title">Construction</h6>
+                      <h6 className="expertise-title">{t('presentationPage.presentation.expertiseItems.constructionTitle')}</h6>
                       <p className="expertise-text">
-                        Projets résidentiels, commerciaux et industriels réalisés avec rigueur.
+                        {t('presentationPage.presentation.expertiseItems.constructionText')}
                       </p>
                     </div>
                   </div>
@@ -199,9 +195,9 @@ const Presentation = () => {
                       <i className="bi bi-check-circle-fill icon-green"></i>
                     </div>
                     <div>
-                      <h6 className="expertise-title">Énergie Autonome</h6>
+                      <h6 className="expertise-title">{t('presentationPage.presentation.expertiseItems.energyTitle')}</h6>
                       <p className="expertise-text">
-                        Systèmes autonomes hydriques pour une indépendance énergétique complète.
+                        {t('presentationPage.presentation.expertiseItems.energyText')}
                       </p>
                     </div>
                   </div>
@@ -210,9 +206,9 @@ const Presentation = () => {
                       <i className="bi bi-check-circle-fill icon-green"></i>
                     </div>
                     <div>
-                      <h6 className="expertise-title">Études & Expertise</h6>
+                      <h6 className="expertise-title">{t('presentationPage.presentation.expertiseItems.studyTitle')}</h6>
                       <p className="expertise-text">
-                        Analyses techniques précises pour diagnostiquer et optimiser vos bâtiments.
+                        {t('presentationPage.presentation.expertiseItems.studyText')}
                       </p>
                     </div>
                   </div>
@@ -221,10 +217,10 @@ const Presentation = () => {
 
               <div className="content-section">
                 <h3 className="text-primary mb-4 section-title">
-                  <i className="bi bi-eye me-2 section-icon"></i>Notre Vision
+                  <i className="bi bi-eye me-2 section-icon"></i>{t('presentationPage.presentation.visionTitle')}
                 </h3>
                 <p className="lead text-primary fw-bold lead-enhanced">
-                  Construction durable selon les exigences du client en vue de sa satisfaction.
+                  {t('presentationPage.presentation.visionText')}
                 </p>
               </div>
             </div>
@@ -241,7 +237,7 @@ const Presentation = () => {
         <span className="values-shape values-shape-3"></span>
       </div>
       <div className="container">
-        <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Nos Valeurs & Engagements</h2>
+        <h2 className="text-center mb-5 display-4 fw-bold gradient-text">{t('presentationPage.values.title')}</h2>
 
         <div className="row g-4">
           <div className="col-md-6 col-lg-3">

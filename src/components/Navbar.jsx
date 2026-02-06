@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/img/logo.jpeg';
 import TopBar from './TopBar';
+import { useI18n } from '../i18n/I18nContext.jsx';
 import '../assets/css/style.css';
 
 const Navbar = () => {
+  const { lang, setLang, t } = useI18n();
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -65,6 +67,7 @@ const Navbar = () => {
         <img src={logo} alt="Logo ECG Plus" className="me-2 logo-navbar-img" loading="lazy" />
         <span className="navbar-brand-custom text-white fw-bold ms-3">ECG PLUS</span>
       </Link>
+      <div className="d-flex align-items-center gap-2">
       <button
         className={`navbar-toggler premium-toggler${menuOpen ? ' is-open' : ''}`}
         type="button"
@@ -80,22 +83,49 @@ const Navbar = () => {
           <span></span>
         </span>
       </button>
+      </div>
       <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="lang-switch d-lg-none mb-3" role="group" aria-label="Language switch">
+          <button
+            type="button"
+            className={`lang-btn${lang === 'fr' ? ' active' : ''}`}
+            onClick={() => setLang('fr')}
+          >
+            FR
+          </button>
+          <button
+            type="button"
+            className={`lang-btn${lang === 'en' ? ' active' : ''}`}
+            onClick={() => setLang('en')}
+          >
+            EN
+          </button>
+        </div>
         <ul className="navbar-nav ms-auto nav-gap">
           <li className="nav-item">
-            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/" end onClick={handleNavClick}>Accueil</NavLink>
+            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/" end onClick={handleNavClick}>
+              {t('nav.home')}
+            </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/presentation" onClick={handleNavClick}>Présentation</NavLink>
+            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/presentation" onClick={handleNavClick}>
+              {t('nav.presentation')}
+            </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/expertiseservices" onClick={handleNavClick}>Expertise & Services</NavLink>
+            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/expertiseservices" onClick={handleNavClick}>
+              {t('nav.expertise')}
+            </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/realisations" onClick={handleNavClick}>Réalisations</NavLink>
+            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/realisations" onClick={handleNavClick}>
+              {t('nav.realisations')}
+            </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/contact" onClick={handleNavClick}>Contact</NavLink>
+            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/contact" onClick={handleNavClick}>
+              {t('nav.contact')}
+            </NavLink>
           </li>
         </ul>
       </div>
