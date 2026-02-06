@@ -20,11 +20,13 @@ function Home() {
         el.textContent = String(target);
         return;
       }
-      const duration = 1600;
+      const duration = 1800;
       const startTime = performance.now();
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
       const step = (now) => {
         const progress = Math.min((now - startTime) / duration, 1);
-        const value = Math.floor(progress * target);
+        const eased = easeOutCubic(progress);
+        const value = Math.floor(eased * target);
         el.textContent = String(value);
         if (progress < 1) {
           requestAnimationFrame(step);
@@ -32,6 +34,26 @@ function Home() {
       };
       requestAnimationFrame(step);
     });
+  }, []);
+
+  React.useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hero = document.querySelector('.hero');
+    if (!hero || prefersReduced) return;
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const y = window.scrollY * 0.12;
+          hero.style.backgroundPosition = `center ${y}px`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
@@ -95,7 +117,7 @@ function Home() {
       </header>
 
       {/* Section about enrichie */}
-      <section id="apropos" className="section-spacing section-alt-white" data-aos="fade-up" data-aos-delay="300">
+      <section id="apropos" className="section-spacing section-alt-white" data-aos="fade-up" data-aos-delay="200">
         <div className="container">
           <h2 className="fw-bold text-center mb-5">À propos d'ECG PLUS</h2>
 
@@ -120,26 +142,26 @@ function Home() {
                   </p>
                   <div className="row text-center mt-4">
                     <div className="col-md-4">
-                      <div className="stat-box p-3 text-white rounded" style={{backgroundColor: 'var(--gas-primary)'}}>
-                        <h4 className="mb-1">18+</h4>
-                        <small>Années d'Expérience</small>
-                      </div>
-                    </div>
-                    <div className="col-md-4">
-                      <div className="stat-box p-3 text-white rounded" style={{backgroundColor: 'var(--gas-primary)'}}>
-                        <h4 className="mb-1">25+</h4>
-                        <small>Projets Réalisés</small>
-                      </div>
-                    </div>
-                    <div className="col-md-4">
-                      <div className="stat-box p-3 text-white rounded" style={{backgroundColor: 'var(--gas-primary)'}}>
-                        <h4 className="mb-1">100%</h4>
-                        <small>Satisfaction Client</small>
-                      </div>
-                    </div>
+                  <div className="stat-box p-3 text-white rounded">
+                    <h4 className="mb-1">Engagement</h4>
+                    <small>Qualité & respect des délais</small>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="stat-box p-3 text-white rounded">
+                    <h4 className="mb-1">Innovation</h4>
+                    <small>Solutions techniques sur‑mesure</small>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="stat-box p-3 text-white rounded">
+                    <h4 className="mb-1">Confiance</h4>
+                    <small>Accompagnement de bout en bout</small>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
             </div>
           </div>
 
@@ -230,7 +252,7 @@ function Home() {
 
 
       {/* Section Présentation stylée */}
-      <section className="presentation-section py-5 section-alt-blue">
+      <section className="presentation-section py-5 section-alt-blue" data-aos="fade-right" data-aos-delay="200">
         <div className="container">
           <div className="row align-items-center g-4">
             <div className="col-md-7">
@@ -307,12 +329,12 @@ function Home() {
       </section>
 
       {/* Section Services & Expertises - Modern Design */}
-      <section id="services" className="services-modern-section my-3 py-5" style={{backgroundColor: 'white'}} data-aos="fade-up">
+      <section id="services" className="services-modern-section my-3 py-5" style={{backgroundColor: 'white'}} data-aos="zoom-in" data-aos-delay="150">
         <div className="container">
           <h2 className="mb-5 display-4 fw-bold text-center" style={{color: 'var(--gas-primary)'}}>Services & Expertises</h2>
           <div className="services-cards-wrapper d-flex flex-nowrap overflow-auto pb-3">
             <div className="service-modern-card mx-3">
-              <div className="service-icon-bg mb-3"><i className="bi bi-lightning-charge" style={{color: '#dc3545'}}></i></div>
+              <div className="service-icon-bg mb-3 icon-accent-primary"><i className="bi bi-lightning-charge"></i></div>
               <h5>Ingénierie Électrique & Systèmes Autonomes</h5>
               <p>
                 Instrumentation, automatisme, installation de groupes électrogènes, de panneaux solaires et de systèmes hydriques pour l'autonomie énergétique.
@@ -320,7 +342,7 @@ function Home() {
               <Link to="/expertiseservices" className="service-link">En savoir plus</Link>
             </div>
             <div className="service-modern-card mx-3">
-              <div className="service-icon-bg mb-3"><i className="bi bi-building" style={{color: '#ffc107'}}></i></div>
+              <div className="service-icon-bg mb-3 icon-accent-warm"><i className="bi bi-building"></i></div>
               <h5>Construction Résidentielle, Commerciale & Industrielle</h5>
               <p>
                 Complexes résidentiels, infrastructures commerciales et industrielles, projets robustes et durables en Guinée et sous-région.
@@ -328,7 +350,7 @@ function Home() {
               <Link to="/expertiseservices" className="service-link">En savoir plus</Link>
             </div>
             <div className="service-modern-card mx-3">
-              <div className="service-icon-bg mb-3"><i className="bi bi-diagram-3" style={{color: '#28a745'}}></i></div>
+              <div className="service-icon-bg mb-3 icon-accent-primary"><i className="bi bi-diagram-3"></i></div>
               <h5>Génie Civil, Métallique & Projets Miniers</h5>
               <p>
                 Génie civil, construction métallique, chaudronnerie, isolation, tuyauterie industrielle et solutions pour l'industrie minière.
@@ -336,7 +358,7 @@ function Home() {
               <Link to="/expertiseservices" className="service-link">En savoir plus</Link>
             </div>
             <div className="service-modern-card mx-3">
-              <div className="service-icon-bg mb-3"><i className="bi bi-clipboard-data" style={{color: '#dc3545'}}></i></div>
+              <div className="service-icon-bg mb-3 icon-accent-primary"><i className="bi bi-clipboard-data"></i></div>
               <h5>Étude, Expertise Bâtiment & Commerce</h5>
               <p>
                 Études techniques, expertises, rénovation, maintenance, fourniture de matériaux et équipements de construction.
@@ -344,11 +366,14 @@ function Home() {
               <Link to="/expertiseservices" className="service-link">En savoir plus</Link>
             </div>
           </div>
+          <div className="services-scroll-indicator" aria-hidden="true">
+            <span></span>
+          </div>
         </div>
       </section>
 
       {/* Section Équipe & Moyens Humains */}
-      <section className="team-section py-5 section-alt-blue" data-aos="fade-up">
+      <section className="team-section py-5 section-alt-blue" data-aos="fade-left" data-aos-delay="200">
         <div className="container">
           <h2 className="text-center mb-5 display-4 fw-bold text-white">Notre Équipe</h2>
           <div className="row align-items-center g-5">
@@ -431,7 +456,7 @@ function Home() {
       </section>
 
       {/* Section réalisations modernisée */}
-      <section className="realisations-section py-5 my-md-5 section-alt-white" data-aos="fade-up">
+      <section className="realisations-section py-5 my-md-5 section-alt-white" data-aos="zoom-in" data-aos-delay="150">
         <div className="container">
           <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Nos Réalisations</h2>
           <div className="row g-4 justify-content-center">
@@ -439,11 +464,11 @@ function Home() {
               <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
                 <div className="realisation-img-wrapper">
                   <img src={kankan} className="realisation-image" alt="Réalisation 1" loading="lazy" decoding="async" />
-                  <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Public</span>
+                  <span className="badge position-absolute top-0 start-0 m-3 fs-6 project-badge badge-public">Public</span>
                   <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                     <h5 className="fw-bold text-white mb-2">Bibliothèque Municipale de Kankan</h5>
                     <p className="mb-2 text-white-50 small">Kankan • 05.2023 – 11.2023</p>
-                    <Link to="/realisations#kankan" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                    <Link to="/realisations" className="btn btn-sm btn-light fw-bold project-link-btn">Voir les Projets</Link>
                   </div>
                 </div>
               </div>
@@ -452,11 +477,11 @@ function Home() {
               <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
                 <div className="realisation-img-wrapper">
                   <img src={dubreka} className="realisation-image" alt="Réalisation 2" loading="lazy" decoding="async" />
-                  <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Résidentiel</span>
+                  <span className="badge position-absolute top-0 start-0 m-3 fs-6 project-badge badge-residentiel">Résidentiel</span>
                   <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                     <h5 className="fw-bold text-white mb-2">Projet Résidentiel à Dubréka Fihaima</h5>
                     <p className="mb-2 text-white-50 small">Dubréka • 2020 – 2021</p>
-                    <Link to="/realisations#dubreka" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                    <Link to="/realisations" className="btn btn-sm btn-light fw-bold project-link-btn">Voir les Projets</Link>
                   </div>
                 </div>
               </div>
@@ -465,11 +490,11 @@ function Home() {
               <div className="realisation-modern-card position-relative overflow-hidden shadow-lg rounded-4 h-100">
                 <div className="realisation-img-wrapper">
                   <img src={nongo} className="realisation-image" alt="Réalisation 3" loading="lazy" decoding="async" />
-                  <span className="badge position-absolute top-0 start-0 m-3 fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Mixte</span>
+                  <span className="badge position-absolute top-0 start-0 m-3 fs-6 project-badge badge-mixte">Mixte</span>
                   <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                     <h5 className="fw-bold text-white mb-2">Immeuble R+2 & Rénovation Privée</h5>
                     <p className="mb-2 text-white-50 small">Ansoumaniah & Nongo • 2018 – 2024</p>
-                    <Link to="/realisations#renovation" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                    <Link to="/realisations" className="btn btn-sm btn-light fw-bold project-link-btn">Voir les Projets</Link>
                   </div>
                 </div>
               </div>
@@ -479,19 +504,19 @@ function Home() {
       </section>
 
       {/* Section contact avec fond uni */}
-      <section className="contact-section text-center py-5 my-md-5 section-alt-blue" data-aos="fade-up">
+      <section className="contact-section home-contact text-center py-5 my-md-5 section-alt-blue" data-aos="fade-up" data-aos-delay="150">
         <div className="container">
-          <div className="row">
+          <div className="row contact-row">
             <div className="col-md-6 mx-auto py-3">
               <h2 className="mb-4 display-5 fw-bold text-white">Prêt à Construire Votre Prochain Projet ?</h2>
-              <p className="mb-4 lead text-white">
+              <p className="mb-4 lead text-white contact-lead">
                 Donnez vie à vos idées avec une équipe fiable et réactive.
                 Nous vous accompagnons de l’étude jusqu’à la livraison, avec un suivi clair et transparent.
               </p>
-              <Link to="/contact" className="btn btn-custom btn-lg mt-3">Contactez‑Nous</Link>
+              <Link to="/contact" className="btn btn-custom btn-lg mt-3 contact-cta-btn">Contactez‑Nous</Link>
             </div>
             <div className="col-md-6 mx-auto">
-              <div className="map-frame shadow-lg">
+              <div className="map-frame map-frame-premium shadow-lg">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15758.121696245131!2d-13.628965751911964!3d9.695383188582042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfa27e997a9f936f%3A0xc39115c2d3858055!2sCoyah%2C%20Guin%C3%A9e!5e0!3m2!1sfr!2sca!4v1701547746419!5m2!1sfr!2sca"
                   title="Carte ECG PLUS - Coyah"
@@ -507,21 +532,21 @@ function Home() {
       </section>
 
       {/* Section Témoignages & Confiance */}
-      <section className="testimonials-section py-5 section-alt-white" data-aos="fade-up">
+      <section className="testimonials-section py-5 section-alt-white" data-aos="fade-up" data-aos-delay="200">
         <div className="container">
           <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Ils nous font confiance</h2>
           <div className="row g-4">
             <div className="col-md-4">
-              <div className="testimonial-card h-100 p-4 bg-white rounded-4 shadow-lg border-0">
+              <div className="testimonial-card home-testimonial h-100 p-4 bg-white rounded-4 shadow-lg border-0">
                 <div className="testimonial-content mb-3">
-                  <p className="mb-3 fst-italic">
+                  <p className="mb-3 testimonial-quote">
                     "ECG PLUS a réalisé notre complexe résidentiel avec une qualité exceptionnelle.
                     Leur équipe professionnelle et leur respect des délais nous ont pleinement satisfaits."
                   </p>
                 </div>
                 <div className="testimonial-author d-flex align-items-center">
                   <div className="author-avatar me-3">
-                    <div className="avatar-circle avatar-residentiel text-white rounded-circle d-flex align-items-center justify-content-center">
+                    <div className="avatar-circle avatar-soft avatar-residentiel text-white rounded-circle d-flex align-items-center justify-content-center">
                       <i className="bi bi-person-fill"></i>
                     </div>
                   </div>
@@ -534,16 +559,16 @@ function Home() {
             </div>
 
             <div className="col-md-4">
-              <div className="testimonial-card h-100 p-4 bg-white rounded-4 shadow-lg border-0">
+              <div className="testimonial-card home-testimonial h-100 p-4 bg-white rounded-4 shadow-lg border-0">
                 <div className="testimonial-content mb-3">
-                  <p className="mb-3 fst-italic">
+                  <p className="mb-3 testimonial-quote">
                     "Pour nos installations minières, ECG PLUS a fait preuve d'une expertise remarquable
                     dans la construction métallique et les systèmes électriques. Travail de qualité supérieure."
                   </p>
                 </div>
                 <div className="testimonial-author d-flex align-items-center">
                   <div className="author-avatar me-3">
-                    <div className="avatar-circle avatar-industriel text-white rounded-circle d-flex align-items-center justify-content-center">
+                    <div className="avatar-circle avatar-soft avatar-industriel text-white rounded-circle d-flex align-items-center justify-content-center">
                       <i className="bi bi-building"></i>
                     </div>
                   </div>
@@ -556,16 +581,16 @@ function Home() {
             </div>
 
             <div className="col-md-4">
-              <div className="testimonial-card h-100 p-4 bg-white rounded-4 shadow-lg border-0">
+              <div className="testimonial-card home-testimonial h-100 p-4 bg-white rounded-4 shadow-lg border-0">
                 <div className="testimonial-content mb-3">
-                  <p className="mb-3 fst-italic">
+                  <p className="mb-3 testimonial-quote">
                     "L'expertise technique d'ECG PLUS dans le génie civil et les travaux publics
                     nous a permis de réaliser notre projet d'infrastructure dans les délais impartis."
                   </p>
                 </div>
                 <div className="testimonial-author d-flex align-items-center">
                   <div className="author-avatar me-3">
-                    <div className="avatar-circle avatar-public text-white rounded-circle d-flex align-items-center justify-content-center">
+                    <div className="avatar-circle avatar-soft avatar-public text-white rounded-circle d-flex align-items-center justify-content-center">
                       <i className="bi bi-gear"></i>
                     </div>
                   </div>
@@ -580,16 +605,19 @@ function Home() {
 
           {/* Section CTA Finale */}
           <div className="text-center mt-5">
-            <div className="cta-final cta-banner p-5 text-white rounded-4 shadow-lg">
+            <div className="cta-final cta-banner cta-banner-premium p-5 text-white rounded-4 shadow-lg">
+              <div className="cta-accent">
+                <i className="bi bi-stars"></i>
+              </div>
               <h3 className="mb-3">Prêt à réaliser votre projet ?</h3>
               <p className="lead mb-4 text-white">
                 Parlons de vos objectifs et obtenez une proposition claire, rapide et adaptée à votre budget.
               </p>
               <div className="d-flex justify-content-center gap-3 flex-wrap">
-                <Link to="/contact" className="btn btn-light btn-lg">
+                <Link to="/contact" className="btn btn-light btn-lg cta-btn-primary">
                   <i className="bi bi-envelope me-2"></i>Nous contacter
                 </Link>
-                <Link to="/expertiseservices" className="btn btn-outline-light btn-lg">
+                <Link to="/expertiseservices" className="btn btn-outline-light btn-lg cta-btn-secondary">
                   <i className="bi bi-tools me-2"></i>Nos services
                 </Link>
               </div>

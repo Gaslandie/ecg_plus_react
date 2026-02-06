@@ -68,9 +68,7 @@ const Footer = () => {
                 <i className="bi bi-linkedin"></i>
               </a>
             </div>
-            <a href="#top" className="footer-top-link">
-              <i className="bi bi-arrow-up-short"></i>Retour en haut
-            </a>
+           
           </div>
         </div>
       </div>

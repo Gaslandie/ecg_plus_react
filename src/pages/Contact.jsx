@@ -83,7 +83,8 @@ const Contact = () => {
   <main className="page-without-hero">
 
     {/* Hero & Intro Modernisé */}
-    <section className="hero-section text-center d-flex align-items-center section-alt-white" data-aos="fade-up" data-aos-delay="100">
+    <section className="hero-section hero-section-contact text-center d-flex align-items-center section-alt-white" data-aos="fade-up" data-aos-delay="100">
+      <div className="hero-section-overlay" aria-hidden="true"></div>
       <div className="container position-relative" style={{zIndex: 1}}>
         <h1 className="display-2 fw-bold gradient-text mb-3" data-aos="fade-up">Contactez notre équipe</h1>
         <p className="lead text-dark mb-4">Besoin d'un devis, d'un conseil ou d'un accompagnement sur-mesure ? Notre équipe vous répond rapidement et vous accompagne à chaque étape de votre projet.</p>
@@ -111,7 +112,7 @@ const Contact = () => {
                 <div className="contact-card-icon icon-red">
                   <i className="bi bi-geo-alt-fill"></i>
                 </div>
-                <div className="contact-card-content">
+                <div className="contact-card-content contact-card-content-dark">
                   <h6 className="fw-bold mb-1">Siège Social</h6>
                   <p className="mb-0">MANEAH/PREF. COYAH, République de Guinée</p>
                 </div>

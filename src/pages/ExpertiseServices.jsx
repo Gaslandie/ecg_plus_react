@@ -5,7 +5,7 @@ import ingeelectric from '../assets/img/ingeelectric.jpeg';
 import commerce from '../assets/img/commerce.jpeg';
 
 const ExpertiseServices = () => (
-  <main className="page-without-hero">
+  <main className="page-without-hero expertise-page">
 
     {/* Hero & Intro Modernisé */}
     <section className="hero-section text-center d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">
@@ -65,7 +65,7 @@ const ExpertiseServices = () => (
       <div className="container">
         <h2 className="text-center display-4 fw-bold mb-5">Nos 4 Piliers d'Action</h2>
 
-        <div id="construction" className="expertise-block card shadow-lg mb-5 text-white action-card action-card-alt" data-aos="fade-up">
+        <div id="construction" className="expertise-block card shadow-lg mb-5 action-card action-card-alt" data-aos="fade-up">
           <div className="card-body p-5">
             <h3 className="card-title fw-bold mb-4">
               <i className="bi bi-bricks me-3 icon-red action-icon"></i> 1. Construction Générale & Travaux Publics
@@ -121,7 +121,7 @@ const ExpertiseServices = () => (
           </div>
         </div>
 
-        <div id="multitechnique" className="expertise-block card shadow-lg mb-5 text-white action-card action-card-alt" data-aos="fade-up">
+        <div id="multitechnique" className="expertise-block card shadow-lg mb-5 action-card action-card-alt" data-aos="fade-up">
           <div className="card-body p-5">
             <h3 className="card-title fw-bold mb-4">
               <i className="bi bi-gear-fill me-3 icon-green action-icon"></i> 3. Solutions Multi-techniques et Industrie

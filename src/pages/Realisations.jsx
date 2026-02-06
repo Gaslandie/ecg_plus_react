@@ -34,7 +34,8 @@ function Realisations() {
     <main className="page-without-hero">
 
     {/* Hero & Intro Modernisé */}
-    <section className="hero-section text-center d-flex align-items-center section-alt-white" data-aos="fade-up" data-aos-delay="100">
+    <section className="hero-section hero-section-realisations text-center d-flex align-items-center section-alt-white" data-aos="fade-up" data-aos-delay="100">
+      <div className="hero-section-overlay" aria-hidden="true"></div>
       <div className="container position-relative" style={{ zIndex: 1 }}>
         <h1 className="display-2 fw-bold gradient-text mb-3" data-aos="fade-up">Nos Réalisations</h1>
         <p className="lead text-dark mb-4">Plus de 25 projets livrés en 18 ans, dans toutes les régions guinéennes et la sous-région. Notre expertise s'exprime à travers des ouvrages publics, résidentiels, industriels et des rénovations majeures.</p>
@@ -123,7 +124,7 @@ function Realisations() {
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                   <h5 className="fw-bold text-white mb-2">Bibliothèque Municipale de Kankan</h5>
                   <p className="mb-2 text-white-50 small">Kankan • 2023</p>
-                  <Link to="/realisations#kankan" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
                 </div>
               </div>
             </div>
@@ -137,7 +138,7 @@ function Realisations() {
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                   <h5 className="fw-bold text-white mb-2">Résidence Privée Dubréka Fihaima</h5>
                   <p className="mb-2 text-white-50 small">Dubréka • 2020 - 2021</p>
-                  <Link to="/realisations#dubreka" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
                 </div>
               </div>
             </div>
@@ -151,7 +152,7 @@ function Realisations() {
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                   <h5 className="fw-bold text-white mb-2">Projet Kagbelen Dondolikhouré</h5>
                   <p className="mb-2 text-white-50 small">Kagbelen • Construction durable</p>
-                  <Link to="/realisations#kagbelen" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
                 </div>
               </div>
             </div>
@@ -165,7 +166,7 @@ function Realisations() {
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                   <h5 className="fw-bold text-white mb-2">Conceptions & Modélisations R+4</h5>
                   <p className="mb-2 text-white-50 small">Optimisation structurelle</p>
-                  <Link to="/realisations#r4" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
                 </div>
               </div>
             </div>
@@ -179,7 +180,7 @@ function Realisations() {
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                   <h5 className="fw-bold text-white mb-2">Hangars & Bâtiments Logistiques</h5>
                   <p className="mb-2 text-white-50 small">Zone industrielle • Construction métallique</p>
-                  <Link to="/realisations#hangar" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
                 </div>
               </div>
             </div>
@@ -193,7 +194,7 @@ function Realisations() {
                 <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                   <h5 className="fw-bold text-white mb-2">Immeuble R+2 Ansoumaniah</h5>
                   <p className="mb-2 text-white-50 small">Cimenterie • 2023 - 2024</p>
-                  <Link to="/realisations#ansoumania" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
+                  <Link to="/realisations" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
                 </div>
               </div>
             </div>
@@ -248,7 +249,7 @@ function Realisations() {
                 <i className="bi bi-people-fill icon-yellow stats-icon-lg"></i>
               </div>
               <div className="stats-number display-4 fw-bold text-warning mb-2">
-                <span className="stat-value" data-target="25">0</span>
+                <span className="stat-value" data-target="50">0</span>+
               </div>
               <div className="stats-label fw-semibold text-black">Professionnels</div>
               <div className="stats-subtitle small text-muted mt-1">Équipe qualifiée</div>
@@ -482,8 +483,8 @@ function Realisations() {
                   <i className="bi bi-building"></i>
                 </div>
                 <div>
-                  <h6 className="fw-bold mb-0">Direction des Infrastructures</h6>
-                  <small className="text-muted">Client Institutionnel</small>
+                  <h6 className="fw-bold mb-0">Projet Public</h6>
+                  <small className="text-muted">Bibliothèque Municipale de Kankan</small>
                 </div>
               </div>
               <div className="testimonial-stars mb-3">
@@ -494,8 +495,8 @@ function Realisations() {
                 <i className="bi bi-star-fill text-warning"></i>
               </div>
               <blockquote className="blockquote mb-0">
-                <p className="mb-3 fst-italic">"ECG PLUS a démontré une expertise remarquable dans la construction de nos infrastructures publiques. Leur respect des délais et leur qualité de travail sont exemplaires."</p>
-                <footer className="blockquote-footer text-end testimonial-signature">Direction des Infrastructures, 2024</footer>
+                <p className="mb-3 fst-italic">"La Bibliothèque Municipale de Kankan a été livrée dans les délais, avec une qualité d’exécution exemplaire et un suivi rigoureux du chantier."</p>
+                <footer className="blockquote-footer text-end testimonial-signature">Kankan, 2023</footer>
               </blockquote>
             </div>
           </div>
@@ -507,8 +508,8 @@ function Realisations() {
                   <i className="bi bi-house"></i>
                 </div>
                 <div>
-                  <h6 className="fw-bold mb-0">Client Particulier</h6>
-                  <small className="text-muted">Villa R+1 Dubréka</small>
+                  <h6 className="fw-bold mb-0">Client Résidentiel</h6>
+                  <small className="text-muted">Résidence Privée Dubréka Fihaima</small>
                 </div>
               </div>
               <div className="testimonial-stars mb-3">
@@ -519,8 +520,8 @@ function Realisations() {
                 <i className="bi bi-star-fill text-warning"></i>
               </div>
               <blockquote className="blockquote mb-0">
-                <p className="mb-3 fst-italic">"De la conception à la livraison, ECG PLUS nous a accompagnés avec professionnalisme. Notre villa répond exactement à nos attentes et le chantier s'est déroulé sans accroc."</p>
-                <footer className="blockquote-footer text-end testimonial-signature">Famille Diallo, 2023</footer>
+                <p className="mb-3 fst-italic">"Notre résidence à Dubréka a été réalisée avec soin. L’équipe a assuré un accompagnement complet, des études à la livraison."</p>
+                <footer className="blockquote-footer text-end testimonial-signature">Dubréka, 2020 - 2021</footer>
               </blockquote>
             </div>
           </div>
@@ -532,8 +533,8 @@ function Realisations() {
                   <i className="bi bi-factory"></i>
                 </div>
                 <div>
-                  <h6 className="fw-bold mb-0">Entreprise Industrielle</h6>
-                  <small className="text-muted">Hangar Logistique</small>
+                  <h6 className="fw-bold mb-0">Projet Industriel</h6>
+                  <small className="text-muted">Hangars & Bâtiments Logistiques</small>
                 </div>
               </div>
               <div className="testimonial-stars mb-3">
@@ -544,8 +545,8 @@ function Realisations() {
                 <i className="bi bi-star-fill text-warning"></i>
               </div>
               <blockquote className="blockquote mb-0">
-                <p className="mb-3 fst-italic">"Pour notre extension industrielle, ECG PLUS a livré un hangar métallique de qualité supérieure. Leur expertise en construction industrielle est indéniable."</p>
-                <footer className="blockquote-footer text-end testimonial-signature">Société ABC Industries, 2024</footer>
+                <p className="mb-3 fst-italic">"Le hangar logistique a été livré avec une structure métallique robuste et des finitions soignées, parfaitement adaptées à nos besoins industriels."</p>
+                <footer className="blockquote-footer text-end testimonial-signature">Zone industrielle, 2023 - 2024</footer>
               </blockquote>
             </div>
           </div>

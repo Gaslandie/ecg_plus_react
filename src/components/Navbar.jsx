@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/img/logo.jpeg';
+import TopBar from './TopBar';
 import '../assets/css/style.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [topBarHidden, setTopBarHidden] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
       const scrollTop = window.scrollY || 0;
       setIsScrolled(scrollTop > 20);
+      setTopBarHidden(scrollTop > 80);
       const doc = document.documentElement;
       const scrollHeight = doc.scrollHeight - doc.clientHeight;
       const progress = scrollHeight > 0 ? Math.min((scrollTop / scrollHeight) * 100, 100) : 0;
@@ -53,7 +56,9 @@ const Navbar = () => {
   };
 
   return (
-  <nav className={`navbar navbar-expand-lg navbar-dark fixed-top${isScrolled ? ' navbar-scrolled' : ''}`} data-aos="fade-down" role="navigation" aria-label="Main navigation">
+  <>
+  <TopBar hidden={topBarHidden} />
+  <nav className={`navbar navbar-expand-lg navbar-dark fixed-top${isScrolled ? ' navbar-scrolled' : ''}${topBarHidden ? ' no-topbar' : ''}`} role="navigation" aria-label="Main navigation">
     <div className={`navbar-backdrop${menuOpen ? ' show' : ''}`} onClick={handleNavClick} aria-hidden="true"></div>
     <div className="container-fluid d-flex justify-content-between">
       <Link className="navbar-brand d-flex align-items-center" to="/" aria-label="Accueil">
@@ -98,7 +103,11 @@ const Navbar = () => {
     <div className="navbar-progress" aria-hidden="true">
       <span style={{ width: `${scrollProgress}%` }}></span>
     </div>
+    <div className="page-progress-pill" aria-hidden="true">
+      <span style={{ width: `${scrollProgress}%` }}></span>
+    </div>
   </nav>
+  </>
   );
 };
 
