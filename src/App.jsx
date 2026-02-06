@@ -1,7 +1,7 @@
 
 
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -15,6 +15,7 @@ import logo from './assets/img/logo.jpeg';
 
 function App() {
   const location = useLocation();
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -60,6 +61,15 @@ function App() {
     return () => {
       window.removeEventListener('resize', setNavbarHeight);
     };
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShowBackToTop(window.scrollY > 400);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
@@ -191,6 +201,14 @@ function App() {
         </Routes>
       </div>
       <Footer />
+      <button
+        type="button"
+        className={`back-to-top${showBackToTop ? ' show' : ''}`}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Retour en haut"
+      >
+        ↑
+      </button>
 
       <div className="modal fade" id="logoModal" tabIndex="-1" aria-labelledby="logoModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-xl">

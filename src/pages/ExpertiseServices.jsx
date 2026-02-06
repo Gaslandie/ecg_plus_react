@@ -41,18 +41,21 @@ const ExpertiseServices = () => (
       <div className="container">
         <div className="row g-4 align-items-center">
           <div className="col-md-6">
-            <div className="team-box p-4 rounded shadow-sm bg-white h-100">
+            <div className="team-box p-4 rounded shadow-sm bg-white h-100 identity-card">
               <h3 className="fw-bold mb-3 text-primary">Nos Moyens Humains</h3>
               <p>Notre équipe est composée d’ingénieurs, techniciens, ouvriers qualifiés, conseillers et gestionnaires, tous animés par la passion de l’excellence et du service client.</p>
-              <ul className="list-unstyled mb-0">
-                <li><i className="bi bi-person-badge-fill text-secondary me-2"></i> Ingénieurs & techniciens spécialisés</li>
-                <li><i className="bi bi-tools text-secondary me-2"></i> Ouvriers qualifiés & équipe de dépannage</li>
-                <li><i className="bi bi-briefcase-fill text-secondary me-2"></i> Gestionnaires & administrateurs</li>
+              <ul className="list-unstyled mb-0 team-list">
+                <li><i className="bi bi-person-badge-fill icon-red me-2"></i> Ingénieurs & techniciens spécialisés</li>
+                <li><i className="bi bi-tools icon-yellow me-2"></i> Ouvriers qualifiés & équipe de dépannage</li>
+                <li><i className="bi bi-briefcase-fill icon-green me-2"></i> Gestionnaires & administrateurs</li>
               </ul>
             </div>
           </div>
           <div className="col-md-6 text-center">
-            <img src={batiment} alt="Notre équipe ECG PLUS" className="img-fluid rounded shadow-lg" style={{maxHeight: '320px', objectFit: 'cover'}} />
+            <div className="history-image-frame">
+              <img src={batiment} alt="Notre équipe ECG PLUS" className="history-image" loading="lazy" decoding="async" />
+              <div className="history-image-overlay"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -62,10 +65,10 @@ const ExpertiseServices = () => (
       <div className="container">
         <h2 className="text-center display-4 fw-bold mb-5">Nos 4 Piliers d'Action</h2>
 
-        <div id="construction" className="expertise-block card shadow-lg mb-5 text-white" data-aos="fade-up">
+        <div id="construction" className="expertise-block card shadow-lg mb-5 text-white action-card action-card-alt" data-aos="fade-up">
           <div className="card-body p-5">
             <h3 className="card-title fw-bold mb-4">
-              <i className="bi bi-bricks me-3"></i> 1. Construction Générale & Travaux Publics
+              <i className="bi bi-bricks me-3 icon-red action-icon"></i> 1. Construction Générale & Travaux Publics
             </h3>
             <div className="row align-items-center">
               <div className="col-lg-7">
@@ -81,16 +84,19 @@ const ExpertiseServices = () => (
                 </ul>
               </div>
               <div className="col-lg-5 text-center mt-4 mt-lg-0">
-                <img src={batiment} alt="Construction BTP" className="img-fluid rounded shadow" />
+                <div className="action-image-frame">
+                  <img src={batiment} alt="Construction BTP" className="action-image" loading="lazy" decoding="async" />
+                  <div className="action-image-overlay"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div id="ingenierie" className="expertise-block card shadow-lg mb-5" data-aos="fade-up">
+        <div id="ingenierie" className="expertise-block card shadow-lg mb-5 action-card" data-aos="fade-up">
           <div className="card-body p-5">
             <h3 className="card-title fw-bold mb-4">
-              <i className="bi bi-lightbulb-fill me-3 text-accent"></i> 2. Ingénierie Électrique & Systèmes Autonomes
+              <i className="bi bi-lightbulb-fill me-3 icon-yellow action-icon"></i> 2. Ingénierie Électrique & Systèmes Autonomes
             </h3>
             <div className="row align-items-center flex-row-reverse">
               <div className="col-lg-7">
@@ -106,16 +112,19 @@ const ExpertiseServices = () => (
                 </ul>
               </div>
               <div className="col-lg-5 text-center mt-4 mt-lg-0">
-                <img src={ingeelectric} alt="Système Solaire" className="img-fluid rounded shadow" />
+                <div className="action-image-frame">
+                  <img src={ingeelectric} alt="Système Solaire" className="action-image" loading="lazy" decoding="async" />
+                  <div className="action-image-overlay"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div id="multitechnique" className="expertise-block card shadow-lg mb-5 text-white" data-aos="fade-up">
+        <div id="multitechnique" className="expertise-block card shadow-lg mb-5 text-white action-card action-card-alt" data-aos="fade-up">
           <div className="card-body p-5">
             <h3 className="card-title fw-bold mb-4">
-              <i className="bi bi-gear-fill me-3 text-secondary"></i> 3. Solutions Multi-techniques et Industrie
+              <i className="bi bi-gear-fill me-3 icon-green action-icon"></i> 3. Solutions Multi-techniques et Industrie
             </h3>
             <div className="row align-items-center">
               <div className="col-lg-7">
@@ -131,16 +140,19 @@ const ExpertiseServices = () => (
                 </ul>
               </div>
               <div className="col-lg-5 text-center mt-4 mt-lg-0">
-                <img src={ingeelectric} alt="Système Solaire" className="img-fluid rounded shadow" />
+                <div className="action-image-frame">
+                  <img src={ingeelectric} alt="Système Solaire" className="action-image" loading="lazy" decoding="async" />
+                  <div className="action-image-overlay"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div id="etudes" className="expertise-block card shadow-lg mb-5" data-aos="fade-up">
+        <div id="etudes" className="expertise-block card shadow-lg mb-5 action-card" data-aos="fade-up">
           <div className="card-body p-5">
             <h3 className="card-title fw-bold mb-4">
-              <i className="bi bi-file-earmark-check-fill me-3 text-accent"></i> 4. Étude, Expertise Bâtiment & Commerce Général
+              <i className="bi bi-file-earmark-check-fill me-3 icon-red action-icon"></i> 4. Étude, Expertise Bâtiment & Commerce Général
             </h3>
             <div className="row align-items-center flex-row-reverse">
               <div className="col-lg-7">
@@ -156,7 +168,10 @@ const ExpertiseServices = () => (
                 </ul>
               </div>
               <div className="col-lg-5 text-center mt-4 mt-lg-0">
-                <img src={commerce} alt="Bureau d'études" className="img-fluid rounded shadow" />
+                <div className="action-image-frame">
+                  <img src={commerce} alt="Bureau d'études" className="action-image" loading="lazy" decoding="async" />
+                  <div className="action-image-overlay"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -183,37 +198,37 @@ const ExpertiseServices = () => (
           </div>
         </div>
         <div className="row g-4">
-          <div className="col-md-6 col-lg-3" data-aos="fade-up">
-            <div className="certification-card bg-white text-dark p-4 rounded shadow-lg h-100 text-center">
+          <div className="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+            <div className="certification-card bg-white text-dark p-4 rounded-4 shadow-lg h-100 text-center">
               <div className="certification-icon mb-3">
-                <i className="bi bi-award-fill text-primary" style={{fontSize: '3rem'}}></i>
+                <i className="bi bi-award-fill icon-red cert-icon-anim" style={{fontSize: '3rem'}}></i>
               </div>
               <h5 className="fw-bold mb-2">Agrément N°1</h5>
               <p className="small mb-0">Agrément du Ministère des Travaux Publics pour les travaux de construction</p>
             </div>
           </div>
           <div className="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div className="certification-card bg-white text-dark p-4 rounded shadow-lg h-100 text-center">
+            <div className="certification-card bg-white text-dark p-4 rounded-4 shadow-lg h-100 text-center">
               <div className="certification-icon mb-3">
-                <i className="bi bi-shield-check text-success" style={{fontSize: '3rem'}}></i>
+                <i className="bi bi-shield-check icon-yellow cert-icon-anim" style={{fontSize: '3rem'}}></i>
               </div>
               <h5 className="fw-bold mb-2">RCCM</h5>
               <p className="small mb-0">Registre du Commerce et du Crédit Mobilier - N° RCCM/GC-CYA/2023-B-12345</p>
             </div>
           </div>
           <div className="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-            <div className="certification-card bg-white text-dark p-4 rounded shadow-lg h-100 text-center">
+            <div className="certification-card bg-white text-dark p-4 rounded-4 shadow-lg h-100 text-center">
               <div className="certification-icon mb-3">
-                <i className="bi bi-building text-warning" style={{fontSize: '3rem'}}></i>
+                <i className="bi bi-building icon-green cert-icon-anim" style={{fontSize: '3rem'}}></i>
               </div>
               <h5 className="fw-bold mb-2">NINEA</h5>
               <p className="small mb-0">Numéro d'Identification Nationale des Entreprises et Associations</p>
             </div>
           </div>
           <div className="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-            <div className="certification-card bg-white text-dark p-4 rounded shadow-lg h-100 text-center">
+            <div className="certification-card bg-white text-dark p-4 rounded-4 shadow-lg h-100 text-center">
               <div className="certification-icon mb-3">
-                <i className="bi bi-check-circle-fill text-info" style={{fontSize: '3rem'}}></i>
+                <i className="bi bi-check-circle-fill icon-red cert-icon-anim" style={{fontSize: '3rem'}}></i>
               </div>
               <h5 className="fw-bold mb-2">Qualifications</h5>
               <p className="small mb-0">Qualifications professionnelles en électricité, génie civil et construction métallique</p>
@@ -229,13 +244,13 @@ const ExpertiseServices = () => (
         <div className="row align-items-center mb-5">
           <div className="col-lg-8 text-center">
             <h2 className="display-5 fw-bold gradient-text mb-3">Moyens Techniques & Équipement</h2>
-            <p className="lead">
+            <p className="lead equipment-lead">
               ECG PLUS dispose d'un parc matériel moderne et adapté aux chantiers les plus exigeants,
               garantissant qualité, sécurité et respect des délais.
             </p>
           </div>
           <div className="col-lg-4 text-center">
-            <i className="bi bi-tools text-primary" style={{fontSize: '5rem'}}></i>
+            <i className="bi bi-tools equipment-header-icon" style={{fontSize: '5rem'}}></i>
           </div>
         </div>
 
@@ -243,14 +258,14 @@ const ExpertiseServices = () => (
           <div className="col-md-6 col-lg-4" data-aos="fade-up">
             <div className="equipment-card bg-white p-4 rounded shadow-lg h-100">
               <div className="equipment-icon text-center mb-3">
-                <i className="bi bi-truck text-primary" style={{fontSize: '2.5rem'}}></i>
+                <i className="bi bi-truck icon-red equipment-pulse" style={{fontSize: '2.5rem'}}></i>
               </div>
               <h5 className="fw-bold text-center mb-3">Flotte Automobile</h5>
-              <ul className="list-unstyled">
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Véhicules utilitaires et pick-up</li>
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Camions de transport de matériaux</li>
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Engins de chantier légers</li>
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Véhicules de service et dépannage</li>
+              <ul className="list-unstyled equipment-list">
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Véhicules utilitaires et pick-up</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Camions de transport de matériaux</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Engins de chantier légers</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Véhicules de service et dépannage</li>
               </ul>
             </div>
           </div>
@@ -258,14 +273,14 @@ const ExpertiseServices = () => (
           <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div className="equipment-card bg-white p-4 rounded shadow-lg h-100">
               <div className="equipment-icon text-center mb-3">
-                <i className="bi bi-gear-wide-connected text-warning" style={{fontSize: '2.5rem'}}></i>
+                <i className="bi bi-gear-wide-connected icon-yellow equipment-pulse" style={{fontSize: '2.5rem'}}></i>
               </div>
               <h5 className="fw-bold text-center mb-3">Matériel Électrique</h5>
-              <ul className="list-unstyled">
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Groupes électrogènes de toutes puissances</li>
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Panneaux solaires et équipements photovoltaïques</li>
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Outils de mesure et de diagnostic</li>
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Matériel de câblage et d'installation</li>
+              <ul className="list-unstyled equipment-list">
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Groupes électrogènes de toutes puissances</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Panneaux solaires et équipements photovoltaïques</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Outils de mesure et de diagnostic</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Matériel de câblage et d'installation</li>
               </ul>
             </div>
           </div>
@@ -273,14 +288,14 @@ const ExpertiseServices = () => (
           <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div className="equipment-card bg-white p-4 rounded shadow-lg h-100">
               <div className="equipment-icon text-center mb-3">
-                <i className="bi bi-hammer text-danger" style={{fontSize: '2.5rem'}}></i>
+                <i className="bi bi-hammer icon-green equipment-pulse" style={{fontSize: '2.5rem'}}></i>
               </div>
               <h5 className="fw-bold text-center mb-3">Outils & Matériel BTP</h5>
-              <ul className="list-unstyled">
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Outils électriques et pneumatiques</li>
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Échafaudages et matériel de sécurité</li>
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Matériel de levage et manutention</li>
-                <li><i className="bi bi-check-circle-fill text-success me-2"></i> Équipements de protection individuelle</li>
+              <ul className="list-unstyled equipment-list">
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Outils électriques et pneumatiques</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Échafaudages et matériel de sécurité</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Matériel de levage et manutention</li>
+                <li><i className="bi bi-check-circle-fill icon-green me-2"></i> Équipements de protection individuelle</li>
               </ul>
             </div>
           </div>
@@ -298,42 +313,34 @@ const ExpertiseServices = () => (
           </div>
         </div>
 
-        <div className="row g-4">
-          <div className="col-md-6 col-lg-3" data-aos="fade-up">
-            <div className="process-step text-center">
-              <div className="process-number text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px', fontSize: '2rem', fontWeight: 'bold', backgroundColor: 'var(--gas-primary)'}}>
-                1
-              </div>
+        <div className="row g-4 process-timeline">
+          <div className="col-md-6 col-lg-3">
+            <div className="process-step-card text-center" data-aos="fade-up">
+              <div className="process-number-circle">1</div>
               <h5 className="fw-bold mb-2">Étude & Conseil</h5>
               <p className="small">Analyse de vos besoins, études de faisabilité, conseils techniques et élaboration de devis détaillés.</p>
             </div>
           </div>
 
-          <div className="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div className="process-step text-center">
-              <div className="process-number text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px', fontSize: '2rem', fontWeight: 'bold', backgroundColor: 'var(--gas-primary)'}}>
-                2
-              </div>
+          <div className="col-md-6 col-lg-3">
+            <div className="process-step-card text-center" data-aos="fade-up" data-aos-delay="100">
+              <div className="process-number-circle">2</div>
               <h5 className="fw-bold mb-2">Conception</h5>
               <p className="small">Plans techniques, schémas électriques, études de structure et préparation du dossier d'exécution.</p>
             </div>
           </div>
 
-          <div className="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-            <div className="process-step text-center">
-              <div className="process-number text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px', fontSize: '2rem', fontWeight: 'bold', backgroundColor: 'var(--gas-primary)'}}>
-                3
-              </div>
+          <div className="col-md-6 col-lg-3">
+            <div className="process-step-card text-center" data-aos="fade-up" data-aos-delay="200">
+              <div className="process-number-circle">3</div>
               <h5 className="fw-bold mb-2">Réalisation</h5>
               <p className="small">Exécution des travaux selon les normes, suivi qualité, respect des délais et sécurité sur chantier.</p>
             </div>
           </div>
 
-          <div className="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-            <div className="process-step text-center">
-              <div className="process-number text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px', fontSize: '2rem', fontWeight: 'bold', backgroundColor: 'var(--gas-primary)'}}>
-                4
-              </div>
+          <div className="col-md-6 col-lg-3">
+            <div className="process-step-card text-center" data-aos="fade-up" data-aos-delay="300">
+              <div className="process-number-circle">4</div>
               <h5 className="fw-bold mb-2">Maintenance</h5>
               <p className="small">Service après-vente, maintenance préventive, dépannage d'urgence et support technique continu.</p>
             </div>
@@ -353,36 +360,52 @@ const ExpertiseServices = () => (
               avec des garanties solides et une couverture assurance complète.
             </p>
 
-            <div className="guarantee-list">
-              <div className="guarantee-item d-flex align-items-start mb-3">
-                <i className="bi bi-shield-check-fill text-white me-3 mt-1" style={{fontSize: '1.5rem'}}></i>
-                <div>
-                  <h6 className="fw-bold mb-1 text-white">Garantie Décennale</h6>
-                  <p className="small mb-0 text-white">Couverture des dommages compromettant la solidité de l'ouvrage pendant 10 ans.</p>
+            <div className="row g-3">
+              <div className="col-md-6" data-aos="fade-up">
+                <div className="guarantee-card p-3 h-100">
+                  <div className="guarantee-card-icon">
+                    <i className="bi bi-shield-check-fill"></i>
+                  </div>
+                  <div>
+                    <h6 className="fw-bold mb-1 text-white">Garantie Décennale</h6>
+                    <p className="small mb-0 text-white">Couverture des dommages compromettant la solidité de l'ouvrage pendant 10 ans.</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="guarantee-item d-flex align-items-start mb-3">
-                <i className="bi bi-tools text-white me-3 mt-1" style={{fontSize: '1.5rem'}}></i>
-                <div>
-                  <h6 className="fw-bold mb-1 text-white">Garantie Biennale</h6>
-                  <p className="small mb-0 text-white">Couverture des équipements et éléments d'équipement pendant 2 ans.</p>
+              <div className="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div className="guarantee-card p-3 h-100">
+                  <div className="guarantee-card-icon">
+                    <i className="bi bi-tools"></i>
+                  </div>
+                  <div>
+                    <h6 className="fw-bold mb-1 text-white">Garantie Biennale</h6>
+                    <p className="small mb-0 text-white">Couverture des équipements et éléments d'équipement pendant 2 ans.</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="guarantee-item d-flex align-items-start mb-3">
-                <i className="bi bi-clock-fill text-white me-3 mt-1" style={{fontSize: '1.5rem'}}></i>
-                <div>
-                  <h6 className="fw-bold mb-1 text-white">Respect des Délais</h6>
-                  <p className="small mb-0 text-white">Engagement contractuel sur les délais de réalisation avec pénalités de retard.</p>
+              <div className="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div className="guarantee-card p-3 h-100">
+                  <div className="guarantee-card-icon">
+                    <i className="bi bi-clock-fill"></i>
+                  </div>
+                  <div>
+                    <h6 className="fw-bold mb-1 text-white">Respect des Délais</h6>
+                    <p className="small mb-0 text-white">Engagement contractuel sur les délais de réalisation avec pénalités de retard.</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="guarantee-item d-flex align-items-start mb-3">
-                <i className="bi bi-person-check-fill text-white me-3 mt-1" style={{fontSize: '1.5rem'}}></i>
-                <div>
-                  <h6 className="fw-bold mb-1 text-white">Assurance Responsabilité Civile</h6>
-                  <p className="small mb-0 text-white">Couverture complète des risques liés à notre activité professionnelle.</p>
+              <div className="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div className="guarantee-card p-3 h-100">
+                  <div className="guarantee-card-icon">
+                    <i className="bi bi-person-check-fill"></i>
+                  </div>
+                  <div>
+                    <h6 className="fw-bold mb-1 text-white">Assurance Responsabilité Civile</h6>
+                    <p className="small mb-0 text-white">Couverture complète des risques liés à notre activité professionnelle.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -390,10 +413,10 @@ const ExpertiseServices = () => (
 
           <div className="col-lg-6">
             <div className="guarantee-visual text-center">
-              <div className="guarantee-badge text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{width: '150px', height: '150px', backgroundColor: 'var(--gas-primary)'}}>
+              <div className="guarantee-badge text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4">
                 <div className="text-center">
-                  <i className="bi bi-shield-check d-block" style={{fontSize: '3rem'}}></i>
-                  <small className="d-block mt-2">100%<br/>Garantie</small>
+                  <i className="bi bi-shield-check d-block guarantee-badge-icon"></i>
+                  <small className="d-block mt-2"><span className="guarantee-number">100%</span><br/>Garantie</small>
                 </div>
               </div>
               <h5 className="fw-bold mb-3 text-white">Notre Engagement Qualité</h5>
