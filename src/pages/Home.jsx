@@ -1,14 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import bgAccueil from '../assets/img/bgAccueil.jpg';
 import kankan from '../assets/img/kankan.jpeg';
 import dubreka from '../assets/img/dubreka.png';
 import nongo from '../assets/img/nongo.jpeg';
 
 function Home() {
+  React.useEffect(() => {
+    const img = new Image();
+    img.src = bgAccueil;
+  }, []);
+
   return (
     <main className="page-with-hero">
       {/* Section Hero Améliorée */}
-      <header className="hero">
+      <header className="hero" style={{ backgroundImage: `url(${bgAccueil})` }}>
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="hero-text-container" data-aos="fade-up" data-aos-delay="200">
@@ -21,11 +27,11 @@ function Home() {
             </h3>
             <div className="hero-stats" data-aos="fade-up" data-aos-delay="600">
               <div className="stat-item">
-                <span className="stat-number">5+</span>
+                <span className="stat-number">18+</span>
                 <span className="stat-label">Années d'Expérience</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">50+</span>
+                <span className="stat-number">25+</span>
                 <span className="stat-label">Projets Réalisés</span>
               </div>
               <div className="stat-item">
@@ -89,7 +95,7 @@ function Home() {
                     </div>
                     <div className="col-md-4">
                       <div className="stat-box p-3 text-white rounded" style={{backgroundColor: 'var(--gas-primary)'}}>
-                        <h4 className="mb-1">50+</h4>
+                        <h4 className="mb-1">25+</h4>
                         <small>Projets Réalisés</small>
                       </div>
                     </div>
@@ -202,7 +208,7 @@ function Home() {
                   <li><strong>E-mail :</strong> <a href="mailto:contact@ecgplusgn.com" className="text-white">contact@ecgplusgn.com</a></li>
                 <li><strong>Capital social :</strong> 10.000.000 GNF</li>
                 <li><strong>RCCM :</strong> GN.TCC.2021.00364</li>
-                <li><strong>Site web :</strong> <a href="https://ecgplus.com" target="_blank" rel="noopener noreferrer" className="text-white">ecgplus.com</a></li>
+                <li><strong>Site web :</strong> <a href="https://ecgplusgn.com" target="_blank" rel="noopener noreferrer" className="text-white">ecgplusgn.com</a></li>
               </ul>
               <div className="d-flex flex-wrap gap-3 mt-4">
                 <span className="badge fs-6" style={{backgroundColor: 'var(--gas-primary)', color: 'white'}}>Construction</span>
@@ -220,8 +226,6 @@ function Home() {
                   <li><strong>Statut légal :</strong> SARL</li>
                   <li><strong>Capital social :</strong> 10.000.000 GNF</li>
                   <li><strong>Siège social :</strong> Maneah / Pref. Coyah / Guinée</li>
-                  <li><strong>Références bancaires :</strong> FIRSTBANK: 302203000027011</li>
-                  <li><strong>N° Entreprise :</strong> RCCM/GN.TCC.2021.B.00331</li>
                 </ul>
               </div>
             </div>
@@ -319,15 +323,15 @@ function Home() {
                 <div className="team-stats d-flex justify-content-around">
                   <div className="stat text-center">
                     <h4 className="mb-1 text-white">50+</h4>
-                    <small className="text-white-50">Collaborateurs</small>
+                    <small className="text-white">Collaborateurs</small>
                   </div>
                   <div className="stat text-center">
                     <h4 className="mb-1 text-white">18</h4>
-                    <small className="text-white-50">Années d'Expérience</small>
+                    <small className="text-white">Années d'Expérience</small>
                   </div>
                   <div className="stat text-center">
                     <h4 className="mb-1 text-white">100%</h4>
-                    <small className="text-white-50">Engagement</small>
+                    <small className="text-white">Engagement</small>
                   </div>
                 </div>
               </div>
@@ -360,7 +364,7 @@ function Home() {
                   <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                     <h5 className="fw-bold text-white mb-2">Bibliothèque Municipale de Kankan</h5>
                     <p className="mb-2 text-white-50 small">Kankan • 05.2023 – 11.2023</p>
-                    <Link to="/realisations#kankan" className="btn btn-sm btn-light fw-bold">Détails du Projet</Link>
+                    <Link to="/realisations#kankan" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
                   </div>
                 </div>
               </div>
@@ -373,7 +377,7 @@ function Home() {
                   <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                     <h5 className="fw-bold text-white mb-2">Projet Résidentiel à Dubréka Fihaima</h5>
                     <p className="mb-2 text-white-50 small">Dubréka • 2020 – 2021</p>
-                    <Link to="/realisations#dubreka" className="btn btn-sm btn-light fw-bold">Détails du Projet</Link>
+                    <Link to="/realisations#dubreka" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
                   </div>
                 </div>
               </div>
@@ -386,7 +390,7 @@ function Home() {
                   <div className="realisation-overlay d-flex flex-column justify-content-end p-3">
                     <h5 className="fw-bold text-white mb-2">Immeuble R+2 & Rénovation Privée</h5>
                     <p className="mb-2 text-white-50 small">Ansoumaniah & Nongo • 2018 – 2024</p>
-                    <Link to="/realisations#renovation" className="btn btn-sm btn-light fw-bold">Détails du Projet</Link>
+                    <Link to="/realisations#renovation" className="btn btn-sm btn-light fw-bold">Voir les Projets</Link>
                   </div>
                 </div>
               </div>

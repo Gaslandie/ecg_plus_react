@@ -1,8 +1,5 @@
 import ecgbg from '../assets/img/ecgbg.jpeg';
-import batiment from '../assets/img/batiment.jpeg';
-import commerce from '../assets/img/commerce.jpeg';
-import hangar from '../assets/img/hangar.png';
-import nongo from '../assets/img/nongo.jpeg';
+
 
 const Presentation = () => (
   <main className="page-without-hero presentation-page">
@@ -44,46 +41,45 @@ const Presentation = () => (
               <h2 className="text-primary fw-bold mb-4">
                 <i className="bi bi-building me-2"></i>Identité de l'Entreprise
               </h2>
-              <table className="table table-sm table-borderless">
-                <tbody>
-                  <tr>
-                    <td><strong>Raison Sociale :</strong></td>
-                    <td>ECG PLUS SARL</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Statut Légal :</strong></td>
-                    <td>SARL</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Capital Social :</strong></td>
-                    <td>10.000.000 GNF</td>
-                  </tr>
-                  <tr>
-                    <td><strong>RCCM :</strong></td>
-                    <td>GN.TCC.2021.B.00331</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Siège Social :</strong></td>
-                    <td>Manéah / Préfecture de Coyah / Guinée</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Téléphone :</strong></td>
-                    <td>(+224) 623 96 62 78 / 628 33 86 41</td>
-                  </tr>
-                  <tr>
-                    <td><strong>E-mail :</strong></td>
-                    <td>contact@ecgplusgn.com</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Site web :</strong></td>
-                    <td>www.ecgplus.com</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Références Bancaires :</strong></td>
-                    <td>FIRSTBANK: 302203000027011</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="table-responsive">
+                <table className="table table-sm table-borderless mb-0">
+                  <tbody>
+                    <tr>
+                      <td><strong>Raison Sociale :</strong></td>
+                      <td>ECG PLUS SARL</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Statut Légal :</strong></td>
+                      <td>SARL</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Capital Social :</strong></td>
+                      <td>10.000.000 GNF</td>
+                    </tr>
+                    <tr>
+                      <td><strong>RCCM :</strong></td>
+                      <td>GN.TCC.2021.B.00331</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Siège Social :</strong></td>
+                      <td>Manéah / Préfecture de Coyah / Guinée</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Téléphone :</strong></td>
+                      <td>(+224) 623 96 62 78 / 628 33 86 41</td>
+                    </tr>
+                    <tr>
+                      <td><strong>E-mail :</strong></td>
+                      <td>contact@ecgplusgn.com</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Site web :</strong></td>
+                      <td>www.ecgplusgn.com</td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
@@ -103,7 +99,7 @@ const Presentation = () => (
                 <div className="row g-3">
                   <div className="col-6">
                     <div className="stat-card text-center p-3 bg-success text-white rounded-3">
-                      <h4 className="mb-1">50+</h4>
+                      <h4 className="mb-1">25+</h4>
                       <small>Projets Réalisés</small>
                     </div>
                   </div>
@@ -385,7 +381,7 @@ const Presentation = () => (
             </p>
             <ul className="list-unstyled mt-4">
               <li><i className="bi bi-check-circle-fill text-success me-2"></i>18 ans d’expérience</li>
-              <li><i className="bi bi-check-circle-fill text-success me-2"></i>50+ projets réalisés</li>
+              <li><i className="bi bi-check-circle-fill text-success me-2"></i>25+ projets réalisés</li>
               <li><i className="bi bi-check-circle-fill text-success me-2"></i>Équipe multidisciplinaire</li>
             </ul>
           </div>
@@ -447,7 +443,7 @@ const Presentation = () => (
           </div>
           <div className="col-md-3">
             <div className="p-4 bg-white shadow-sm rounded">
-              <div className="display-4 fw-bold text-orange">50+</div>
+              <div className="display-4 fw-bold text-orange">25+</div>
               <div>Projets Livrés</div>
             </div>
           </div>

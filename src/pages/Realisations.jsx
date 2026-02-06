@@ -15,11 +15,11 @@ const Realisations = () => (
     <section className="hero-section text-center d-flex align-items-center section-alt-white" data-aos="fade-up" data-aos-delay="100">
       <div className="container position-relative" style={{ zIndex: 1 }}>
         <h1 className="display-2 fw-bold gradient-text mb-3" data-aos="fade-up">Nos Réalisations</h1>
-        <p className="lead text-dark mb-4">Plus de 50 projets livrés en 18 ans, dans toutes les régions guinéennes et la sous-région. Notre expertise s'exprime à travers des ouvrages publics, résidentiels, industriels et des rénovations majeures.</p>
+        <p className="lead text-dark mb-4">Plus de 25 projets livrés en 18 ans, dans toutes les régions guinéennes et la sous-région. Notre expertise s'exprime à travers des ouvrages publics, résidentiels, industriels et des rénovations majeures.</p>
         <div className="row justify-content-center g-4 mb-4">
           <div className="col-md-3">
             <div className="key-figure-box p-3 rounded shadow-sm bg-white">
-              <div className="display-5 fw-bold text-orange">50+</div>
+              <div className="display-5 fw-bold text-orange">25+</div>
               <div className="fw-semibold">Projets réalisés</div>
             </div>
           </div>
@@ -191,7 +191,7 @@ const Realisations = () => (
               <div className="stats-icon mb-3">
                 <i className="bi bi-building-fill text-primary" style={{fontSize: '3rem'}}></i>
               </div>
-              <div className="stats-number display-4 fw-bold text-primary mb-2">50+</div>
+              <div className="stats-number display-4 fw-bold text-primary mb-2">25+</div>
               <div className="stats-label fw-semibold text-black">Projets Réalisés</div>
               <div className="stats-subtitle small text-muted mt-1">Dans tous les secteurs</div>
             </div>
@@ -202,7 +202,7 @@ const Realisations = () => (
               <div className="stats-icon mb-3">
                 <i className="bi bi-geo-alt-fill text-success" style={{fontSize: '3rem'}}></i>
               </div>
-              <div className="stats-number display-4 fw-bold text-success mb-2">8</div>
+              <div className="stats-number display-4 fw-bold text-success mb-2">4</div>
               <div className="stats-label fw-semibold text-black">Régions Couvertes</div>
               <div className="stats-subtitle small text-muted mt-1">Toute la Guinée</div>
             </div>
@@ -390,7 +390,7 @@ const Realisations = () => (
               <h6 className="fw-bold mb-2 text-black">Zones Côtières</h6>
               <p className="small mb-2">Boffa, Boké, Dubréka</p>
               <div className="region-stats">
-                <span className="badge bg-info">8+ projets</span>
+                <span className="badge bg-info">4+ projets</span>
               </div>
             </div>
           </div>
@@ -429,7 +429,7 @@ const Realisations = () => (
                   <i className="bi bi-building"></i>
                 </div>
                 <div>
-                  <h6 className="fw-bold mb-0">Ministère des Travaux Publics</h6>
+                  <h6 className="fw-bold mb-0">Direction des Infrastructures</h6>
                   <small className="text-muted">Client Institutionnel</small>
                 </div>
               </div>

@@ -1,9 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/img/logo.jpeg';
 import '../assets/css/style.css';
 
-const Navbar = () => (
+const Navbar = () => {
+  const handleNavClick = () => {
+    const navbar = document.getElementById('navbarNav');
+    if (navbar?.classList.contains('show')) {
+      navbar.classList.remove('show');
+    }
+  };
+
+  return (
   <nav className="navbar navbar-expand-lg navbar-dark fixed-top" data-aos="fade-down" role="navigation" aria-label="Main navigation">
     <div className="container-fluid d-flex justify-content-between">
       <Link className="navbar-brand d-flex align-items-center" to="/" aria-label="Accueil">
@@ -16,24 +24,25 @@ const Navbar = () => (
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ms-auto">
           <li className="nav-item mx-2">
-            <Link className="nav-link" to="/">Accueil</Link>
+            <NavLink className="nav-link" to="/" end onClick={handleNavClick}>Accueil</NavLink>
           </li>
           <li className="nav-item mx-2">
-            <Link className="nav-link" to="/presentation">Présentation</Link>
+            <NavLink className="nav-link" to="/presentation" onClick={handleNavClick}>Présentation</NavLink>
           </li>
           <li className="nav-item mx-2">
-            <Link className="nav-link" to="/expertiseservices">Expertise & Services</Link>
+            <NavLink className="nav-link" to="/expertiseservices" onClick={handleNavClick}>Expertise & Services</NavLink>
           </li>
           <li className="nav-item mx-2">
-            <Link className="nav-link" to="/realisations">Réalisations</Link>
+            <NavLink className="nav-link" to="/realisations" onClick={handleNavClick}>Réalisations</NavLink>
           </li>
           <li className="nav-item mx-2">
-            <Link className="nav-link" to="/contact">Contact</Link>
+            <NavLink className="nav-link" to="/contact" onClick={handleNavClick}>Contact</NavLink>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-);
+  );
+};
 
 export default Navbar;

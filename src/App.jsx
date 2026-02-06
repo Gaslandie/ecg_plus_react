@@ -19,9 +19,23 @@ function App() {
   useEffect(() => {
     AOS.init({
       offset: 120,
-      duration: 800,
+      duration: window.matchMedia('(max-width: 768px)').matches ? 650 : 900,
+      easing: 'ease-out-cubic',
       once: false,
     });
+
+    const setNavbarHeight = () => {
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        document.documentElement.style.setProperty(
+          '--navbar-height',
+          `${navbar.getBoundingClientRect().height}px`
+        );
+      }
+    };
+
+    setNavbarHeight();
+    window.addEventListener('resize', setNavbarHeight);
     // Hide preloader after page load
     const preloader = document.getElementById('preloader');
     if (preloader) {
@@ -42,7 +56,121 @@ function App() {
         window.addEventListener('load', hidePreloader);
       }
     }
+
+    return () => {
+      window.removeEventListener('resize', setNavbarHeight);
+    };
   }, []);
+
+  useEffect(() => {
+    const applyAosDefaults = () => {
+      const sections = document.querySelectorAll('section');
+      sections.forEach((section) => {
+        if (!section.hasAttribute('data-aos')) {
+          section.setAttribute('data-aos', 'fade-up');
+          section.setAttribute('data-aos-delay', '100');
+          section.setAttribute('data-aos-duration', '900');
+          section.setAttribute('data-aos-auto', 'true');
+        }
+      });
+    };
+
+    const applyAosMobileOverride = () => {
+      if (!window.matchMedia('(max-width: 768px)').matches) return;
+      const animatedNodes = document.querySelectorAll('[data-aos]');
+      animatedNodes.forEach((node) => {
+        node.setAttribute('data-aos', 'fade-up');
+        node.setAttribute('data-aos-delay', '0');
+        node.setAttribute('data-aos-duration', '650');
+      });
+    };
+
+    const applyAosStagger = () => {
+      if (window.matchMedia('(max-width: 768px)').matches) return;
+      const sections = document.querySelectorAll('section');
+      sections.forEach((section) => {
+        const autoNodes = Array.from(section.querySelectorAll('[data-aos-auto="true"]'))
+          .filter((node) => node.tagName !== 'SECTION');
+        if (!autoNodes.length) return;
+
+        const sectionRect = section.getBoundingClientRect();
+        const items = autoNodes.map((node) => {
+          const rect = node.getBoundingClientRect();
+          const top = rect.top - sectionRect.top;
+          return {
+            node,
+            top,
+            left: rect.left,
+          };
+        });
+
+        const rows = new Map();
+        items.forEach((item) => {
+          const key = Math.round(item.top / 24) * 24;
+          if (!rows.has(key)) rows.set(key, []);
+          rows.get(key).push(item);
+        });
+
+        const rowKeys = Array.from(rows.keys()).sort((a, b) => a - b);
+        rowKeys.forEach((key, rowIndex) => {
+          const rowItems = rows.get(key).sort((a, b) => a.left - b.left);
+          rowItems.forEach((item, colIndex) => {
+            const delay = Math.min(colIndex * 90 + rowIndex * 60, 420);
+            item.node.setAttribute('data-aos-delay', String(delay));
+          });
+        });
+      });
+    };
+
+    const applyAosEnhancements = () => {
+      const selectors = [
+        '.card',
+        '.service-modern-card',
+        '.realisation-modern-card',
+        '.expertise-card',
+        '.expertise-block',
+        '.value-card',
+        '.stat-card',
+        '.presentation-highlight',
+        '.gallery-item',
+        '.equipment-card',
+        '.process-step',
+        '.guarantee-item',
+        '.team-category',
+        '.team-placeholder',
+        '.certification-card',
+        '.stats-card',
+        '.region-card',
+        '.process-timeline-item',
+      ];
+      const animations = ['fade-up', 'zoom-in', 'fade-right', 'fade-left'];
+      const nodes = document.querySelectorAll(selectors.join(','));
+      let index = 0;
+      nodes.forEach((node) => {
+        if (node.hasAttribute('data-aos')) return;
+        const animation = window.matchMedia('(max-width: 768px)').matches ? 'fade-up' : animations[index % animations.length];
+        node.setAttribute('data-aos', animation);
+        node.setAttribute('data-aos-delay', window.matchMedia('(max-width: 768px)').matches ? '0' : '0');
+        node.setAttribute('data-aos-duration', window.matchMedia('(max-width: 768px)').matches ? '650' : '900');
+        node.setAttribute('data-aos-auto', 'true');
+        index += 1;
+      });
+    };
+
+    applyAosDefaults();
+    applyAosEnhancements();
+    applyAosStagger();
+    applyAosMobileOverride();
+    const timer = window.setTimeout(() => {
+      applyAosDefaults();
+      applyAosEnhancements();
+      applyAosStagger();
+      applyAosMobileOverride();
+      AOS.refreshHard();
+    }, 60);
+
+    return () => window.clearTimeout(timer);
+  }, [location.pathname]);
 
   return (
     <>
