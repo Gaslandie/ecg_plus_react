@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import bgAccueil from '../assets/img/bgAccueil.jpg';
 import kankan from '../assets/img/kankan.jpeg';
-import dubreka from '../assets/img/dubreka.png';
+import dubreka from '../assets/img/dubreka.jpg';
 import nongo from '../assets/img/nongo.jpeg';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import '../styles/home.css';

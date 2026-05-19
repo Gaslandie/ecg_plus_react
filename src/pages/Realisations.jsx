@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import kankan from '../assets/img/kankan.jpeg';
-import dubreka from '../assets/img/dubreka.png';
-import kagbelen from '../assets/img/kagbelen.png';
-import r4 from '../assets/img/r+4.png';
-import hangar from '../assets/img/hangar.png';
-import ansoumania from '../assets/img/ansoumania.png';
+import dubreka from '../assets/img/dubreka.jpg';
+import kagbelen from '../assets/img/kagbelen.jpg';
+import r4 from '../assets/img/r+4.jpg';
+import hangar from '../assets/img/hangar.jpg';
+import ansoumania from '../assets/img/ansoumania.jpg';
 import '../styles/realisations.css';
 import '../styles/home.css'; /* pour réutiliser .ecg-project */
 
