@@ -512,7 +512,8 @@ export const translations = {
     },
     expertiseServicesPage: {
       hero: {
-        title: "Nos Domaines d'Expertise",
+        eyebrow: "Expertise",
+        title: "Un savoir-faire complet",
         subtitle:
           "18 ans d'expérience, une équipe multidisciplinaire et des solutions innovantes pour tous vos projets de construction, d'énergie et d'industrie.",
         strengths: "Nos Forces",
@@ -1229,7 +1230,8 @@ export const translations = {
     },
     expertiseServicesPage: {
       hero: {
-        title: "Our Areas of Expertise",
+        eyebrow: "Expertise",
+        title: "A complete craftsmanship",
         subtitle:
           "18 years of experience, a multidisciplinary team, and innovative solutions for all your construction, energy, and industry projects.",
         strengths: "Our Strengths",
