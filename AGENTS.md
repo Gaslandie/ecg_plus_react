@@ -118,7 +118,23 @@ npm run preview  # Prévisualiser le build
    - États hover/focus soignés
    - Transitions de pages éventuelles
 
-## 7. Conventions à respecter
+## 7. Navbar transparente sur les pages avec hero
+
+La navbar est **solide par défaut** mais devient **transparente** quand on est au-dessus d'un hero plein écran et qu'on n'a pas scrollé.
+
+La logique est dans [src/components/Navbar.jsx](src/components/Navbar.jsx) :
+```js
+const isOverHero = location.pathname === '/' && !isScrolled;
+```
+
+**À mettre à jour à chaque nouvelle page refondue avec un hero plein écran** :
+ajouter le pathname à la condition, ex :
+```js
+const heroRoutes = ['/', '/realisations', '/expertiseservices'];
+const isOverHero = heroRoutes.includes(location.pathname) && !isScrolled;
+```
+
+## 8. Conventions à respecter
 
 - **Garder Bootstrap** : ne pas introduire Tailwind, MUI, shadcn, etc.
 - **Style "premium" obligatoire** : sobriété, espaces, qualité photo > densité d'information
@@ -127,7 +143,7 @@ npm run preview  # Prévisualiser le build
 - **Pas de commit auto** : ne jamais `git commit` sans demande explicite de l'utilisateur
 - **Déploiement = push sur main** : tout push sur main part en prod, à utiliser avec attention
 
-## 8. Notes importantes
+## 9. Notes importantes
 
 - L'utilisateur est **novice** sur certaines pratiques DevOps — expliquer les étapes, ne pas supposer.
 - Le déploiement étant automatique, ne pousser sur `main` que du code testé en local.

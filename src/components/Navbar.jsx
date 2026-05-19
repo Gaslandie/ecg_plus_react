@@ -1,34 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/img/logo.jpeg';
-import TopBar from './TopBar';
 import { useI18n } from '../i18n/I18nContext.jsx';
-import '../assets/css/style.css';
 
 const Navbar = () => {
-  const { lang, setLang, t } = useI18n();
+  const { t, lang, setLang } = useI18n();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [topBarHidden, setTopBarHidden] = useState(false);
 
   useEffect(() => {
     let ticking = false;
-    let lastTopBarHidden = false;
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       window.requestAnimationFrame(() => {
         const scrollTop = window.scrollY || 0;
         setIsScrolled(scrollTop > 20);
-        // Hystérésis : cache à 120px, réapparaît à 60px → pas de bounce près du seuil
-        if (!lastTopBarHidden && scrollTop > 120) {
-          lastTopBarHidden = true;
-          setTopBarHidden(true);
-        } else if (lastTopBarHidden && scrollTop < 60) {
-          lastTopBarHidden = false;
-          setTopBarHidden(false);
-        }
         const doc = document.documentElement;
         const scrollHeight = doc.scrollHeight - doc.clientHeight;
         const progress = scrollHeight > 0 ? Math.min((scrollTop / scrollHeight) * 100, 100) : 0;
@@ -41,19 +30,18 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Ferme le menu mobile au changement de route
   useEffect(() => {
-    const navbar = document.getElementById('navbarNav');
-    if (!navbar) return;
-    const handleShown = () => setMenuOpen(true);
-    const handleHidden = () => setMenuOpen(false);
-    navbar.addEventListener('shown.bs.collapse', handleShown);
-    navbar.addEventListener('hidden.bs.collapse', handleHidden);
-    return () => {
-      navbar.removeEventListener('shown.bs.collapse', handleShown);
-      navbar.removeEventListener('hidden.bs.collapse', handleHidden);
-    };
-  }, []);
+    setMenuOpen(false);
+  }, [location.pathname]);
 
+  // Lock body scroll quand menu ouvert
+  useEffect(() => {
+    document.body.classList.toggle('ecg-nav-open', menuOpen);
+    return () => document.body.classList.remove('ecg-nav-open');
+  }, [menuOpen]);
+
+  // Ferme le menu si on passe en desktop
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 992px)');
     const handleChange = (event) => {
@@ -63,95 +51,105 @@ const Navbar = () => {
     return () => mq.removeEventListener('change', handleChange);
   }, []);
 
-  const handleNavClick = () => {
-    const navbar = document.getElementById('navbarNav');
-    if (navbar?.classList.contains('show')) {
-      navbar.classList.remove('show');
-    }
-    setMenuOpen(false);
-  };
+  // Mesure la hauteur réelle de la nav pour --navbar-height
+  useEffect(() => {
+    const updateHeight = () => {
+      const navEl = document.querySelector('.ecg-nav');
+      if (navEl) {
+        document.documentElement.style.setProperty(
+          '--navbar-height',
+          `${navEl.getBoundingClientRect().height}px`
+        );
+      }
+    };
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, [isScrolled]);
+
+  // Transparente uniquement sur la Home, avant scroll (au-dessus du hero)
+  const isOverHero = location.pathname === '/' && !isScrolled;
+
+  const navClasses = [
+    'ecg-nav',
+    isScrolled ? 'is-scrolled' : '',
+    isOverHero ? '' : 'is-solid',
+  ].filter(Boolean).join(' ');
 
   return (
-  <>
-  <TopBar hidden={topBarHidden} />
-  <nav className={`navbar navbar-expand-lg navbar-dark fixed-top${isScrolled ? ' navbar-scrolled' : ''}${topBarHidden ? ' no-topbar' : ''}`} role="navigation" aria-label="Main navigation">
-    <div className={`navbar-backdrop${menuOpen ? ' show' : ''}`} onClick={handleNavClick} aria-hidden="true"></div>
-    <div className="container-fluid d-flex justify-content-between">
-      <Link className="navbar-brand d-flex align-items-center" to="/" aria-label="Accueil">
-        <img src={logo} alt="Logo ECG Plus" className="me-2 logo-navbar-img" loading="lazy" />
-        <span className="navbar-brand-custom text-white fw-bold ms-3">ECG PLUS</span>
-      </Link>
-      <div className="d-flex align-items-center gap-2">
-      <button
-        className={`navbar-toggler premium-toggler${menuOpen ? ' is-open' : ''}`}
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded={menuOpen}
-        aria-label="Toggle navigation"
-      >
-        <span className="toggler-icon" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </button>
-      </div>
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <div className="lang-switch d-lg-none mb-3" role="group" aria-label="Language switch">
+    <nav className={navClasses} role="navigation" aria-label="Main navigation">
+      <div className="ds-container ecg-nav__inner">
+        <Link to="/" className="ecg-nav__brand" aria-label="Accueil">
+          <img src={logo} alt="Logo ECG Plus" className="ecg-nav__logo" loading="lazy" />
+          <span className="ecg-nav__brand-text">ECG PLUS</span>
+        </Link>
+
+        <div className="ecg-nav__actions">
+          <ul id="ecg-nav-menu" className={`ecg-nav__menu${menuOpen ? ' is-open' : ''}`}>
+            <li>
+              <NavLink end to="/" className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
+                {t('nav.home')}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/presentation" className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
+                {t('nav.presentation')}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/expertiseservices" className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
+                {t('nav.expertise')}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/realisations" className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
+                {t('nav.realisations')}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
+                {t('nav.contact')}
+              </NavLink>
+            </li>
+          </ul>
+
+          <div className="ecg-langswitch" role="group" aria-label="Language switch">
+            <button
+              type="button"
+              className={`ecg-langswitch__btn${lang === 'fr' ? ' is-active' : ''}`}
+              onClick={() => setLang('fr')}
+            >
+              FR
+            </button>
+            <span className="ecg-langswitch__sep" aria-hidden="true">/</span>
+            <button
+              type="button"
+              className={`ecg-langswitch__btn${lang === 'en' ? ' is-active' : ''}`}
+              onClick={() => setLang('en')}
+            >
+              EN
+            </button>
+          </div>
+
           <button
             type="button"
-            className={`lang-btn${lang === 'fr' ? ' active' : ''}`}
-            onClick={() => setLang('fr')}
+            className={`ecg-nav__toggler${menuOpen ? ' is-open' : ''}`}
+            aria-controls="ecg-nav-menu"
+            aria-expanded={menuOpen}
+            aria-label="Toggle navigation"
+            onClick={() => setMenuOpen((v) => !v)}
           >
-            FR
-          </button>
-          <button
-            type="button"
-            className={`lang-btn${lang === 'en' ? ' active' : ''}`}
-            onClick={() => setLang('en')}
-          >
-            EN
+            <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>
+            <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>
+            <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>
           </button>
         </div>
-        <ul className="navbar-nav ms-auto nav-gap">
-          <li className="nav-item">
-            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/" end onClick={handleNavClick}>
-              {t('nav.home')}
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/presentation" onClick={handleNavClick}>
-              {t('nav.presentation')}
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/expertiseservices" onClick={handleNavClick}>
-              {t('nav.expertise')}
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/realisations" onClick={handleNavClick}>
-              {t('nav.realisations')}
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/contact" onClick={handleNavClick}>
-              {t('nav.contact')}
-            </NavLink>
-          </li>
-        </ul>
       </div>
-    </div>
-    <div className="navbar-progress" aria-hidden="true">
-      <span style={{ width: `${scrollProgress}%` }}></span>
-    </div>
-    <div className="page-progress-pill" aria-hidden="true">
-      <span style={{ width: `${scrollProgress}%` }}></span>
-    </div>
-  </nav>
-  </>
+
+      <div className="ecg-nav__progress" aria-hidden="true">
+        <span className="ecg-nav__progress-bar" style={{ width: `${scrollProgress}%` }}></span>
+      </div>
+    </nav>
   );
 };
 

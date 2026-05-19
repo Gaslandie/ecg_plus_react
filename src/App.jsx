@@ -26,7 +26,7 @@ function App() {
     });
 
     const setNavbarHeight = () => {
-      const navbar = document.querySelector('.navbar');
+      const navbar = document.querySelector('.ecg-nav');
       if (navbar) {
         document.documentElement.style.setProperty(
           '--navbar-height',
