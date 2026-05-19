@@ -241,7 +241,8 @@ export const translations = {
     },
     realisationsPage: {
       hero: {
-        title: "Nos Réalisations",
+        eyebrow: "Réalisations",
+        title: "Nos chantiers, notre signature",
         subtitle:
           "Plus de 25 projets livrés en 18 ans, dans toutes les régions guinéennes et la sous-région. Notre expertise s'exprime à travers des ouvrages publics, résidentiels, industriels et des rénovations majeures.",
         stats: {
@@ -957,7 +958,8 @@ export const translations = {
     },
     realisationsPage: {
       hero: {
-        title: "Our Projects",
+        eyebrow: "Projects",
+        title: "Our worksites, our signature",
         subtitle:
           "More than 25 projects delivered over 18 years across Guinea and the sub‑region. Our expertise spans public works, residential, industrial projects and major renovations.",
         stats: {

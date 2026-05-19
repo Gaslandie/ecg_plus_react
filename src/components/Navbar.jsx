@@ -67,8 +67,9 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', updateHeight);
   }, [isScrolled]);
 
-  // Transparente uniquement sur la Home, avant scroll (au-dessus du hero)
-  const isOverHero = location.pathname === '/' && !isScrolled;
+  // Pages avec hero plein écran : navbar transparente avant scroll
+  const heroRoutes = ['/', '/realisations'];
+  const isOverHero = heroRoutes.includes(location.pathname) && !isScrolled;
 
   const navClasses = [
     'ecg-nav',
