@@ -1,488 +1,261 @@
-import React, { useEffect } from 'react';
-import ecgbg from '../assets/img/ecgbg.jpeg';
+import React from 'react';
 import { useI18n } from '../i18n/I18nContext.jsx';
-
+import ecgbg from '../assets/img/ecgbg.jpeg';
+import batiment from '../assets/img/batiment.jpeg';
+import '../styles/realisations.css'; /* hero, cta */
+import '../styles/presentation.css';
 
 const Presentation = () => {
   const { t } = useI18n();
-  useEffect(() => {
+
+  // Parallax léger sur le hero
+  React.useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const el = document.querySelector('.experience-number[data-target]');
-    if (!el) return;
-    const target = Number(el.getAttribute('data-target')) || 0;
+    const hero = document.querySelector('.ecg-real-hero');
+    if (!hero || prefersReduced) return;
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY * 0.15;
+        hero.style.backgroundPosition = `center calc(50% + ${y}px)`;
+        ticking = false;
+      });
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Animation compteurs (chiffres identité + équipe)
+  React.useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const counters = document.querySelectorAll('[data-counter]');
+    if (!counters.length) return;
     if (prefersReduced) {
-      el.textContent = String(target);
+      counters.forEach((el) => { el.textContent = el.getAttribute('data-counter'); });
       return;
     }
-    const duration = 1400;
-    const startTime = performance.now();
-    const step = (now) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const value = Math.floor(progress * target);
-      el.textContent = String(value);
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      }
+    const animate = (el) => {
+      const target = Number(el.getAttribute('data-counter')) || 0;
+      const duration = 1800;
+      const startTime = performance.now();
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+      const step = (now) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        el.textContent = String(Math.floor(easeOutCubic(progress) * target));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
     };
-    requestAnimationFrame(step);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   return (
-  <main className="page-without-hero presentation-page">
+    <main className="page-with-hero">
+      {/* HERO plein écran */}
+      <header className="ecg-real-hero" style={{ backgroundImage: `url(${ecgbg})` }}>
+        <div className="ecg-real-hero__overlay" />
+        <div className="ecg-real-hero__content ds-container">
+          <span className="ds-eyebrow ecg-real-hero__eyebrow">{t('presentationPage.hero.eyebrow')}</span>
+          <h1 className="ecg-real-hero__title">{t('presentationPage.hero.title')}</h1>
+          <p className="ecg-real-hero__intro">{t('presentationPage.hero.subtitle')}</p>
+        </div>
+      </header>
 
-    {/* Hero Section Présentation */}
-    <section className="hero-section presentation-hero text-center d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">
-      <div className="container position-relative" style={{ zIndex: 1 }}>
-        <h1 className="display-2 fw-bold mb-3 presentation-hero-title">
-          <span className="hero-line-1">{t('presentationPage.hero.titleLine1')}</span>
-          <span className="hero-line-2">{t('presentationPage.hero.titleLine2')}</span>
-        </h1>
-        <p className="lead text-dark mb-4 presentation-hero-subtitle">{t('presentationPage.hero.subtitle')}</p>
-        <div className="row justify-content-center g-4">
-          <div className="col-md-4">
-            <div className="presentation-highlight p-4 rounded-4 shadow-lg bg-white">
-              <h4 className="fw-bold text-primary mb-2">
-                <i className="bi bi-building me-2 icon-red"></i>{t('presentationPage.hero.cards.constructionTitle')}
-              </h4>
-              <p className="small mb-0">{t('presentationPage.hero.cards.constructionText')}</p>
+      {/* HISTOIRE — récit éditorial 2 cols */}
+      <section className="ecg-history" data-aos="fade-up" data-aos-delay="100">
+        <div className="ds-container">
+          <div className="ecg-history__grid">
+            <div className="ecg-history__text">
+              <span className="ds-eyebrow">{t('presentationPage.presentation.historyTitle')}</span>
+              <h2>{t('presentationPage.presentation.title')}</h2>
+              <hr className="ds-divider" />
+              <p className="ecg-history__lead">{t('presentationPage.presentation.historyLead')}</p>
+              <p>{t('presentationPage.presentation.historyText')}</p>
+
+              <div className="ecg-history__vision">
+                <p className="ecg-history__vision-label">{t('presentationPage.presentation.visionTitle')}</p>
+                <p className="ecg-history__vision-text">{t('presentationPage.presentation.visionText')}</p>
+              </div>
             </div>
-          </div>
-          <div className="col-md-4">
-            <div className="presentation-highlight p-4 rounded-4 shadow-lg bg-white">
-              <h4 className="fw-bold text-primary mb-2">
-                <i className="bi bi-lightning-charge me-2 icon-yellow"></i>{t('presentationPage.hero.cards.energyTitle')}
-              </h4>
-              <p className="small mb-0">{t('presentationPage.hero.cards.energyText')}</p>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="presentation-highlight p-4 rounded-4 shadow-lg bg-white">
-              <h4 className="fw-bold text-primary mb-2">
-                <i className="bi bi-tools me-2 icon-green"></i>{t('presentationPage.hero.cards.civilTitle')}
-              </h4>
-              <p className="small mb-0">{t('presentationPage.hero.cards.civilText')}</p>
+            <div className="ecg-history__visual">
+              <img className="ecg-history__img" src={batiment} alt="ECG PLUS chantier" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* Section Identité Complète */}
-    <section id="identite" className="identity-section py-5" style={{backgroundColor: 'var(--gas-primary)'}}>
-      <div className="container">
-        <div className="row align-items-center g-5">
-          <div className="col-lg-6">
-            <div className="plaque-info shadow-lg p-4 rounded border-start border-primary border-5 bg-white identity-card">
-              <h2 className="text-primary fw-bold mb-4">
-                <i className="bi bi-building me-2"></i>{t('presentationPage.identity.title')}
-              </h2>
-              <div className="table-responsive">
-                <table className="table table-sm table-borderless mb-0 identity-table">
-                  <tbody>
-                    <tr>
-                      <td><i className="bi bi-building me-2 text-primary"></i><strong>{t('presentationPage.identity.companyName')} :</strong></td>
-                      <td>ECG PLUS SARL</td>
-                    </tr>
-                    <tr>
-                      <td><i className="bi bi-shield-check me-2 text-primary"></i><strong>{t('presentationPage.identity.legalStatus')} :</strong></td>
-                      <td>SARL</td>
-                    </tr>
-                    <tr>
-                      <td><i className="bi bi-cash-stack me-2 text-primary"></i><strong>{t('presentationPage.identity.capital')} :</strong></td>
-                      <td>10.000.000 GNF</td>
-                    </tr>
-                    <tr>
-                      <td><i className="bi bi-file-earmark-text me-2 text-primary"></i><strong>{t('presentationPage.identity.rccm')} :</strong></td>
-                      <td>GN.TCC.2021.B.00331</td>
-                    </tr>
-                    <tr>
-                      <td><i className="bi bi-geo-alt me-2 text-primary"></i><strong>{t('presentationPage.identity.headOffice')} :</strong></td>
-                      <td>Manéah / Préfecture de Coyah / Guinée</td>
-                    </tr>
-                    <tr>
-                      <td><i className="bi bi-telephone me-2 text-primary"></i><strong>{t('presentationPage.identity.phone')} :</strong></td>
-                      <td>(+224) 623 96 62 78 / 628 33 86 41</td>
-                    </tr>
-                    <tr>
-                      <td><i className="bi bi-envelope me-2 text-primary"></i><strong>{t('presentationPage.identity.email')} :</strong></td>
-                      <td>contact@ecgplusgn.com</td>
-                    </tr>
-                    <tr>
-                      <td><i className="bi bi-globe me-2 text-primary"></i><strong>{t('presentationPage.identity.website')} :</strong></td>
-                      <td>www.ecgplusgn.com</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+      {/* IDENTITÉ SOCIÉTÉ — table + chiffres */}
+      <section id="identite" className="ecg-identity" data-aos="fade-up" data-aos-delay="100">
+        <div className="ds-container">
+          <div className="ecg-identity__head">
+            <span className="ds-eyebrow">{t('presentationPage.identity.title')}</span>
+            <h2>{t('presentationPage.identity.title')}</h2>
+            <hr className="ds-divider ds-divider--center" />
           </div>
 
-          <div className="col-lg-6">
-            <div className="experience-showcase">
-              <div className="experience-badge d-flex align-items-center p-4 mb-4 text-white rounded-4 shadow-lg">
-                <div className="number display-2 fw-bold me-4 experience-number" data-target="18">0</div>
-                <div>
-                  <h3 className="fw-bold mb-1">{t('presentationPage.experience.years')}</h3>
-                  <p className="mb-0 opacity-75">
-                    {t('presentationPage.experience.subtitle')}
-                  </p>
-                </div>
+          <div className="ecg-identity__grid">
+            <div className="ecg-identity__table">
+              <div className="ecg-identity__row">
+                <span className="ecg-identity__label">{t('presentationPage.identity.companyName')}</span>
+                <span className="ecg-identity__value">ECG PLUS SARL</span>
               </div>
+              <div className="ecg-identity__row">
+                <span className="ecg-identity__label">{t('presentationPage.identity.legalStatus')}</span>
+                <span className="ecg-identity__value">SARL</span>
+              </div>
+              <div className="ecg-identity__row">
+                <span className="ecg-identity__label">{t('presentationPage.identity.capital')}</span>
+                <span className="ecg-identity__value">10.000.000 GNF</span>
+              </div>
+              <div className="ecg-identity__row">
+                <span className="ecg-identity__label">{t('presentationPage.identity.rccm')}</span>
+                <span className="ecg-identity__value">GN.TCC.2021.B.00331</span>
+              </div>
+              <div className="ecg-identity__row">
+                <span className="ecg-identity__label">{t('presentationPage.identity.headOffice')}</span>
+                <span className="ecg-identity__value">Manéah · Préfecture de Coyah · Guinée</span>
+              </div>
+              <div className="ecg-identity__row">
+                <span className="ecg-identity__label">{t('presentationPage.identity.phone')}</span>
+                <span className="ecg-identity__value">
+                  <a href="tel:+224623966278">+224 623 96 62 78</a> · <a href="tel:+224628338641">+224 628 33 86 41</a>
+                </span>
+              </div>
+              <div className="ecg-identity__row">
+                <span className="ecg-identity__label">{t('presentationPage.identity.email')}</span>
+                <span className="ecg-identity__value">
+                  <a href="mailto:contact@ecgplusgn.com">contact@ecgplusgn.com</a>
+                </span>
+              </div>
+              <div className="ecg-identity__row">
+                <span className="ecg-identity__label">{t('presentationPage.identity.website')}</span>
+                <span className="ecg-identity__value">
+                  <a href="https://ecgplusgn.com" target="_blank" rel="noopener noreferrer">ecgplusgn.com</a>
+                </span>
+              </div>
+            </div>
 
-              <div className="stats-grid">
-                <div className="row g-3">
-                  <div className="col-6">
-                    <div className="stat-card text-center p-3 bg-success text-white rounded-3">
-                      <h4 className="mb-1">25+</h4>
-                      <small>{t('presentationPage.experience.projects')}</small>
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    <div className="stat-card text-center p-3 bg-warning rounded-3">
-                      <h4 className="mb-1">100%</h4>
-                      <small>{t('presentationPage.experience.satisfaction')}</small>
-                    </div>
-                  </div>
-                </div>
+            <aside className="ecg-identity__metrics" aria-label="Chiffres-clés">
+              <div className="ecg-identity__metric">
+                <span className="ecg-identity__metric-value">
+                  <span data-counter="18">0</span>
+                  <span className="ecg-identity__metric-suffix">+</span>
+                </span>
+                <span className="ecg-identity__metric-label">{t('presentationPage.experience.years')}</span>
               </div>
+              <div className="ecg-identity__metric">
+                <span className="ecg-identity__metric-value">
+                  <span data-counter="25">0</span>
+                  <span className="ecg-identity__metric-suffix">+</span>
+                </span>
+                <span className="ecg-identity__metric-label">{t('presentationPage.experience.projects')}</span>
+              </div>
+              <div className="ecg-identity__metric">
+                <span className="ecg-identity__metric-value">
+                  <span data-counter="100">0</span>
+                  <span className="ecg-identity__metric-suffix">%</span>
+                </span>
+                <span className="ecg-identity__metric-label">{t('presentationPage.experience.satisfaction')}</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* ÉQUIPE */}
+      <section className="ecg-team" data-aos="fade-up" data-aos-delay="100">
+        <div className="ds-container">
+          <div className="ecg-team__head">
+            <span className="ds-eyebrow">{t('presentationPage.hero.eyebrow')}</span>
+            <h2>{t('presentationPage.hero.teamTitle')}</h2>
+            <p>{t('presentationPage.hero.teamLead')}</p>
+          </div>
+
+          <div className="ecg-team__grid">
+            <article className="ecg-team-card">
+              <div className="ecg-team-card__icon"><i className="bi bi-tools" aria-hidden="true"></i></div>
+              <h3 className="ecg-team-card__title">{t('presentationPage.hero.teamCategory1Title')}</h3>
+              <p className="ecg-team-card__text">{t('presentationPage.hero.teamCategory1Text')}</p>
+            </article>
+            <article className="ecg-team-card">
+              <div className="ecg-team-card__icon"><i className="bi bi-people-fill" aria-hidden="true"></i></div>
+              <h3 className="ecg-team-card__title">{t('presentationPage.hero.teamCategory2Title')}</h3>
+              <p className="ecg-team-card__text">{t('presentationPage.hero.teamCategory2Text')}</p>
+            </article>
+            <article className="ecg-team-card">
+              <div className="ecg-team-card__icon"><i className="bi bi-wrench-adjustable" aria-hidden="true"></i></div>
+              <h3 className="ecg-team-card__title">{t('presentationPage.hero.teamCategory3Title')}</h3>
+              <p className="ecg-team-card__text">{t('presentationPage.hero.teamCategory3Text')}</p>
+            </article>
+          </div>
+
+          <div className="ecg-team__stats">
+            <div className="ecg-team__stat">
+              <span className="ecg-team__stat-value">
+                <span data-counter="50">0</span>
+                <span className="ecg-team__stat-suffix">+</span>
+              </span>
+              <span className="ecg-team__stat-label">{t('presentationPage.hero.statsCollaborators')}</span>
+            </div>
+            <div className="ecg-team__stat">
+              <span className="ecg-team__stat-value">
+                <span data-counter="18">0</span>
+              </span>
+              <span className="ecg-team__stat-label">{t('presentationPage.hero.statsYears')}</span>
+            </div>
+            <div className="ecg-team__stat">
+              <span className="ecg-team__stat-value">
+                <span data-counter="100">0</span>
+                <span className="ecg-team__stat-suffix">%</span>
+              </span>
+              <span className="ecg-team__stat-label">{t('presentationPage.hero.statsCommitment')}</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* Section Présentation Détaillée */}
-    <section className="presentation-detailed py-5" aria-label="Présentation détaillée">
-      <div className="container">
-        <h2 className="text-center mb-5 display-4 fw-bold gradient-text">{t('presentationPage.presentation.title')}</h2>
+      {/* DOCUMENTS LÉGAUX */}
+      <section className="ecg-legal" data-aos="fade-up" data-aos-delay="100">
+        <div className="ds-container">
+          <div className="ecg-legal__head">
+            <span className="ds-eyebrow">{t('presentationPage.hero.legalTitle')}</span>
+            <h2>{t('presentationPage.hero.legalTitle')}</h2>
+            <p>{t('presentationPage.hero.legalSubtitle')}</p>
+          </div>
 
-        <div className="row g-5">
-          <div className="col-lg-8 mx-auto">
-            <div className="presentation-content">
-              <div className="content-section mb-5 section-divider">
-                <h3 className="text-primary mb-4 section-title">
-                  <i className="bi bi-clock-history me-2 section-icon"></i>{t('presentationPage.presentation.historyTitle')}
-                </h3>
-                <p className="lead lead-enhanced">
-                  {t('presentationPage.presentation.historyLead')}
-                </p>
-                <p className="paragraph-animate">
-                  {t('presentationPage.presentation.historyText')}
-                </p>
-              </div>
-
-              <div className="content-section mb-5 section-divider">
-                <h3 className="text-primary mb-4 section-title">
-                  <i className="bi bi-tools me-2 section-icon"></i>{t('presentationPage.presentation.expertiseTitle')}
-                </h3>
-                <p className="paragraph-animate">
-                  {t('presentationPage.presentation.expertiseText')}
-                </p>
-                <div className="expertise-list cards-alt">
-                  <div className="expertise-item-card">
-                    <div className="expertise-icon">
-                      <i className="bi bi-check-circle-fill icon-green"></i>
-                    </div>
-                    <div>
-                      <h6 className="expertise-title">{t('presentationPage.presentation.expertiseItems.constructionTitle')}</h6>
-                      <p className="expertise-text">
-                        {t('presentationPage.presentation.expertiseItems.constructionText')}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="expertise-item-card alt">
-                    <div className="expertise-icon">
-                      <i className="bi bi-check-circle-fill icon-green"></i>
-                    </div>
-                    <div>
-                      <h6 className="expertise-title">{t('presentationPage.presentation.expertiseItems.energyTitle')}</h6>
-                      <p className="expertise-text">
-                        {t('presentationPage.presentation.expertiseItems.energyText')}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="expertise-item-card">
-                    <div className="expertise-icon">
-                      <i className="bi bi-check-circle-fill icon-green"></i>
-                    </div>
-                    <div>
-                      <h6 className="expertise-title">{t('presentationPage.presentation.expertiseItems.studyTitle')}</h6>
-                      <p className="expertise-text">
-                        {t('presentationPage.presentation.expertiseItems.studyText')}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="content-section">
-                <h3 className="text-primary mb-4 section-title">
-                  <i className="bi bi-eye me-2 section-icon"></i>{t('presentationPage.presentation.visionTitle')}
-                </h3>
-                <p className="lead text-primary fw-bold lead-enhanced">
-                  {t('presentationPage.presentation.visionText')}
-                </p>
-              </div>
-            </div>
+          <div className="ecg-legal__grid">
+            <article className="ecg-legal-doc">
+              <span className="ecg-legal-doc__label">{t('presentationPage.hero.legalRccm')}</span>
+              <p className="ecg-legal-doc__value">GN.TCC.2021.B.00331</p>
+              <p className="ecg-legal-doc__sub">Tribunal de Commerce — Coyah, Guinée</p>
+            </article>
+            <article className="ecg-legal-doc">
+              <span className="ecg-legal-doc__label">{t('presentationPage.hero.legalCapital')}</span>
+              <p className="ecg-legal-doc__value">10.000.000 GNF</p>
+              <p className="ecg-legal-doc__sub">SARL à responsabilité limitée</p>
+            </article>
+            <article className="ecg-legal-doc">
+              <span className="ecg-legal-doc__label">{t('presentationPage.hero.legalBank')}</span>
+              <p className="ecg-legal-doc__value">FIRSTBANK</p>
+              <p className="ecg-legal-doc__sub">Compte : 302203000027011</p>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
-
-    {/* Section Valeurs & Engagements */}
-    <section className="values-section values-premium py-5" aria-label="Valeurs et engagements">
-      <div className="values-shapes" aria-hidden="true">
-        <span className="values-shape values-shape-1"></span>
-        <span className="values-shape values-shape-2"></span>
-        <span className="values-shape values-shape-3"></span>
-      </div>
-      <div className="container">
-        <h2 className="text-center mb-5 display-4 fw-bold gradient-text">{t('presentationPage.values.title')}</h2>
-
-        <div className="row g-4">
-          <div className="col-md-6 col-lg-3">
-            <div className="value-card value-card-premium text-center p-4 h-100 bg-white rounded-4 shadow-lg">
-              <div className="value-icon mb-3">
-                <i className="bi bi-people-fill icon-red value-icon-lg"></i>
-              </div>
-              <h5 className="text-primary mb-3">Équipe Multidisciplinaire</h5>
-              <p className="small">
-                Mise en commun de nos compétences individuelles et collectives au service de l'entreprise.
-                Notre équipe forme une entité cohérente travaillant dans l'intérêt exclusif et l'honneur de l'entreprise.
-              </p>
-            </div>
-          </div>
-
-          <div className="col-md-6 col-lg-3">
-            <div className="value-card value-card-premium text-center p-4 h-100 bg-white rounded-4 shadow-lg">
-              <div className="value-icon mb-3">
-                <i className="bi bi-shield-check icon-yellow value-icon-lg"></i>
-              </div>
-              <h5 className="text-primary mb-3">Qualité & Sécurité</h5>
-              <p className="small">
-                L'habilité dans le travail avec des ressources qualifiées. Zéro accident de travail.
-                Respect des normes et standards nationaux et internationaux.
-              </p>
-            </div>
-          </div>
-
-          <div className="col-md-6 col-lg-3">
-            <div className="value-card value-card-premium text-center p-4 h-100 bg-white rounded-4 shadow-lg">
-              <div className="value-icon mb-3">
-                <i className="bi bi-hand-thumbs-up-fill icon-yellow value-icon-lg"></i>
-              </div>
-              <h5 className="text-primary mb-3">Satisfaction Client</h5>
-              <p className="small">
-                Rendre crédible notre entreprise par la qualité de nos prestations.
-                Respect de nos engagements et des délais auprès des fournisseurs et clients.
-              </p>
-            </div>
-          </div>
-
-          <div className="col-md-6 col-lg-3">
-            <div className="value-card value-card-premium text-center p-4 h-100 bg-white rounded-4 shadow-lg">
-              <div className="value-icon mb-3">
-                <i className="bi bi-tree icon-green value-icon-lg"></i>
-              </div>
-              <h5 className="text-primary mb-3">Environnement</h5>
-              <p className="small">
-                Protection de l'environnement et contribution à la préservation de l'écosystème.
-                Engagement citoyen manifeste pour la protection de l'environnement.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Section Moyens Humains */}
-    <section className="team-section py-5" aria-label="Moyens humains">
-      <div className="container">
-        <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Nos Moyens Humains</h2>
-
-        <div className="row align-items-center g-5">
-          <div className="col-lg-6">
-            <div className="team-description">
-              <p className="lead mb-4">
-                ECG PLUS travaille de commun accord avec une équipe multidisciplinaire composée
-                d'ingénieurs, d'administrateurs, de gestionnaires, de sociologue, de technicien,
-                pétrie d'expériences dans plusieurs domaines.
-              </p>
-
-              <div className="team-categories mb-4">
-                <div className="team-category d-flex align-items-center mb-3 team-category-card">
-                  <div className="category-icon me-3">
-                    <i className="bi bi-tools icon-red team-icon"></i>
-                  </div>
-                  <div>
-                    <h6 className="mb-1" style={{color: 'var(--gas-primary)'}}>Personnel Technique de Chantier</h6>
-                    <p className="small mb-0 text-dark">Ingénieurs, techniciens superviseurs, ouvriers qualifiés, équipe de dépannage</p>
-                  </div>
-                </div>
-
-                <div className="team-category d-flex align-items-center mb-3 team-category-card">
-                  <div className="category-icon me-3">
-                    <i className="bi bi-people-fill icon-yellow team-icon"></i>
-                  </div>
-                  <div>
-                    <h6 className="mb-1" style={{color: 'var(--gas-primary)'}}>Personnel d'Appui</h6>
-                    <p className="small mb-0 text-dark">Conseillers techniques, ingénieur en Génie Civil, gestionnaires de projet</p>
-                  </div>
-                </div>
-
-                <div className="team-category d-flex align-items-center team-category-card">
-                  <div className="category-icon me-3">
-                    <i className="bi bi-tools icon-green team-icon"></i>
-                  </div>
-                  <div>
-                    <h6 className="mb-1" style={{color: 'var(--gas-primary)'}}>Équipe de Maintenance</h6>
-                    <p className="small mb-0 text-dark">Mécaniciens, soudeurs, électriciens spécialisés</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="team-stats d-flex justify-content-around">
-                <div className="stat text-center">
-                  <div className="team-stat-circle">
-                    <span className="stat-number">50+</span>
-                  </div>
-                  <small className="text-dark">Collaborateurs</small>
-                </div>
-                <div className="stat text-center">
-                  <div className="team-stat-circle">
-                    <span className="stat-number">18</span>
-                  </div>
-                  <small className="text-dark">Années d'Expérience</small>
-                </div>
-                <div className="stat text-center">
-                  <div className="team-stat-circle">
-                    <span className="stat-number">100%</span>
-                  </div>
-                  <small className="text-dark">Engagement</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-6">
-            <div className="team-image-container">
-              <div className="team-placeholder team-placeholder-card text-white d-flex align-items-center justify-content-center rounded-4 shadow-lg" style={{height: '400px', backgroundColor: 'var(--gas-primary)'}}>
-                <div className="text-center">
-                  <i className="bi bi-people-fill team-placeholder-icon"></i>
-                  <h4 className="mt-3">Notre Équipe d'Experts</h4>
-                  <p className="mb-0 text-white">Professionnels qualifiés et expérimentés</p>
-                  <div className="mt-3">
-                    <span className="badge bg-white text-primary me-2 team-badge">50+ Collaborateurs</span>
-                    <span className="badge bg-white text-primary team-badge">18 Ans d'Expérience</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Section Documents Juridiques */}
-    <section className="documents-section py-5" style={{backgroundColor: 'var(--gas-primary)'}} aria-label="Documents juridiques">
-      <div className="container">
-        <h2 className="text-center mb-5 display-4 fw-bold gradient-text">Documents Juridiques</h2>
-
-        <div className="row justify-content-center g-4">
-          <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
-            <div className="document-card text-center p-4 bg-white rounded-4 shadow-lg h-100">
-              <div className="document-icon mb-3">
-                <i className="bi bi-file-earmark-text text-primary document-icon-anim" style={{fontSize: '3rem'}}></i>
-              </div>
-              <h5 className="text-primary mb-3">RCCM</h5>
-              <p className="small text-muted mb-2">Registre du Commerce et du Crédit Mobilier</p>
-              <div className="document-number p-2 rounded document-badge">
-                <strong>GN.TCC.2021.B.00331</strong>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div className="document-card text-center p-4 bg-white rounded-4 shadow-lg h-100">
-              <div className="document-icon mb-3">
-                <i className="bi bi-cash-coin text-success document-icon-anim" style={{fontSize: '3rem'}}></i>
-              </div>
-              <h5 className="text-success mb-3">Capital Social</h5>
-              <p className="small text-muted mb-2">Capital social de l'entreprise</p>
-              <div className="document-number p-2 rounded document-badge">
-                <strong>10.000.000 GNF</strong>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div className="document-card text-center p-4 bg-white rounded-4 shadow-lg h-100">
-              <div className="document-icon mb-3">
-                <i className="bi bi-bank text-warning document-icon-anim" style={{fontSize: '3rem'}}></i>
-              </div>
-              <h5 className="text-warning mb-3">Références Bancaires</h5>
-              <p className="small text-muted mb-2">Banque partenaire</p>
-              <div className="document-number p-2 rounded document-badge">
-                <strong>FIRSTBANK</strong><br/>
-                <small>302203000027011</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="text-center mt-5">
-          <div className="legal-notice p-4 bg-white rounded-4 shadow-lg legal-card">
-            <h5 className="text-primary mb-3">Mentions Légales</h5>
-            <p className="small text-muted mb-0">
-              ECG PLUS SARL est une société à responsabilité limitée immatriculée au Registre du Commerce
-              et du Crédit Mobilier sous le numéro GN.TCC.2021.B.00331, avec un capital social de 10.000.000 GNF.
-              Siège social : Manéah / Préfecture de Coyah / République de Guinée.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section className="py-5 section-alt-white" aria-label="Historique et image">
-      <div className="container">
-        <div className="row align-items-center">
-          <div className="col-lg-7 mb-4 mb-lg-0">
-            <h2 className="fw-bold mb-3 gradient-text">Notre Histoire</h2>
-            <p className="lead">
-              Depuis sa fondation il y a 18 ans, ECG PLUS s'est imposé comme un acteur majeur
-              dans la construction et l’expertise bâtiment en Guinée et dans la sous-région.
-            </p>
-            <ul className="list-unstyled mt-4 history-points">
-              <li className="history-point" data-aos="fade-up" data-aos-delay="0">
-                <i className="bi bi-check-circle-fill text-success me-2 history-icon"></i>18 ans d’expérience
-              </li>
-              <li className="history-point" data-aos="fade-up" data-aos-delay="100">
-                <i className="bi bi-check-circle-fill text-success me-2 history-icon"></i>25+ projets réalisés
-              </li>
-              <li className="history-point" data-aos="fade-up" data-aos-delay="200">
-                <i className="bi bi-check-circle-fill text-success me-2 history-icon"></i>Équipe multidisciplinaire
-              </li>
-            </ul>
-          </div>
-          <div className="col-lg-5 text-center">
-            <div className="history-image-frame">
-              <img
-                src={ecgbg}
-                alt="Historique ECG PLUS"
-                className="history-image"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="history-image-overlay"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-);
-
+      </section>
+    </main>
+  );
 };
 
 export default Presentation;

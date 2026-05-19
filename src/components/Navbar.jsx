@@ -68,7 +68,7 @@ const Navbar = () => {
   }, [isScrolled]);
 
   // Pages avec hero plein écran : navbar transparente avant scroll
-  const heroRoutes = ['/', '/realisations', '/expertiseservices'];
+  const heroRoutes = ['/', '/realisations', '/expertiseservices', '/presentation', '/contact'];
   const isOverHero = heroRoutes.includes(location.pathname) && !isScrolled;
 
   const navClasses = [

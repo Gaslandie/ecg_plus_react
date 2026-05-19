@@ -1,23 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useI18n } from "../i18n/I18nContext.jsx";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useI18n } from '../i18n/I18nContext.jsx';
+import '../styles/contact.css';
 
 const Confirmation = () => {
   const { t } = useI18n();
   return (
-    <main className="confirmation-section d-flex align-items-center justify-content-center" style={{minHeight: '70vh', background: 'var(--gas-light)'}}>
-      <div className="container text-center py-5">
-        <div className="confirmation-card bg-white shadow-lg rounded-4 p-5 mx-auto" style={{maxWidth: 480}}>
-          <h1 className="display-5 fw-bold text-success mb-4">
-            <i className="bi bi-check-circle-fill me-2"></i>{t('confirmation.title')}
-          </h1>
-          <p className="lead mb-4">
-            {t('confirmation.text').split('\n').map((line, idx) => (
-              <span key={idx}>{line}<br /></span>
-            ))}
-          </p>
-          <Link to="/" className="btn btn-custom btn-lg">{t('confirmation.back')}</Link>
+    <main className="ecg-confirmation">
+      <div className="ecg-confirmation__card" data-aos="fade-up">
+        <div className="ecg-confirmation__icon">
+          <i className="bi bi-check2" aria-hidden="true"></i>
         </div>
+        <h1>{t('confirmation.title')}</h1>
+        <p>
+          {t('confirmation.text').split('\n').map((line, idx, arr) => (
+            <React.Fragment key={idx}>
+              {line}
+              {idx < arr.length - 1 && <br />}
+            </React.Fragment>
+          ))}
+        </p>
+        <Link to="/" className="ds-btn ds-btn--primary">
+          {t('confirmation.back')}
+          <i className="bi bi-arrow-right" aria-hidden="true"></i>
+        </Link>
       </div>
     </main>
   );
