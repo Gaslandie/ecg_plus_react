@@ -11,6 +11,9 @@ import Contact from './pages/Contact';
 import ExpertiseServices from './pages/ExpertiseServices';
 import Realisations from './pages/Realisations';
 import Confirmation from './pages/Confirmation';
+import bgAccueilHero from './assets/img/bgAccueil.jpg';
+import hangarHero from './assets/img/hangar.jpg';
+import ecgbgHero from './assets/img/ecgbg.jpeg';
 
 function App() {
   const location = useLocation();
@@ -69,6 +72,31 @@ function App() {
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Préchargement des hero images en idle pour que la navigation client-side
+  // soit instantanée (l'image est déjà en cache navigateur quand on arrive)
+  useEffect(() => {
+    const heroes = [bgAccueilHero, hangarHero, ecgbgHero];
+    const preload = () => {
+      heroes.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+    let id;
+    if ('requestIdleCallback' in window) {
+      id = window.requestIdleCallback(preload, { timeout: 2000 });
+    } else {
+      id = window.setTimeout(preload, 1500);
+    }
+    return () => {
+      if ('cancelIdleCallback' in window && id) {
+        window.cancelIdleCallback(id);
+      } else if (id) {
+        window.clearTimeout(id);
+      }
+    };
   }, []);
 
   useEffect(() => {
