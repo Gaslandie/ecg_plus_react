@@ -2,9 +2,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'aos/dist/aos.css';
-import './assets/css/style.css'; /* legacy styles (toujours utilisés par les pages non refondues) */
+import './assets/css/style.css';
 import './styles/design-system.css';
 import './styles/chrome.css';
 import './index.css';

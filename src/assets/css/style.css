@@ -51,11 +51,34 @@ main.page-without-hero {
   visibility: hidden !important;
 }
 
-#preloader .spinner-border {
-  color: var(--ds-primary);
+/* Spinner-border (remplace celui de Bootstrap) */
+.spinner-border {
+  display: inline-block;
   width: 3.5rem;
   height: 3.5rem;
-  border-width: 0.3rem;
+  vertical-align: -0.125em;
+  border: 0.3rem solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: ecg-spinner 0.75s linear infinite;
+  color: var(--ds-primary);
+}
+
+@keyframes ecg-spinner {
+  to { transform: rotate(360deg); }
+}
+
+/* Visually hidden (accessibilité — replace Bootstrap .visually-hidden) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 /* ----- Back to top (App.jsx) ----- */

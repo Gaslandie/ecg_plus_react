@@ -11,7 +11,6 @@ import Contact from './pages/Contact';
 import ExpertiseServices from './pages/ExpertiseServices';
 import Realisations from './pages/Realisations';
 import Confirmation from './pages/Confirmation';
-import logo from './assets/img/logo.jpeg';
 
 function App() {
   const location = useLocation();
@@ -209,17 +208,6 @@ function App() {
       >
         ↑
       </button>
-
-      <div className="modal fade" id="logoModal" tabIndex="-1" aria-labelledby="logoModalLabel" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered modal-xl">
-          <div className="modal-content bg-transparent border-0">
-            <div className="modal-body p-0 text-center">
-              <img src={logo} alt="Logo ECG Plus Agrandissement" className="img-fluid logo-modal-zoom" />
-              <button type="button" className="btn-close btn-close-white mt-3" data-bs-dismiss="modal" aria-label="Fermer"></button>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }

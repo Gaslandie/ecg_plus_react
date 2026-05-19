@@ -54,14 +54,14 @@ function Home() {
 
   React.useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const hero = document.querySelector('.ecg-hero');
-    if (!hero || prefersReduced) return;
+    const bg = document.querySelector('.ecg-hero__bg');
+    if (!bg || prefersReduced) return;
     let ticking = false;
     const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const y = window.scrollY * 0.15;
-          hero.style.backgroundPosition = `center calc(50% + ${y}px)`;
+          bg.style.transform = `translateY(${y}px) scale(1.08)`;
           ticking = false;
         });
         ticking = true;
@@ -75,7 +75,16 @@ function Home() {
   return (
     <main className="page-with-hero">
       {/* Hero — refonte premium */}
-      <header className="ecg-hero" style={{ backgroundImage: `url(${bgAccueil})` }}>
+      <header className="ecg-hero">
+        <img
+          className="ecg-hero__bg"
+          src={bgAccueil}
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+          width="1920"
+          height="1280"
+        />
         <div className="ecg-hero__overlay" />
         <div className="ecg-hero__content ds-container">
           <span className="ds-eyebrow ecg-hero__eyebrow">{t('home.hero.eyebrow')}</span>

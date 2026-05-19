@@ -10,17 +10,25 @@
   min-height: 100vh;
   min-height: 100svh;
   background-color: var(--ds-primary-dark);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
 }
 
+.ecg-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  will-change: transform;
+}
+
 .ecg-hero__overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(
       180deg,
@@ -161,8 +169,10 @@
   .ecg-hero {
     min-height: 88vh;
     min-height: 88svh;
+  }
+  .ecg-hero__bg {
     /* attache plus le centre de l'image (visages/structures restent visibles) */
-    background-position: center 30%;
+    object-position: center 30%;
   }
   .ecg-hero__scroll { display: none; }
   .ecg-hero__content {

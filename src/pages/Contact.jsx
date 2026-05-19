@@ -12,18 +12,17 @@ const Contact = () => {
     ? `${window.location.origin}/confirmation`
     : '/confirmation';
 
-  // Parallax hero
   React.useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const hero = document.querySelector('.ecg-real-hero');
-    if (!hero || prefersReduced) return;
+    const bg = document.querySelector('.ecg-real-hero__bg');
+    if (!bg || prefersReduced) return;
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       window.requestAnimationFrame(() => {
         const y = window.scrollY * 0.15;
-        hero.style.backgroundPosition = `center calc(50% + ${y}px)`;
+        bg.style.transform = `translateY(${y}px) scale(1.08)`;
         ticking = false;
       });
     };
@@ -70,7 +69,8 @@ const Contact = () => {
   return (
     <main className="page-with-hero">
       {/* HERO */}
-      <header className="ecg-real-hero" style={{ backgroundImage: `url(${ecgbg})`, minHeight: '60vh' }}>
+      <header className="ecg-real-hero" style={{ minHeight: '60vh' }}>
+        <img className="ecg-real-hero__bg" src={ecgbg} alt="" fetchpriority="high" decoding="async" width="1920" height="1280" />
         <div className="ecg-real-hero__overlay" />
         <div className="ecg-real-hero__content ds-container">
           <span className="ds-eyebrow ecg-real-hero__eyebrow">{t('home.contact.eyebrow')}</span>
