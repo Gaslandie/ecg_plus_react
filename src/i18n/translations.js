@@ -32,6 +32,7 @@ export const translations = {
     },
     home: {
       hero: {
+        eyebrow: "ECG PLUS — Guinée",
         line1: "Entreprise de Construction",
         line2: "Générale et Travaux Publics",
         subtitle: "Bâtir l'Avenir, Construire l'Excellence Durable.",
@@ -45,12 +46,14 @@ export const translations = {
         scroll: "Découvrir",
       },
       about: {
+        eyebrow: "L'entreprise",
         title: "À propos d'ECG PLUS",
-        historyTitle: "Notre Histoire - 18 Ans d'Excellence",
+        historyTitle: "18 ans d'excellence dans la construction",
         historyLead:
           "Depuis sa fondation il y a 18 ans, ECG PLUS s'est imposé comme un acteur majeur dans le domaine de la construction et de l'expertise des bâtiments en Guinée et aujourd'hui dans la sous-région.",
         historyText:
           "Notre engagement envers l'excellence et notre expertise technique nous permettent de répondre aux défis les plus complexes de nos clients avec efficacité et innovation, ce qui nous a d'ailleurs permis la réalisation de plusieurs ouvrages un peu partout dans les régions guinéennes.",
+        cta: "En savoir plus",
         stats: {
           engagement: "Engagement",
           engagementSub: "Qualité & respect des délais",
@@ -70,13 +73,14 @@ export const translations = {
           "Notre équipe d'experts réalise des études approfondies et des analyses précises pour évaluer l'état des bâtiments et recommander les meilleures pratiques de rénovation et de maintenance.",
       },
       values: {
-        title: "Nos Valeurs & Engagements",
+        eyebrow: "Nos engagements",
+        title: "Une exigence à tous les étages",
         teamTitle: "Équipe Multidisciplinaire",
-        teamText: "Des experts complémentaires pour des solutions rapides.",
+        teamText: "Des experts complémentaires pour des solutions rapides et adaptées à chaque chantier.",
         qualityTitle: "Qualité & Sécurité",
-        qualityText: "Zéro compromis sur la qualité et la sécurité.",
+        qualityText: "Zéro compromis sur la qualité d'exécution et la sécurité des hommes.",
         envTitle: "Environnement",
-        envText: "Construire durablement, respecter l'écosystème.",
+        envText: "Construire durablement, respecter l'écosystème et minimiser l'empreinte.",
       },
       presentation: {
         title: "ECG PLUS SARL",
@@ -99,7 +103,8 @@ export const translations = {
         },
       },
       services: {
-        title: "Services & Expertises",
+        eyebrow: "Nos expertises",
+        title: "Quatre métiers, un savoir-faire",
         card1: {
           title: "Ingénierie Électrique & Systèmes Autonomes",
           text:
@@ -143,15 +148,26 @@ export const translations = {
         placeholderText: "Professionnels qualifiés et expérimentés",
       },
       realisations: {
-        title: "Nos Réalisations",
+        eyebrow: "Nos chantiers",
+        title: "Réalisations phares",
+        intro: "Une sélection de projets livrés qui témoignent de notre savoir-faire et de notre exigence sur le terrain.",
+        cta: "Voir toutes les réalisations",
         project1: "Bibliothèque Municipale de Kankan",
         project2: "Projet Résidentiel à Dubréka Fihaima",
         project3: "Immeuble R+2 & Rénovation Privée",
+        cat1: "Public",
+        cat2: "Résidentiel",
+        cat3: "Mixte",
       },
       contact: {
-        title: "Prêt à Construire Votre Prochain Projet ?",
+        eyebrow: "Démarrons ensemble",
+        title: "Prêt à construire votre prochain projet ?",
         text:
           "Donnez vie à vos idées avec une équipe fiable et réactive. Nous vous accompagnons de l’étude jusqu’à la livraison, avec un suivi clair et transparent.",
+        phoneLabel: "Téléphone",
+        emailLabel: "E-mail",
+        addressLabel: "Siège",
+        addressValue: "Manéah / Coyah, Guinée",
       },
       testimonials: {
         title: "Ils nous font confiance",
@@ -732,6 +748,7 @@ export const translations = {
     },
     home: {
       hero: {
+        eyebrow: "ECG PLUS — Guinea",
         line1: "Construction Company",
         line2: "General Works & Public Projects",
         subtitle: "Building the Future, Delivering Lasting Excellence.",
@@ -745,12 +762,14 @@ export const translations = {
         scroll: "Discover",
       },
       about: {
+        eyebrow: "The company",
         title: "About ECG PLUS",
-        historyTitle: "Our Story - 18 Years of Excellence",
+        historyTitle: "18 years of excellence in construction",
         historyLead:
           "Since its founding 18 years ago, ECG PLUS has become a key player in construction and building expertise in Guinea and now across the sub‑region.",
         historyText:
           "Our commitment to excellence and technical expertise enables us to tackle the most complex client challenges with efficiency and innovation, which has led to many projects across Guinea’s regions.",
+        cta: "Learn more",
         stats: {
           engagement: "Commitment",
           engagementSub: "Quality & on‑time delivery",
@@ -770,13 +789,14 @@ export const translations = {
           "Our expert team conducts in‑depth studies and precise analyses to assess building conditions and recommend the best renovation and maintenance practices.",
       },
       values: {
-        title: "Our Values & Commitments",
+        eyebrow: "Our commitments",
+        title: "Excellence at every level",
         teamTitle: "Multidisciplinary Team",
-        teamText: "Complementary experts for fast solutions.",
+        teamText: "Complementary experts delivering fast, tailored solutions on every site.",
         qualityTitle: "Quality & Safety",
-        qualityText: "Zero compromise on quality and safety.",
+        qualityText: "Zero compromise on execution quality and on-site safety.",
         envTitle: "Environment",
-        envText: "Build sustainably, respect the ecosystem.",
+        envText: "Build sustainably, respect the ecosystem and minimize footprint.",
       },
       presentation: {
         title: "ECG PLUS SARL",
@@ -799,7 +819,8 @@ export const translations = {
         },
       },
       services: {
-        title: "Services & Expertise",
+        eyebrow: "Our expertise",
+        title: "Four disciplines, one craftsmanship",
         card1: {
           title: "Electrical Engineering & Autonomous Systems",
           text:
@@ -843,15 +864,26 @@ export const translations = {
         placeholderText: "Qualified and experienced professionals",
       },
       realisations: {
-        title: "Our Projects",
+        eyebrow: "Our worksites",
+        title: "Featured projects",
+        intro: "A selection of delivered projects that reflect our craftsmanship and on-site commitment.",
+        cta: "See all projects",
         project1: "Municipal Library of Kankan",
         project2: "Residential Project in Dubréka Fihaima",
         project3: "R+2 Building & Private Renovation",
+        cat1: "Public",
+        cat2: "Residential",
+        cat3: "Mixed-use",
       },
       contact: {
-        title: "Ready to Build Your Next Project?",
+        eyebrow: "Let's start together",
+        title: "Ready to build your next project?",
         text:
           "Bring your ideas to life with a reliable and responsive team. We support you from study to delivery with clear and transparent follow‑up.",
+        phoneLabel: "Phone",
+        emailLabel: "Email",
+        addressLabel: "Headquarters",
+        addressValue: "Manéah / Coyah, Guinea",
       },
       testimonials: {
         title: "They trust us",

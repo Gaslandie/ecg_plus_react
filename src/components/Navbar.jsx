@@ -13,14 +13,28 @@ const Navbar = () => {
   const [topBarHidden, setTopBarHidden] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+    let lastTopBarHidden = false;
     const onScroll = () => {
-      const scrollTop = window.scrollY || 0;
-      setIsScrolled(scrollTop > 20);
-      setTopBarHidden(scrollTop > 80);
-      const doc = document.documentElement;
-      const scrollHeight = doc.scrollHeight - doc.clientHeight;
-      const progress = scrollHeight > 0 ? Math.min((scrollTop / scrollHeight) * 100, 100) : 0;
-      setScrollProgress(progress);
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const scrollTop = window.scrollY || 0;
+        setIsScrolled(scrollTop > 20);
+        // Hystérésis : cache à 120px, réapparaît à 60px → pas de bounce près du seuil
+        if (!lastTopBarHidden && scrollTop > 120) {
+          lastTopBarHidden = true;
+          setTopBarHidden(true);
+        } else if (lastTopBarHidden && scrollTop < 60) {
+          lastTopBarHidden = false;
+          setTopBarHidden(false);
+        }
+        const doc = document.documentElement;
+        const scrollHeight = doc.scrollHeight - doc.clientHeight;
+        const progress = scrollHeight > 0 ? Math.min((scrollTop / scrollHeight) * 100, 100) : 0;
+        setScrollProgress(progress);
+        ticking = false;
+      });
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });

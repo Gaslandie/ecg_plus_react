@@ -1,0 +1,287 @@
+/* ============================================================
+   ECG PLUS — Design System
+   Direction artistique : Premium / moderne / haut de gamme
+   Inspiré de bouygues-construction.com
+   ============================================================ */
+
+:root {
+  /* ---------- Palette ---------- */
+  /* Primary — teal profond ECG PLUS */
+  --ds-primary: #0F3D3E;
+  --ds-primary-dark: #0A2829;
+  --ds-primary-light: #1E5C5E;
+
+  /* Accent — or sobre, touche premium */
+  --ds-accent: #C9A96E;
+  --ds-accent-dark: #A88A4F;
+  --ds-accent-light: #DEC394;
+
+  /* Neutres — échelle de gris éditoriale */
+  --ds-ink: #1A1A1A;          /* titres, textes forts */
+  --ds-body: #4A4A4A;         /* texte courant */
+  --ds-muted: #8A8A8A;        /* sous-titres, méta */
+  --ds-line: #E5E5E5;         /* bordures, séparateurs */
+  --ds-surface: #FAFAFA;      /* fond de section alterné */
+  --ds-white: #FFFFFF;
+
+  /* Sémantique (utilitaires) */
+  --ds-success: #2E7D5B;
+  --ds-warning: #C47C1A;
+  --ds-danger:  #B23A48;
+
+  /* ---------- Typographie ---------- */
+  --ds-font-display: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --ds-font-body: 'Roboto', system-ui, -apple-system, sans-serif;
+
+  /* Échelle de tailles (fluide via clamp) */
+  --ds-fs-display: clamp(3rem, 6vw, 5.5rem);
+  --ds-fs-h1:      clamp(2.25rem, 4vw, 3.5rem);
+  --ds-fs-h2:      clamp(1.75rem, 3vw, 2.5rem);
+  --ds-fs-h3:      1.5rem;
+  --ds-fs-h4:      1.25rem;
+  --ds-fs-lead:    1.125rem;
+  --ds-fs-body:    1rem;
+  --ds-fs-small:   0.875rem;
+  --ds-fs-eyebrow: 0.75rem;
+
+  /* Poids */
+  --ds-fw-regular: 400;
+  --ds-fw-medium: 500;
+  --ds-fw-semibold: 600;
+  --ds-fw-bold: 700;
+
+  /* Hauteurs de ligne */
+  --ds-lh-tight: 1.1;
+  --ds-lh-snug: 1.3;
+  --ds-lh-normal: 1.5;
+  --ds-lh-relaxed: 1.7;
+
+  /* ---------- Espacement (base 8px) ---------- */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 16px;
+  --ds-space-4: 24px;
+  --ds-space-5: 32px;
+  --ds-space-6: 48px;
+  --ds-space-7: 64px;
+  --ds-space-8: 96px;
+  --ds-space-9: 128px;
+  --ds-space-10: 160px;
+
+  /* Section vertical padding — gros sur desktop, raisonnable sur mobile */
+  --ds-section-py: clamp(4rem, 8vw, 8rem);
+
+  /* ---------- Bordures & rayons ---------- */
+  --ds-radius-none: 0;
+  --ds-radius-sm: 4px;
+  --ds-radius-md: 8px;
+  --ds-radius-lg: 16px;
+  --ds-radius-full: 9999px;
+
+  /* ---------- Ombres ---------- */
+  --ds-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --ds-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --ds-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+  --ds-shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.18);
+
+  /* ---------- Transitions ---------- */
+  --ds-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ds-duration-fast: 150ms;
+  --ds-duration: 300ms;
+  --ds-duration-slow: 600ms;
+
+  /* ---------- Container ---------- */
+  --ds-container-max: 1280px;
+  --ds-container-px: clamp(1rem, 4vw, 2.5rem);
+}
+
+/* ============================================================
+   Base typographique globale (override léger de Bootstrap)
+   ============================================================ */
+
+body {
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-fs-body);
+  font-weight: var(--ds-fw-regular);
+  line-height: var(--ds-lh-normal);
+  color: var(--ds-body);
+  background-color: var(--ds-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ds-font-display);
+  font-weight: var(--ds-fw-bold);
+  color: var(--ds-ink);
+  line-height: var(--ds-lh-tight);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--ds-fs-h1); }
+h2 { font-size: var(--ds-fs-h2); }
+h3 { font-size: var(--ds-fs-h3); }
+h4 { font-size: var(--ds-fs-h4); }
+
+p { line-height: var(--ds-lh-relaxed); }
+
+a {
+  color: var(--ds-primary);
+  text-decoration: none;
+  transition: color var(--ds-duration-fast) var(--ds-ease);
+}
+a:hover { color: var(--ds-primary-light); }
+
+/* ============================================================
+   Classes utilitaires du design system
+   ============================================================ */
+
+/* Eyebrow — petit titre en majuscules au-dessus d'un H2 */
+.ds-eyebrow {
+  display: inline-block;
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-fs-eyebrow);
+  font-weight: var(--ds-fw-semibold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ds-accent);
+  margin-bottom: var(--ds-space-3);
+}
+
+/* Display heading (hero) */
+.ds-display {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-fs-display);
+  font-weight: var(--ds-fw-bold);
+  line-height: var(--ds-lh-tight);
+  letter-spacing: -0.02em;
+  color: var(--ds-ink);
+}
+
+/* Lead paragraph */
+.ds-lead {
+  font-size: var(--ds-fs-lead);
+  line-height: var(--ds-lh-relaxed);
+  color: var(--ds-body);
+}
+
+/* Section premium — padding généreux */
+.ds-section {
+  padding-top: var(--ds-section-py);
+  padding-bottom: var(--ds-section-py);
+}
+
+.ds-section--surface {
+  background-color: var(--ds-surface);
+}
+
+.ds-section--dark {
+  background-color: var(--ds-primary);
+  color: var(--ds-white);
+}
+
+.ds-section--dark h1,
+.ds-section--dark h2,
+.ds-section--dark h3,
+.ds-section--dark h4 {
+  color: var(--ds-white);
+}
+
+/* Container ECG */
+.ds-container {
+  width: 100%;
+  max-width: var(--ds-container-max);
+  margin-inline: auto;
+  padding-inline: var(--ds-container-px);
+}
+
+/* Filet de couleur (accent or, souvent utilisé sous un eyebrow ou titre) */
+.ds-divider {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background-color: var(--ds-accent);
+  border: 0;
+  margin: var(--ds-space-3) 0 var(--ds-space-5);
+}
+
+.ds-divider--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Boutons premium ---------- */
+.ds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-2);
+  padding: 14px 28px;
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-fs-small);
+  font-weight: var(--ds-fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-sm);
+  cursor: pointer;
+  transition: all var(--ds-duration) var(--ds-ease);
+  text-decoration: none;
+}
+
+.ds-btn--primary {
+  background-color: var(--ds-primary);
+  color: var(--ds-white);
+  border-color: var(--ds-primary);
+}
+.ds-btn--primary:hover {
+  background-color: var(--ds-primary-dark);
+  border-color: var(--ds-primary-dark);
+  color: var(--ds-white);
+  transform: translateX(4px);
+}
+
+.ds-btn--outline {
+  background-color: transparent;
+  color: var(--ds-white);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.ds-btn--outline:hover {
+  background-color: var(--ds-white);
+  color: var(--ds-primary);
+  border-color: var(--ds-white);
+  transform: translateX(4px);
+}
+
+.ds-btn--ghost {
+  background-color: transparent;
+  color: var(--ds-ink);
+  border-color: var(--ds-ink);
+}
+.ds-btn--ghost:hover {
+  background-color: var(--ds-ink);
+  color: var(--ds-white);
+  transform: translateX(4px);
+}
+
+.ds-btn--accent {
+  background-color: var(--ds-accent);
+  color: var(--ds-ink);
+  border-color: var(--ds-accent);
+}
+.ds-btn--accent:hover {
+  background-color: var(--ds-accent-dark);
+  border-color: var(--ds-accent-dark);
+  color: var(--ds-white);
+  transform: translateX(4px);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ds-btn,
+  .ds-btn:hover {
+    transition: none;
+    transform: none;
+  }
+}

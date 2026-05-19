@@ -363,11 +363,21 @@ html, body {
     z-index: 1031;
     font-size: 0.85rem;
     color: rgba(255,255,255,0.9);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(0);
+    /* Apparition (scroll-up) : ease-out fluide */
+    transition:
+      transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity   0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
 }
 .top-bar.hidden {
     transform: translateY(-100%);
     opacity: 0;
+    pointer-events: none;
+    /* Disparition (scroll-down) : ease-in-out plus long, sortie gracieuse */
+    transition:
+      transform 0.65s cubic-bezier(0.65, 0, 0.35, 1),
+      opacity   0.5s  cubic-bezier(0.65, 0, 0.35, 1);
 }
 .top-bar-content {
     display: flex;
@@ -1560,9 +1570,12 @@ p { line-height: 1.7; color: var(--muted); }
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     margin-top: 0;
-    transition: background 0.45s cubic-bezier(0.2,0.8,0.2,1),
-                box-shadow 0.45s cubic-bezier(0.2,0.8,0.2,1),
-                padding 0.45s cubic-bezier(0.2,0.8,0.2,1);
+    /* Apparition (TopBar revient) : ease-out fluide */
+    transition:
+      top 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      background 0.45s cubic-bezier(0.2,0.8,0.2,1),
+      box-shadow 0.45s cubic-bezier(0.2,0.8,0.2,1),
+      padding 0.45s cubic-bezier(0.2,0.8,0.2,1);
     position: fixed;
     width: 100%;
     left: 0;
@@ -1570,7 +1583,7 @@ p { line-height: 1.7; color: var(--muted); }
     top: var(--topbar-height);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    will-change: transform, background, box-shadow, padding;
+    will-change: top, background, box-shadow, padding;
 }
 .navbar::after {
     content: none;
@@ -1598,6 +1611,12 @@ p { line-height: 1.7; color: var(--muted); }
 }
 .navbar.no-topbar {
     top: 0;
+    /* Disparition (TopBar se cache) : ease-in-out, en sync avec la TopBar */
+    transition:
+      top 0.65s cubic-bezier(0.65, 0, 0.35, 1),
+      background 0.45s cubic-bezier(0.2,0.8,0.2,1),
+      box-shadow 0.45s cubic-bezier(0.2,0.8,0.2,1),
+      padding 0.45s cubic-bezier(0.2,0.8,0.2,1);
 }
 
 .navbar-brand .logo-navbar-img {
