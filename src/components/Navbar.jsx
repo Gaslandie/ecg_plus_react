@@ -81,80 +81,112 @@ const Navbar = () => {
 
   const handleNavClick = () => setMenuOpen(false);
 
+  const navLinks = [
+    { to: '/', end: true, label: t('nav.home') },
+    { to: '/presentation', label: t('nav.presentation') },
+    { to: '/expertiseservices', label: t('nav.expertise') },
+    { to: '/realisations', label: t('nav.realisations') },
+    { to: '/contact', label: t('nav.contact') },
+  ];
+
+  const LangSwitch = () => (
+    <div className="ecg-langswitch" role="group" aria-label="Language switch">
+      <button
+        type="button"
+        className={`ecg-langswitch__btn${lang === 'fr' ? ' is-active' : ''}`}
+        onClick={() => setLang('fr')}
+      >
+        FR
+      </button>
+      <span className="ecg-langswitch__sep" aria-hidden="true">/</span>
+      <button
+        type="button"
+        className={`ecg-langswitch__btn${lang === 'en' ? ' is-active' : ''}`}
+        onClick={() => setLang('en')}
+      >
+        EN
+      </button>
+    </div>
+  );
+
   return (
-    <nav className={navClasses} role="navigation" aria-label="Main navigation">
-      <div className="ds-container ecg-nav__inner">
-        <Link to="/" className="ecg-nav__brand" aria-label="Accueil">
-          <img src={logo} alt="Logo ECG Plus" className="ecg-nav__logo" loading="lazy" />
-          <span className="ecg-nav__brand-text">ECG PLUS</span>
-        </Link>
+    <>
+      <nav className={navClasses} role="navigation" aria-label="Main navigation">
+        <div className="ds-container ecg-nav__inner">
+          <Link to="/" className="ecg-nav__brand" aria-label="Accueil" onClick={handleNavClick}>
+            <img src={logo} alt="Logo ECG Plus" className="ecg-nav__logo" loading="lazy" />
+            <span className="ecg-nav__brand-text">ECG PLUS</span>
+          </Link>
 
-        <div className="ecg-nav__actions">
-          <ul id="ecg-nav-menu" className={`ecg-nav__menu${menuOpen ? ' is-open' : ''}`}>
-            <li>
-              <NavLink end to="/" onClick={handleNavClick} className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
-                {t('nav.home')}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/presentation" onClick={handleNavClick} className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
-                {t('nav.presentation')}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/expertiseservices" onClick={handleNavClick} className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
-                {t('nav.expertise')}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/realisations" onClick={handleNavClick} className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
-                {t('nav.realisations')}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/contact" onClick={handleNavClick} className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
-                {t('nav.contact')}
-              </NavLink>
-            </li>
-          </ul>
+          <div className="ecg-nav__actions">
+            {/* Menu desktop — inline dans la barre */}
+            <ul className="ecg-nav__menu">
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <NavLink
+                    end={link.end}
+                    to={link.to}
+                    className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
 
-          <div className="ecg-langswitch" role="group" aria-label="Language switch">
+            <LangSwitch />
+
             <button
               type="button"
-              className={`ecg-langswitch__btn${lang === 'fr' ? ' is-active' : ''}`}
-              onClick={() => setLang('fr')}
+              className={`ecg-nav__toggler${menuOpen ? ' is-open' : ''}`}
+              aria-controls="ecg-mobile-menu"
+              aria-expanded={menuOpen}
+              aria-label="Toggle navigation"
+              onClick={() => setMenuOpen((v) => !v)}
             >
-              FR
-            </button>
-            <span className="ecg-langswitch__sep" aria-hidden="true">/</span>
-            <button
-              type="button"
-              className={`ecg-langswitch__btn${lang === 'en' ? ' is-active' : ''}`}
-              onClick={() => setLang('en')}
-            >
-              EN
+              <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>
+              <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>
+              <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>
             </button>
           </div>
-
-          <button
-            type="button"
-            className={`ecg-nav__toggler${menuOpen ? ' is-open' : ''}`}
-            aria-controls="ecg-nav-menu"
-            aria-expanded={menuOpen}
-            aria-label="Toggle navigation"
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>
-            <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>
-            <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>
-          </button>
         </div>
+
+        <div className="ecg-nav__progress" aria-hidden="true">
+          <span className="ecg-nav__progress-bar" style={{ width: `${scrollProgress}%` }}></span>
+        </div>
+      </nav>
+
+      {/* Menu mobile — panneau plein écran, RENDU HORS de la navbar pour
+          ne pas être affecté par son backdrop-filter (containing block) */}
+      <div
+        id="ecg-mobile-menu"
+        className={`ecg-mobile-menu${menuOpen ? ' is-open' : ''}`}
+        aria-hidden={!menuOpen}
+      >
+        <ul className="ecg-mobile-menu__list">
+          {navLinks.map((link) => (
+            <li key={link.to}>
+              <NavLink
+                end={link.end}
+                to={link.to}
+                onClick={handleNavClick}
+                tabIndex={menuOpen ? 0 : -1}
+                className={({ isActive }) => `ecg-mobile-menu__link${isActive ? ' is-active' : ''}`}
+              >
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <div className="ecg-nav__progress" aria-hidden="true">
-        <span className="ecg-nav__progress-bar" style={{ width: `${scrollProgress}%` }}></span>
-      </div>
-    </nav>
+      {/* Voile sombre derrière le menu */}
+      <div
+        className={`ecg-mobile-overlay${menuOpen ? ' is-open' : ''}`}
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+      />
+    </>
   );
 };
 

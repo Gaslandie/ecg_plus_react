@@ -223,6 +223,15 @@
   transition: width 0.1s linear;
 }
 
+/* ============================================================
+   MENU MOBILE — panneau indépendant (rendu hors de .ecg-nav)
+   ============================================================ */
+
+.ecg-mobile-menu,
+.ecg-mobile-overlay {
+  display: none;
+}
+
 /* ----- Mobile (< 992px) ----- */
 @media (max-width: 991.98px) {
   .ecg-nav { height: var(--ecg-nav-h-scrolled); }
@@ -232,17 +241,36 @@
     display: block;
   }
 
-  /* Menu mobile : panneau plein écran sous la navbar */
+  /* Le menu desktop inline est masqué sur mobile */
   .ecg-nav__menu {
+    display: none;
+  }
+
+  /* Voile sombre derrière le panneau */
+  .ecg-mobile-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(10, 40, 41, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s var(--ds-ease), visibility 0s linear 0.4s;
+    z-index: 1028;
+  }
+  .ecg-mobile-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s var(--ds-ease), visibility 0s linear 0s;
+  }
+
+  /* Panneau du menu */
+  .ecg-mobile-menu {
+    display: block;
     position: fixed;
     top: var(--ecg-nav-h-scrolled);
     right: 0;
     bottom: 0;
     left: 0;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 0;
     padding: var(--ds-space-5) var(--ds-container-px) var(--ds-space-7);
     background-color: var(--ds-primary-dark);
     transform: translateX(100%);
@@ -255,7 +283,7 @@
     -webkit-overflow-scrolling: touch;
     z-index: 1029;
   }
-  .ecg-nav__menu.is-open {
+  .ecg-mobile-menu.is-open {
     transform: translateX(0);
     visibility: visible;
     transition:
@@ -263,25 +291,48 @@
       visibility 0s linear 0s;
   }
 
-  .ecg-nav__link {
-    display: block;
-    padding: var(--ds-space-3) 0;
-    font-size: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    letter-spacing: 0.15em;
-  }
-  .ecg-nav__link::after {
-    left: 0;
-    right: auto;
-    width: 24px;
-    bottom: -1px;
+  .ecg-mobile-menu__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Lang switch reste visible dans la navbar bar (pas dans le menu mobile) */
+  .ecg-mobile-menu__link {
+    position: relative;
+    display: block;
+    padding: var(--ds-space-4) 0;
+    font-family: var(--ds-font-display);
+    font-size: 1.0625rem;
+    font-weight: var(--ds-fw-semibold);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: color var(--ds-duration) var(--ds-ease), padding-left var(--ds-duration) var(--ds-ease);
+  }
+  .ecg-mobile-menu__link:hover,
+  .ecg-mobile-menu__link.is-active {
+    color: var(--ds-white);
+    padding-left: var(--ds-space-3);
+  }
+  .ecg-mobile-menu__link.is-active {
+    border-left: 2px solid var(--ds-accent);
+    padding-left: var(--ds-space-3);
+  }
 
   /* Empêche le scroll body quand menu ouvert */
   body.ecg-nav-open {
     overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ecg-mobile-menu,
+  .ecg-mobile-overlay {
+    transition: none !important;
   }
 }
 
