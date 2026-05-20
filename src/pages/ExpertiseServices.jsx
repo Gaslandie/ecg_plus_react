@@ -5,7 +5,7 @@ import batiment from '../assets/img/batiment.jpeg';
 import ingeelectric from '../assets/img/ingeelectric.jpeg';
 import industrie from '../assets/img/industrie.jpeg';
 import commerce from '../assets/img/commerce.jpeg';
-import ecgbg from '../assets/img/ecgbg.jpeg';
+import heroPages from '../assets/img/hero-pages.jpg';
 import '../styles/realisations.css'; /* réutilise hero, process, cta, zone */
 import '../styles/expertise.css';
 
@@ -42,7 +42,7 @@ const ExpertiseServices = () => {
     <main className="page-with-hero">
       {/* HERO plein écran */}
       <header className="ecg-real-hero">
-        <img className="ecg-real-hero__bg" src={ecgbg} alt="" fetchpriority="high" decoding="async" width="1920" height="1280" />
+        <img className="ecg-real-hero__bg" src={heroPages} alt="" fetchpriority="high" decoding="async" width="1920" height="1280" />
         <div className="ecg-real-hero__overlay" />
         <div className="ecg-real-hero__content ds-container">
           <span className="ds-eyebrow ecg-real-hero__eyebrow">{t('expertiseServicesPage.hero.eyebrow')}</span>

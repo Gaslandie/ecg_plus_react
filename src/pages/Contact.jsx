@@ -1,6 +1,6 @@
 import React from 'react';
 import { useI18n } from '../i18n/I18nContext.jsx';
-import ecgbg from '../assets/img/ecgbg.jpeg';
+import heroPages from '../assets/img/hero-pages.jpg';
 import '../styles/realisations.css';
 import '../styles/contact.css';
 
@@ -70,7 +70,7 @@ const Contact = () => {
     <main className="page-with-hero">
       {/* HERO */}
       <header className="ecg-real-hero" style={{ minHeight: '60vh' }}>
-        <img className="ecg-real-hero__bg" src={ecgbg} alt="" fetchpriority="high" decoding="async" width="1920" height="1280" />
+        <img className="ecg-real-hero__bg" src={heroPages} alt="" fetchpriority="high" decoding="async" width="1920" height="1280" />
         <div className="ecg-real-hero__overlay" />
         <div className="ecg-real-hero__content ds-container">
           <span className="ds-eyebrow ecg-real-hero__eyebrow">{t('home.contact.eyebrow')}</span>

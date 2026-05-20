@@ -7,6 +7,7 @@ import kagbelen from '../assets/img/kagbelen.jpg';
 import r4 from '../assets/img/r+4.jpg';
 import hangar from '../assets/img/hangar.jpg';
 import ansoumania from '../assets/img/ansoumania.jpg';
+import heroPages from '../assets/img/hero-pages.jpg';
 import '../styles/realisations.css';
 import '../styles/home.css'; /* pour réutiliser .ecg-project */
 
@@ -46,7 +47,7 @@ function Realisations() {
     <main className="page-with-hero">
       {/* HERO plein écran */}
       <header className="ecg-real-hero">
-        <img className="ecg-real-hero__bg" src={hangar} alt="" fetchpriority="high" decoding="async" width="1920" height="1280" />
+        <img className="ecg-real-hero__bg" src={heroPages} alt="" fetchpriority="high" decoding="async" width="1920" height="1280" />
         <div className="ecg-real-hero__overlay" />
         <div className="ecg-real-hero__content ds-container">
           <span className="ds-eyebrow ecg-real-hero__eyebrow">{t('realisationsPage.hero.eyebrow')}</span>

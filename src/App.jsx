@@ -12,8 +12,7 @@ import ExpertiseServices from './pages/ExpertiseServices';
 import Realisations from './pages/Realisations';
 import Confirmation from './pages/Confirmation';
 import bgAccueilHero from './assets/img/bgAccueil.jpg';
-import hangarHero from './assets/img/hangar.jpg';
-import ecgbgHero from './assets/img/ecgbg.jpeg';
+import heroPagesImg from './assets/img/hero-pages.jpg';
 
 function App() {
   const location = useLocation();
@@ -77,7 +76,7 @@ function App() {
   // Préchargement des hero images en idle pour que la navigation client-side
   // soit instantanée (l'image est déjà en cache navigateur quand on arrive)
   useEffect(() => {
-    const heroes = [bgAccueilHero, hangarHero, ecgbgHero];
+    const heroes = [bgAccueilHero, heroPagesImg];
     const preload = () => {
       heroes.forEach((src) => {
         const img = new Image();
