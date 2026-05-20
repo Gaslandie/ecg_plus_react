@@ -1,7 +1,7 @@
 import React from 'react';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import heroPages from '../assets/img/hero-pages.jpg';
-import batiment from '../assets/img/batiment.jpeg';
+import histoire from '../assets/img/histoire.jpg';
 import '../styles/realisations.css'; /* hero, cta */
 import '../styles/presentation.css';
 
@@ -90,7 +90,7 @@ const Presentation = () => {
               </div>
             </div>
             <div className="ecg-history__visual">
-              <img className="ecg-history__img" src={batiment} alt="ECG PLUS chantier" loading="lazy" decoding="async" />
+              <img className="ecg-history__img" src={histoire} alt="Équipe ECG PLUS sur un chantier" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
