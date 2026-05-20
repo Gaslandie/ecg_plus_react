@@ -4,7 +4,7 @@ import { useI18n } from '../i18n/I18nContext.jsx';
 import batiment from '../assets/img/batiment.jpeg';
 import ingeelectric from '../assets/img/ingeelectric.jpeg';
 import industrie from '../assets/img/industrie.jpeg';
-import commerce from '../assets/img/commerce.jpeg';
+import etudes from '../assets/img/etudes.jpg';
 import heroPages from '../assets/img/hero-pages.jpg';
 import '../styles/realisations.css'; /* réutilise hero, process, cta, zone */
 import '../styles/expertise.css';
@@ -35,7 +35,7 @@ const ExpertiseServices = () => {
     { key: 'p1', img: batiment, reversed: false },
     { key: 'p2', img: ingeelectric, reversed: true },
     { key: 'p3', img: industrie, reversed: false },
-    { key: 'p4', img: commerce, reversed: true },
+    { key: 'p4', img: etudes, reversed: true },
   ];
 
   return (
