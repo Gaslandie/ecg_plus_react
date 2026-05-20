@@ -382,10 +382,9 @@
   margin-bottom: var(--ds-space-4);
 }
 .ecg-footer__logo {
-  height: 48px;
-  width: 48px;
-  object-fit: cover;
-  border-radius: var(--ds-radius-sm);
+  height: 52px;
+  width: auto;
+  object-fit: contain;
 }
 .ecg-footer__brand-title {
   font-family: var(--ds-font-display);

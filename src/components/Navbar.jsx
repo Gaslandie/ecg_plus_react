@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import logo from '../assets/img/logo.jpeg';
+import logo from '../assets/img/logo-white.png';
 import { useI18n } from '../i18n/I18nContext.jsx';
 
 const Navbar = () => {
