@@ -67,15 +67,19 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', updateHeight);
   }, [isScrolled]);
 
-  // Pages avec hero plein écran : navbar transparente avant scroll
+  // Pages avec hero plein écran : navbar transparente avant scroll.
+  // Quand le menu mobile est ouvert, la navbar doit être solide pour
+  // se raccorder visuellement au panneau du menu.
   const heroRoutes = ['/', '/realisations', '/expertiseservices', '/presentation', '/contact'];
-  const isOverHero = heroRoutes.includes(location.pathname) && !isScrolled;
+  const isOverHero = heroRoutes.includes(location.pathname) && !isScrolled && !menuOpen;
 
   const navClasses = [
     'ecg-nav',
     isScrolled ? 'is-scrolled' : '',
     isOverHero ? '' : 'is-solid',
   ].filter(Boolean).join(' ');
+
+  const handleNavClick = () => setMenuOpen(false);
 
   return (
     <nav className={navClasses} role="navigation" aria-label="Main navigation">
@@ -88,27 +92,27 @@ const Navbar = () => {
         <div className="ecg-nav__actions">
           <ul id="ecg-nav-menu" className={`ecg-nav__menu${menuOpen ? ' is-open' : ''}`}>
             <li>
-              <NavLink end to="/" className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
+              <NavLink end to="/" onClick={handleNavClick} className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
                 {t('nav.home')}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/presentation" className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
+              <NavLink to="/presentation" onClick={handleNavClick} className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
                 {t('nav.presentation')}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/expertiseservices" className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
+              <NavLink to="/expertiseservices" onClick={handleNavClick} className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
                 {t('nav.expertise')}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/realisations" className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
+              <NavLink to="/realisations" onClick={handleNavClick} className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
                 {t('nav.realisations')}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/contact" className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
+              <NavLink to="/contact" onClick={handleNavClick} className={({ isActive }) => `ecg-nav__link${isActive ? ' is-active' : ''}`}>
                 {t('nav.contact')}
               </NavLink>
             </li>
