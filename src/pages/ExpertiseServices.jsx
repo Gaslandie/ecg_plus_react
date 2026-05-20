@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import batiment from '../assets/img/batiment.jpeg';
 import ingeelectric from '../assets/img/ingeelectric.jpeg';
-import industrie from '../assets/img/industrie.jpeg';
+import industrie from '../assets/img/industrie.jpg';
 import etudes from '../assets/img/etudes.jpg';
 import heroPages from '../assets/img/hero-pages.jpg';
 import '../styles/realisations.css'; /* réutilise hero, process, cta, zone */
