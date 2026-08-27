@@ -205,9 +205,16 @@ export const translations = {
       hero: {
         eyebrow: "L'entreprise",
         title: "ECG PLUS — 18 ans au service de la construction",
-        titleLine1: "Présentation d'",
-        titleLine2: "ECG PLUS",
-        subtitle: "18 ans d'excellence dans la construction et les travaux publics en Guinée",
+        titleLine1: "Construire la confiance.",
+        titleLine2: "Bâtir pour durer.",
+        subtitle: "Depuis 18 ans, ECG PLUS accompagne les projets de construction, d'infrastructure et d'énergie qui façonnent la Guinée.",
+        discover: "Découvrir notre histoire",
+        projectCta: "Construisons ensemble",
+        stats: {
+          years: "Années d'expérience",
+          projects: "Projets réalisés",
+          expertise: "Expertises intégrées",
+        },
         teamTitle: "Notre équipe, votre force",
         teamLead: "Une équipe multidisciplinaire d'ingénieurs, techniciens, ouvriers qualifiés et gestionnaires, soudée par 18 années d'expérience commune sur le terrain.",
         teamCategory1Title: "Personnel technique de chantier",
@@ -234,7 +241,10 @@ export const translations = {
         },
       },
       identity: {
+        eyebrow: "Une entreprise structurée",
         title: "Identité de l'Entreprise",
+        intro: "Des informations claires et vérifiables pour construire une relation professionnelle en toute confiance.",
+        metricsLabel: "Chiffres clés de l'entreprise",
         companyName: "Raison Sociale",
         legalStatus: "Statut Légal",
         capital: "Capital Social",
@@ -253,6 +263,7 @@ export const translations = {
       presentation: {
         title: "Notre Présentation",
         historyTitle: "Historique",
+        storyTitle: "Une expertise forgée sur le terrain",
         historyLead:
           "Depuis sa fondation il y a 18 ans, ECG PLUS s'est imposé comme un acteur majeur dans le domaine de la construction et de l'expertise des bâtiments en Guinée et aujourd'hui dans la sous-région.",
         historyText:
@@ -270,9 +281,46 @@ export const translations = {
         },
         visionTitle: "Notre Vision",
         visionText: "Construction durable selon les exigences du client en vue de sa satisfaction.",
+        expertiseCta: "Découvrir nos expertises",
+        imageAlt: "Équipe ECG PLUS mobilisée sur un chantier",
       },
       values: {
+        eyebrow: "Ce qui nous guide",
         title: "Nos Valeurs & Engagements",
+        intro: "Des principes simples et exigeants qui orientent nos décisions, sur le chantier comme dans la relation client.",
+        items: [
+          {
+            title: "Rigueur technique",
+            text: "Chaque décision s'appuie sur une lecture précise des contraintes, des normes et des objectifs du projet.",
+          },
+          {
+            title: "Proximité",
+            text: "Une écoute active, un interlocuteur impliqué et une communication claire à chaque étape.",
+          },
+          {
+            title: "Responsabilité",
+            text: "La sécurité, la qualité d'exécution et le respect des engagements structurent notre travail.",
+          },
+          {
+            title: "Durabilité",
+            text: "Nous concevons des solutions robustes, adaptées au contexte et pensées pour durer.",
+          },
+        ],
+      },
+      team: {
+        eyebrow: "Compétences humaines",
+      },
+      legal: {
+        eyebrow: "Transparence",
+        courtDetail: "Tribunal de Commerce — Coyah, Guinée",
+        statusDetail: "Société à responsabilité limitée",
+        bankDetail: "Partenaire bancaire de l'entreprise",
+      },
+      finalCta: {
+        title: "Une équipe solide pour votre prochain projet.",
+        text: "Échangeons sur vos enjeux et construisons une réponse technique adaptée à vos objectifs.",
+        primary: "Nous contacter",
+        secondary: "Voir nos réalisations",
       },
     },
     realisationsPage: {
@@ -1011,9 +1059,16 @@ export const translations = {
       hero: {
         eyebrow: "The company",
         title: "ECG PLUS — 18 years serving construction",
-        titleLine1: "About",
-        titleLine2: "ECG PLUS",
-        subtitle: "18 years of excellence in construction and public works in Guinea",
+        titleLine1: "Build trust.",
+        titleLine2: "Build to last.",
+        subtitle: "For 18 years, ECG PLUS has supported construction, infrastructure and energy projects shaping Guinea.",
+        discover: "Discover our story",
+        projectCta: "Let’s build together",
+        stats: {
+          years: "Years of experience",
+          projects: "Completed projects",
+          expertise: "Integrated capabilities",
+        },
         teamTitle: "Our team, your strength",
         teamLead: "A multidisciplinary team of engineers, technicians, skilled workers and managers, united by 18 years of shared field experience.",
         teamCategory1Title: "On-site technical team",
@@ -1040,7 +1095,10 @@ export const translations = {
         },
       },
       identity: {
+        eyebrow: "A structured company",
         title: "Company Identity",
+        intro: "Clear, verifiable information to build a professional relationship with confidence.",
+        metricsLabel: "Company key figures",
         companyName: "Company Name",
         legalStatus: "Legal Status",
         capital: "Share Capital",
@@ -1059,6 +1117,7 @@ export const translations = {
       presentation: {
         title: "Our Presentation",
         historyTitle: "History",
+        storyTitle: "Expertise built in the field",
         historyLead:
           "Since its founding 18 years ago, ECG PLUS has become a key player in construction and building expertise in Guinea and now across the sub‑region.",
         historyText:
@@ -1076,9 +1135,46 @@ export const translations = {
         },
         visionTitle: "Our Vision",
         visionText: "Sustainable construction aligned with client requirements for full satisfaction.",
+        expertiseCta: "Discover our expertise",
+        imageAlt: "ECG PLUS team working on a construction site",
       },
       values: {
+        eyebrow: "What guides us",
         title: "Our Values & Commitments",
+        intro: "Simple, demanding principles that guide our decisions, both on site and in every client relationship.",
+        items: [
+          {
+            title: "Technical rigor",
+            text: "Every decision is based on a precise understanding of constraints, standards and project objectives.",
+          },
+          {
+            title: "Proximity",
+            text: "Active listening, an engaged point of contact and clear communication at every stage.",
+          },
+          {
+            title: "Responsibility",
+            text: "Safety, execution quality and respect for commitments structure the way we work.",
+          },
+          {
+            title: "Durability",
+            text: "We design robust solutions adapted to their context and made to last.",
+          },
+        ],
+      },
+      team: {
+        eyebrow: "Human expertise",
+      },
+      legal: {
+        eyebrow: "Transparency",
+        courtDetail: "Commercial Court — Coyah, Guinea",
+        statusDetail: "Limited liability company",
+        bankDetail: "The company's banking partner",
+      },
+      finalCta: {
+        title: "A strong team for your next project.",
+        text: "Let’s discuss your requirements and build a technical response tailored to your objectives.",
+        primary: "Contact us",
+        secondary: "View our projects",
       },
     },
     realisationsPage: {
