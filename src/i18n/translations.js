@@ -279,11 +279,16 @@ export const translations = {
       hero: {
         eyebrow: "Réalisations",
         title: "Nos chantiers, notre signature",
+        titleLine1: "Des ouvrages qui",
+        titleLine2: "parlent pour nous.",
         subtitle:
           "Plus de 25 projets livrés en 18 ans, dans toutes les régions guinéennes et la sous-région. Notre expertise s'exprime à travers des ouvrages publics, résidentiels, industriels et des rénovations majeures.",
+        discover: "Explorer nos réalisations",
+        projectCta: "Confiez-nous votre prochain projet",
         stats: {
           projects: "Projets réalisés",
           years: "Années d’expertise",
+          sectors: "Domaines d'intervention",
         },
       },
       valueAdded: {
@@ -305,40 +310,59 @@ export const translations = {
         footer: "Client institutionnel, 2023",
       },
       projects: {
+        eyebrow: "Références sélectionnées",
         title: "Quelques projets réalisés",
         more: "D’autres références peuvent être communiquées sur demande.",
         cta: "Parlez-nous de votre projet",
         view: "Voir les Projets",
+        filtersLabel: "Filtrer les réalisations",
+        open: "Ouvrir le projet",
+        close: "Fermer le projet",
+        modalCta: "Parler d'un projet similaire",
+        filters: {
+          all: "Tous",
+          public: "Public",
+          residential: "Résidentiel",
+          civil: "Génie civil",
+          industrial: "Industriel",
+          studies: "Études",
+        },
         cards: {
           kankan: {
             badge: "Ouvrage Public",
             title: "Bibliothèque Municipale de Kankan",
             meta: "Kankan • 2023",
+            description: "Une réalisation publique qui illustre notre capacité à livrer des espaces fonctionnels, durables et adaptés aux usages collectifs.",
           },
           dubreka: {
             badge: "Résidentiel",
             title: "Résidence Privée Dubréka Fihaima",
             meta: "Dubréka • 2020 - 2021",
+            description: "Un projet résidentiel accompagné avec rigueur, depuis les premières études jusqu'aux travaux de construction et de finition.",
           },
           kagbelen: {
             badge: "Génie Civil",
             title: "Projet Kagbelen Dondolikhouré",
             meta: "Kagbelen • Construction durable",
+            description: "Une intervention de génie civil pensée pour répondre aux contraintes du site et assurer la pérennité de l'ouvrage.",
           },
           r4: {
             badge: "Bureau d'Études",
             title: "Conceptions & Modélisations R+4",
             meta: "Optimisation structurelle",
+            description: "Études, conception et modélisation structurelle au service d'un bâtiment optimisé, cohérent et techniquement maîtrisé.",
           },
           hangar: {
             badge: "Industriel",
             title: "Hangars & Bâtiments Logistiques",
             meta: "Zone industrielle • Construction métallique",
+            description: "Des solutions de construction métallique dimensionnées pour les besoins logistiques, industriels et opérationnels.",
           },
           ansoumania: {
             badge: "Bâtiment Mixte",
             title: "Immeuble R+2 Ansoumaniah",
             meta: "Cimenterie • 2023 - 2024",
+            description: "Un projet de bâtiment mixte associant organisation fonctionnelle, exigence constructive et qualité des finitions.",
           },
         },
       },
@@ -365,6 +389,7 @@ export const translations = {
       domains: {
         title: "Nos Domaines d'Intervention",
         subtitle: "Une expertise transversale au service de tous les secteurs",
+        intro: "Nos équipes réunissent les compétences nécessaires pour intervenir sur des projets publics, privés, énergétiques et industriels.",
         building: "Bâtiment & Construction",
         energy: "Énergie & Électricité",
         civil: "Génie Civil & Industrie",
@@ -397,6 +422,7 @@ export const translations = {
         },
       },
       presence: {
+        eyebrow: "Couverture opérationnelle",
         title: "Notre Présence en Guinée",
         text:
           "ECG PLUS intervient sur l'ensemble du territoire guinéen, de Conakry aux régions les plus reculées, garantissant proximité et réactivité pour tous vos projets.",
@@ -437,6 +463,7 @@ export const translations = {
       process: {
         title: "Notre Méthode de Travail",
         subtitle: "Un processus rigoureux pour garantir l'excellence de chaque projet",
+        intro: "Une méthode claire, des responsabilités définies et un suivi continu pour sécuriser chaque étape de votre projet.",
         step1: "Étude & Devis",
         step1text:
           "Analyse détaillée de vos besoins, visite du site, établissement d'un devis précis et planning prévisionnel.",
@@ -451,9 +478,10 @@ export const translations = {
           "Réception définitive, remise des garanties, formation à l'utilisation et service après-vente.",
       },
       cta: {
+        eyebrow: "Construisons ensemble",
         title: "Votre Projet, Notre Expertise",
         text:
-          "Avec plus de 50 réalisations réussies et une présence dans toute la Guinée, ECG PLUS est le partenaire idéal pour concrétiser vos ambitions.",
+          "Avec plus de 25 réalisations et une présence dans toute la Guinée, ECG PLUS mobilise son expertise pour concrétiser vos ambitions.",
         feature1: "Conseil Gratuit",
         feature1text: "Étude préliminaire et conseils techniques sans engagement",
         feature2: "Devis Détaillé",
@@ -1033,11 +1061,16 @@ export const translations = {
       hero: {
         eyebrow: "Projects",
         title: "Our worksites, our signature",
+        titleLine1: "Projects that",
+        titleLine2: "speak for us.",
         subtitle:
           "More than 25 projects delivered over 18 years across Guinea and the sub‑region. Our expertise spans public works, residential, industrial projects and major renovations.",
+        discover: "Explore our projects",
+        projectCta: "Entrust us with your next project",
         stats: {
           projects: "Projects Completed",
           years: "Years of Expertise",
+          sectors: "Areas of expertise",
         },
       },
       valueAdded: {
@@ -1059,40 +1092,59 @@ export const translations = {
         footer: "Institutional client, 2023",
       },
       projects: {
+        eyebrow: "Selected references",
         title: "Selected Projects",
         more: "Additional references are available upon request.",
         cta: "Tell us about your project",
         view: "View Projects",
+        filtersLabel: "Filter projects",
+        open: "Open project",
+        close: "Close project",
+        modalCta: "Discuss a similar project",
+        filters: {
+          all: "All",
+          public: "Public",
+          residential: "Residential",
+          civil: "Civil engineering",
+          industrial: "Industrial",
+          studies: "Studies",
+        },
         cards: {
           kankan: {
             badge: "Public Works",
             title: "Municipal Library of Kankan",
             meta: "Kankan • 2023",
+            description: "A public project demonstrating our ability to deliver functional, durable spaces designed for collective use.",
           },
           dubreka: {
             badge: "Residential",
             title: "Private Residence Dubréka Fihaima",
             meta: "Dubréka • 2020 - 2021",
+            description: "A residential project managed with discipline, from the first studies through construction and finishing works.",
           },
           kagbelen: {
             badge: "Civil Engineering",
             title: "Kagbelen Dondolikhouré Project",
             meta: "Kagbelen • Sustainable construction",
+            description: "A civil engineering intervention designed around site constraints to ensure the long-term durability of the structure.",
           },
           r4: {
             badge: "Design Office",
             title: "R+4 Designs & Modeling",
             meta: "Structural optimization",
+            description: "Studies, design and structural modeling supporting an optimized, coherent and technically controlled building.",
           },
           hangar: {
             badge: "Industrial",
             title: "Hangars & Logistics Buildings",
             meta: "Industrial zone • Steel construction",
+            description: "Steel construction solutions designed for logistics, industrial and operational requirements.",
           },
           ansoumania: {
             badge: "Mixed‑use Building",
             title: "R+2 Building Ansoumaniah",
             meta: "Cement plant • 2023 - 2024",
+            description: "A mixed-use building combining functional organization, construction rigor and high-quality finishes.",
           },
         },
       },
@@ -1119,6 +1171,7 @@ export const translations = {
       domains: {
         title: "Our Areas of Expertise",
         subtitle: "Cross‑sector expertise serving all industries",
+        intro: "Our teams combine the skills required to deliver public, private, energy and industrial projects.",
         building: "Building & Construction",
         energy: "Energy & Electricity",
         civil: "Civil Engineering & Industry",
@@ -1151,6 +1204,7 @@ export const translations = {
         },
       },
       presence: {
+        eyebrow: "Operational coverage",
         title: "Our Presence in Guinea",
         text:
           "ECG PLUS operates across Guinea, from Conakry to the most remote regions, ensuring proximity and responsiveness for all your projects.",
@@ -1191,6 +1245,7 @@ export const translations = {
       process: {
         title: "Our Working Method",
         subtitle: "A rigorous process to guarantee excellence for every project",
+        intro: "A clear method, defined responsibilities and continuous monitoring to secure every stage of your project.",
         step1: "Study & Quote",
         step1text:
           "Detailed needs analysis, site visit, accurate quote and projected schedule.",
@@ -1205,9 +1260,10 @@ export const translations = {
           "Final handover, guarantees, user training and after‑sales service.",
       },
       cta: {
+        eyebrow: "Let's build together",
         title: "Your Project, Our Expertise",
         text:
-          "With over 50 successful projects and nationwide presence, ECG PLUS is the ideal partner to deliver your ambitions.",
+          "With more than 25 projects and nationwide presence, ECG PLUS brings the expertise needed to deliver your ambitions.",
         feature1: "Free Advice",
         feature1text: "Preliminary study and technical advice with no commitment",
         feature2: "Detailed Quote",

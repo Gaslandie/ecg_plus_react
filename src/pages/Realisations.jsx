@@ -9,207 +9,333 @@ import hangar from '../assets/img/hangar.jpg';
 import ansoumania from '../assets/img/ansoumania.jpg';
 import heroPages from '../assets/img/hero-pages.jpg';
 import '../styles/realisations.css';
-import '../styles/home.css'; /* pour réutiliser .ecg-project */
+
+const PROJECTS = [
+  { img: kankan, key: 'kankan', category: 'public' },
+  { img: dubreka, key: 'dubreka', category: 'residential' },
+  { img: kagbelen, key: 'kagbelen', category: 'civil' },
+  { img: r4, key: 'r4', category: 'studies' },
+  { img: hangar, key: 'hangar', category: 'industrial' },
+  { img: ansoumania, key: 'ansoumania', category: 'residential' },
+];
+
+const FILTERS = ['all', 'public', 'residential', 'civil', 'industrial', 'studies'];
 
 function Realisations() {
   const { t } = useI18n();
+  const [activeFilter, setActiveFilter] = React.useState('all');
+  const [selectedProject, setSelectedProject] = React.useState(null);
 
-  // Parallax léger sur le hero
   React.useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const bg = document.querySelector('.ecg-real-hero__bg');
-    if (!bg || prefersReduced) return;
+    if (!bg || prefersReduced) return undefined;
+
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       window.requestAnimationFrame(() => {
-        const y = window.scrollY * 0.15;
-        bg.style.transform = `translateY(${y}px) scale(1.08)`;
+        bg.style.transform = `translate3d(0, ${window.scrollY * 0.1}px, 0) scale(1.06)`;
         ticking = false;
       });
     };
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const projects = [
-    { img: kankan, key: 'kankan' },
-    { img: dubreka, key: 'dubreka' },
-    { img: kagbelen, key: 'kagbelen' },
-    { img: r4, key: 'r4' },
-    { img: hangar, key: 'hangar' },
-    { img: ansoumania, key: 'ansoumania' },
-  ];
+  React.useEffect(() => {
+    if (!selectedProject) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setSelectedProject(null);
+    };
+
+    document.body.classList.add('ecg-real-modal-open');
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.classList.remove('ecg-real-modal-open');
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedProject]);
+
+  const visibleProjects = activeFilter === 'all'
+    ? PROJECTS
+    : PROJECTS.filter((project) => project.category === activeFilter);
+
+  const selected = selectedProject
+    ? PROJECTS.find((project) => project.key === selectedProject)
+    : null;
 
   return (
-    <main className="page-with-hero">
-      {/* HERO plein écran */}
+    <main className="page-with-hero ecg-real-page">
       <header className="ecg-real-hero">
-        <img className="ecg-real-hero__bg" src={heroPages} alt="" fetchpriority="high" decoding="async" width="1920" height="1280" />
-        <div className="ecg-real-hero__overlay" />
+        <img
+          className="ecg-real-hero__bg"
+          src={heroPages}
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          width="1920"
+          height="1280"
+        />
+        <span className="ecg-real-hero__overlay" aria-hidden="true" />
+        <span className="ecg-real-hero__lines" aria-hidden="true" />
+
         <div className="ecg-real-hero__content ds-container">
-          <span className="ds-eyebrow ecg-real-hero__eyebrow">{t('realisationsPage.hero.eyebrow')}</span>
-          <h1 className="ecg-real-hero__title">{t('realisationsPage.hero.title')}</h1>
+          <span className="ecg-real-hero__eyebrow">
+            <span aria-hidden="true" />
+            {t('realisationsPage.hero.eyebrow')}
+          </span>
+          <h1 className="ecg-real-hero__title">
+            <span>{t('realisationsPage.hero.titleLine1')}</span>
+            <strong>{t('realisationsPage.hero.titleLine2')}</strong>
+          </h1>
           <p className="ecg-real-hero__intro">{t('realisationsPage.hero.subtitle')}</p>
+          <a href="#projets" className="ds-btn ds-btn--accent">
+            {t('realisationsPage.hero.discover')}
+            <i className="bi bi-arrow-down" aria-hidden="true" />
+          </a>
+        </div>
+
+        <div className="ecg-real-hero__stats">
+          <div className="ds-container ecg-real-hero__stats-inner">
+            <div>
+              <strong>25<span>+</span></strong>
+              <p>{t('realisationsPage.hero.stats.projects')}</p>
+            </div>
+            <div>
+              <strong>18<span>+</span></strong>
+              <p>{t('realisationsPage.hero.stats.years')}</p>
+            </div>
+            <div>
+              <strong>4</strong>
+              <p>{t('realisationsPage.hero.stats.sectors')}</p>
+            </div>
+            <Link to="/contact">
+              <span>{t('realisationsPage.hero.projectCta')}</span>
+              <i className="bi bi-arrow-up-right" aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </header>
 
-      {/* PROJETS — grille premium */}
-      <section className="ecg-real-projects" data-aos="fade-up" data-aos-delay="100">
+      <section id="projets" className="ecg-real-projects" data-aos="fade-up">
         <div className="ds-container">
           <div className="ecg-real-projects__head">
-            <span className="ds-eyebrow">{t('realisationsPage.hero.eyebrow')}</span>
-            <h2>{t('realisationsPage.projects.title')}</h2>
-            <p>{t('realisationsPage.projects.more')}</p>
+            <div>
+              <span className="ds-eyebrow">{t('realisationsPage.projects.eyebrow')}</span>
+              <h2>{t('realisationsPage.projects.title')}</h2>
+            </div>
+            <div className="ecg-real-projects__intro">
+              <p>{t('realisationsPage.projects.more')}</p>
+              <Link to="/contact" className="ecg-real-text-link">
+                {t('realisationsPage.projects.cta')}
+                <span aria-hidden="true"><i className="bi bi-arrow-right" /></span>
+              </Link>
+            </div>
           </div>
-          <div className="ecg-real-projects__grid">
-            {projects.map(({ img, key }) => (
-              <article key={key} className="ecg-project">
-                <img className="ecg-project__img" src={img} alt={t(`realisationsPage.projects.cards.${key}.title`)} loading="lazy" decoding="async" />
-                <div className="ecg-project__overlay" />
-                <span className="ecg-project__category">{t(`realisationsPage.projects.cards.${key}.badge`)}</span>
-                <div className="ecg-project__content">
-                  <h3 className="ecg-project__title">{t(`realisationsPage.projects.cards.${key}.title`)}</h3>
-                  <p className="ecg-project__meta">{t(`realisationsPage.projects.cards.${key}.meta`)}</p>
-                </div>
+
+          <div className="ecg-real-filters" role="group" aria-label={t('realisationsPage.projects.filtersLabel')}>
+            {FILTERS.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                className={activeFilter === filter ? 'is-active' : ''}
+                onClick={() => setActiveFilter(filter)}
+                aria-pressed={activeFilter === filter}
+              >
+                {t(`realisationsPage.projects.filters.${filter}`)}
+              </button>
+            ))}
+          </div>
+
+          <div className={`ecg-real-projects__grid${visibleProjects.length < 3 ? ' is-compact' : ''}`}>
+            {visibleProjects.map((project, index) => (
+              <button
+                key={project.key}
+                type="button"
+                className={`ecg-real-card ecg-real-card--${(index % 6) + 1}`}
+                onClick={() => setSelectedProject(project.key)}
+                aria-label={`${t('realisationsPage.projects.open')} ${t(`realisationsPage.projects.cards.${project.key}.title`)}`}
+              >
+                <img
+                  src={project.img}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="ecg-real-card__shade" aria-hidden="true" />
+                <span className="ecg-real-card__badge">
+                  {t(`realisationsPage.projects.cards.${project.key}.badge`)}
+                </span>
+                <span className="ecg-real-card__content">
+                  <small>{t(`realisationsPage.projects.cards.${project.key}.meta`)}</small>
+                  <strong>{t(`realisationsPage.projects.cards.${project.key}.title`)}</strong>
+                </span>
+                <span className="ecg-real-card__open" aria-hidden="true">
+                  <i className="bi bi-arrows-fullscreen" />
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="ecg-real-domains" data-aos="fade-up">
+        <div className="ds-container">
+          <div className="ecg-real-domains__head">
+            <div>
+              <span className="ds-eyebrow">{t('realisationsPage.domains.title')}</span>
+              <h2>{t('realisationsPage.domains.subtitle')}</h2>
+            </div>
+            <p>{t('realisationsPage.domains.intro')}</p>
+          </div>
+
+          <div className="ecg-real-domains__grid">
+            {['building', 'energy', 'civil', 'studies'].map((domain, index) => (
+              <article key={domain} className="ecg-domain">
+                <span className="ecg-domain__num">0{index + 1}</span>
+                <h3>{t(`realisationsPage.domains.${domain}`)}</h3>
+                <ul>
+                  {t(`realisationsPage.domains.lists.${domain}`).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* DOMAINES D'INTERVENTION */}
-      <section className="ecg-real-domains" data-aos="fade-up" data-aos-delay="100">
-        <div className="ds-container">
-          <div className="ecg-real-domains__head">
-            <span className="ds-eyebrow">{t('realisationsPage.domains.title')}</span>
-            <h2>{t('realisationsPage.domains.subtitle')}</h2>
-            <hr className="ds-divider ds-divider--center" />
-          </div>
-          <div className="ecg-real-domains__grid">
-            <article className="ecg-domain">
-              <span className="ecg-domain__num">01</span>
-              <h3 className="ecg-domain__title">{t('realisationsPage.domains.building')}</h3>
-              <ul className="ecg-domain__list">
-                {t('realisationsPage.domains.lists.building').map((item, i) => <li key={i}>{item}</li>)}
-              </ul>
-            </article>
-            <article className="ecg-domain">
-              <span className="ecg-domain__num">02</span>
-              <h3 className="ecg-domain__title">{t('realisationsPage.domains.energy')}</h3>
-              <ul className="ecg-domain__list">
-                {t('realisationsPage.domains.lists.energy').map((item, i) => <li key={i}>{item}</li>)}
-              </ul>
-            </article>
-            <article className="ecg-domain">
-              <span className="ecg-domain__num">03</span>
-              <h3 className="ecg-domain__title">{t('realisationsPage.domains.civil')}</h3>
-              <ul className="ecg-domain__list">
-                {t('realisationsPage.domains.lists.civil').map((item, i) => <li key={i}>{item}</li>)}
-              </ul>
-            </article>
-            <article className="ecg-domain">
-              <span className="ecg-domain__num">04</span>
-              <h3 className="ecg-domain__title">{t('realisationsPage.domains.studies')}</h3>
-              <ul className="ecg-domain__list">
-                {t('realisationsPage.domains.lists.studies').map((item, i) => <li key={i}>{item}</li>)}
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* PRÉSENCE GÉOGRAPHIQUE */}
-      <section className="ecg-real-presence" data-aos="fade-up" data-aos-delay="100">
+      <section className="ecg-real-presence" data-aos="fade-up">
         <div className="ds-container">
           <div className="ecg-real-presence__head">
             <div>
-              <span className="ds-eyebrow">{t('realisationsPage.presence.title')}</span>
+              <span className="ds-eyebrow">{t('realisationsPage.presence.eyebrow')}</span>
               <h2>{t('realisationsPage.presence.title')}</h2>
             </div>
             <p>{t('realisationsPage.presence.text')}</p>
           </div>
-          <div className="ecg-real-presence__grid">
-            <article className="ecg-zone">
-              <div className="ecg-zone__icon"><i className="bi bi-house-fill" aria-hidden="true"></i></div>
-              <h3 className="ecg-zone__title">{t('realisationsPage.presence.conakry')}</h3>
-              <p className="ecg-zone__text">{t('realisationsPage.presence.conakryText')}</p>
-              <span className="ecg-zone__count">{t('realisationsPage.presence.badges.conakry')}</span>
-            </article>
-            <article className="ecg-zone">
-              <div className="ecg-zone__icon"><i className="bi bi-tree-fill" aria-hidden="true"></i></div>
-              <h3 className="ecg-zone__title">{t('realisationsPage.presence.regions')}</h3>
-              <p className="ecg-zone__text">{t('realisationsPage.presence.regionsText')}</p>
-              <span className="ecg-zone__count">{t('realisationsPage.presence.badges.regions')}</span>
-            </article>
-            <article className="ecg-zone">
-              <div className="ecg-zone__icon"><i className="bi bi-water" aria-hidden="true"></i></div>
-              <h3 className="ecg-zone__title">{t('realisationsPage.presence.coast')}</h3>
-              <p className="ecg-zone__text">{t('realisationsPage.presence.coastText')}</p>
-              <span className="ecg-zone__count">{t('realisationsPage.presence.badges.coast')}</span>
-            </article>
-            <article className="ecg-zone">
-              <div className="ecg-zone__icon"><i className="bi bi-hammer" aria-hidden="true"></i></div>
-              <h3 className="ecg-zone__title">{t('realisationsPage.presence.mining')}</h3>
-              <p className="ecg-zone__text">{t('realisationsPage.presence.miningText')}</p>
-              <span className="ecg-zone__count">{t('realisationsPage.presence.badges.mining')}</span>
-            </article>
+
+          <div className="ecg-real-presence__content">
+            <div className="ecg-real-presence__visual" aria-hidden="true">
+              <span className="ecg-real-presence__orbit is-one" />
+              <span className="ecg-real-presence__orbit is-two" />
+              <span className="ecg-real-presence__orbit is-three" />
+              <span className="ecg-real-presence__center">
+                <i className="bi bi-geo-alt-fill" />
+                ECG PLUS
+              </span>
+            </div>
+
+            <div className="ecg-real-presence__zones">
+              {[
+                ['conakry', 'bi-buildings'],
+                ['regions', 'bi-signpost-split'],
+                ['coast', 'bi-water'],
+                ['mining', 'bi-hammer'],
+              ].map(([zone, icon], index) => (
+                <article key={zone} className="ecg-zone">
+                  <span className="ecg-zone__index">0{index + 1}</span>
+                  <i className={`bi ${icon}`} aria-hidden="true" />
+                  <div>
+                    <h3>{t(`realisationsPage.presence.${zone}`)}</h3>
+                    <p>{t(`realisationsPage.presence.${zone}Text`)}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* PROCESSUS */}
-      <section className="ecg-real-process" data-aos="fade-up" data-aos-delay="100">
+      <section className="ecg-real-process" data-aos="fade-up">
         <div className="ds-container">
           <div className="ecg-real-process__head">
-            <span className="ds-eyebrow">{t('realisationsPage.process.title')}</span>
-            <h2>{t('realisationsPage.process.subtitle')}</h2>
-            <hr className="ds-divider ds-divider--center" />
+            <div>
+              <span className="ds-eyebrow">{t('realisationsPage.process.title')}</span>
+              <h2>{t('realisationsPage.process.subtitle')}</h2>
+            </div>
+            <p>{t('realisationsPage.process.intro')}</p>
           </div>
+
           <div className="ecg-real-process__steps">
-            <div className="ecg-step">
-              <div className="ecg-step__num">1</div>
-              <h3 className="ecg-step__title">{t('realisationsPage.process.step1')}</h3>
-              <p className="ecg-step__text">{t('realisationsPage.process.step1text')}</p>
-            </div>
-            <div className="ecg-step">
-              <div className="ecg-step__num">2</div>
-              <h3 className="ecg-step__title">{t('realisationsPage.process.step2')}</h3>
-              <p className="ecg-step__text">{t('realisationsPage.process.step2text')}</p>
-            </div>
-            <div className="ecg-step">
-              <div className="ecg-step__num">3</div>
-              <h3 className="ecg-step__title">{t('realisationsPage.process.step3')}</h3>
-              <p className="ecg-step__text">{t('realisationsPage.process.step3text')}</p>
-            </div>
-            <div className="ecg-step">
-              <div className="ecg-step__num">4</div>
-              <h3 className="ecg-step__title">{t('realisationsPage.process.step4')}</h3>
-              <p className="ecg-step__text">{t('realisationsPage.process.step4text')}</p>
-            </div>
+            {[1, 2, 3, 4].map((step) => (
+              <article key={step} className="ecg-step">
+                <span className="ecg-step__num">0{step}</span>
+                <h3>{t(`realisationsPage.process.step${step}`)}</h3>
+                <p>{t(`realisationsPage.process.step${step}text`)}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section className="ecg-real-cta" data-aos="fade-up" data-aos-delay="100">
+      <section className="ecg-real-cta" data-aos="fade-up">
+        <img src={hangar} alt="" loading="lazy" decoding="async" />
+        <span className="ecg-real-cta__shade" aria-hidden="true" />
         <div className="ds-container ecg-real-cta__inner">
+          <span className="ds-eyebrow">{t('realisationsPage.cta.eyebrow')}</span>
           <h2>{t('realisationsPage.cta.title')}</h2>
-          <p className="ecg-real-cta__text">{t('realisationsPage.cta.text')}</p>
+          <p>{t('realisationsPage.cta.text')}</p>
           <div className="ecg-real-cta__actions">
             <Link to="/contact" className="ds-btn ds-btn--accent">
               {t('realisationsPage.cta.primary')}
-              <i className="bi bi-arrow-right" aria-hidden="true"></i>
+              <i className="bi bi-arrow-up-right" aria-hidden="true" />
             </Link>
-            <Link to="/expertiseservices" className="ds-btn ds-btn--ghost">
+            <Link to="/expertiseservices" className="ds-btn ds-btn--outline">
               {t('realisationsPage.cta.secondary')}
-              <i className="bi bi-arrow-right" aria-hidden="true"></i>
+              <i className="bi bi-arrow-right" aria-hidden="true" />
             </Link>
           </div>
         </div>
       </section>
+
+      {selected && (
+        <div
+          className="ecg-real-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="ecg-real-modal-title"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setSelectedProject(null);
+          }}
+        >
+          <div className="ecg-real-modal__dialog">
+            <button
+              type="button"
+              className="ecg-real-modal__close"
+              onClick={() => setSelectedProject(null)}
+              aria-label={t('realisationsPage.projects.close')}
+            >
+              <i className="bi bi-x-lg" aria-hidden="true" />
+            </button>
+            <div className="ecg-real-modal__image">
+              <img
+                src={selected.img}
+                alt={t(`realisationsPage.projects.cards.${selected.key}.title`)}
+              />
+            </div>
+            <div className="ecg-real-modal__content">
+              <span>{t(`realisationsPage.projects.cards.${selected.key}.badge`)}</span>
+              <h2 id="ecg-real-modal-title">
+                {t(`realisationsPage.projects.cards.${selected.key}.title`)}
+              </h2>
+              <p className="ecg-real-modal__meta">
+                {t(`realisationsPage.projects.cards.${selected.key}.meta`)}
+              </p>
+              <p>{t(`realisationsPage.projects.cards.${selected.key}.description`)}</p>
+              <Link to="/contact" className="ds-btn ds-btn--primary">
+                {t('realisationsPage.projects.modalCta')}
+                <i className="bi bi-arrow-up-right" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
