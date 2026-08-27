@@ -522,7 +522,7 @@ export const translations = {
           "Nous offrons une garantie décennale sur nos ouvrages, une garantie biennale sur les équipements, et nous respectons tous les délais contractuels avec pénalités de retard.",
         q5: "Disposez-vous d'un service d'urgence ?",
         a5:
-          "Oui, notre équipe d'urgence est disponible 24h/24 pour les interventions critiques (dépannages électriques, problèmes structurels, etc.). Contactez le +224 623 96 62 78.",
+          "Oui, notre équipe d'urgence est disponible 24h/24 pour les interventions critiques (dépannages électriques, problèmes structurels, etc.). Contactez le +224 623 41 75 10.",
         q6: "Proposez-vous des formations ?",
         a6:
           "Oui, nous proposons des formations à l'utilisation et à la maintenance des équipements installés, ainsi que des sessions de formation pour vos équipes techniques.",
@@ -1258,7 +1258,7 @@ export const translations = {
           "We provide a 10-year structural warranty, a 2-year equipment warranty, and we meet all contractual deadlines with penalties for delays.",
         q5: "Do you have an emergency service?",
         a5:
-          "Yes, our emergency team is available 24/7 for critical interventions (electrical failures, structural issues, etc.). Call +224 623 96 62 78.",
+          "Yes, our emergency team is available 24/7 for critical interventions (electrical failures, structural issues, etc.). Call +224 623 41 75 10.",
         q6: "Do you provide training?",
         a6:
           "Yes, we provide training on the use and maintenance of installed equipment, as well as sessions for your technical teams.",

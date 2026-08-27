@@ -298,7 +298,7 @@ function Home() {
                 <li>
                   <span className="ecg-contact__info-label">{t('home.contact.phoneLabel')}</span>
                   <span className="ecg-contact__info-value">
-                    <a href="tel:+224623966278">+224 623 96 62 78</a> · <a href="tel:+224628338641">+224 628 33 86 41</a>
+                    <a href="tel:+224623417510">+224 623 41 75 10</a>
                   </span>
                 </li>
                 <li>

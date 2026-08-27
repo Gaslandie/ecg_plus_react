@@ -29,7 +29,7 @@ const Footer = () => {
               </li>
               <li>
                 <i className="bi bi-telephone-fill" aria-hidden="true"></i>
-                <a href="tel:+224623966278">+224 623 96 62 78</a>
+                <a href="tel:+224623417510">+224 623 41 75 10</a>
               </li>
               <li>
                 <i className="bi bi-envelope-fill" aria-hidden="true"></i>
@@ -59,7 +59,7 @@ const Footer = () => {
             <a href="mailto:contact@ecgplusgn.com" aria-label={t('footer.emailLabel')}>
               <i className="bi bi-envelope-fill"></i>
             </a>
-            <a href="https://wa.me/224623966278" target="_blank" rel="noopener noreferrer" aria-label={t('footer.whatsappLabel')}>
+            <a href="https://wa.me/224623417510" target="_blank" rel="noopener noreferrer" aria-label={t('footer.whatsappLabel')}>
               <i className="bi bi-whatsapp"></i>
             </a>
             <a href="https://www.linkedin.com/in/daouda-fofana-1b01261a8/" target="_blank" rel="noopener noreferrer" aria-label={t('footer.linkedinLabel')}>

@@ -181,8 +181,7 @@ const Contact = () => {
                 <li className="ecg-contact-info__item">
                   <span className="ecg-contact-info__label">{t('contactPage.info.phoneTitle')}</span>
                   <span className="ecg-contact-info__value">
-                    <a href="tel:+224623966278">+224 623 96 62 78</a><br />
-                    <a href="tel:+224628338641">+224 628 33 86 41</a>
+                    <a href="tel:+224623417510">+224 623 41 75 10</a>
                   </span>
                 </li>
                 <li className="ecg-contact-info__item">
