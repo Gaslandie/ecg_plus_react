@@ -19,6 +19,14 @@ function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
+    const root = document.documentElement;
+    const previousBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = previousBehavior;
+  }, [location.pathname]);
+
+  useEffect(() => {
     AOS.init({
       offset: 120,
       duration: window.matchMedia('(max-width: 768px)').matches ? 650 : 900,

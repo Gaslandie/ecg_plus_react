@@ -197,9 +197,16 @@ export const translations = {
       },
     },
     confirmation: {
-      title: "Merci !",
-      text: "Votre message a bien été envoyé.\nNotre équipe vous répondra dans les meilleurs délais.",
+      eyebrow: "Demande transmise",
+      title: "Merci pour votre confiance.",
+      text: "Votre message a bien été envoyé. Notre équipe va l'étudier et vous répondra dans les meilleurs délais.",
       back: "Retour à l'accueil",
+      projects: "Voir nos réalisations",
+      nextTitle: "Les prochaines étapes",
+      step1: "Notre équipe prend connaissance de votre demande et de ses enjeux.",
+      step2: "Un interlocuteur vous contacte pour préciser les informations utiles.",
+      step3: "Nous préparons la réponse technique ou commerciale adaptée à votre projet.",
+      urgent: "Besoin d'un échange immédiat ?",
     },
     presentationPage: {
       hero: {
@@ -542,12 +549,23 @@ export const translations = {
     },
     contactPage: {
       hero: {
+        eyebrow: "Votre projet commence ici",
         title: "Contactez notre équipe",
+        titleLine1: "Parlons de votre",
+        titleLine2: "prochain projet.",
         subtitle:
           "Besoin d'un devis, d'un conseil ou d'un accompagnement sur-mesure ? Notre équipe vous répond rapidement et vous accompagne à chaque étape de votre projet.",
+        discover: "Décrire mon besoin",
+        stats: {
+          quote: "Délai maximal pour un devis",
+          emergency: "Assistance d'urgence",
+          timezone: "Fuseau horaire Conakry",
+        },
       },
       intro: {
+        eyebrow: "Construisons ensemble",
         title: "Une question ? Un projet à nous confier ?",
+        text: "Partagez-nous les premières informations. Plus votre besoin est précis, plus notre première réponse pourra être utile et concrète.",
       },
       info: {
         title: "Nos Coordonnées",
@@ -560,6 +578,7 @@ export const translations = {
         hqAddress: "MANEAH/PREF. COYAH, République de Guinée",
         phoneTitle: "Téléphone",
         emailTitle: "Email",
+        projectsCta: "Découvrir nos réalisations",
       },
       schedule: {
         title: "Horaires & Disponibilité",
@@ -572,6 +591,8 @@ export const translations = {
         emergencyHours: "24h/24",
       },
       form: {
+        title: "Parlez-nous de votre projet",
+        helper: "Quelques informations suffisent pour initier l'échange.",
         name: "Nom complet",
         company: "Société",
         email: "Email",
@@ -597,11 +618,14 @@ export const translations = {
         invalidMessage: "Merci de décrire votre besoin.",
       },
       map: {
+        eyebrow: "Nous situer",
         title: "Localisation du siège social",
+        intro: "Notre siège est basé à Manéah, dans la préfecture de Coyah, au plus près des projets du Grand Conakry et des axes régionaux.",
       },
       faq: {
         title: "Questions Fréquentes",
         subtitle: "Retrouvez les réponses à vos questions les plus courantes",
+        callCta: "Appeler notre équipe",
         q1: "Quels sont vos délais de réponse pour un devis ?",
         a1:
           "Nous nous engageons à vous fournir un devis détaillé sous 48h ouvrées maximum après réception de votre demande complète (plans, spécifications techniques, etc.).",
@@ -1051,9 +1075,16 @@ export const translations = {
       },
     },
     confirmation: {
-      title: "Thank you!",
-      text: "Your message has been sent.\nOur team will get back to you shortly.",
+      eyebrow: "Request received",
+      title: "Thank you for your trust.",
+      text: "Your message has been sent. Our team will review it and get back to you as soon as possible.",
       back: "Back to home",
+      projects: "View our projects",
+      nextTitle: "What happens next",
+      step1: "Our team reviews your request and its key requirements.",
+      step2: "A dedicated contact reaches out to clarify the useful information.",
+      step3: "We prepare the technical or commercial response suited to your project.",
+      urgent: "Need to speak with us now?",
     },
     presentationPage: {
       hero: {
@@ -1396,12 +1427,23 @@ export const translations = {
     },
     contactPage: {
       hero: {
+        eyebrow: "Your project starts here",
         title: "Contact Our Team",
+        titleLine1: "Let’s discuss your",
+        titleLine2: "next project.",
         subtitle:
           "Need a quote, advice, or tailored support? Our team responds quickly and supports you at every stage of your project.",
+        discover: "Describe my needs",
+        stats: {
+          quote: "Maximum quote turnaround",
+          emergency: "Emergency support",
+          timezone: "Conakry time zone",
+        },
       },
       intro: {
+        eyebrow: "Let’s build together",
         title: "A question? A project to entrust to us?",
+        text: "Share the first details with us. The clearer your needs, the more useful and concrete our initial response can be.",
       },
       info: {
         title: "Our Contacts",
@@ -1414,6 +1456,7 @@ export const translations = {
         hqAddress: "MANEAH/COYAH PREF., Republic of Guinea",
         phoneTitle: "Phone",
         emailTitle: "Email",
+        projectsCta: "Explore our projects",
       },
       schedule: {
         title: "Hours & Availability",
@@ -1426,6 +1469,8 @@ export const translations = {
         emergencyHours: "24/7",
       },
       form: {
+        title: "Tell us about your project",
+        helper: "A few details are enough to start the conversation.",
         name: "Full name",
         company: "Company",
         email: "Email",
@@ -1451,11 +1496,14 @@ export const translations = {
         invalidMessage: "Please describe your needs.",
       },
       map: {
+        eyebrow: "Find us",
         title: "Head office location",
+        intro: "Our head office is in Manéah, Coyah Prefecture, close to projects across Greater Conakry and key regional routes.",
       },
       faq: {
         title: "Frequently Asked Questions",
         subtitle: "Find answers to the most common questions",
+        callCta: "Call our team",
         q1: "What is your response time for a quote?",
         a1:
           "We provide a detailed quote within 48 business hours after receiving your complete request (plans, technical specs, etc.).",
