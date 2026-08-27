@@ -7,7 +7,7 @@ import kagbelen from '../assets/img/kagbelen.jpg';
 import r4 from '../assets/img/r+4.jpg';
 import hangar from '../assets/img/hangar.jpg';
 import ansoumania from '../assets/img/ansoumania.jpg';
-import heroPages from '../assets/img/hero-pages.jpg';
+import heroPages from '../assets/img/hero-pages.webp';
 import '../styles/realisations.css';
 
 const PROJECTS = [

@@ -5,7 +5,7 @@ import batiment from '../assets/img/batiment.jpeg';
 import ingeelectric from '../assets/img/ingeelectric.jpeg';
 import industrie from '../assets/img/industrie.jpg';
 import etudes from '../assets/img/etudes.jpg';
-import heroPages from '../assets/img/hero-pages.jpg';
+import heroPages from '../assets/img/hero-pages.webp';
 import '../styles/realisations.css';
 import '../styles/expertise.css';
 

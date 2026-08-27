@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
-import heroPages from '../assets/img/hero-pages.jpg';
+import heroPages from '../assets/img/hero-pages.webp';
 import histoire from '../assets/img/histoire.jpg';
 import '../styles/realisations.css';
 import '../styles/presentation.css';

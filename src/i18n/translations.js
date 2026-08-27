@@ -18,6 +18,40 @@ export const translations = {
       realisations: "Réalisations",
       contact: "Contact",
     },
+    a11y: {
+      mainNavigation: "Navigation principale",
+      languageSwitch: "Choisir la langue",
+      homeLink: "Accueil ECG PLUS",
+      openMenu: "Ouvrir le menu",
+      closeMenu: "Fermer le menu",
+      backToTop: "Retour en haut de la page",
+    },
+    seo: {
+      home: {
+        title: "ECG PLUS | Construction & Génie Civil en Guinée",
+        description: "ECG PLUS réalise vos projets de construction, génie civil, énergie et ingénierie en Guinée, de l'étude à la livraison.",
+      },
+      presentation: {
+        title: "À propos d'ECG PLUS | 18 ans d'expertise",
+        description: "Découvrez ECG PLUS SARL, son histoire, ses valeurs, son équipe et son expertise de terrain dans la construction en Guinée.",
+      },
+      expertise: {
+        title: "Expertises & Services | ECG PLUS",
+        description: "Construction, travaux publics, ingénierie électrique, solutions industrielles, études et expertise bâtiment en Guinée.",
+      },
+      realisations: {
+        title: "Réalisations en Guinée | ECG PLUS",
+        description: "Explorez les projets publics, résidentiels, industriels et de génie civil réalisés par ECG PLUS en Guinée.",
+      },
+      contact: {
+        title: "Contact & Devis | ECG PLUS Guinée",
+        description: "Contactez ECG PLUS pour votre projet de construction, rénovation, expertise ou ingénierie en Guinée.",
+      },
+      confirmation: {
+        title: "Demande reçue | ECG PLUS",
+        description: "Votre demande a bien été transmise à l'équipe ECG PLUS.",
+      },
+    },
     topbar: {
       hours: "Lun–Ven 8h–17h",
     },
@@ -895,6 +929,40 @@ export const translations = {
       expertise: "Expertise & Services",
       realisations: "Projects",
       contact: "Contact",
+    },
+    a11y: {
+      mainNavigation: "Main navigation",
+      languageSwitch: "Choose language",
+      homeLink: "ECG PLUS home",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
+      backToTop: "Back to top of page",
+    },
+    seo: {
+      home: {
+        title: "ECG PLUS | Construction & Civil Engineering in Guinea",
+        description: "ECG PLUS delivers construction, civil engineering, energy and technical projects in Guinea, from study through handover.",
+      },
+      presentation: {
+        title: "About ECG PLUS | 18 years of expertise",
+        description: "Discover ECG PLUS SARL, its story, values, team and field expertise in Guinea's construction sector.",
+      },
+      expertise: {
+        title: "Expertise & Services | ECG PLUS",
+        description: "Construction, public works, electrical engineering, industrial solutions, studies and building expertise in Guinea.",
+      },
+      realisations: {
+        title: "Projects in Guinea | ECG PLUS",
+        description: "Explore public, residential, industrial and civil engineering projects delivered by ECG PLUS across Guinea.",
+      },
+      contact: {
+        title: "Contact & Quote | ECG PLUS Guinea",
+        description: "Contact ECG PLUS for your construction, renovation, building expertise or engineering project in Guinea.",
+      },
+      confirmation: {
+        title: "Request received | ECG PLUS",
+        description: "Your request has been successfully sent to the ECG PLUS team.",
+      },
     },
     topbar: {
       hours: "Mon–Fri 8am–5pm",

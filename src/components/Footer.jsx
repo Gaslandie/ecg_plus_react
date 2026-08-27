@@ -11,7 +11,15 @@ const Footer = () => {
           {/* Brand */}
           <div className="ecg-footer__col">
             <div className="ecg-footer__brand">
-              <img src={logo} alt="Logo ECG Plus" className="ecg-footer__logo" loading="lazy" />
+              <img
+                src={logo}
+                alt={t('common.brand')}
+                className="ecg-footer__logo"
+                width="1080"
+                height="946"
+                loading="lazy"
+                decoding="async"
+              />
               <h3 className="ecg-footer__brand-title">ECG PLUS</h3>
             </div>
             <p className="ecg-footer__tagline">

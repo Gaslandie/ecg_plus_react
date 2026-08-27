@@ -3,12 +3,13 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/img/logo.jpeg';
 import { useI18n } from '../i18n/I18nContext.jsx';
 
-const LangSwitch = ({ lang, setLang }) => (
-  <div className="ecg-langswitch" role="group" aria-label="Language switch">
+const LangSwitch = ({ lang, setLang, label }) => (
+  <div className="ecg-langswitch" role="group" aria-label={label}>
     <button
       type="button"
       className={`ecg-langswitch__btn${lang === 'fr' ? ' is-active' : ''}`}
       onClick={() => setLang('fr')}
+      aria-pressed={lang === 'fr'}
     >
       FR
     </button>
@@ -17,6 +18,7 @@ const LangSwitch = ({ lang, setLang }) => (
       type="button"
       className={`ecg-langswitch__btn${lang === 'en' ? ' is-active' : ''}`}
       onClick={() => setLang('en')}
+      aria-pressed={lang === 'en'}
     >
       EN
     </button>
@@ -107,10 +109,17 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={navClasses} role="navigation" aria-label="Main navigation">
+      <nav className={navClasses} aria-label={t('a11y.mainNavigation')}>
         <div className="ds-container ecg-nav__inner">
-          <Link to="/" className="ecg-nav__brand" aria-label="Accueil" onClick={handleNavClick}>
-            <img src={logo} alt="Logo ECG Plus" className="ecg-nav__logo" loading="lazy" />
+          <Link to="/" className="ecg-nav__brand" aria-label={t('a11y.homeLink')} onClick={handleNavClick}>
+            <img
+              src={logo}
+              alt={t('common.brand')}
+              className="ecg-nav__logo"
+              width="1080"
+              height="946"
+              decoding="async"
+            />
             <span className="ecg-nav__brand-text">ECG PLUS</span>
           </Link>
 
@@ -130,14 +139,14 @@ const Navbar = () => {
               ))}
             </ul>
 
-            <LangSwitch lang={lang} setLang={setLang} />
+            <LangSwitch lang={lang} setLang={setLang} label={t('a11y.languageSwitch')} />
 
             <button
               type="button"
               className={`ecg-nav__toggler${menuOpen ? ' is-open' : ''}`}
               aria-controls="ecg-mobile-menu"
               aria-expanded={menuOpen}
-              aria-label="Toggle navigation"
+              aria-label={menuOpen ? t('a11y.closeMenu') : t('a11y.openMenu')}
               onClick={() => setOpenPath(menuOpen ? null : location.pathname)}
             >
               <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>

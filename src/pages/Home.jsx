@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import bgAccueil from '../assets/img/bgAccueil.jpg';
+import bgAccueil from '../assets/img/bgAccueil.webp';
 import histoire from '../assets/img/histoire.jpg';
 import r4 from '../assets/img/r+4.jpg';
 import ingeElectric from '../assets/img/ingeelectric.jpeg';
@@ -10,7 +10,7 @@ import etudes from '../assets/img/etudes.jpg';
 import kankan from '../assets/img/kankan.jpeg';
 import dubreka from '../assets/img/dubreka.jpg';
 import nongo from '../assets/img/nongo.jpeg';
-import heroPages from '../assets/img/hero-pages.jpg';
+import heroPages from '../assets/img/hero-pages.webp';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import '../styles/home.css';
 

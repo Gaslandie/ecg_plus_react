@@ -11,11 +11,22 @@ import Contact from './pages/Contact';
 import ExpertiseServices from './pages/ExpertiseServices';
 import Realisations from './pages/Realisations';
 import Confirmation from './pages/Confirmation';
-import bgAccueilHero from './assets/img/bgAccueil.jpg';
-import heroPagesImg from './assets/img/hero-pages.jpg';
+import bgAccueilHero from './assets/img/bgAccueil.webp';
+import heroPagesImg from './assets/img/hero-pages.webp';
+import { useI18n } from './i18n/I18nContext.jsx';
+
+const SEO_ROUTE_KEYS = {
+  '/': 'home',
+  '/presentation': 'presentation',
+  '/expertiseservices': 'expertise',
+  '/realisations': 'realisations',
+  '/contact': 'contact',
+  '/confirmation': 'confirmation',
+};
 
 function App() {
   const location = useLocation();
+  const { t } = useI18n();
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
@@ -27,11 +38,43 @@ function App() {
   }, [location.pathname]);
 
   useEffect(() => {
+    const routeKey = SEO_ROUTE_KEYS[location.pathname] || 'home';
+    const title = t(`seo.${routeKey}.title`);
+    const description = t(`seo.${routeKey}.description`);
+    const isConfirmation = routeKey === 'confirmation';
+
+    document.title = title;
+
+    const descriptionMeta = document.querySelector('meta[name="description"]');
+    descriptionMeta?.setAttribute('content', description);
+
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', `${window.location.origin}${location.pathname}`);
+
+    let robotsMeta = document.querySelector('meta[name="robots"]');
+    if (!robotsMeta) {
+      robotsMeta = document.createElement('meta');
+      robotsMeta.setAttribute('name', 'robots');
+      document.head.appendChild(robotsMeta);
+    }
+    robotsMeta.setAttribute('content', isConfirmation ? 'noindex, nofollow' : 'index, follow');
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', `${window.location.origin}${location.pathname}`);
+  }, [location.pathname, t]);
+
+  useEffect(() => {
     AOS.init({
       offset: 120,
       duration: window.matchMedia('(max-width: 768px)').matches ? 650 : 900,
       easing: 'ease-out-cubic',
-      once: false,
+      once: true,
     });
 
     const setNavbarHeight = () => {
@@ -46,26 +89,6 @@ function App() {
 
     setNavbarHeight();
     window.addEventListener('resize', setNavbarHeight);
-    // Hide preloader after page load
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-      const hidePreloader = () => {
-        setTimeout(() => {
-          if (preloader) {
-            preloader.classList.add('preloader-hidden');
-            // after the opacity transition, remove from flow
-            setTimeout(() => {
-              preloader.style.display = 'none';
-            }, 600);
-          }
-        }, 500);
-      };
-      if (document.readyState === 'complete') {
-        hidePreloader();
-      } else {
-        window.addEventListener('load', hidePreloader);
-      }
-    }
 
     return () => {
       window.removeEventListener('resize', setNavbarHeight);
@@ -218,11 +241,6 @@ function App() {
 
   return (
     <>
-      <div id="preloader">
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Chargement en cours...</span>
-        </div>
-      </div>
       <Navbar />
       <div className="page-transition" key={location.pathname}>
         <Routes location={location}>
@@ -239,7 +257,7 @@ function App() {
         type="button"
         className={`back-to-top${showBackToTop ? ' show' : ''}`}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Retour en haut"
+        aria-label={t('a11y.backToTop')}
       >
         ↑
       </button>

@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { translations } from './translations';
 
 const I18nContext = createContext({ lang: 'fr', setLang: () => {}, t: (k) => k });
@@ -9,6 +9,10 @@ const getValue = (obj, path) => {
 
 export const I18nProvider = ({ children }) => {
   const [lang, setLang] = useState('fr');
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const t = useCallback((key) => {
     const dict = translations[lang] || translations.fr;
