@@ -578,8 +578,17 @@ export const translations = {
       hero: {
         eyebrow: "Expertise",
         title: "Un savoir-faire complet",
+        titleLine1: "Maîtriser la complexité.",
+        titleLine2: "Bâtir avec précision.",
         subtitle:
           "18 ans d'expérience, une équipe multidisciplinaire et des solutions innovantes pour tous vos projets de construction, d'énergie et d'industrie.",
+        discover: "Explorer nos expertises",
+        projectCta: "Parlons de votre projet",
+        stats: {
+          pillars: "Expertises intégrées",
+          years: "Années d'expérience",
+          support: "Accompagnement projet",
+        },
         strengths: "Nos Forces",
         commitments: "Notre Engagement",
         strengthsItems: [
@@ -605,8 +614,15 @@ export const translations = {
         imageAlt: "Notre équipe ECG PLUS",
       },
       pillars: {
+        eyebrow: "Nos métiers",
         title: "Nos 4 Piliers d'Action",
+        intro:
+          "Une approche intégrée qui réunit conception, réalisation et maintenance pour mieux maîtriser chaque étape de votre projet.",
+        indexLabel: "Accès rapide à nos expertises",
+        domain: "Domaine",
+        discuss: "Échanger avec un expert",
         p1: {
+          shortTitle: "Construction & travaux publics",
           title: "Construction Générale & Travaux Publics",
           lead:
             "Le cœur de notre métier : concevoir et réaliser des ouvrages civils durables, conformes aux standards nationaux et internationaux, pour le secteur public comme privé.",
@@ -619,6 +635,7 @@ export const translations = {
           imageAlt: "Construction BTP",
         },
         p2: {
+          shortTitle: "Énergie & systèmes autonomes",
           title: "Ingénierie Électrique & Systèmes Autonomes",
           lead:
             "Nous fournissons des solutions complètes pour l'autonomie et la gestion énergétique, un enjeu stratégique majeur dans la sous-région.",
@@ -631,6 +648,7 @@ export const translations = {
           imageAlt: "Système Solaire",
         },
         p3: {
+          shortTitle: "Industrie & multi-techniques",
           title: "Solutions Multi-techniques et Industrie",
           lead:
             "Des services spécialisés dédiés à l'industrie, au secteur minier et aux projets nécessitant des infrastructures lourdes et techniques.",
@@ -643,6 +661,7 @@ export const translations = {
           imageAlt: "Solutions industrielles",
         },
         p4: {
+          shortTitle: "Études & expertise",
           title: "Étude, Expertise Bâtiment & Commerce Général",
           lead:
             "Notre bureau d'études accompagne vos projets de la conception à la réalisation, appuyé par une logistique d'approvisionnement performante et fiable.",
@@ -682,6 +701,7 @@ export const translations = {
         ],
       },
       equipment: {
+        eyebrow: "Capacité opérationnelle",
         title: "Moyens Techniques & Équipement",
         lead:
           "ECG PLUS dispose d'un parc matériel moderne et adapté aux chantiers les plus exigeants, garantissant qualité, sécurité et respect des délais.",
@@ -718,6 +738,9 @@ export const translations = {
       process: {
         title: "Notre Processus de Travail",
         subtitle: "Une méthodologie éprouvée pour garantir la réussite de vos projets",
+        intro:
+          "Un interlocuteur impliqué, des jalons clairs et un suivi continu, de la première analyse jusqu'à la maintenance.",
+        stepLabel: "Étape",
         steps: [
           {
             title: "Étude & Conseil",
@@ -742,6 +765,7 @@ export const translations = {
         ],
       },
       guarantees: {
+        eyebrow: "Vos exigences, nos engagements",
         title: "Garanties & Assurances",
         lead:
           "Votre tranquillité d'esprit est notre priorité. ECG PLUS s'engage à vos côtés avec des garanties solides et une couverture assurance complète.",
@@ -1360,8 +1384,17 @@ export const translations = {
       hero: {
         eyebrow: "Expertise",
         title: "A complete craftsmanship",
+        titleLine1: "Master complexity.",
+        titleLine2: "Build with precision.",
         subtitle:
           "18 years of experience, a multidisciplinary team, and innovative solutions for all your construction, energy, and industry projects.",
+        discover: "Explore our expertise",
+        projectCta: "Discuss your project",
+        stats: {
+          pillars: "Integrated areas of expertise",
+          years: "Years of experience",
+          support: "Project support",
+        },
         strengths: "Our Strengths",
         commitments: "Our Commitment",
         strengthsItems: [
@@ -1387,8 +1420,15 @@ export const translations = {
         imageAlt: "Our ECG PLUS team",
       },
       pillars: {
+        eyebrow: "Our capabilities",
         title: "Our 4 Pillars of Action",
+        intro:
+          "An integrated approach combining design, execution and maintenance to control every stage of your project.",
+        indexLabel: "Quick access to our areas of expertise",
+        domain: "Capability",
+        discuss: "Talk to an expert",
         p1: {
+          shortTitle: "Construction & public works",
           title: "General Construction & Public Works",
           lead:
             "The heart of our business: design and deliver durable civil works that meet national and international standards, for both public and private sectors.",
@@ -1401,6 +1441,7 @@ export const translations = {
           imageAlt: "Construction works",
         },
         p2: {
+          shortTitle: "Energy & autonomous systems",
           title: "Electrical Engineering & Autonomous Systems",
           lead:
             "We provide complete solutions for energy autonomy and management, a major strategic challenge in the sub‑region.",
@@ -1413,6 +1454,7 @@ export const translations = {
           imageAlt: "Solar system",
         },
         p3: {
+          shortTitle: "Industry & multi-technical",
           title: "Multi‑technical Solutions & Industry",
           lead:
             "Specialized services for industry, mining and projects requiring heavy technical infrastructure.",
@@ -1425,6 +1467,7 @@ export const translations = {
           imageAlt: "Industrial solutions",
         },
         p4: {
+          shortTitle: "Studies & expertise",
           title: "Studies, Building Expertise & General Trade",
           lead:
             "Our engineering office supports your projects from design to delivery, backed by efficient procurement logistics.",
@@ -1464,6 +1507,7 @@ export const translations = {
         ],
       },
       equipment: {
+        eyebrow: "Operational capacity",
         title: "Technical Resources & Equipment",
         lead:
           "ECG PLUS has modern equipment adapted to demanding sites, ensuring quality, safety and on‑time delivery.",
@@ -1500,6 +1544,9 @@ export const translations = {
       process: {
         title: "Our Work Process",
         subtitle: "A proven methodology to ensure project success",
+        intro:
+          "An engaged point of contact, clear milestones and continuous follow-up, from the initial assessment through maintenance.",
+        stepLabel: "Step",
         steps: [
           {
             title: "Study & Advice",
@@ -1524,6 +1571,7 @@ export const translations = {
         ],
       },
       guarantees: {
+        eyebrow: "Your requirements, our commitments",
         title: "Guarantees & Insurance",
         lead:
           "Your peace of mind is our priority. ECG PLUS stands by you with solid guarantees and full insurance coverage.",

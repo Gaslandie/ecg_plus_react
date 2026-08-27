@@ -6,74 +6,152 @@ import ingeelectric from '../assets/img/ingeelectric.jpeg';
 import industrie from '../assets/img/industrie.jpg';
 import etudes from '../assets/img/etudes.jpg';
 import heroPages from '../assets/img/hero-pages.jpg';
-import '../styles/realisations.css'; /* réutilise hero, process, cta, zone */
+import '../styles/realisations.css';
 import '../styles/expertise.css';
 
-const ExpertiseServices = () => {
+const PILLARS = [
+  { key: 'p1', image: batiment, icon: 'bi-buildings' },
+  { key: 'p2', image: ingeelectric, icon: 'bi-lightning-charge' },
+  { key: 'p3', image: industrie, icon: 'bi-gear-wide-connected' },
+  { key: 'p4', image: etudes, icon: 'bi-rulers' },
+];
+
+const EQUIPMENT_ICONS = ['bi-truck', 'bi-lightning-charge', 'bi-hammer'];
+const GUARANTEE_ICONS = ['bi-shield-check', 'bi-tools', 'bi-clock-history', 'bi-person-check'];
+
+function ExpertiseServices() {
   const { t } = useI18n();
 
   React.useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const bg = document.querySelector('.ecg-real-hero__bg');
-    if (!bg || prefersReduced) return;
+    const background = document.querySelector('.ecg-expertise-page .ecg-real-hero__bg');
+    if (!background || prefersReduced) return undefined;
+
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       window.requestAnimationFrame(() => {
-        const y = window.scrollY * 0.15;
-        bg.style.transform = `translateY(${y}px) scale(1.08)`;
+        background.style.transform = `translate3d(0, ${window.scrollY * 0.1}px, 0) scale(1.06)`;
         ticking = false;
       });
     };
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const pillars = [
-    { key: 'p1', img: batiment, reversed: false },
-    { key: 'p2', img: ingeelectric, reversed: true },
-    { key: 'p3', img: industrie, reversed: false },
-    { key: 'p4', img: etudes, reversed: true },
-  ];
-
   return (
-    <main className="page-with-hero">
-      {/* HERO plein écran */}
-      <header className="ecg-real-hero">
-        <img className="ecg-real-hero__bg" src={heroPages} alt="" fetchpriority="high" decoding="async" width="1920" height="1280" />
-        <div className="ecg-real-hero__overlay" />
+    <main className="page-with-hero ecg-expertise-page">
+      <header className="ecg-real-hero ecg-expertise-hero">
+        <img
+          className="ecg-real-hero__bg"
+          src={heroPages}
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          width="1920"
+          height="1280"
+        />
+        <span className="ecg-real-hero__overlay" aria-hidden="true" />
+        <span className="ecg-real-hero__lines" aria-hidden="true" />
+
         <div className="ecg-real-hero__content ds-container">
-          <span className="ds-eyebrow ecg-real-hero__eyebrow">{t('expertiseServicesPage.hero.eyebrow')}</span>
-          <h1 className="ecg-real-hero__title">{t('expertiseServicesPage.hero.title')}</h1>
+          <span className="ecg-real-hero__eyebrow">
+            <span aria-hidden="true" />
+            {t('expertiseServicesPage.hero.eyebrow')}
+          </span>
+          <h1 className="ecg-real-hero__title">
+            <span>{t('expertiseServicesPage.hero.titleLine1')}</span>
+            <strong>{t('expertiseServicesPage.hero.titleLine2')}</strong>
+          </h1>
           <p className="ecg-real-hero__intro">{t('expertiseServicesPage.hero.subtitle')}</p>
+          <a href="#expertises" className="ds-btn ds-btn--accent">
+            {t('expertiseServicesPage.hero.discover')}
+            <i className="bi bi-arrow-down" aria-hidden="true" />
+          </a>
+        </div>
+
+        <div className="ecg-real-hero__stats">
+          <div className="ds-container ecg-real-hero__stats-inner">
+            <div>
+              <strong>4</strong>
+              <p>{t('expertiseServicesPage.hero.stats.pillars')}</p>
+            </div>
+            <div>
+              <strong>18<span>+</span></strong>
+              <p>{t('expertiseServicesPage.hero.stats.years')}</p>
+            </div>
+            <div>
+              <strong>360<span>°</span></strong>
+              <p>{t('expertiseServicesPage.hero.stats.support')}</p>
+            </div>
+            <Link to="/contact">
+              <span>{t('expertiseServicesPage.hero.projectCta')}</span>
+              <i className="bi bi-arrow-up-right" aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </header>
 
-      {/* PILIERS — blocs éditoriaux alternés */}
-      <section className="ecg-pillars" data-aos="fade-up" data-aos-delay="100">
+      <section id="expertises" className="ecg-expertise-fields">
         <div className="ds-container">
-          <div className="ecg-pillars__head">
-            <span className="ds-eyebrow">{t('expertiseServicesPage.hero.eyebrow')}</span>
-            <h2>{t('expertiseServicesPage.pillars.title')}</h2>
-            <hr className="ds-divider ds-divider--center" />
+          <div className="ecg-expertise-fields__head" data-aos="fade-up">
+            <div>
+              <span className="ds-eyebrow">{t('expertiseServicesPage.pillars.eyebrow')}</span>
+              <h2>{t('expertiseServicesPage.pillars.title')}</h2>
+            </div>
+            <p>{t('expertiseServicesPage.pillars.intro')}</p>
           </div>
-          <div className="ecg-pillars__list">
-            {pillars.map(({ key, img, reversed }, index) => {
+
+          <nav className="ecg-expertise-index" aria-label={t('expertiseServicesPage.pillars.indexLabel')} data-aos="fade-up">
+            {PILLARS.map(({ key }, index) => (
+              <a key={key} href={`#expertise-${index + 1}`}>
+                <span>0{index + 1}</span>
+                <strong>{t(`expertiseServicesPage.pillars.${key}.shortTitle`)}</strong>
+                <i className="bi bi-arrow-down-right" aria-hidden="true" />
+              </a>
+            ))}
+          </nav>
+
+          <div className="ecg-expertise-fields__list">
+            {PILLARS.map(({ key, image, icon }, index) => {
               const items = t(`expertiseServicesPage.pillars.${key}.items`);
               return (
-                <article key={key} className={`ecg-pillar${reversed ? ' is-reversed' : ''}`}>
-                  <div className="ecg-pillar__text">
-                    <span className="ecg-pillar__num">0{index + 1}</span>
-                    <h3 className="ecg-pillar__title">{t(`expertiseServicesPage.pillars.${key}.title`)}</h3>
-                    <p className="ecg-pillar__lead">{t(`expertiseServicesPage.pillars.${key}.lead`)}</p>
-                    <ul className="ecg-pillar__list">
-                      {Array.isArray(items) && items.map((item, i) => <li key={i}>{item}</li>)}
-                    </ul>
+                <article
+                  id={`expertise-${index + 1}`}
+                  key={key}
+                  className={`ecg-expertise-field${index % 2 ? ' is-reversed' : ''}`}
+                  data-aos="fade-up"
+                >
+                  <div className="ecg-expertise-field__visual">
+                    <img
+                      src={image}
+                      alt={t(`expertiseServicesPage.pillars.${key}.imageAlt`)}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span className="ecg-expertise-field__number">0{index + 1}</span>
+                    <span className="ecg-expertise-field__caption">
+                      <i className={`bi ${icon}`} aria-hidden="true" />
+                      {t(`expertiseServicesPage.pillars.${key}.shortTitle`)}
+                    </span>
                   </div>
-                  <div className="ecg-pillar__visual">
-                    <img className="ecg-pillar__img" src={img} alt={t(`expertiseServicesPage.pillars.${key}.imageAlt`)} loading="lazy" decoding="async" />
+
+                  <div className="ecg-expertise-field__content">
+                    <span className="ecg-expertise-field__label">
+                      {t('expertiseServicesPage.pillars.domain')} 0{index + 1}
+                    </span>
+                    <h3>{t(`expertiseServicesPage.pillars.${key}.title`)}</h3>
+                    <p>{t(`expertiseServicesPage.pillars.${key}.lead`)}</p>
+                    <ul>
+                      {Array.isArray(items) && items.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                    <Link to="/contact" className="ecg-real-text-link">
+                      {t('expertiseServicesPage.pillars.discuss')}
+                      <span aria-hidden="true"><i className="bi bi-arrow-right" /></span>
+                    </Link>
                   </div>
                 </article>
               );
@@ -82,26 +160,28 @@ const ExpertiseServices = () => {
         </div>
       </section>
 
-      {/* ÉQUIPEMENTS & MOYENS */}
-      <section className="ecg-equip" data-aos="fade-up" data-aos-delay="100">
+      <section className="ecg-expertise-equipment">
         <div className="ds-container">
-          <div className="ecg-equip__head">
+          <div className="ecg-expertise-equipment__head" data-aos="fade-up">
             <div>
-              <span className="ds-eyebrow">{t('expertiseServicesPage.hero.eyebrow')}</span>
+              <span className="ds-eyebrow">{t('expertiseServicesPage.equipment.eyebrow')}</span>
               <h2>{t('expertiseServicesPage.equipment.title')}</h2>
             </div>
             <p>{t('expertiseServicesPage.equipment.lead')}</p>
           </div>
-          <div className="ecg-equip__grid">
-            {[0, 1, 2].map((i) => {
-              const items = t(`expertiseServicesPage.equipment.sections.${i}.items`);
-              const icons = ['bi-truck', 'bi-lightning-charge', 'bi-hammer'];
+
+          <div className="ecg-expertise-equipment__grid">
+            {[0, 1, 2].map((index) => {
+              const items = t(`expertiseServicesPage.equipment.sections.${index}.items`);
               return (
-                <article key={i} className="ecg-equip-card">
-                  <div className="ecg-equip-card__icon"><i className={`bi ${icons[i]}`} aria-hidden="true"></i></div>
-                  <h3 className="ecg-equip-card__title">{t(`expertiseServicesPage.equipment.sections.${i}.title`)}</h3>
-                  <ul className="ecg-equip-card__list">
-                    {Array.isArray(items) && items.map((item, j) => <li key={j}>{item}</li>)}
+                <article key={index} className="ecg-expertise-equipment-card" data-aos="fade-up" data-aos-delay={index * 80}>
+                  <div className="ecg-expertise-equipment-card__top">
+                    <span>0{index + 1}</span>
+                    <i className={`bi ${EQUIPMENT_ICONS[index]}`} aria-hidden="true" />
+                  </div>
+                  <h3>{t(`expertiseServicesPage.equipment.sections.${index}.title`)}</h3>
+                  <ul>
+                    {Array.isArray(items) && items.map((item) => <li key={item}>{item}</li>)}
                   </ul>
                 </article>
               );
@@ -110,68 +190,73 @@ const ExpertiseServices = () => {
         </div>
       </section>
 
-      {/* GARANTIES */}
-      <section className="ecg-guarantees" data-aos="fade-up" data-aos-delay="100">
+      <section className="ecg-expertise-guarantees">
         <div className="ds-container">
-          <div className="ecg-guarantees__head">
-            <span className="ds-eyebrow">{t('expertiseServicesPage.hero.eyebrow')}</span>
-            <h2>{t('expertiseServicesPage.guarantees.title')}</h2>
+          <div className="ecg-expertise-guarantees__head" data-aos="fade-up">
+            <div>
+              <span className="ds-eyebrow">{t('expertiseServicesPage.guarantees.eyebrow')}</span>
+              <h2>{t('expertiseServicesPage.guarantees.title')}</h2>
+            </div>
             <p>{t('expertiseServicesPage.guarantees.lead')}</p>
           </div>
-          <div className="ecg-guarantees__grid">
-            {[0, 1, 2, 3].map((i) => {
-              const icons = ['bi-shield-check', 'bi-tools', 'bi-clock-history', 'bi-person-check'];
-              return (
-                <article key={i} className="ecg-guarantee">
-                  <div className="ecg-guarantee__icon"><i className={`bi ${icons[i]}`} aria-hidden="true"></i></div>
-                  <h3 className="ecg-guarantee__title">{t(`expertiseServicesPage.guarantees.items.${i}.title`)}</h3>
-                  <p className="ecg-guarantee__text">{t(`expertiseServicesPage.guarantees.items.${i}.text`)}</p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* PROCESSUS — réutilise les styles de Realisations */}
-      <section className="ecg-real-process" data-aos="fade-up" data-aos-delay="100">
-        <div className="ds-container">
-          <div className="ecg-real-process__head">
-            <span className="ds-eyebrow">{t('expertiseServicesPage.process.title')}</span>
-            <h2>{t('expertiseServicesPage.process.subtitle')}</h2>
-            <hr className="ds-divider ds-divider--center" />
-          </div>
-          <div className="ecg-real-process__steps">
-            {[0, 1, 2, 3].map((i) => (
-              <div key={i} className="ecg-step">
-                <div className="ecg-step__num">{i + 1}</div>
-                <h3 className="ecg-step__title">{t(`expertiseServicesPage.process.steps.${i}.title`)}</h3>
-                <p className="ecg-step__text">{t(`expertiseServicesPage.process.steps.${i}.text`)}</p>
-              </div>
+          <div className="ecg-expertise-guarantees__grid">
+            {[0, 1, 2, 3].map((index) => (
+              <article key={index} className="ecg-expertise-guarantee" data-aos="fade-up" data-aos-delay={index * 70}>
+                <div className="ecg-expertise-guarantee__icon">
+                  <i className={`bi ${GUARANTEE_ICONS[index]}`} aria-hidden="true" />
+                </div>
+                <span>0{index + 1}</span>
+                <h3>{t(`expertiseServicesPage.guarantees.items.${index}.title`)}</h3>
+                <p>{t(`expertiseServicesPage.guarantees.items.${index}.text`)}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA FINAL — réutilise les styles de Realisations */}
-      <section className="ecg-real-cta" data-aos="fade-up" data-aos-delay="100">
+      <section className="ecg-expertise-process">
+        <div className="ds-container">
+          <div className="ecg-expertise-process__head" data-aos="fade-up">
+            <div>
+              <span className="ds-eyebrow">{t('expertiseServicesPage.process.title')}</span>
+              <h2>{t('expertiseServicesPage.process.subtitle')}</h2>
+            </div>
+            <p>{t('expertiseServicesPage.process.intro')}</p>
+          </div>
+
+          <div className="ecg-expertise-process__steps">
+            {[0, 1, 2, 3].map((index) => (
+              <article key={index} className="ecg-expertise-step" data-aos="fade-up" data-aos-delay={index * 70}>
+                <div className="ecg-expertise-step__marker"><span>{index + 1}</span></div>
+                <small>{t('expertiseServicesPage.process.stepLabel')} 0{index + 1}</small>
+                <h3>{t(`expertiseServicesPage.process.steps.${index}.title`)}</h3>
+                <p>{t(`expertiseServicesPage.process.steps.${index}.text`)}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="ecg-real-cta ecg-expertise-cta" data-aos="fade-up">
         <div className="ds-container ecg-real-cta__inner">
+          <span className="ds-eyebrow">ECG PLUS</span>
           <h2>{t('expertiseServicesPage.finalCta.title')}</h2>
           <p className="ecg-real-cta__text">{t('expertiseServicesPage.finalCta.text')}</p>
           <div className="ecg-real-cta__actions">
             <Link to="/contact" className="ds-btn ds-btn--accent">
               {t('expertiseServicesPage.finalCta.primary')}
-              <i className="bi bi-arrow-right" aria-hidden="true"></i>
+              <i className="bi bi-arrow-right" aria-hidden="true" />
             </Link>
             <Link to="/realisations" className="ds-btn ds-btn--ghost">
               {t('expertiseServicesPage.finalCta.secondary')}
-              <i className="bi bi-arrow-right" aria-hidden="true"></i>
+              <i className="bi bi-arrow-right" aria-hidden="true" />
             </Link>
           </div>
         </div>
       </section>
     </main>
   );
-};
+}
 
 export default ExpertiseServices;
