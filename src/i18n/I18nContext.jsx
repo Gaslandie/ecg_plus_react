@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { translations } from './translations';
 
 const I18nContext = createContext({ lang: 'fr', setLang: () => {}, t: (k) => k });
@@ -10,15 +10,16 @@ const getValue = (obj, path) => {
 export const I18nProvider = ({ children }) => {
   const [lang, setLang] = useState('fr');
 
-  const t = (key) => {
+  const t = useCallback((key) => {
     const dict = translations[lang] || translations.fr;
     const value = getValue(dict, key);
     return value != null ? value : key;
-  };
+  }, [lang]);
 
-  const value = useMemo(() => ({ lang, setLang, t }), [lang]);
+  const value = useMemo(() => ({ lang, setLang, t }), [lang, t]);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useI18n = () => useContext(I18nContext);

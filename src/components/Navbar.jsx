@@ -3,12 +3,33 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/img/logo.jpeg';
 import { useI18n } from '../i18n/I18nContext.jsx';
 
+const LangSwitch = ({ lang, setLang }) => (
+  <div className="ecg-langswitch" role="group" aria-label="Language switch">
+    <button
+      type="button"
+      className={`ecg-langswitch__btn${lang === 'fr' ? ' is-active' : ''}`}
+      onClick={() => setLang('fr')}
+    >
+      FR
+    </button>
+    <span className="ecg-langswitch__sep" aria-hidden="true">/</span>
+    <button
+      type="button"
+      className={`ecg-langswitch__btn${lang === 'en' ? ' is-active' : ''}`}
+      onClick={() => setLang('en')}
+    >
+      EN
+    </button>
+  </div>
+);
+
 const Navbar = () => {
   const { t, lang, setLang } = useI18n();
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [openPath, setOpenPath] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const menuOpen = openPath === location.pathname;
 
   useEffect(() => {
     let ticking = false;
@@ -30,11 +51,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Ferme le menu mobile au changement de route
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
-
   // Lock body scroll quand menu ouvert
   useEffect(() => {
     document.body.classList.toggle('ecg-nav-open', menuOpen);
@@ -45,7 +61,7 @@ const Navbar = () => {
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 992px)');
     const handleChange = (event) => {
-      if (event.matches) setMenuOpen(false);
+      if (event.matches) setOpenPath(null);
     };
     mq.addEventListener('change', handleChange);
     return () => mq.removeEventListener('change', handleChange);
@@ -79,7 +95,7 @@ const Navbar = () => {
     isOverHero ? '' : 'is-solid',
   ].filter(Boolean).join(' ');
 
-  const handleNavClick = () => setMenuOpen(false);
+  const handleNavClick = () => setOpenPath(null);
 
   const navLinks = [
     { to: '/', end: true, label: t('nav.home') },
@@ -88,26 +104,6 @@ const Navbar = () => {
     { to: '/realisations', label: t('nav.realisations') },
     { to: '/contact', label: t('nav.contact') },
   ];
-
-  const LangSwitch = () => (
-    <div className="ecg-langswitch" role="group" aria-label="Language switch">
-      <button
-        type="button"
-        className={`ecg-langswitch__btn${lang === 'fr' ? ' is-active' : ''}`}
-        onClick={() => setLang('fr')}
-      >
-        FR
-      </button>
-      <span className="ecg-langswitch__sep" aria-hidden="true">/</span>
-      <button
-        type="button"
-        className={`ecg-langswitch__btn${lang === 'en' ? ' is-active' : ''}`}
-        onClick={() => setLang('en')}
-      >
-        EN
-      </button>
-    </div>
-  );
 
   return (
     <>
@@ -134,7 +130,7 @@ const Navbar = () => {
               ))}
             </ul>
 
-            <LangSwitch />
+            <LangSwitch lang={lang} setLang={setLang} />
 
             <button
               type="button"
@@ -142,7 +138,7 @@ const Navbar = () => {
               aria-controls="ecg-mobile-menu"
               aria-expanded={menuOpen}
               aria-label="Toggle navigation"
-              onClick={() => setMenuOpen((v) => !v)}
+              onClick={() => setOpenPath(menuOpen ? null : location.pathname)}
             >
               <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>
               <span className="ecg-nav__toggler-bar" aria-hidden="true"></span>
@@ -183,7 +179,7 @@ const Navbar = () => {
       {/* Voile sombre derrière le menu */}
       <div
         className={`ecg-mobile-overlay${menuOpen ? ' is-open' : ''}`}
-        onClick={() => setMenuOpen(false)}
+        onClick={() => setOpenPath(null)}
         aria-hidden="true"
       />
     </>

@@ -33,9 +33,12 @@ export const translations = {
     home: {
       hero: {
         eyebrow: "ECG PLUS — Guinée",
-        line1: "Entreprise de Construction",
-        line2: "Générale et Travaux Publics",
-        subtitle: "Bâtir l'Avenir, Construire l'Excellence Durable.",
+        line1: "Bâtir la Guinée.",
+        line2: "Façonner l'avenir.",
+        subtitle: "Construction générale, génie civil, énergie et ingénierie : des ouvrages pensés avec exigence, livrés pour durer.",
+        proofsLabel: "Chiffres clés d'ECG PLUS",
+        projectEyebrow: "Vous avez un projet ?",
+        projectCta: "Parlons-en ensemble",
         stats: {
           years: "Années d'Expérience",
           projects: "Projets Réalisés",
@@ -53,6 +56,11 @@ export const translations = {
           "Depuis sa fondation il y a 18 ans, ECG PLUS s'est imposé comme un acteur majeur dans le domaine de la construction et de l'expertise des bâtiments en Guinée et aujourd'hui dans la sous-région.",
         historyText:
           "Notre engagement envers l'excellence et notre expertise technique nous permettent de répondre aux défis les plus complexes de nos clients avec efficacité et innovation, ce qui nous a d'ailleurs permis la réalisation de plusieurs ouvrages un peu partout dans les régions guinéennes.",
+        imageAlt: "Équipe ECG PLUS sur un chantier en Guinée",
+        badgeLabel: "années d'expertise terrain",
+        point1: "Maîtrise technique de bout en bout",
+        point2: "Respect des délais et des engagements",
+        point3: "Présence opérationnelle partout en Guinée",
         cta: "En savoir plus",
         stats: {
           engagement: "Engagement",
@@ -75,6 +83,7 @@ export const translations = {
       values: {
         eyebrow: "Nos engagements",
         title: "Une exigence à tous les étages",
+        intro: "Chaque projet est piloté avec la même rigueur : des équipes engagées, une exécution maîtrisée et une vision durable de l'ouvrage.",
         teamTitle: "Équipe Multidisciplinaire",
         teamText: "Des experts complémentaires pour des solutions rapides et adaptées à chaque chantier.",
         qualityTitle: "Qualité & Sécurité",
@@ -105,22 +114,27 @@ export const translations = {
       services: {
         eyebrow: "Nos expertises",
         title: "Quatre métiers, un savoir-faire",
+        intro: "Une expertise intégrée pour concevoir, construire et maintenir des ouvrages performants, des premières études jusqu'à la livraison.",
         card1: {
+          label: "Énergie & autonomie",
           title: "Ingénierie Électrique & Systèmes Autonomes",
           text:
             "Instrumentation, automatisme, installation de groupes électrogènes, de panneaux solaires et de systèmes hydriques pour l'autonomie énergétique.",
         },
         card2: {
+          label: "Construction",
           title: "Construction Résidentielle, Commerciale & Industrielle",
           text:
             "Complexes résidentiels, infrastructures commerciales et industrielles, projets robustes et durables en Guinée et sous-région.",
         },
         card3: {
+          label: "Génie civil & industrie",
           title: "Génie Civil, Métallique & Projets Miniers",
           text:
             "Génie civil, construction métallique, chaudronnerie, isolation, tuyauterie industrielle et solutions pour l'industrie minière.",
         },
         card4: {
+          label: "Études & conseil",
           title: "Étude, Expertise Bâtiment & Commerce",
           text:
             "Études techniques, expertises, rénovation, maintenance, fourniture de matériaux et équipements de construction.",
@@ -155,6 +169,9 @@ export const translations = {
         project1: "Bibliothèque Municipale de Kankan",
         project2: "Projet Résidentiel à Dubréka Fihaima",
         project3: "Immeuble R+2 & Rénovation Privée",
+        meta1: "Kankan · 2023",
+        meta2: "Dubréka · 2020–2021",
+        meta3: "Ansoumaniah & Nongo · 2018–2024",
         cat1: "Public",
         cat2: "Résidentiel",
         cat3: "Mixte",
@@ -162,6 +179,7 @@ export const translations = {
       contact: {
         eyebrow: "Démarrons ensemble",
         title: "Prêt à construire votre prochain projet ?",
+        directTitle: "Contact direct",
         text:
           "Donnez vie à vos idées avec une équipe fiable et réactive. Nous vous accompagnons de l’étude jusqu’à la livraison, avec un suivi clair et transparent.",
         phoneLabel: "Téléphone",
@@ -769,9 +787,12 @@ export const translations = {
     home: {
       hero: {
         eyebrow: "ECG PLUS — Guinea",
-        line1: "Construction Company",
-        line2: "General Works & Public Projects",
-        subtitle: "Building the Future, Delivering Lasting Excellence.",
+        line1: "Building Guinea.",
+        line2: "Shaping the future.",
+        subtitle: "General construction, civil engineering, energy and technical expertise: carefully designed projects, built to last.",
+        proofsLabel: "ECG PLUS key figures",
+        projectEyebrow: "Have a project?",
+        projectCta: "Let's discuss it",
         stats: {
           years: "Years of Experience",
           projects: "Completed Projects",
@@ -789,6 +810,11 @@ export const translations = {
           "Since its founding 18 years ago, ECG PLUS has become a key player in construction and building expertise in Guinea and now across the sub‑region.",
         historyText:
           "Our commitment to excellence and technical expertise enables us to tackle the most complex client challenges with efficiency and innovation, which has led to many projects across Guinea’s regions.",
+        imageAlt: "ECG PLUS team on a construction site in Guinea",
+        badgeLabel: "years of field expertise",
+        point1: "End-to-end technical control",
+        point2: "Commitment to deadlines and delivery",
+        point3: "Operational reach throughout Guinea",
         cta: "Learn more",
         stats: {
           engagement: "Commitment",
@@ -811,6 +837,7 @@ export const translations = {
       values: {
         eyebrow: "Our commitments",
         title: "Excellence at every level",
+        intro: "Every project is managed with the same discipline: committed teams, controlled execution and a long-term vision for every structure.",
         teamTitle: "Multidisciplinary Team",
         teamText: "Complementary experts delivering fast, tailored solutions on every site.",
         qualityTitle: "Quality & Safety",
@@ -841,22 +868,27 @@ export const translations = {
       services: {
         eyebrow: "Our expertise",
         title: "Four disciplines, one craftsmanship",
+        intro: "Integrated expertise to design, build and maintain high-performing structures, from the first study through final delivery.",
         card1: {
+          label: "Energy & autonomy",
           title: "Electrical Engineering & Autonomous Systems",
           text:
             "Instrumentation, automation, installation of generators, solar panels and water systems for energy autonomy.",
         },
         card2: {
+          label: "Construction",
           title: "Residential, Commercial & Industrial Construction",
           text:
             "Residential complexes, commercial and industrial infrastructure, robust and durable projects in Guinea and the sub‑region.",
         },
         card3: {
+          label: "Civil engineering & industry",
           title: "Civil, Metal & Mining Projects",
           text:
             "Civil engineering, steel construction, boiler works, insulation, industrial piping and solutions for the mining industry.",
         },
         card4: {
+          label: "Studies & consulting",
           title: "Study, Building Expertise & Trade",
           text:
             "Technical studies, expertise, renovation, maintenance, supply of construction materials and equipment.",
@@ -891,6 +923,9 @@ export const translations = {
         project1: "Municipal Library of Kankan",
         project2: "Residential Project in Dubréka Fihaima",
         project3: "R+2 Building & Private Renovation",
+        meta1: "Kankan · 2023",
+        meta2: "Dubréka · 2020–2021",
+        meta3: "Ansoumaniah & Nongo · 2018–2024",
         cat1: "Public",
         cat2: "Residential",
         cat3: "Mixed-use",
@@ -898,6 +933,7 @@ export const translations = {
       contact: {
         eyebrow: "Let's start together",
         title: "Ready to build your next project?",
+        directTitle: "Direct contact",
         text:
           "Bring your ideas to life with a reliable and responsive team. We support you from study to delivery with clear and transparent follow‑up.",
         phoneLabel: "Phone",

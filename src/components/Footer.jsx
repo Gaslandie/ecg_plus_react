@@ -53,7 +53,7 @@ const Footer = () => {
 
         <div className="ecg-footer__bottom">
           <p className="ecg-footer__copyright">
-            &copy; 2025 ECG PLUS SARL. {t('footer.rights')}
+            &copy; {new Date().getFullYear()} ECG PLUS SARL. {t('footer.rights')}
           </p>
           <div className="ecg-footer__socials">
             <a href="mailto:contact@ecgplusgn.com" aria-label={t('footer.emailLabel')}>
