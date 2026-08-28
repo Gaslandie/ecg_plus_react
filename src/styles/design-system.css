@@ -92,7 +92,7 @@
   --ds-duration-slow: 600ms;
 
   /* ---------- Container ---------- */
-  --ds-container-max: 1280px;
+  --ds-container-max: 1920px;
   --ds-container-px: clamp(1rem, 4vw, 2.5rem);
 }
 
