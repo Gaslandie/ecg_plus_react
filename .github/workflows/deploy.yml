@@ -25,6 +25,9 @@ jobs:
       - name: Build du projet
         run: npm run build
 
+      - name: Vérifier les pages et le référencement
+        run: npm run check:build
+
       - name: Déploiement FTP vers Bluehost
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

@@ -1,30 +1,22 @@
-import logo from '../assets/img/logo.jpeg';
+import logo from '../assets/img/logo-160.webp';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
 
 const Footer = () => {
   const { t } = useI18n();
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="ecg-footer" data-aos="fade-up" data-aos-delay="100">
+    <footer className="ecg-footer" data-menu-inert="">
       <div className="ds-container">
         <div className="ecg-footer__grid">
           {/* Brand */}
           <div className="ecg-footer__col">
             <div className="ecg-footer__brand">
-              <img
-                src={logo}
-                alt={t('common.brand')}
-                className="ecg-footer__logo"
-                width="1080"
-                height="946"
-                loading="lazy"
-                decoding="async"
-              />
+              <img src={logo} alt="" className="ecg-footer__logo" width="160" height="141" loading="lazy" decoding="async" />
               <h3 className="ecg-footer__brand-title">ECG PLUS</h3>
             </div>
-            <p className="ecg-footer__tagline">
-              Construire durablement, partout en Guinée. 18 ans d'excellence dans la construction et le génie civil.
-            </p>
+            <p className="ecg-footer__tagline">{t('footer.tagline')}</p>
           </div>
 
           {/* Contact */}
@@ -61,17 +53,17 @@ const Footer = () => {
 
         <div className="ecg-footer__bottom">
           <p className="ecg-footer__copyright">
-            &copy; {new Date().getFullYear()} ECG PLUS SARL. {t('footer.rights')}
+            &copy; {year} ECG PLUS SARL. {t('footer.rights')}
           </p>
           <div className="ecg-footer__socials">
             <a href="mailto:contact@ecgplusgn.com" aria-label={t('footer.emailLabel')}>
-              <i className="bi bi-envelope-fill"></i>
+              <i className="bi bi-envelope-fill" aria-hidden="true"></i>
             </a>
             <a href="https://wa.me/224623417510" target="_blank" rel="noopener noreferrer" aria-label={t('footer.whatsappLabel')}>
-              <i className="bi bi-whatsapp"></i>
+              <i className="bi bi-whatsapp" aria-hidden="true"></i>
             </a>
             <a href="https://www.linkedin.com/in/daouda-fofana-1b01261a8/" target="_blank" rel="noopener noreferrer" aria-label={t('footer.linkedinLabel')}>
-              <i className="bi bi-linkedin"></i>
+              <i className="bi bi-linkedin" aria-hidden="true"></i>
             </a>
           </div>
         </div>

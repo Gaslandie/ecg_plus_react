@@ -2,6 +2,8 @@
 
 Guide pour agents (Codex, Claude Code, etc.) travaillant sur ce projet.
 
+> **Mise à jour après les lots 1 à 7 (6 septembre 2026)** : les six pages ont été refondues et vérifiées localement ; six fiches projet et une page 404 ont été ajoutées. Le build préconstruit les onze pages publiques en HTML français. AOS a été retiré, les polices et icônes sont locales. Utiliser `npm run build` puis `npm run check:build` ; voir [README.md](README.md) pour le pré-rendu, les métadonnées et le routage Apache. Les listes « état actuel / reste à faire » ci-dessous décrivent le point de départ de la refonte.
+
 ## 1. Le projet
 
 **ECG PLUS** est le site vitrine d'une entreprise de **construction et génie civil basée en Guinée**. Cible : clients B2B (publics et privés), appels d'offres.

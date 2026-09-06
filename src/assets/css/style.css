@@ -1,7 +1,8 @@
 /* ============================================================
    ECG PLUS — Styles essentiels (post-refonte)
-   Contient uniquement la structure racine et le bouton de
-   retour en haut, hors du design system principal.
+   Contient uniquement ce qui est encore référencé hors du
+   design system (App.jsx : back-to-top, modal logo,
+   page-transition, page-with-hero / page-without-hero).
    ============================================================ */
 
 /* ----- Layout racine ----- */
@@ -20,10 +21,27 @@ body {
   overflow-x: hidden;
 }
 
-/* ----- Pages avec hero ----- */
+/* ----- Padding-top selon le hero ----- */
 
 main.page-with-hero {
   padding-top: 0;
+}
+
+main.page-without-hero {
+  padding-top: var(--ecg-nav-h-scrolled, 64px);
+}
+
+/* Visually hidden (accessibilité — replace Bootstrap .visually-hidden) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 /* ----- Back to top (App.jsx) ----- */
@@ -70,4 +88,31 @@ main.page-with-hero {
     width: 44px;
     height: 44px;
   }
+}
+
+/* ----- Modal logo (App.jsx — lightbox) ----- */
+
+#logoModal .modal-content {
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+#logoModal .btn-close {
+  position: absolute;
+  top: -40px;
+  right: -20px;
+  filter: invert(1);
+  opacity: 1;
+}
+
+.logo-modal-zoom {
+  max-height: 90vh;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.modal-backdrop {
+  background-color: var(--ds-primary-dark);
+  opacity: 0.92 !important;
 }

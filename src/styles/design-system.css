@@ -15,6 +15,7 @@
   --ds-accent: #C9A96E;
   --ds-accent-dark: #A88A4F;
   --ds-accent-light: #DEC394;
+  --ds-accent-ink: #80602B; /* Texte accentué sur fond clair. */
 
   /* Neutres — échelle de gris éditoriale */
   --ds-ink: #1A1A1A;          /* titres, textes forts */
@@ -94,6 +95,13 @@
   /* ---------- Container ---------- */
   --ds-container-max: 1920px;
   --ds-container-px: clamp(1rem, 4vw, 2.5rem);
+
+  /* ---------- Accessibilité (lot 1 accueil) ---------- */
+  /* Anneau de focus : teal sur fonds clairs ; les contextes sombres
+     (navbar, footer, hero, sections dark) le passent en blanc. */
+  --ds-focus-ring: 3px solid var(--ds-primary);
+  --ds-focus-ring-offset: 3px;
+  --ds-focus-ring-dark: var(--ds-white);
 }
 
 /* ============================================================
@@ -277,11 +285,55 @@ a:hover { color: var(--ds-primary-light); }
   transform: translateX(4px);
 }
 
+/* ---------- Focus visible ---------- */
+:focus-visible {
+  outline: var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-ring-offset);
+}
+
+.ds-section--dark :focus-visible {
+  outline-color: var(--ds-focus-ring-dark);
+}
+
+/* Cible du lien d'évitement : pas d'anneau sur le conteneur lui-même */
+#main-content:focus {
+  outline: none;
+}
+
+/* ---------- Lien d'évitement (skip link) ---------- */
+.ds-skip-link {
+  position: fixed;
+  top: var(--ds-space-2);
+  left: var(--ds-space-2);
+  z-index: 2000;
+  padding: 12px 20px;
+  background-color: var(--ds-primary-dark);
+  color: var(--ds-white);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-fs-small);
+  font-weight: var(--ds-fw-semibold);
+  letter-spacing: 0.04em;
+  border-radius: var(--ds-radius-sm);
+  box-shadow: var(--ds-shadow-lg);
+  transform: translateY(calc(-100% - var(--ds-space-4)));
+  transition: transform var(--ds-duration-fast) var(--ds-ease);
+}
+.ds-skip-link:focus,
+.ds-skip-link:focus-visible {
+  transform: none;
+  color: var(--ds-white);
+  outline: 3px solid var(--ds-accent);
+  outline-offset: 2px;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .ds-btn,
   .ds-btn:hover {
     transition: none;
     transform: none;
+  }
+  .ds-skip-link {
+    transition: none;
   }
 }

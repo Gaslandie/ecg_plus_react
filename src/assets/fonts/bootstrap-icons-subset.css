@@ -1,0 +1,41 @@
+/*!
+ * Bootstrap Icons v1.11.3 (https://icons.getbootstrap.com/)
+ * Copyright 2019-2024 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/icons/blob/main/LICENSE)
+ */
+
+@font-face {
+  font-family: "bootstrap-icons";
+  src: url("./bootstrap-icons-subset.woff2") format("woff2");
+  font-display: swap;
+}
+
+.bi::before,
+[class^="bi-"]::before,
+[class*=" bi-"]::before {
+  display: inline-block;
+  font-family: bootstrap-icons !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: -.125em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bi-arrow-down::before { content: "\f128"; }
+.bi-arrow-down-right::before { content: "\f123"; }
+.bi-arrow-left::before { content: "\f12f"; }
+.bi-arrow-right::before { content: "\f138"; }
+.bi-arrow-up::before { content: "\f148"; }
+.bi-arrow-up-right::before { content: "\f144"; }
+.bi-check2::before { content: "\f272"; }
+.bi-envelope-fill::before { content: "\f32c"; }
+.bi-geo-alt-fill::before { content: "\f3e7"; }
+.bi-linkedin::before { content: "\f472"; }
+.bi-plus-lg::before { content: "\f64d"; }
+.bi-telephone::before { content: "\f5c1"; }
+.bi-telephone-fill::before { content: "\f5b4"; }
+.bi-whatsapp::before { content: "\f618"; }

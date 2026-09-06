@@ -1,29 +1,13 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { translations } from './translations';
+import { createContext, useContext } from 'react';
 
-const I18nContext = createContext({ lang: 'fr', setLang: () => {}, t: (k) => k });
+export const SUPPORTED_LANGS = ['fr', 'en'];
+export const DEFAULT_LANG = 'fr';
+export const LANG_STORAGE_KEY = 'ecg-lang';
 
-const getValue = (obj, path) => {
-  return path.split('.').reduce((acc, key) => (acc && acc[key] != null ? acc[key] : undefined), obj);
-};
+export const I18nContext = createContext({
+  lang: DEFAULT_LANG,
+  setLang: () => {},
+  t: (key) => key,
+});
 
-export const I18nProvider = ({ children }) => {
-  const [lang, setLang] = useState('fr');
-
-  useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
-
-  const t = useCallback((key) => {
-    const dict = translations[lang] || translations.fr;
-    const value = getValue(dict, key);
-    return value != null ? value : key;
-  }, [lang]);
-
-  const value = useMemo(() => ({ lang, setLang, t }), [lang, t]);
-
-  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
-};
-
-// eslint-disable-next-line react-refresh/only-export-components
 export const useI18n = () => useContext(I18nContext);

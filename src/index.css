@@ -29,9 +29,12 @@ button {
   cursor: pointer;
 }
 
-:focus-visible {
-  outline: 2px solid var(--ds-accent);
-  outline-offset: 2px;
+/* Focus visible : voir design-system.css (--ds-focus-ring) */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

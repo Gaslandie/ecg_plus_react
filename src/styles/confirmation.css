@@ -1,0 +1,10 @@
+/* Confirmation : message et retour à l’accueil. */
+.ecg-confirmation { background: var(--ds-white); overflow-wrap: anywhere; }
+main.ecg-confirmation.page-without-hero { padding-top: var(--navbar-height, 92px); }
+.confirmation-layout { padding-block: clamp(64px, 10vw, 144px); }
+.confirmation-message { max-width: 720px; }
+.confirmation-message h1 { color: var(--ds-primary); font-size: clamp(2.25rem, 4.5vw, 3.75rem); line-height: 1.15; margin: 0 0 24px; scroll-margin-top: calc(var(--navbar-height, 92px) + 24px); }
+.confirmation-message h1:focus { outline: none; }
+.confirmation-message__lead { font-size: var(--ds-fs-lead); line-height: 1.7; margin: 0; max-width: 55ch; }
+.confirmation-actions { margin-top: 24px; }
+.confirmation-text-link { display: inline-flex; align-items: center; min-height: 44px; color: var(--ds-primary); text-decoration: underline; text-underline-offset: 5px; }
