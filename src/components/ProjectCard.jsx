@@ -2,17 +2,28 @@ import { Link } from 'react-router-dom';
 import { projectPath } from '../data/projects';
 import { useI18n } from '../i18n/I18nContext';
 
-export default function ProjectCard({ project, from = '/realisations' }) {
+// Carte projet : photo en couverture, badge de domaine, titre et repères.
+// Les visuels composites (photo + vue 3D) utilisent leur recadrage photo (project.card).
+export default function ProjectCard({ project, from = '/realisations', variant = 'default', sizes, loading = 'lazy', headingLevel = 'h3' }) {
   const { t } = useI18n();
+  const Heading = headingLevel;
+  const image = project.card || project.image;
+  const meta = [project.location, project.period].filter(Boolean).join(' · ') || t(`portfolio.imageKinds.${project.imageKind}`);
   return (
-    <article className="portfolio-card">
-      <Link className="portfolio-card__link" to={projectPath(project)} state={{ portfolioFrom: from }}>
-        <div className="portfolio-card__media">
-          <img {...project.image} sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1000px) 45vw, 390px"
-            alt="" loading="lazy" decoding="async" />
+    <article className={`ecg-card${variant === 'overlay' ? ' ecg-card--overlay' : ''}`}>
+      <Link className="ecg-card__link" to={projectPath(project)} state={{ portfolioFrom: from }}>
+        <div className="ecg-card__media">
+          <img {...image} sizes={sizes || '(max-width: 600px) calc(100vw - 2.5rem), (max-width: 1100px) 45vw, 30vw'}
+            alt="" loading={loading} decoding="async" />
+          <span className="ecg-card__badge">{t(`realisationsPage.projects.cards.${project.key}.badge`)}</span>
         </div>
-        <h3>{t(`realisationsPage.projects.cards.${project.key}.title`)}</h3>
-        {project.imageKind !== 'photo' && <p className="portfolio-card__caption">{t(`portfolio.imageKinds.${project.imageKind}`)}</p>}
+        <div className="ecg-card__body">
+          <div className="ecg-card__text">
+            <Heading className="ecg-card__title">{t(`realisationsPage.projects.cards.${project.key}.title`)}</Heading>
+            <span className="ecg-card__meta">{meta}</span>
+          </div>
+          <span className="ecg-card__arrow" aria-hidden="true"><i className="bi bi-arrow-up-right" /></span>
+        </div>
       </Link>
     </article>
   );

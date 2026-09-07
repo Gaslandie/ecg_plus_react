@@ -12,6 +12,7 @@ import Realisations from './pages/Realisations';
 import ProjectDetails from './pages/ProjectDetails';
 import Confirmation from './pages/Confirmation';
 import { useI18n } from './i18n/I18nContext.jsx';
+import { useReveal } from './hooks/useReveal.js';
 
 const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -21,6 +22,9 @@ function App() {
   const { t } = useI18n();
   const [showBackToTop, setShowBackToTop] = useState(false);
   const previousPath = useRef(location.pathname);
+
+  // Révélation au défilement des blocs [data-reveal] (recalculée à chaque navigation, filtres compris).
+  useReveal(location.key);
 
   useEffect(() => {
     const changedPage = previousPath.current !== location.pathname;

@@ -2,10 +2,16 @@ import kankan640 from '../assets/img/kankan-640.webp';
 import kankan1000 from '../assets/img/kankan-1000.webp';
 import dubreka640 from '../assets/img/dubreka-640.webp';
 import dubreka1080 from '../assets/img/dubreka-1080.webp';
+import dubrekaPhoto480 from '../assets/img/dubreka-photo-480.webp';
+import dubrekaPhoto707 from '../assets/img/dubreka-photo-707.webp';
 import ansoumania640 from '../assets/img/ansoumania-640.webp';
 import ansoumania1200 from '../assets/img/ansoumania-1200.webp';
+import ansoumaniaPhoto480 from '../assets/img/ansoumania-photo-480.webp';
+import ansoumaniaPhoto871 from '../assets/img/ansoumania-photo-871.webp';
 import kagbelen640 from '../assets/img/kagbelen-640.webp';
 import kagbelen1280 from '../assets/img/kagbelen-1280.webp';
+import kagbelenPhoto480 from '../assets/img/kagbelen-photo-480.webp';
+import kagbelenPhoto885 from '../assets/img/kagbelen-photo-885.webp';
 import r4640 from '../assets/img/r4-640.webp';
 import r41280 from '../assets/img/r4-1280.webp';
 import hangar640 from '../assets/img/hangar-640.webp';
@@ -17,19 +23,24 @@ const photo = (small, large, width, height, smallWidth = 640) => ({
 
 // Informations reprises de la galerie existante. Aucun statut de livraison,
 // client, budget, résultat ou périmètre contractuel n'est déduit des images.
+// `image` : visuel complet (fiche projet, partage). `card` : recadrage photo
+// (partie photographique des visuels composites) pour les cartes et bandeaux.
 export const projects = [
   { key: 'kankan', slug: 'bibliotheque-municipale-kankan', category: 'batiment',
     imageKind: 'photo', location: 'Kankan', period: '2023',
     image: photo(kankan640, kankan1000, 1000, 750) },
   { key: 'dubreka', slug: 'residence-dubreka-fihaima', category: 'batiment',
     imageKind: 'mixed', location: 'Dubréka', period: '2020 – 2021',
-    image: photo(dubreka640, dubreka1080, 1080, 1080) },
+    image: photo(dubreka640, dubreka1080, 1080, 1080),
+    card: photo(dubrekaPhoto480, dubrekaPhoto707, 707, 530, 480) },
   { key: 'ansoumania', slug: 'immeuble-ansoumaniah', category: 'batiment',
     imageKind: 'mixed', location: 'Cimenterie', period: '2023 – 2024',
-    image: photo(ansoumania640, ansoumania1200, 1200, 1200) },
+    image: photo(ansoumania640, ansoumania1200, 1200, 1200),
+    card: photo(ansoumaniaPhoto480, ansoumaniaPhoto871, 871, 653, 480) },
   { key: 'kagbelen', slug: 'kagbelen-dondolikhoure', category: 'genie-civil',
     imageKind: 'mixed', location: 'Kagbelen',
-    image: photo(kagbelen640, kagbelen1280, 1280, 1280) },
+    image: photo(kagbelen640, kagbelen1280, 1280, 1280),
+    card: photo(kagbelenPhoto480, kagbelenPhoto885, 885, 664, 480) },
   { key: 'hangar', slug: 'hangars-logistiques', category: 'industrie', imageKind: 'render',
     image: photo(hangar640, hangar1280, 1280, 721, 639) },
   { key: 'r4', slug: 'conceptions-modelisations-r4', category: 'etudes', imageKind: 'render',

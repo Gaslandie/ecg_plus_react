@@ -1,84 +1,123 @@
 import { Link } from 'react-router-dom';
 import HomeHero from '../components/HomeHero.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
-import histoire480 from '../assets/img/histoire-480.webp';
-import histoire768 from '../assets/img/histoire-768.webp';
+import SectionHead from '../components/SectionHead.jsx';
+import ExpertiseShowcase from '../components/ExpertiseShowcase.jsx';
+import CtaBand from '../components/CtaBand.jsx';
+import teamWide800 from '../assets/img/presen3-800.webp';
+import teamWide1280 from '../assets/img/presen3-1280.webp';
+import field480 from '../assets/img/histoire-480.webp';
+import field768 from '../assets/img/histoire-768.webp';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import { projects } from '../data/projects';
-import { services, servicePath } from '../data/services';
 import '../styles/home.css';
-import '../styles/portfolio.css';
 
-const PROJECTS = projects.filter(project => ['kankan', 'dubreka', 'ansoumania'].includes(project.key));
+const PROJECTS = ['kankan', 'dubreka', 'ansoumania'].map(key => projects.find(project => project.key === key));
 
 export default function Home() {
   const { t } = useI18n();
+  const facts = t('homePage.company.facts');
+
   return (
     <main className="page-with-hero ecg-home">
       <HomeHero />
 
+      {/* ---------- 01 · Réalisations ---------- */}
       <section id="realisations" className="ecg-section ecg-home-projects" aria-labelledby="home-projects-title">
         <div className="ds-container">
-          <div className="ecg-section-head">
-            <h2 id="home-projects-title">{t('simple.projects')}</h2>
-            <p>{t('homePage.projects.intro')}</p>
-          </div>
-          <ul className="portfolio-grid">
-            {PROJECTS.map(project => <li key={project.key}><ProjectCard project={project} /></li>)}
-          </ul>
-          <div className="ecg-section-end">
-            <Link to="/realisations" className="ecg-content-link">{t('simple.allProjects')}<i className="bi bi-arrow-right" aria-hidden="true" /></Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="ecg-section ecg-home-expertises" aria-labelledby="home-expertises-title">
-        <div className="ds-container">
-          <div className="ecg-section-head">
-            <h2 id="home-expertises-title">{t('simple.expertise')}</h2>
-            <p>{t('homePage.expertises.intro')}</p>
-          </div>
-          <ul className="ecg-home-expertises__grid">
-            {services.map(service => (
-              <li key={service.key}>
-                <Link to={servicePath(service)} className="ecg-home-expertise">
-                  <img {...service.image} sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1280px) 45vw, 590px"
-                    alt="" loading="lazy" decoding="async" />
-                  <h3>{t(`expertiseServicesPage.pillars.${service.key}.shortTitle`)}</h3>
+          <div data-reveal>
+            <SectionHead
+              index="01"
+              eyebrow={t('homePage.projects.eyebrow')}
+              title={t('homePage.projects.title')}
+              titleId="home-projects-title"
+              lead={t('homePage.projects.intro')}
+              action={(
+                <Link to="/realisations" className="ds-btn ds-btn--pill ds-btn--outline-ink">
+                  {t('homePage.projects.cta')}<i className="bi bi-arrow-right" aria-hidden="true" />
                 </Link>
+              )}
+            />
+          </div>
+          <ul className="ecg-home-projects__grid" data-reveal-group>
+            {PROJECTS.map((project, index) => (
+              <li key={project.key} data-reveal>
+                <ProjectCard
+                  project={project}
+                  from="/"
+                  variant="overlay"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  sizes={index === 0 ? '(max-width: 900px) calc(100vw - 2.5rem), 54vw' : '(max-width: 900px) calc(100vw - 2.5rem), 27vw'}
+                />
               </li>
             ))}
           </ul>
-          <div className="ecg-section-end">
-            <Link to="/expertiseservices" className="ecg-content-link">{t('simple.allServices')}<i className="bi bi-arrow-right" aria-hidden="true" /></Link>
-          </div>
         </div>
       </section>
 
-      <section className="ecg-section ecg-home-company" aria-labelledby="home-company-title">
-        <div className="ds-container ecg-home-company__grid">
-          <div>
-            <div className="ecg-section-head">
-              <h2 id="home-company-title">{t('simple.company')}</h2>
-              <p>{t('homePage.company.lead')}</p>
-            </div>
-            <Link to="/presentation" className="ecg-content-link">{t('homePage.company.cta')}<i className="bi bi-arrow-right" aria-hidden="true" /></Link>
-          </div>
-          <img src={histoire768} srcSet={`${histoire480} 480w, ${histoire768} 768w`}
-            sizes="(max-width: 760px) calc(100vw - 32px), 540px" width="768" height="1024"
-            alt={t('homePage.company.imageAlt')} loading="lazy" decoding="async" />
-        </div>
-      </section>
-
-      <section className="ecg-section ecg-home-cta" aria-labelledby="home-contact-title">
+      {/* ---------- 02 · Expertises ---------- */}
+      <section className="ecg-section ecg-section--paper ecg-home-expertises" aria-labelledby="home-expertises-title">
         <div className="ds-container">
-          <div className="ecg-section-head">
-            <h2 id="home-contact-title">{t('simple.contact')}</h2>
-            <p>{t('simple.contactIntro')}</p>
+          <div data-reveal>
+            <SectionHead
+              index="02"
+              eyebrow={t('homePage.expertises.eyebrow')}
+              title={t('homePage.expertises.title')}
+              titleId="home-expertises-title"
+              lead={t('homePage.expertises.intro')}
+              action={(
+                <Link to="/expertiseservices" className="ecg-link">
+                  <span>{t('homePage.expertises.cta')}</span><i className="bi bi-arrow-right" aria-hidden="true" />
+                </Link>
+              )}
+            />
           </div>
-          <Link to="/contact" className="ecg-content-link">{t('homePage.contact.cta')}<i className="bi bi-arrow-right" aria-hidden="true" /></Link>
+          <ExpertiseShowcase />
         </div>
       </section>
+
+      {/* ---------- 03 · L'entreprise ---------- */}
+      <section className="ecg-section ecg-home-company" aria-labelledby="home-company-title">
+        <div className="ds-container">
+          <div className="ecg-home-company__grid">
+            <div className="ecg-home-company__body" data-reveal>
+              <p className="ecg-eyebrow ecg-eyebrow--indexed">
+                <span className="ecg-eyebrow__num">03</span><span>{t('homePage.company.eyebrow')}</span>
+              </p>
+              <h2 id="home-company-title" className="ecg-title ecg-title--wide">{t('homePage.company.title')}</h2>
+              <p className="ecg-lead ecg-lead--strong">{t('homePage.company.lead')}</p>
+              <p className="ecg-text">{t('homePage.company.text')}</p>
+              <Link to="/presentation" className="ds-btn ds-btn--pill ds-btn--dark">
+                {t('homePage.company.cta')}<i className="bi bi-arrow-right" aria-hidden="true" />
+              </Link>
+            </div>
+            <div className="ecg-collage" data-reveal>
+              <img className="ecg-collage__main" src={teamWide1280} srcSet={`${teamWide800} 800w, ${teamWide1280} 1280w`}
+                sizes="(max-width: 900px) calc(100vw - 2.5rem), 42vw" width="1280" height="960"
+                alt={t('presentationPage.hero.imageAlt')} loading="lazy" decoding="async" />
+              <img className="ecg-collage__second" src={field768} srcSet={`${field480} 480w, ${field768} 768w`}
+                sizes="(max-width: 900px) 40vw, 18vw" width="768" height="1024"
+                alt={t('homePage.company.imageAlt')} loading="lazy" decoding="async" />
+              <span className="ecg-collage__mark" aria-hidden="true">Manéah · Coyah</span>
+            </div>
+          </div>
+          <dl className="ecg-facts ecg-facts--strip ecg-home-company__facts" aria-label={t('homePage.company.factsLabel')} data-reveal>
+            {Array.isArray(facts) && facts.map(fact => (
+              <div key={fact.label}><dt>{fact.label}</dt><dd>{fact.value}</dd></div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* ---------- 04 · Contact ---------- */}
+      <CtaBand
+        id="home-contact-title"
+        eyebrow={t('homePage.contact.eyebrow')}
+        title={t('homePage.contact.title')}
+        text={t('homePage.contact.text')}
+        primary={{ to: '/contact', label: t('homePage.contact.cta') }}
+        details
+      />
     </main>
   );
 }

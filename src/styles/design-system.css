@@ -17,12 +17,15 @@
   --ds-accent-light: #DEC394;
   --ds-accent-ink: #80602B; /* Texte accentué sur fond clair. */
 
-  /* Neutres — échelle de gris éditoriale */
-  --ds-ink: #1A1A1A;          /* titres, textes forts */
-  --ds-body: #4A4A4A;         /* texte courant */
-  --ds-muted: #8A8A8A;        /* sous-titres, méta */
-  --ds-line: #E5E5E5;         /* bordures, séparateurs */
-  --ds-surface: #FAFAFA;      /* fond de section alterné */
+  /* Neutres — échelle éditoriale légèrement teintée (vert profond / papier) */
+  --ds-ink: #0E1F1F;          /* titres, textes forts */
+  --ds-body: #465353;         /* texte courant */
+  --ds-muted: #6F7C7A;        /* sous-titres, méta (contraste AA sur blanc et papier) */
+  --ds-line: #E3DFD5;         /* bordures, séparateurs */
+  --ds-line-strong: #C6C1B4;  /* séparateurs marqués, contours de boutons ronds */
+  --ds-surface: #F7F6F2;      /* fond de section alterné (compat) */
+  --ds-paper: #F4F2ED;        /* fond « papier » des sections alternées */
+  --ds-paper-2: #EAE6DC;      /* papier plus soutenu (fonds d'images) */
   --ds-white: #FFFFFF;
 
   /* Sémantique (utilitaires) */
@@ -70,7 +73,7 @@
   --ds-space-10: 160px;
 
   /* Section vertical padding — gros sur desktop, raisonnable sur mobile */
-  --ds-section-py: clamp(4rem, 8vw, 8rem);
+  --ds-section-py: clamp(4.5rem, 9vw, 9rem);
 
   /* ---------- Bordures & rayons ---------- */
   --ds-radius-none: 0;
@@ -93,8 +96,11 @@
   --ds-duration-slow: 600ms;
 
   /* ---------- Container ---------- */
+  /* Gouttières alignées sur celles du hero (--hero-gutter dans home.css) :
+     le contenu des sections s'aligne sur le texte du hero. */
+  --ds-gutter: clamp(1.25rem, 9vw, 12rem);
   --ds-container-max: 1920px;
-  --ds-container-px: clamp(1rem, 4vw, 2.5rem);
+  --ds-container-px: var(--ds-gutter);
 
   /* ---------- Accessibilité (lot 1 accueil) ---------- */
   /* Anneau de focus : teal sur fonds clairs ; les contextes sombres
@@ -121,10 +127,17 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--ds-font-display);
-  font-weight: var(--ds-fw-bold);
+  font-weight: var(--ds-fw-semibold);
   color: var(--ds-ink);
   line-height: var(--ds-lh-tight);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 991.98px) {
+  :root { --ds-gutter: 6vw; }
+}
+@media (max-width: 600px) {
+  :root { --ds-gutter: 1.25rem; }
 }
 
 h1 { font-size: var(--ds-fs-h1); }
@@ -336,4 +349,78 @@ a:hover { color: var(--ds-primary-light); }
   .ds-skip-link {
     transition: none;
   }
+}
+
+/* ============================================================
+   Boutons « pill » (sections premium) — le hero garde son style propre
+   ============================================================ */
+.ds-btn--pill {
+  gap: 14px;
+  padding: 15px 26px 15px 30px;
+  border-radius: var(--ds-radius-full);
+  font-size: 0.9375rem;
+  letter-spacing: 0.005em;
+  text-transform: none;
+  line-height: 1.2;
+  transition: background-color var(--ds-duration) var(--ds-ease), color var(--ds-duration) var(--ds-ease), border-color var(--ds-duration) var(--ds-ease);
+}
+.ds-btn--pill i { font-size: 1.05em; transition: transform var(--ds-duration) var(--ds-ease); }
+.ds-btn--pill:hover { transform: none; }
+.ds-btn--pill:hover i { transform: translateX(4px); }
+.ds-btn--pill.ds-btn--accent:hover { color: var(--ds-primary-dark); background-color: var(--ds-accent-light); border-color: var(--ds-accent-light); }
+
+.ds-btn--dark { background-color: var(--ds-primary-dark); color: var(--ds-white); border-color: var(--ds-primary-dark); }
+.ds-btn--dark:hover { background-color: var(--ds-primary); border-color: var(--ds-primary); color: var(--ds-white); }
+
+.ds-btn--outline-ink { background-color: transparent; color: var(--ds-ink); border-color: var(--ds-line-strong); }
+.ds-btn--outline-ink:hover { background-color: var(--ds-ink); border-color: var(--ds-ink); color: var(--ds-white); }
+
+.ds-btn--light { background-color: var(--ds-white); color: var(--ds-primary-dark); border-color: var(--ds-white); }
+.ds-btn--light:hover { background-color: var(--ds-accent-light); border-color: var(--ds-accent-light); color: var(--ds-primary-dark); }
+
+/* Lien fléché — soulignement progressif */
+.ecg-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  max-width: 100%;
+  color: var(--ds-primary);
+  font-family: var(--ds-font-display);
+  font-size: 0.9375rem;
+  font-weight: var(--ds-fw-semibold);
+  text-decoration: none;
+}
+.ecg-link > span {
+  padding-bottom: 3px;
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
+  transition: background-size 0.45s var(--ds-ease-out);
+}
+.ecg-link > i { flex-shrink: 0; transition: transform var(--ds-duration) var(--ds-ease); }
+.ecg-link:hover { color: var(--ds-primary-dark); }
+.ecg-link:hover > span { background-size: 100% 1px; }
+.ecg-link:hover > i { transform: translateX(4px); }
+.ecg-link--light, .ecg-link--light:hover { color: var(--ds-white); }
+.ecg-link--light:hover > span { background-size: 100% 1px; }
+
+/* Révélation au défilement : uniquement quand JS a démarré (html.ecg-reveal)
+   et hors préférence de mouvement réduit. Sans JS, tout reste visible. */
+html.ecg-reveal [data-reveal] {
+  transition: opacity 0.9s var(--ds-ease-out), transform 0.9s var(--ds-ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+html.ecg-reveal [data-reveal]:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: none; /* masquage immédiat, seule l'apparition est animée */
+}
+[data-reveal-group] > :nth-child(2) { --reveal-delay: 90ms; }
+[data-reveal-group] > :nth-child(3) { --reveal-delay: 180ms; }
+[data-reveal-group] > :nth-child(4) { --reveal-delay: 270ms; }
+[data-reveal-group] > :nth-child(5) { --reveal-delay: 360ms; }
+[data-reveal-group] > :nth-child(n+6) { --reveal-delay: 450ms; }
+@media (prefers-reduced-motion: reduce) {
+  html.ecg-reveal [data-reveal] { transition: none; }
+  html.ecg-reveal [data-reveal]:not(.is-visible) { opacity: 1; transform: none; }
+  .ds-btn--pill:hover i, .ecg-link:hover > i { transform: none; }
 }

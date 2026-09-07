@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import { useClientReady } from '../hooks/useClientReady.js';
+import PageHeader from '../components/PageHeader.jsx';
+import SectionHead from '../components/SectionHead.jsx';
 import '../styles/contact.css';
 
 const ENDPOINT = 'https://api.web3forms.com/submit';
@@ -130,13 +132,15 @@ const Contact = () => {
   );
 
   return (
-    <main className="contact-page page-without-hero">
-      <header className="ecg-page-intro ds-container">
-        <h1>{t('simple.contact')}</h1>
-        <p>{copy.hero.subtitle}</p>
-      </header>
+    <main className="contact-page ecg-page page-without-hero">
+      <PageHeader
+        eyebrow={copy.hero.eyebrow}
+        title={copy.hero.title}
+        lead={copy.hero.subtitle}
+        actions={<p className="contact-call">{copy.hero.call} <a href="tel:+224623417510">+224 623 41 75 10</a></p>}
+      />
 
-      <div className="contact-layout ds-container">
+      <div className="ecg-section contact-layout ds-container">
         <section className="contact-form-section" aria-labelledby="contact-form-title">
           <div className="contact-form__head">
             <h2 id="contact-form-title">{t('simple.message')}</h2>
@@ -192,8 +196,8 @@ const Contact = () => {
               </div>
             )}
             <div className="contact-form__submit">
-              <button className="ds-btn ds-btn--primary" type="submit" disabled={isSubmitting || !clientReady}>
-                {isSubmitting ? copy.form.sending : copy.form.submit}
+              <button className="ds-btn ds-btn--pill ds-btn--dark" type="submit" disabled={isSubmitting || !clientReady}>
+                {isSubmitting ? copy.form.sending : copy.form.submit}<i className="bi bi-arrow-right" aria-hidden="true" />
               </button>
             </div>
           </form>
@@ -230,6 +234,21 @@ const Contact = () => {
         </aside>
       </div>
 
+      <section className="ecg-section ecg-section--paper contact-faq" aria-labelledby="contact-faq-title">
+        <div className="ds-container contact-faq__grid">
+          <div data-reveal>
+            <SectionHead eyebrow={copy.faq.eyebrow} title={copy.faq.title} titleId="contact-faq-title" lead={copy.faq.intro} align="stack" />
+          </div>
+          <div className="ecg-accordion" data-reveal>
+            {copy.faq.items.map(item => (
+              <details key={item.question}>
+                <summary>{item.question}<i className="bi bi-plus-lg" aria-hidden="true" /></summary>
+                <div className="ecg-accordion__body"><p>{item.answer}</p></div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

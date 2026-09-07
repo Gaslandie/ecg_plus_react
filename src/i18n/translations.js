@@ -293,6 +293,7 @@ export const translations = {
       },
       expertises: {
         eyebrow: "Expertises",
+        itemCta: "Découvrir ce domaine",
         title: "Quatre domaines d'intervention",
         intro:
           "Construction, énergie, industrie et études : découvrez les domaines dans lesquels nous accompagnons vos projets.",
@@ -1222,6 +1223,7 @@ export const translations = {
       },
       expertises: {
         eyebrow: "Expertise",
+        itemCta: "Explore this area",
         title: "Four areas of expertise",
         intro:
           "Construction, energy, industry and technical studies: explore how we can support your projects.",
