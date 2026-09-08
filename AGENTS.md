@@ -2,6 +2,8 @@
 
 Guide pour agents (Codex, Claude Code, etc.) travaillant sur ce projet.
 
+> **Refonte du 8 septembre 2026** : à la demande de l’utilisateur, la référence UI/UX est désormais [GS Corporation](https://gaslandie.github.io/gs_corporation/). Police Manrope locale, palette ECG PLUS conservée : vert profond `#0f3d3e` et or `#c9a96e`, navigation blanche et menu mobile dépliable. Les indications Bouygues et navbar transparente ci-dessous décrivent l’ancienne direction. Voir [le benchmark et les adaptations](docs/refonte-gs-corporation.md).
+
 > **Mise à jour après les lots 1 à 7 (6 septembre 2026)** : les six pages ont été refondues et vérifiées localement ; six fiches projet et une page 404 ont été ajoutées. Le build préconstruit les onze pages publiques en HTML français. AOS a été retiré, les polices et icônes sont locales. Utiliser `npm run build` puis `npm run check:build` ; voir [README.md](README.md) pour le pré-rendu, les métadonnées et le routage Apache. Les listes « état actuel / reste à faire » ci-dessous décrivent le point de départ de la refonte.
 
 ## 1. Le projet
@@ -120,21 +122,11 @@ npm run preview  # Prévisualiser le build
    - États hover/focus soignés
    - Transitions de pages éventuelles
 
-## 7. Navbar transparente sur les pages avec hero
+## 7. Navigation blanche et hero encadré
 
-La navbar est **solide par défaut** mais devient **transparente** quand on est au-dessus d'un hero plein écran et qu'on n'a pas scrollé.
+[Navbar.jsx](src/components/Navbar.jsx) rend un en-tête blanc sticky sur toutes les pages, précédé des coordonnées sur ordinateur. Sur mobile, le menu se déplie sous la marque ; les expertises restent accessibles dans un sous-menu. La hauteur de navigation est mesurée pour positionner les ancres.
 
-La logique est dans [src/components/Navbar.jsx](src/components/Navbar.jsx) :
-```js
-const isOverHero = location.pathname === '/' && !isScrolled;
-```
-
-**À mettre à jour à chaque nouvelle page refondue avec un hero plein écran** :
-ajouter le pathname à la condition, ex :
-```js
-const heroRoutes = ['/', '/realisations', '/expertiseservices'];
-const isOverHero = heroRoutes.includes(location.pathname) && !isScrolled;
-```
+Le hero de l’accueil est encadré de blanc et reste sous la navigation. Ne pas réintroduire de navbar transparente ni de compensation de hauteur pour une barre fixe dans les pages.
 
 ## 8. Conventions à respecter
 

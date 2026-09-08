@@ -1,11 +1,13 @@
 # Polices locales ECG PLUS
 
-Montserrat (500, 600, 700) et Roboto (400, 500, 700), sous-ensemble latin
-adapté aux textes français et anglais. Les fontes WOFF2 sont partagées entre
-les graisses via les déclarations fournies par Google Fonts.
+Manrope variable (200–800), hébergée localement en WOFF2, est la police de
+l’interface depuis la refonte GS Corporation du 8 septembre 2026.
+Source : police publique du site de référence, convertie sans modification
+des glyphes avec FontTools. Licence OFL : `Manrope-OFL.txt`.
+Le préchargement dans `index.html` utilise cette même ressource.
 
-Source CSS : https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap
-Date de récupération : 2026-09-06. Licences OFL jointes.
+Les anciennes fontes Montserrat et Roboto et leurs licences sont conservées
+comme ressources historiques ; elles ne sont plus chargées par le site.
 
 Bootstrap Icons 1.11.3 : CSS et fonte WOFF2 du paquet officiel servi par jsDelivr.
 Source : https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css

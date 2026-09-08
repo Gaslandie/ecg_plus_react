@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
+import Photo from '../components/Photo.jsx';
 import PageHeader from '../components/PageHeader.jsx';
 import SectionHead from '../components/SectionHead.jsx';
 import CtaBand from '../components/CtaBand.jsx';
@@ -58,12 +59,8 @@ export default function Presentation() {
           </Link>
         )}
         media={(
-          <figure>
-            <img src={team1600} srcSet={`${team800} 800w, ${team1280} 1280w, ${team1600} 1600w`}
-              sizes="(max-width: 1440px) calc(100vw - 2 * var(--ds-gutter)), 1600px" width="1600" height="1200"
-              alt={content.hero.imageAlt} fetchPriority="high" decoding="async" />
-            <figcaption>{content.hero.caption}</figcaption>
-          </figure>
+          <Photo image={{src:team1600,srcSet:`${team800} 800w, ${team1280} 1280w, ${team1600} 1600w`,width:1600,height:1200}}
+            alt={content.hero.imageAlt} caption={content.hero.caption} priority zoom={false} />
         )}
       />
 
@@ -99,12 +96,9 @@ export default function Presentation() {
               <span>{content.team.cta}</span><i className="bi bi-arrow-right" aria-hidden="true" />
             </Link>
           </div>
-          <figure className="company-team__visual" data-reveal>
-            <img src={field768} srcSet={`${field480} 480w, ${field768} 768w`}
-              sizes="(max-width: 900px) calc(100vw - 2.5rem), 36vw" width="768" height="1024"
-              alt={content.team.imageAlt} loading="lazy" decoding="async" />
-            <figcaption>{content.team.caption}</figcaption>
-          </figure>
+          <div data-reveal><Photo className="company-team__visual"
+            image={{src:field768,srcSet:`${field480} 480w, ${field768} 768w`,width:768,height:1024}}
+            alt={content.team.imageAlt} caption={content.team.caption} /></div>
         </div>
       </section>
 

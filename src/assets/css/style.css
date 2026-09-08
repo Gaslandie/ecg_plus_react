@@ -28,7 +28,7 @@ main.page-with-hero {
 }
 
 main.page-without-hero {
-  padding-top: var(--ecg-nav-h-scrolled, 64px);
+  padding-top: 0;
 }
 
 /* Visually hidden (accessibilité — replace Bootstrap .visually-hidden) */
@@ -52,10 +52,10 @@ main.page-without-hero {
   bottom: 24px;
   width: 48px;
   height: 48px;
-  border-radius: 0;
+  border-radius: 50%;
   border: 1px solid var(--ds-accent);
   background-color: var(--ds-primary);
-  color: var(--ds-accent);
+  color: var(--ds-white);
   font-size: 1.25rem;
   line-height: 1;
   display: inline-flex;
@@ -77,7 +77,7 @@ main.page-without-hero {
 }
 
 .back-to-top:hover {
-  background-color: var(--ds-accent);
+  background-color: var(--ds-white);
   color: var(--ds-primary);
 }
 

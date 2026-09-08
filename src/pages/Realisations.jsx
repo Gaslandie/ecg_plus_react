@@ -2,6 +2,7 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext';
 import { projects, projectCategories } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
+import Photo from '../components/Photo.jsx';
 import PageHeader from '../components/PageHeader.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import '../styles/portfolio.css';
@@ -29,6 +30,7 @@ export default function Realisations() {
         eyebrow={t('portfolio.eyebrow')}
         title={t('portfolio.title')}
         lead={t('portfolio.intro')}
+        media={<Photo image={projects[0].image} alt={t('portfolio.details.kankan.imageAlt')} caption={t('referenceUi.projectsCaption')} priority zoom={false} />}
         actions={(
           <Link to="/contact" className="ds-btn ds-btn--pill ds-btn--dark">
             {t('portfolio.introCta')}<i className="bi bi-arrow-right" aria-hidden="true" />
@@ -54,15 +56,15 @@ export default function Realisations() {
               </div>
             </fieldset>
           </div>
-          <p className="visually-hidden" role="status" aria-live="polite" aria-atomic="true">
+          <p className="portfolio-count" role="status" aria-live="polite" aria-atomic="true">
             {visible.length} {t(visible.length === 1 ? 'portfolio.result' : 'portfolio.results')}
           </p>
-          <ul className="ecg-card-grid ecg-card-grid--featured" id="portfolio-results" data-reveal-group>
+          <ul className="ecg-card-grid" id="portfolio-results" data-reveal-group>
             {visible.map((project, index) => (
               <li key={project.key} data-reveal>
                 <ProjectCard project={project} from={`${location.pathname}${location.search}`}
                   loading={index < 3 ? 'eager' : 'lazy'}
-                  sizes={index === 0 ? '(max-width: 600px) calc(100vw - 2.5rem), (max-width: 1100px) calc(100vw - 12vw), 56vw' : undefined} />
+                  sizes="(max-width: 575px) calc(100vw - 40px), (max-width: 1100px) 45vw, 30vw" />
               </li>
             ))}
           </ul>

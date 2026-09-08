@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import { useClientReady } from '../hooks/useClientReady.js';
+import Photo from '../components/Photo.jsx';
+import { services } from '../data/services';
+import study from '../assets/img/etudes-800.webp';
 import PageHeader from '../components/PageHeader.jsx';
 import SectionHead from '../components/SectionHead.jsx';
 import '../styles/contact.css';
@@ -137,104 +140,124 @@ const Contact = () => {
         eyebrow={copy.hero.eyebrow}
         title={copy.hero.title}
         lead={copy.hero.subtitle}
+        media={<Photo image={{src:study,width:800,height:534}} alt={t('referenceUi.contactImageAlt')} caption={t('referenceUi.contactImageCaption')} priority zoom={false} />}
         actions={<p className="contact-call">{copy.hero.call} <a href="tel:+224623417510">+224 623 41 75 10</a></p>}
       />
 
-      <div className="ecg-section contact-layout ds-container">
-        <section className="contact-form-section" aria-labelledby="contact-form-title">
-          <div className="contact-form__head">
-            <h2 id="contact-form-title">{t('simple.message')}</h2>
-            <p id="contact-required">{copy.form.required}</p>
-          </div>
-          <form className="contact-form" onSubmit={handleSubmit} noValidate aria-labelledby="contact-form-title" aria-describedby="contact-required">
-            <noscript><p>{copy.form.noScript} <a href="mailto:contact@ecgplusgn.com">contact@ecgplusgn.com</a></p></noscript>
-            {Object.keys(errors).length > 0 && (
-              <div className="contact-form__notice" ref={errorSummaryRef} tabIndex={-1}>
-                <h3>{copy.form.errors.title}</h3>
-                <ul>
-                  {REQUIRED_FIELDS.filter(name => errors[name]).map(name => (
-                    <li key={name}>
-                      <a href={`#contact-${name}`} onClick={event => {
-                        event.preventDefault();
-                        document.getElementById(`contact-${name}`).focus();
-                      }}>{errorText(name)}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <fieldset className="contact-form__fields" disabled={isSubmitting || !clientReady}>
-              <legend className="visually-hidden">{copy.form.title}</legend>
-              <input type="checkbox" name="botcheck" hidden tabIndex={-1} autoComplete="off" />
-              <div className="contact-form__field">
-                <label htmlFor="contact-name">{copy.form.name} <span aria-hidden="true">*</span></label>
-                <input {...fieldProps('name')} type="text" autoComplete="name" maxLength={150} />
-                {fieldError('name')}
-              </div>
-              <div className="contact-form__field">
-                <label htmlFor="contact-email">{copy.form.email} <span aria-hidden="true">*</span></label>
-                <input {...fieldProps('email')} type="email" autoComplete="email" inputMode="email" maxLength={254} />
-                {fieldError('email')}
-              </div>
-              <div className="contact-form__field contact-form__field--full">
-                <label htmlFor="contact-phone">{copy.form.phone} <span className="contact-form__optional">{copy.form.optional}</span></label>
-                <input id="contact-phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" maxLength={50} />
-              </div>
-              <div className="contact-form__field contact-form__field--full">
-                <label htmlFor="contact-message">{copy.form.message} <span aria-hidden="true">*</span></label>
-                <p id="contact-message-hint" className="contact-form__hint">{copy.form.messageHint}</p>
-                <textarea {...fieldProps('message', 'contact-message-hint')} rows={5} maxLength={5000} />
-                {fieldError('message')}
-              </div>
-            </fieldset>
-            <div role="status" className="contact-form__status">{isSubmitting ? copy.form.sending : ''}</div>
-            {submitError && (
-              <div className="contact-form__notice" ref={submitErrorRef} tabIndex={-1}>
-                <h3>{copy.form.errors.sendTitle}</h3>
-                <p>{copy.form.errors[submitError]}</p>
-                <a href="mailto:contact@ecgplusgn.com">contact@ecgplusgn.com</a>
-              </div>
-            )}
-            <div className="contact-form__submit">
-              <button className="ds-btn ds-btn--pill ds-btn--dark" type="submit" disabled={isSubmitting || !clientReady}>
-                {isSubmitting ? copy.form.sending : copy.form.submit}<i className="bi bi-arrow-right" aria-hidden="true" />
-              </button>
+      <section className="ecg-section" aria-label={t('simple.contactDetails')}>
+        <div className="ds-container contact-summary">
+          <article><i className="bi bi-geo-alt-fill" aria-hidden="true" /><h2>{copy.info.hqTitle}</h2><p>{copy.info.hqAddress}</p></article>
+          <article><i className="bi bi-telephone-fill" aria-hidden="true" /><h2>{copy.info.phoneTitle}</h2><a href="tel:+224623417510">+224 623 41 75 10</a></article>
+          <article><i className="bi bi-envelope-fill" aria-hidden="true" /><h2>{copy.info.emailTitle}</h2><a href="mailto:contact@ecgplusgn.com">contact@ecgplusgn.com</a></article>
+        </div>
+      </section>
+      <div className="contact-body">
+        <div className="ecg-section contact-layout ds-container">
+          <section className="contact-form-section" aria-labelledby="contact-form-title">
+            <div className="contact-form__head">
+              <p className="ecg-eyebrow">{t('referenceUi.contactFormEyebrow')}</p>
+              <h2 id="contact-form-title">{t('referenceUi.contactFormTitle')}</h2>
+              <p id="contact-required">{copy.form.required}</p>
             </div>
-          </form>
-        </section>
+            <form className="contact-form" onSubmit={handleSubmit} noValidate aria-labelledby="contact-form-title" aria-describedby="contact-required">
+              <noscript><p>{copy.form.noScript} <a href="mailto:contact@ecgplusgn.com">contact@ecgplusgn.com</a></p></noscript>
+              {Object.keys(errors).length > 0 && (
+                <div className="contact-form__notice" ref={errorSummaryRef} tabIndex={-1}>
+                  <h3>{copy.form.errors.title}</h3>
+                  <ul>
+                    {REQUIRED_FIELDS.filter(name => errors[name]).map(name => (
+                      <li key={name}>
+                        <a href={`#contact-${name}`} onClick={event => {
+                          event.preventDefault();
+                          document.getElementById(`contact-${name}`).focus();
+                        }}>{errorText(name)}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <fieldset className="contact-form__fields" disabled={isSubmitting || !clientReady}>
+                <legend className="visually-hidden">{copy.form.title}</legend>
+                <input type="checkbox" name="botcheck" hidden tabIndex={-1} autoComplete="off" />
+                <div className="contact-form__field">
+                  <label htmlFor="contact-name">{copy.form.name} <span aria-hidden="true">*</span></label>
+                  <input {...fieldProps('name')} type="text" autoComplete="name" maxLength={150} />
+                  {fieldError('name')}
+                </div>
+                <div className="contact-form__field">
+                  <label htmlFor="contact-phone">{copy.form.phone} <span className="contact-form__optional">{copy.form.optional}</span></label>
+                  <input id="contact-phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" maxLength={50} />
+                </div>
+                <div className="contact-form__field">
+                  <label htmlFor="contact-email">{copy.form.email} <span aria-hidden="true">*</span></label>
+                  <input {...fieldProps('email')} type="email" autoComplete="email" inputMode="email" maxLength={254} />
+                  {fieldError('email')}
+                </div>
 
-        <aside className="contact-details" aria-labelledby="contact-details-title">
-          <h2 id="contact-details-title">{t('simple.contactDetails')}</h2>
-          <address>
-            <div className="contact-details__item">
-              <h3>{copy.info.phoneTitle}</h3>
-              <a href="tel:+224623417510">+224 623 41 75 10</a>
+                <div className="contact-form__field">
+                  <label htmlFor="contact-service">{t('referenceUi.contactService')} <span className="contact-form__optional">{copy.form.optional}</span></label>
+                  <select id="contact-service" name="service" defaultValue="">
+                    <option value="">{t('referenceUi.chooseService')}</option>
+                    {services.map(service => <option key={service.key} value={service.id}>{t(`expertiseServicesPage.pillars.${service.key}.shortTitle`)}</option>)}
+                  </select>
+                </div>
+                <div className="contact-form__field contact-form__field--full">
+                  <label htmlFor="contact-message">{copy.form.message} <span aria-hidden="true">*</span></label>
+                  <p id="contact-message-hint" className="contact-form__hint">{copy.form.messageHint}</p>
+                  <textarea {...fieldProps('message', 'contact-message-hint')} rows={5} maxLength={5000} />
+                  {fieldError('message')}
+                </div>
+              </fieldset>
+              <div role="status" className="contact-form__status">{isSubmitting ? copy.form.sending : ''}</div>
+              {submitError && (
+                <div className="contact-form__notice" ref={submitErrorRef} tabIndex={-1}>
+                  <h3>{copy.form.errors.sendTitle}</h3>
+                  <p>{copy.form.errors[submitError]}</p>
+                  <a href="mailto:contact@ecgplusgn.com">contact@ecgplusgn.com</a>
+                </div>
+              )}
+              <div className="contact-form__submit">
+                <button className="ds-btn ds-btn--pill ds-btn--dark" type="submit" disabled={isSubmitting || !clientReady}>
+                  {isSubmitting ? copy.form.sending : copy.form.submit}<i className="bi bi-arrow-right" aria-hidden="true" />
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <aside className="contact-details" aria-labelledby="contact-details-title">
+            <p className="ecg-eyebrow">{t('referenceUi.contactDetailsEyebrow')}</p>
+            <h2 id="contact-details-title">{t('simple.contactDetails')}</h2>
+            <address>
+              <div className="contact-details__item">
+                <h3>{copy.info.phoneTitle}</h3>
+                <a href="tel:+224623417510">+224 623 41 75 10</a>
+              </div>
+              <div className="contact-details__item">
+                <h3>{copy.info.emailTitle}</h3>
+                <a href="mailto:contact@ecgplusgn.com"><span>contact@<wbr />ecgplusgn.com</span></a>
+              </div>
+              <div className="contact-details__item">
+                <h3>{copy.info.hqTitle}</h3>
+                <p>{copy.info.hqAddress}</p>
+                <a className="contact-details__map" href="https://www.google.com/maps/search/?api=1&query=Man%C3%A9ah%2C%20Coyah%2C%20Guin%C3%A9e" target="_blank" rel="noopener noreferrer">
+                  <span>{copy.info.map}<span className="visually-hidden"> — {copy.info.newTab}</span></span>
+                  <i className="bi bi-arrow-up-right" aria-hidden="true" />
+                </a>
+              </div>
+            </address>
+            <div className="contact-details__hours">
+              <h3>{copy.schedule.title}</h3>
+              <dl>
+                <div><dt>{copy.schedule.weekday}</dt><dd>08:00 – 17:00</dd></div>
+                <div><dt>{copy.schedule.weekend}</dt><dd>{copy.schedule.closed}</dd></div>
+              </dl>
+              <p>{copy.schedule.timezone}</p>
             </div>
-            <div className="contact-details__item">
-              <h3>{copy.info.emailTitle}</h3>
-              <a href="mailto:contact@ecgplusgn.com"><span>contact@<wbr />ecgplusgn.com</span></a>
-            </div>
-            <div className="contact-details__item">
-              <h3>{copy.info.hqTitle}</h3>
-              <p>{copy.info.hqAddress}</p>
-              <a className="contact-details__map" href="https://www.google.com/maps/search/?api=1&query=Man%C3%A9ah%2C%20Coyah%2C%20Guin%C3%A9e" target="_blank" rel="noopener noreferrer">
-                <span>{copy.info.map}<span className="visually-hidden"> — {copy.info.newTab}</span></span>
-                <i className="bi bi-arrow-up-right" aria-hidden="true" />
-              </a>
-            </div>
-          </address>
-          <div className="contact-details__hours">
-            <h3>{copy.schedule.title}</h3>
-            <dl>
-              <div><dt>{copy.schedule.weekday}</dt><dd>08:00 – 17:00</dd></div>
-              <div><dt>{copy.schedule.weekend}</dt><dd>{copy.schedule.closed}</dd></div>
-            </dl>
-            <p>{copy.schedule.timezone}</p>
-          </div>
-        </aside>
+          </aside>
+        </div>
       </div>
 
-      <section className="ecg-section ecg-section--paper contact-faq" aria-labelledby="contact-faq-title">
+      <section className="ecg-section contact-faq" aria-labelledby="contact-faq-title">
         <div className="ds-container contact-faq__grid">
           <div data-reveal>
             <SectionHead eyebrow={copy.faq.eyebrow} title={copy.faq.title} titleId="contact-faq-title" lead={copy.faq.intro} align="stack" />

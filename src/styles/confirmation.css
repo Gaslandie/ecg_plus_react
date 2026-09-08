@@ -1,6 +1,6 @@
 /* Confirmation : message, suite de la démarche et retour. */
 .ecg-confirmation { background: var(--ds-white); overflow-wrap: anywhere; }
-.confirmation-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); align-items: start; gap: clamp(2.5rem, 6vw, 7rem); padding-block: calc(var(--navbar-height, 92px) + clamp(3rem, 8vw, 6rem)) clamp(4rem, 9vw, 8rem); }
+.confirmation-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); align-items: start; gap: clamp(2.5rem, 6vw, 7rem); padding-block: var(--ds-section-py) clamp(4rem, 9vw, 8rem); }
 .confirmation-message { max-width: 720px; }
 .confirmation-message__icon { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; margin-bottom: 24px; border-radius: 50%; background: var(--ds-primary-dark); color: var(--ds-accent-light); font-size: 1.5rem; }
 .confirmation-message h1 { margin: 0 0 24px; font-size: clamp(2.25rem, 4.5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--ds-ink); scroll-margin-top: calc(var(--navbar-height, 92px) + 24px); text-wrap: balance; }
@@ -8,7 +8,7 @@
 .confirmation-message__lead { margin: 0 0 12px; font-size: var(--ds-fs-lead); line-height: 1.7; max-width: 55ch; color: var(--ds-body); }
 .confirmation-message__note { margin: 0; color: var(--ds-muted); }
 .confirmation-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; margin-top: 32px; }
-.confirmation-followup { padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--ds-paper); }
+.confirmation-followup { padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--ds-paper); border: 1px solid var(--ds-line); border-radius: 7px; }
 .confirmation-followup h2 { margin: 0 0 12px; font-size: 1.375rem; letter-spacing: -0.02em; color: var(--ds-ink); }
 .confirmation-followup p { margin: 0 0 16px; color: var(--ds-body); line-height: 1.65; }
 .confirmation-followup__phone { margin: 16px 0 0; font-size: var(--ds-fs-small); }

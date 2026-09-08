@@ -1,5 +1,73 @@
 export const translations = {
   fr: {
+    referenceUi: {
+      "topbar": "Construction & génie civil · Guinée",
+      "brandSubtitle": "Construction & génie civil",
+      "heroTitle": "Des expertises pour bâtir vos projets.",
+      "heroSubtitle": "Bâtiment, énergie, industrie et ingénierie : quatre expertises complémentaires pour accompagner vos projets en Guinée.",
+      "heroTabs": [
+            "L’entreprise",
+            "Bâtiment",
+            "Énergie",
+            "Industrie",
+            "Ingénierie"
+      ],
+      "heroExpertiseCta": "Découvrir cette expertise",
+      "heroImageCaption": "ECG PLUS · Construction et génie civil",
+      "heroSlides": [
+            {
+                  "title": "Construire les lieux de demain.",
+                  "subtitle": "Ouvrages publics, résidences et bâtiments professionnels : nous donnons forme à vos projets de construction."
+            },
+            {
+                  "title": "L’énergie au service de vos projets.",
+                  "subtitle": "Installations électriques, solutions solaires et groupes électrogènes : des équipements adaptés à vos besoins."
+            },
+            {
+                  "title": "Accompagner vos ambitions industrielles.",
+                  "subtitle": "Constructions métalliques, génie civil spécialisé et équipements pour vos activités industrielles."
+            },
+            {
+                  "title": "De l’idée à la réalisation.",
+                  "subtitle": "Études techniques, plans et modélisations : préparer chaque étape pour construire sur des bases solides."
+            }
+      ],
+      "facts": [
+            {
+                  "title": "4 expertises",
+                  "text": "Bâtiment · Énergie · Industrie · Ingénierie"
+            },
+            {
+                  "title": "Manéah, Coyah",
+                  "text": "Une entreprise ancrée en Guinée"
+            },
+            {
+                  "title": "Public & privé",
+                  "text": "Des solutions adaptées à chaque projet"
+            }
+      ],
+      "companyEyebrow": "Qui sommes-nous",
+      "companyTitle": "Une équipe pour construire durablement.",
+      "companyText": "Depuis Manéah, ECG PLUS SARL accompagne les maîtres d’ouvrage publics et privés dans leurs projets de construction et de génie civil. Ingénieurs, techniciens et équipes de chantier réunissent leurs compétences, de l’étude à la réalisation.",
+      "companyCaption": "Des compétences réunies, au plus près du terrain.",
+      "expertiseTitle": "Quatre expertises. Une même exigence.",
+      "methodCaption": "Préparer, coordonner et construire ensemble.",
+      "contactEyebrow": "Construisons la suite",
+      "contactTitle": "Faisons avancer votre projet.",
+      "contactImageAlt": "Étude des plans d’un projet de construction",
+      "contactImageCaption": "De l’étude à la réalisation.",
+      "contactService": "Expertise concernée",
+      "chooseService": "Choisir une expertise",
+      "contactFormEyebrow": "Écrivez-nous",
+      "contactFormTitle": "Parlons de votre projet",
+      "contactDetailsEyebrow": "Où nous trouver",
+      "enlarge": "Agrandir",
+      "closePhoto": "Fermer la photo",
+      "photoDialog": "Photographie agrandie",
+      "backTop": "Haut de page",
+      "projectsCaption": "Bibliothèque municipale de Kankan",
+      "allExpertise": "Nos expertises"
+},
     simple: {
       projects: "Réalisations",
       allProjects: "Voir toutes les réalisations",
@@ -933,6 +1001,74 @@ export const translations = {
     },
   },
   en: {
+    referenceUi: {
+      "topbar": "Construction & civil engineering · Guinea",
+      "brandSubtitle": "Construction & civil engineering",
+      "heroTitle": "Expertise that brings your projects to life.",
+      "heroSubtitle": "Building, energy, industry and engineering: four complementary areas of expertise to support your projects in Guinea.",
+      "heroTabs": [
+            "Our company",
+            "Building",
+            "Energy",
+            "Industry",
+            "Engineering"
+      ],
+      "heroExpertiseCta": "Explore this expertise",
+      "heroImageCaption": "ECG PLUS · Construction and civil engineering",
+      "heroSlides": [
+            {
+                  "title": "Building the places of tomorrow.",
+                  "subtitle": "Public facilities, homes and commercial buildings: we bring your construction projects to life."
+            },
+            {
+                  "title": "Energy to power your projects.",
+                  "subtitle": "Electrical installations, solar solutions and generators: equipment tailored to your needs."
+            },
+            {
+                  "title": "Supporting your industrial ambitions.",
+                  "subtitle": "Steel construction, specialised civil engineering and equipment for your industrial operations."
+            },
+            {
+                  "title": "From an idea to a completed project.",
+                  "subtitle": "Technical studies, plans and modelling: preparing every stage to build on solid foundations."
+            }
+      ],
+      "facts": [
+            {
+                  "title": "4 areas of expertise",
+                  "text": "Building · Energy · Industry · Engineering"
+            },
+            {
+                  "title": "Manéah, Coyah",
+                  "text": "A company rooted in Guinea"
+            },
+            {
+                  "title": "Public & private",
+                  "text": "Solutions tailored to every project"
+            }
+      ],
+      "companyEyebrow": "Who we are",
+      "companyTitle": "A team building for the long term.",
+      "companyText": "Based in Manéah, ECG PLUS SARL supports public and private clients with their construction and civil engineering projects. Engineers, technicians and site teams combine their skills, from initial studies to delivery.",
+      "companyCaption": "Bringing skills together, close to the field.",
+      "expertiseTitle": "Four areas of expertise. One shared commitment.",
+      "methodCaption": "Planning, coordinating and building together.",
+      "contactEyebrow": "Building what comes next",
+      "contactTitle": "Let’s move your project forward.",
+      "contactImageAlt": "Reviewing plans for a construction project",
+      "contactImageCaption": "From design to delivery.",
+      "contactService": "Area of expertise",
+      "chooseService": "Choose an expertise",
+      "contactFormEyebrow": "Write to us",
+      "contactFormTitle": "Let’s discuss your project",
+      "contactDetailsEyebrow": "Where to find us",
+      "enlarge": "Enlarge",
+      "closePhoto": "Close photograph",
+      "photoDialog": "Enlarged photograph",
+      "backTop": "Back to top",
+      "projectsCaption": "Kankan municipal library",
+      "allExpertise": "Our expertise"
+},
     simple: {
       projects: "Projects",
       allProjects: "View all projects",

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import { services } from '../data/services';
 import { projects, projectPath } from '../data/projects';
+import Photo from '../components/Photo.jsx';
 import PageHeader from '../components/PageHeader.jsx';
 import SectionHead from '../components/SectionHead.jsx';
 import CtaBand from '../components/CtaBand.jsx';
@@ -53,11 +54,8 @@ export default function ExpertiseServices() {
           </div>
         )}
         media={(
-          <figure>
-            <img src={band1280} srcSet={`${band768} 768w, ${band1280} 1280w`}
-              sizes="(max-width: 1440px) calc(100vw - 2 * var(--ds-gutter)), 1600px" width="1280" height="720"
-              alt={content.hero.imageAlt} fetchPriority="high" decoding="async" />
-          </figure>
+          <Photo image={{src:band1280,srcSet:`${band768} 768w, ${band1280} 1280w`,width:1280,height:720}}
+            alt={content.hero.imageAlt} priority zoom={false} />
         )}
       />
 
@@ -97,21 +95,11 @@ export default function ExpertiseServices() {
                     {pillar.contact}<i className="bi bi-arrow-right" aria-hidden="true" />
                   </Link>
                 </div>
-                <figure className="service-domain__visual" data-reveal>
-                  <img {...visual} sizes="(max-width: 900px) calc(100vw - 2.5rem), 42vw"
+                <div data-reveal>
+                  <Photo className="service-domain__visual" image={visual}
                     alt={project ? t(`portfolio.details.${project.key}.imageAlt`) : pillar.imageAlt}
-                    loading="lazy" decoding="async" />
-                  <figcaption>
-                    {project ? (
-                      <>
-                        <span className="service-domain__caption-label">{content.reference}</span>
-                        <Link to={projectPath(project)} className="ecg-link">
-                          <span>{t(`realisationsPage.projects.cards.${project.key}.title`)}</span><i className="bi bi-arrow-up-right" aria-hidden="true" />
-                        </Link>
-                      </>
-                    ) : <span className="service-domain__caption-label">{pillar.caption}</span>}
-                  </figcaption>
-                </figure>
+                    caption={project ? <><span className="service-domain__caption-label">{content.reference}</span><Link to={projectPath(project)} className="ecg-link"><span>{t(`realisationsPage.projects.cards.${project.key}.title`)}</span><i className="bi bi-arrow-up-right" aria-hidden="true" /></Link></> : pillar.caption} />
+                </div>
               </div>
             </section>
           );

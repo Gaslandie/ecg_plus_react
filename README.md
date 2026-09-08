@@ -2,6 +2,8 @@
 
 Site vitrine bilingue (FR/EN) de ECG PLUS SARL, entreprise de construction et de génie civil en Guinée. React 19, React Router 7, Vite 7 et composants visuels personnalisés, avec Bootstrap conservé.
 
+L’interface suit désormais la référence GS Corporation : Manrope locale, couleurs ECG PLUS (vert profond et or), navigation blanche, carrousel à cinq vues, annuaire illustré des expertises et photographies agrandissables. Le [benchmark et le plan de refonte](docs/refonte-gs-corporation.md) décrivent les adaptations à ECG PLUS et les validations.
+
 ## Développement et vérification
 
 ```sh

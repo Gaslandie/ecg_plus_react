@@ -2,6 +2,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext';
 import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
+import Photo from '../components/Photo.jsx';
 import PageHeader from '../components/PageHeader.jsx';
 import SectionHead from '../components/SectionHead.jsx';
 import CtaBand from '../components/CtaBand.jsx';
@@ -61,19 +62,8 @@ export default function ProjectDetails() {
 
       <section className="ecg-section project-overview" aria-labelledby="project-overview-title">
         <div className="ds-container project-overview__grid">
-          <figure className="project-visual" data-reveal>
-            <div className="project-visual__frame">
-              <img {...project.image} sizes="(max-width: 900px) calc(100vw - 2.5rem), 56vw"
-                alt={t(`${key}.imageAlt`)} fetchPriority="high" decoding="async" />
-            </div>
-            <figcaption>
-              <span>{t(`portfolio.imageKinds.${project.imageKind}`)}</span>
-              <a href={project.image.src} target="_blank" rel="noopener noreferrer">
-                {t('portfolio.enlargeImage')} <i className="bi bi-arrow-up-right" aria-hidden="true" />
-                <span className="visually-hidden"> — {t('portfolio.newTab')}</span>
-              </a>
-            </figcaption>
-          </figure>
+          <div data-reveal><Photo className="project-visual" image={project.image} alt={t(`${key}.imageAlt`)}
+            caption={t(`portfolio.imageKinds.${project.imageKind}`)} sizes="(max-width: 900px) calc(100vw - 40px), 56vw" contain priority /></div>
           <aside className="project-sheet" data-reveal>
             <h2 id="project-overview-title" className="project-sheet__title">{t('portfolio.overviewTitle')}</h2>
             <dl className="ecg-facts">
