@@ -118,7 +118,7 @@ export default function ExpertiseServices() {
         })}
       </div>
 
-      <section className="ecg-section ecg-section--paper services-process" aria-labelledby="process-title">
+      <section id="methode" className="ecg-section ecg-section--paper services-process" aria-labelledby="process-title">
         <div className="ds-container">
           <div data-reveal>
             <SectionHead eyebrow={content.process.eyebrow} title={content.process.title} titleId="process-title" lead={content.process.intro} />

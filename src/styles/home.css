@@ -201,12 +201,28 @@
 .ecg-showcase__link:focus-visible { outline: none; }
 .ecg-showcase__link:focus-visible .ecg-showcase__title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; text-decoration-color: var(--ds-primary); }
 
+/* Méthode : extrait de la page Expertises, sur fond sombre pour rythmer la lecture. */
+.ecg-home-method { background: var(--ds-primary-dark); color: var(--ds-white); }
+.ecg-home-method .ecg-title,
+.ecg-home-method .ecg-steps h3 { color: var(--ds-white); }
+.ecg-home-method .ecg-lead,
+.ecg-home-method .ecg-steps p { color: rgba(255, 255, 255, 0.72); }
+.ecg-home-method .ecg-eyebrow__num { color: rgba(255, 255, 255, 0.52); }
+.ecg-home-method .ecg-eyebrow__num::after { background: var(--ds-accent-light); }
+.ecg-home-method .ecg-steps > li { border-top-color: rgba(255, 255, 255, 0.22); }
+.ecg-home-method .ecg-steps__num { color: var(--ds-accent-light); }
+
 /* L'entreprise : déclaration + collage + repères */
 .ecg-home-company__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(2.5rem, 7vw, 8rem); align-items: center; margin-bottom: clamp(3rem, 6vw, 5.5rem); }
 .ecg-home-company__body { display: flex; flex-direction: column; align-items: flex-start; }
 .ecg-home-company__body .ecg-title { margin-bottom: var(--ds-space-5); font-size: clamp(1.9rem, 3vw, 2.9rem); max-width: 22ch; }
 .ecg-home-company__body .ecg-lead--strong { margin-bottom: var(--ds-space-4); }
-.ecg-home-company__body .ecg-text { margin-bottom: var(--ds-space-6); }
+.ecg-home-company__body .ecg-text { margin-bottom: var(--ds-space-5); }
+.ecg-home-company__commitments { width: 100%; margin-bottom: var(--ds-space-6); padding-top: var(--ds-space-4); border-top: 1px solid var(--ds-line-strong); }
+.ecg-home-company__commitments h3 { margin: 0 0 var(--ds-space-3); font-size: 0.75rem; font-weight: var(--ds-fw-semibold); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ds-accent-ink); }
+.ecg-home-company__commitments ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.ecg-home-company__commitments li { display: flex; align-items: flex-start; gap: 12px; color: var(--ds-body); line-height: 1.5; }
+.ecg-home-company__commitments i { flex: 0 0 auto; margin-top: 2px; color: var(--ds-primary); font-size: 1.05rem; }
 
 @media (max-width: 1100px) {
   .ecg-showcase { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(2rem, 4vw, 3rem); }

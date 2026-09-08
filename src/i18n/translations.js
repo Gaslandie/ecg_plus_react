@@ -303,6 +303,9 @@ export const translations = {
         p3: "Génie civil spécialisé, constructions métalliques, chaudronnerie, tuyauterie et services pour les projets miniers.",
         p4: "Études de faisabilité, plans et devis, expertise technique du bâtiment, fourniture de matériaux et d'équipements.",
       },
+      method: {
+        cta: "Découvrir notre méthode et nos moyens",
+      },
       company: {
         eyebrow: "L'entreprise",
         title: "Une entreprise guinéenne de construction générale et de travaux publics",
@@ -1232,6 +1235,9 @@ export const translations = {
         p2: "Generators, photovoltaic solar, building electricity, automation and water systems.",
         p3: "Specialised civil engineering, steel structures, boilermaking, piping and services for mining projects.",
         p4: "Feasibility studies, plans and estimates, building technical expertise, supply of materials and equipment.",
+      },
+      method: {
+        cta: "Explore our method and resources",
       },
       company: {
         eyebrow: "The company",

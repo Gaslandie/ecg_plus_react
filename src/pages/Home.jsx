@@ -17,6 +17,8 @@ const PROJECTS = ['kankan', 'dubreka', 'ansoumania'].map(key => projects.find(pr
 export default function Home() {
   const { t } = useI18n();
   const facts = t('homePage.company.facts');
+  const process = t('expertiseServicesPage.process');
+  const commitments = t('homePage.company.commitments');
 
   return (
     <main className="page-with-hero ecg-home">
@@ -76,17 +78,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- 03 · L'entreprise ---------- */}
+      {/* ---------- 03 · Méthode ---------- */}
+      <section className="ecg-section ecg-home-method" aria-labelledby="home-method-title">
+        <div className="ds-container">
+          <div data-reveal>
+            <SectionHead
+              index="03"
+              eyebrow={process.eyebrow}
+              title={process.title}
+              titleId="home-method-title"
+              lead={process.intro}
+              action={(
+                <Link to="/expertiseservices#methode" className="ecg-link ecg-link--light">
+                  <span>{t('homePage.method.cta')}</span><i className="bi bi-arrow-right" aria-hidden="true" />
+                </Link>
+              )}
+            />
+          </div>
+          <ol className="ecg-steps ecg-home-method__steps" data-reveal-group>
+            {process.steps.map((step, index) => (
+              <li key={step.title} data-reveal>
+                <span className="ecg-steps__num">0{index + 1}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ---------- 04 · L'entreprise ---------- */}
       <section className="ecg-section ecg-home-company" aria-labelledby="home-company-title">
         <div className="ds-container">
           <div className="ecg-home-company__grid">
             <div className="ecg-home-company__body" data-reveal>
               <p className="ecg-eyebrow ecg-eyebrow--indexed">
-                <span className="ecg-eyebrow__num">03</span><span>{t('homePage.company.eyebrow')}</span>
+                <span className="ecg-eyebrow__num">04</span><span>{t('homePage.company.eyebrow')}</span>
               </p>
               <h2 id="home-company-title" className="ecg-title ecg-title--wide">{t('homePage.company.title')}</h2>
               <p className="ecg-lead ecg-lead--strong">{t('homePage.company.lead')}</p>
               <p className="ecg-text">{t('homePage.company.text')}</p>
+              <div className="ecg-home-company__commitments">
+                <h3>{t('homePage.company.commitmentsTitle')}</h3>
+                <ul>
+                  {Array.isArray(commitments) && commitments.map(commitment => (
+                    <li key={commitment}><i className="bi bi-check2" aria-hidden="true" /><span>{commitment}</span></li>
+                  ))}
+                </ul>
+              </div>
               <Link to="/presentation" className="ds-btn ds-btn--pill ds-btn--dark">
                 {t('homePage.company.cta')}<i className="bi bi-arrow-right" aria-hidden="true" />
               </Link>
@@ -109,7 +148,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- 04 · Contact ---------- */}
+      {/* ---------- 05 · Contact ---------- */}
       <CtaBand
         id="home-contact-title"
         eyebrow={t('homePage.contact.eyebrow')}
