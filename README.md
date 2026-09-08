@@ -41,6 +41,8 @@ Le fichier `public/.htaccess`, copié dans `dist/`, est nécessaire sur Apache :
 
 Conserver l’ensemble du dossier `dist/` lors du déploiement, notamment les pages HTML, le sous-dossier `realisations/`, les assets et `.htaccess`.
 
+Le catalogue `/realisations` partage son nom avec le dossier des fiches projet. Conserver ensemble `DirectorySlash Off` et `RewriteOptions AllowNoSlash` dans `.htaccess` pour éviter une boucle entre `/realisations` et `/realisations/`. `Options -Indexes` empêche l’affichage du contenu des dossiers. Le correctif a été vérifié avec Apache 2.4 : accès directs, URLs avec slash ou `.html`, paramètres et erreurs 404.
+
 ## Ressources visuelles
 
 Les photos WebP et les polices sont locales. Les icônes Bootstrap utilisent un sous-ensemble généré à partir des symboles présents dans les sources ; le build détecte tout nouveau symbole manquant. La procédure facultative de régénération est dans [src/assets/fonts/README.md](src/assets/fonts/README.md).

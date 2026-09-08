@@ -1,9 +1,16 @@
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
+# Les routes applicatives restent sans slash, même si un dossier porte leur nom.
+# Désactiver le listing lorsque la redirection automatique des dossiers est coupée.
+Options -Indexes
+DirectorySlash Off
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  # Réécrire aussi /realisations, qui est le nom d'un dossier de fiches projet.
+  # Nécessaire avec DirectorySlash Off pour appliquer les règles à ce dossier.
+  RewriteOptions AllowNoSlash
 
   # Une seule URL publique par page ; les .html sont les fichiers de déploiement.
   RewriteCond %{THE_REQUEST} \s/+index\.html[?\s] [NC]
