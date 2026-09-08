@@ -23,7 +23,7 @@ export default function ExpertiseShowcase() {
 
       <ol className="ecg-showcase__list" data-reveal-group>
         {services.map((service, index) => (
-          <li key={service.key} className={`ecg-showcase__item${index === active ? ' is-active' : ''}`} data-reveal>
+          <li key={service.key} className="ecg-showcase__item" data-active={index === active ? '' : undefined} data-reveal>
             <Link to={servicePath(service)} className="ecg-showcase__link"
               onMouseEnter={() => setActive(index)} onFocus={() => setActive(index)}>
               <span className="ecg-showcase__thumb" aria-hidden="true">
