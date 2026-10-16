@@ -80,7 +80,7 @@ const Contact = () => {
   const [captchaLoaded, setCaptchaLoaded] = useState(false);
   const captchaRef = useRef(null);
   const captchaTokenRef = useRef('');
-  const errorSummaryRef = useRef(null);
+  const formRef = useRef(null);
   const submitErrorRef = useRef(null);
   const requestRef = useRef(null);
   const retryUntilRef = useRef(0);
@@ -88,8 +88,9 @@ const Contact = () => {
 
   useEffect(() => {
     if (validationAttempt) {
-      errorSummaryRef.current?.focus({ preventScroll: true });
-      errorSummaryRef.current?.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+      const firstInvalid = formRef.current?.querySelector('[aria-invalid="true"]');
+      firstInvalid?.focus({ preventScroll: true });
+      firstInvalid?.scrollIntoView({ block: 'nearest', behavior: 'instant' });
     }
   }, [validationAttempt]);
 
@@ -243,19 +244,35 @@ const Contact = () => {
   const errorText = (name) => ['tooLong', 'service'].includes(errors[name])
     ? copy.form.errors[errors[name]]
     : errors[name] === 'email' ? copy.form.errors.email : copy.form.errors[name];
+  const isCaptchaError = submitError?.startsWith('captcha');
 
   const fieldProps = (name, hint) => ({
     id: `contact-${name}`,
     name,
     required: REQUIRED_FIELDS.includes(name),
     'aria-invalid': errors[name] ? 'true' : undefined,
-    'aria-describedby': [hint, errors[name] && `contact-${name}-error`].filter(Boolean).join(' ') || undefined,
+    'aria-describedby': [hint, errors[name] && `contact-${name}-error`, name === 'message' && submitError && !isCaptchaError && 'contact-submit-error'].filter(Boolean).join(' ') || undefined,
     onBlur: event => updateFieldError(event.target),
     onChange: event => { if (errors[name]) updateFieldError(event.target); },
   });
 
   const fieldError = (name) => errors[name] && (
-    <p id={`contact-${name}-error`} className="contact-form__error">{errorText(name)}</p>
+    <p id={`contact-${name}-error`} className="contact-form__error" aria-live="polite">{errorText(name)}</p>
+  );
+  const submissionFeedback = submitError && (
+    <>
+      <p id={isCaptchaError ? 'contact-captcha-error' : 'contact-submit-error'}
+        className="contact-form__error" role="alert" ref={submitErrorRef} tabIndex={-1}>
+        {copy.form.errors[submitError]}
+      </p>
+      {submitError === 'unconfirmed' && (
+        <label className="contact-form__retry" htmlFor="contact-confirm-resend">
+          <input id="contact-confirm-resend" type="checkbox" checked={retryAcknowledged}
+            aria-describedby="contact-submit-error" onChange={event => setRetryAcknowledged(event.target.checked)} />
+          <span>{copy.form.confirmResend}</span>
+        </label>
+      )}
+    </>
   );
 
   return (
@@ -283,27 +300,12 @@ const Contact = () => {
               <h2 id="contact-form-title">{t('referenceUi.contactFormTitle')}</h2>
               <p id="contact-required">{copy.form.required}</p>
             </div>
-            <form className="contact-form" onSubmit={handleSubmit} onChange={event => {
+            <form ref={formRef} className="contact-form" onSubmit={handleSubmit} onChange={event => {
               if (event.target.id === 'contact-confirm-resend') return;
               setRetryAcknowledged(false);
               if (submitError === 'duplicate' || submitError === 'unconfirmed') setSubmitError(null);
             }} noValidate aria-labelledby="contact-form-title" aria-describedby="contact-required">
               <noscript><p>{copy.form.noScript} <a href="mailto:contact@ecgplusgn.com">contact@ecgplusgn.com</a></p></noscript>
-              {Object.keys(errors).length > 0 && (
-                <div className="contact-form__notice" ref={errorSummaryRef} tabIndex={-1}>
-                  <h3>{copy.form.errors.title}</h3>
-                  <ul>
-                    {FORM_FIELDS.filter(name => errors[name]).map(name => (
-                      <li key={name}>
-                        <a href={`#contact-${name}`} onClick={event => {
-                          event.preventDefault();
-                          document.getElementById(`contact-${name}`).focus();
-                        }}>{errorText(name)}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
               <fieldset className="contact-form__fields" disabled={isSubmitting || !clientReady}>
                 <legend className="visually-hidden">{copy.form.title}</legend>
                 <input type="checkbox" name="botcheck" hidden tabIndex={-1} autoComplete="off" />
@@ -337,9 +339,11 @@ const Contact = () => {
                   <textarea {...fieldProps('message', 'contact-message-hint contact-message-safety')} rows={5} maxLength={FIELD_LIMITS.message} />
                   <p id="contact-message-safety" className="contact-form__hint">{copy.form.note}</p>
                   {fieldError('message')}
+                  {!isCaptchaError && submissionFeedback}
                 </div>
               </fieldset>
-              <div className="contact-form__captcha" aria-labelledby="contact-captcha-label">
+              <div className="contact-form__captcha" role="group" aria-labelledby="contact-captcha-label"
+                aria-describedby={isCaptchaError ? 'contact-captcha-error' : undefined}>
                 <p id="contact-captcha-label" className="contact-form__hint">{copy.form.captchaLabel}</p>
                 {clientReady && <HCaptcha ref={captchaRef} sitekey={CAPTCHA_SITE_KEY} reCaptchaCompat={false}
                   size="compact" languageOverride={lang} sentry={false} userJourneys={false}
@@ -352,21 +356,9 @@ const Contact = () => {
                   onExpire={() => { captchaTokenRef.current = ''; setSubmitError('captchaExpired'); }}
                   onError={() => { captchaTokenRef.current = ''; setCaptchaLoaded(false); setSubmitError('captchaUnavailable'); }} />}
                 {!captchaLoaded && <p className="contact-form__hint" role="status">{copy.form.captchaLoading}</p>}
+                {isCaptchaError && submissionFeedback}
               </div>
               <div role="status" className="contact-form__status">{isSubmitting ? copy.form.sending : isCoolingDown ? copy.form.wait : ''}</div>
-              {submitError && (
-                <div className="contact-form__notice" ref={submitErrorRef} tabIndex={-1}>
-                  <h3>{submitError === 'duplicate' ? copy.form.errors.duplicateTitle : copy.form.errors.sendTitle}</h3>
-                  <p>{copy.form.errors[submitError]}</p>
-                  <a href="mailto:contact@ecgplusgn.com">contact@ecgplusgn.com</a>
-                  {submitError === 'unconfirmed' && (
-                    <label className="contact-form__retry" htmlFor="contact-confirm-resend">
-                      <input id="contact-confirm-resend" type="checkbox" checked={retryAcknowledged} onChange={event => setRetryAcknowledged(event.target.checked)} />
-                      <span>{copy.form.confirmResend}</span>
-                    </label>
-                  )}
-                </div>
-              )}
               <div className="contact-form__submit">
                 <button className="ds-btn ds-btn--pill ds-btn--dark" type="submit" disabled={isSubmitting || isCoolingDown || !clientReady || (submitError === 'unconfirmed' && !retryAcknowledged)}>
                   {isSubmitting ? copy.form.sending : isCoolingDown ? copy.form.wait : submitError === 'unconfirmed' && retryAcknowledged ? copy.form.resend : copy.form.submit}<i className="bi bi-arrow-right" aria-hidden="true" />

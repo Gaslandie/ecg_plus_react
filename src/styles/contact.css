@@ -1,6 +1,6 @@
 /* Contact — formulaire, coordonnées et repères. */
 .contact-page { background: var(--ds-white); overflow-wrap: anywhere; }
-.contact-page .contact-form__notice { scroll-margin-top: 12px; }
+.contact-page .contact-form__error { scroll-margin-top: 12px; }
 .contact-page .ds-btn { max-width: 100%; }
 .contact-page .ds-btn i { flex-shrink: 0; }
 .contact-call { margin: 0; font-size: 1.0625rem; color: var(--ds-body); }
@@ -23,12 +23,6 @@
 .contact-form [aria-invalid='true'] { border: 2px solid #a12727; }
 .contact-form__hint { color: var(--ds-body); font-size: var(--ds-fs-small); line-height: 1.6; margin: 0; }
 .contact-form__error { color: #a12727; font-size: var(--ds-fs-small); margin: 0; }
-.contact-form__notice { padding: 20px; margin-bottom: 24px; border: 1px solid #a12727; border-left-width: 4px; background: #fff8f6; color: #7d2020; }
-.contact-page .contact-form .contact-form__notice:focus { outline: 3px solid var(--ds-primary); outline-offset: 4px; }
-.contact-form__notice h3 { color: inherit; font-size: 1.0625rem; line-height: 1.5; margin: 0 0 8px; }
-.contact-form__notice p { margin: 0 0 8px; }
-.contact-form__notice ul { padding-left: 20px; margin: 0; }
-.contact-form__notice a { display: inline-block; color: inherit; text-decoration: underline; text-underline-offset: 3px; padding-block: 6px; }
 .contact-form__retry { display: flex; align-items: flex-start; gap: 12px; padding-block: 12px; cursor: pointer; }
 .contact-form__retry input { flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px; accent-color: var(--ds-primary); }
 .contact-form__captcha { display: grid; gap: 12px; margin-top: 24px; }
