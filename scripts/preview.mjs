@@ -15,7 +15,8 @@ export function staticPagesPreview() {
           const target = resolve(directory, `.${path}`);
           if (target !== directory && !target.startsWith(directory + sep)) { res.statusCode = 400; return res.end(); }
           const exists = async file => (await stat(file).catch(() => null))?.isFile();
-          if (path === '/' || await exists(target)) return next();
+          if (path === '/en') { res.writeHead(301, { Location: '/en/' + url.search }); return res.end(); }
+          if (path === '/' || path === '/en/' || await exists(target)) return next();
           const route = path.replace(/\/+$/, '');
           const htmlFile = resolve(directory, `.${route}.html`);
           if (await exists(htmlFile)) {
@@ -23,9 +24,10 @@ export function staticPagesPreview() {
             req.url = `${route}.html${url.search}`;
             return next();
           }
-          if (await exists(resolve(directory, '404.html'))) {
+          const notFound = path.startsWith('/en/') ? 'en/404.html' : '404.html';
+          if (await exists(resolve(directory, notFound))) {
             res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache' });
-            return res.end(req.method === 'HEAD' ? undefined : await readFile(resolve(directory, '404.html')));
+            return res.end(req.method === 'HEAD' ? undefined : await readFile(resolve(directory, notFound)));
           }
           next();
         } catch (error) { next(error); }

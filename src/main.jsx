@@ -19,6 +19,7 @@ import './index.css';
 import App from './App.jsx';
 import { I18nProvider } from './i18n/I18nProvider.jsx';
 import { getPageComponentName } from './seo/pages.js';
+import { languageFromPath, languagePath } from './i18n/paths.js';
 
 const pageLoaders = {
   Home: () => import('./pages/Home.jsx'),
@@ -32,10 +33,11 @@ const pageLoaders = {
 };
 const pages = Object.fromEntries(Object.entries(pageLoaders).map(([name, load]) => [name, lazy(load)]));
 
+const lang = languageFromPath(window.location.pathname);
 const app = (
   <StrictMode>
-    <BrowserRouter>
-      <I18nProvider>
+    <BrowserRouter basename={lang === 'en' ? '/en' : '/'}>
+      <I18nProvider initialLang={lang}>
         <App pages={pages} />
       </I18nProvider>
     </BrowserRouter>
@@ -43,7 +45,7 @@ const app = (
 );
 
 const root = document.getElementById('root');
-const route = window.location.pathname.replace(/\/+$/, '') || '/';
+const route = languagePath(window.location.pathname, lang);
 // Les filtres, ancres et états de navigation peuvent différer du HTML statique.
 const canHydrate = root.dataset.prerenderedRoute === route
   && !window.location.search && !window.location.hash && !window.history.state?.usr;

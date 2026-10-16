@@ -3,6 +3,7 @@ import { checkIcons } from './check-icons.mjs';
 import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
 import { basename, dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { languageFromPath, withoutLanguage } from '../src/i18n/paths.js';
 
 // Le serveur ne reçoit que du HTML/CSS/JS. Le rendu React se fait pendant le build.
 await checkIcons();
@@ -16,18 +17,19 @@ try {
   await build({ build: { ssr: 'src/entry-server.jsx', outDir: temporary, emptyOutDir: true }, publicDir: false });
   const { render, publicPaths } = await import(pathToFileURL(resolve(temporary, 'entry-server.js')).href);
   const template = await readFile('dist/index.html', 'utf8');
-  for (const path of [...publicPaths, '/404', '/confirmation']) {
+  for (const path of [...publicPaths, '/404', '/confirmation', '/en/404', '/en/confirmation']) {
     // Confirmation exige un envoi accepté : aucun message de succès dans le HTML public.
     const { body, head, pageComponentName } = render(path);
     const pageScript = pageScripts.get(pageComponentName);
     if (!pageScript) throw new Error(`Script de page absent : ${pageComponentName}`);
-    const isConfirmation = path === '/confirmation';
+    const isConfirmation = withoutLanguage(path) === '/confirmation';
     const html = template
+      .replace('<html lang="fr">', `<html lang="${languageFromPath(path)}">`)
       .replace(/<title>[\s\S]*?<\/title>/, '')
       .replace(/<meta name="description"[^>]*>/, '')
       .replace('<!--ecg-head-->', `<link rel="modulepreload" crossorigin href="/${pageScript}" />\n    ${head}`)
       .replace('<div id="root"></div>', `<div id="root"${isConfirmation ? '' : ` data-prerendered-route="${path}"`}>${isConfirmation ? '' : body}</div>`);
-    const file = resolve('dist', path === '/' ? 'index.html' : `${path.slice(1)}.html`);
+    const file = resolve('dist', path === '/' ? 'index.html' : path === '/en/' ? 'en/index.html' : `${path.slice(1)}.html`);
     await mkdir(dirname(file), { recursive: true });
     await writeFile(file, html);
   }

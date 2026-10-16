@@ -27,9 +27,9 @@
 .ecg-nav__submenu a:hover { background: var(--ds-paper); color: var(--ds-primary); }
 .ecg-nav__project { font-size: .85rem; padding-inline: 1rem; }
 .ecg-langswitch { display: flex; align-items: center; gap: 2px; }
-.ecg-langswitch button { background: transparent; border: 0; border-radius: 4px; min-width: 32px; min-height: 44px; padding: 5px; font-size: .72rem; color: var(--ds-body); }
-.ecg-langswitch button[aria-pressed='true'] { color: var(--ds-primary); font-weight: 800; }
-.ecg-langswitch button:hover { background: var(--ds-paper); }
+.ecg-langswitch a { display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; min-width: 32px; min-height: 44px; padding: 5px; font-size: .72rem; color: var(--ds-body); }
+.ecg-langswitch a[aria-current='page'] { color: var(--ds-primary); font-weight: 800; }
+.ecg-langswitch a:hover { background: var(--ds-paper); }
 .ecg-nav__toggler { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 44px; height: 44px; flex-shrink: 0; background: #fff; border: 1px solid var(--ds-line); border-radius: 5px; }
 .ecg-nav__toggler span { width: 20px; height: 2px; background: var(--ds-ink); transition: transform .2s, opacity .2s; }
 .ecg-nav__toggler.is-open span:first-child { transform: translateY(7px) rotate(45deg); }
@@ -62,7 +62,7 @@
   .ecg-nav__submenu { position: static; min-width: 0; box-shadow: none; border: 0; background: var(--ds-paper); }
   .ecg-nav__submenu a { font-size: .88rem; }
   .ecg-langswitch { justify-content: flex-start; }
-  .ecg-langswitch button { min-width: 44px; }
+  .ecg-langswitch a { min-width: 44px; }
   .ecg-nav__project { align-self: flex-start; }
 }
 @media (max-width: 575.98px) {

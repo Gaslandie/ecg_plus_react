@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import { useClientReady } from '../hooks/useClientReady.js';
 import Photo from '../components/Photo.jsx';
@@ -12,6 +13,9 @@ import '../styles/contact.css';
 const ENDPOINT = 'https://api.web3forms.com/submit';
 // Clé publique existante : le destinataire reste configuré chez Web3Forms.
 const ACCESS_KEY = '4cd0b824-f70a-4e1e-8f73-6a69021e83c8';
+// Clé publique hCaptcha fournie officiellement par Web3Forms pour son offre gratuite.
+// La vérification serveur doit être exigée avec « Block Spam > hCaptcha » chez Web3Forms.
+const CAPTCHA_SITE_KEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2';
 const REQUIRED_FIELDS = ['name', 'email', 'message'];
 const FORM_FIELDS = ['name', 'email', 'phone', 'service', 'message'];
 const FIELD_LIMITS = { name: 150, email: 254, phone: 50, message: 5000 };
@@ -73,6 +77,9 @@ const Contact = () => {
   const [isCoolingDown, setIsCoolingDown] = useState(false);
   const [retryAcknowledged, setRetryAcknowledged] = useState(false);
   const [submitError, setSubmitError] = useState(null);
+  const [captchaLoaded, setCaptchaLoaded] = useState(false);
+  const captchaRef = useRef(null);
+  const captchaTokenRef = useRef('');
   const errorSummaryRef = useRef(null);
   const submitErrorRef = useRef(null);
   const requestRef = useRef(null);
@@ -129,6 +136,11 @@ const Contact = () => {
       setValidationAttempt(attempt => attempt + 1);
       return;
     }
+    const captchaToken = captchaTokenRef.current;
+    if (!captchaToken) {
+      setSubmitError(captchaLoaded ? 'captchaRequired' : 'captchaUnavailable');
+      return;
+    }
 
     // Contrôles de confort côté navigateur ; le serveur Web3Forms reste responsable
     // du filtrage réel. Ne transmettre que les champs prévus, jamais un champ ajouté.
@@ -155,6 +167,11 @@ const Contact = () => {
           return;
         }
       }
+      // Une expiration pendant le calcul du verrou interdit aussi cet envoi.
+      if (captchaTokenRef.current !== captchaToken) {
+        setSubmitError('captchaRequired');
+        return;
+      }
       // Ce marqueur reste présent si la page est quittée ou rechargée avant la réponse.
       rememberSubmission(fingerprint, 'pending');
       setRetryAcknowledged(false);
@@ -170,6 +187,7 @@ const Contact = () => {
           from_name: 'ECG PLUS',
           language: lang,
           botcheck: form.elements.namedItem('botcheck').checked,
+          'h-captcha-response': captchaToken,
         }),
       });
       if (requestRef.current !== controller) return;
@@ -203,6 +221,11 @@ const Contact = () => {
       if (requestRef.current === controller) setSubmitError('unconfirmed');
     } finally {
       window.clearTimeout(timeout);
+      if (requestSent) {
+        // Un jeton ne sert qu’une fois, même si la réponse est perdue ou refusée.
+        captchaTokenRef.current = '';
+        captchaRef.current?.resetCaptcha();
+      }
       if (requestRef.current === controller) {
         requestRef.current = null;
         // Un retour immédiat peut interrompre la navigation avant le démontage.
@@ -316,6 +339,20 @@ const Contact = () => {
                   {fieldError('message')}
                 </div>
               </fieldset>
+              <div className="contact-form__captcha" aria-labelledby="contact-captcha-label">
+                <p id="contact-captcha-label" className="contact-form__hint">{copy.form.captchaLabel}</p>
+                {clientReady && <HCaptcha ref={captchaRef} sitekey={CAPTCHA_SITE_KEY} reCaptchaCompat={false}
+                  size="compact" languageOverride={lang} sentry={false} userJourneys={false}
+                  onLoad={() => setCaptchaLoaded(true)}
+                  onVerify={token => {
+                    captchaTokenRef.current = token;
+                    setCaptchaLoaded(true);
+                    setSubmitError(previous => previous?.startsWith('captcha') ? null : previous);
+                  }}
+                  onExpire={() => { captchaTokenRef.current = ''; setSubmitError('captchaExpired'); }}
+                  onError={() => { captchaTokenRef.current = ''; setCaptchaLoaded(false); setSubmitError('captchaUnavailable'); }} />}
+                {!captchaLoaded && <p className="contact-form__hint" role="status">{copy.form.captchaLoading}</p>}
+              </div>
               <div role="status" className="contact-form__status">{isSubmitting ? copy.form.sending : isCoolingDown ? copy.form.wait : ''}</div>
               {submitError && (
                 <div className="contact-form__notice" ref={submitErrorRef} tabIndex={-1}>

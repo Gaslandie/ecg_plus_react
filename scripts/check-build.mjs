@@ -1,27 +1,36 @@
 import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { languageFromPath, languagePath } from '../src/i18n/paths.js';
 
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]));
-assert(urls.length >= 11 && new Set(urls.map(url => url.href)).size === urls.length, 'Sitemap incomplet ou doublonné');
+assert(urls.length === 22 && new Set(urls.map(url => url.href)).size === urls.length, 'Sitemap FR/EN incomplet ou doublonné');
 const titles = new Set();
 const descriptions = new Set();
 for (const url of urls) {
   assert.equal(url.origin, 'https://ecgplusgn.com');
   assert(!url.search && !url.hash && !url.pathname.includes('confirmation'));
-  const path = url.pathname === '/' ? 'index.html' : url.pathname.slice(1) + '.html';
+  const lang = languageFromPath(url.pathname);
+  const path = url.pathname === '/' ? 'index.html' : url.pathname === '/en/' ? 'en/index.html' : url.pathname.slice(1) + '.html';
   const html = await readFile(resolve('dist', path), 'utf8');
+  assert(html.includes(`<html lang="${lang}">`), `${path} : langue incorrecte`);
+  for (const language of ['fr', 'en']) {
+    const alternate = new URL(languagePath(url.pathname, language), url.origin).href;
+    assert(html.includes(`hreflang="${language}" href="${alternate}"`), `${path} : version ${language} absente`);
+    assert(urls.some(item => item.href === alternate), `${path} : version absente du sitemap`);
+  }
+  assert.equal((html.match(/hreflang=/gi) || []).length, 5, `${path} : alternatives SEO et liens de langue`);
   assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1, `${path} : contenu HTML absent`);
   assert.equal((html.match(/<title>/g) || []).length, 1, `${path} : titre unique`);
   const title = html.match(/<title>(.*?)<\/title>/s)[1];
   assert(title.trim() && !/undefined|null|\[object Object\]/.test(title), `${path} : titre vide ou invalide`);
-  assert(!titles.has(title), `${path} : titre partagé avec une autre page`); titles.add(title);
+  assert(!titles.has(lang + title), `${path} : titre partagé avec une autre page`); titles.add(lang + title);
   const matches = [...html.matchAll(/<meta\b[^>]*name="description"[^>]*content="([^"]*)"[^>]*>/g)];
   assert.equal(matches.length, 1, `${path} : description unique`);
   const description = matches[0][1];
   assert(description.trim() && !/undefined|null|\[object Object\]/.test(description), `${path} : description vide ou invalide`);
-  assert(!descriptions.has(description), `${path} : description partagée avec une autre page`); descriptions.add(description);
+  assert(!descriptions.has(lang + description), `${path} : description partagée avec une autre page`); descriptions.add(lang + description);
   assert.equal((html.match(/rel="canonical"/g) || []).length, 1, `${path} : canonique unique`);
   assert(html.includes(`rel="canonical" href="${url.href}"`), `${path} : canonique incorrecte`);
   assert(html.includes(`property="og:title" content="${title}"`), `${path} : titre de partage différent`);
@@ -46,11 +55,11 @@ for (const url of urls) {
 const contact = await readFile('dist/contact.html', 'utf8');
 assert(/<fieldset class="contact-form__fields" disabled=""/.test(contact), 'Formulaire actif avant JavaScript');
 assert(contact.includes('<noscript>') && contact.includes('mailto:contact@ecgplusgn.com'));
-for (const file of ['404.html', 'confirmation.html']) {
+for (const file of ['404.html', 'confirmation.html', 'en/404.html', 'en/confirmation.html']) {
   const html = await readFile(`dist/${file}`, 'utf8');
   assert(html.includes('content="noindex,follow"'));
   assert(!html.includes('rel="canonical"'));
-  if (file === 'confirmation.html') assert(html.includes('<div id="root"></div>'), 'Fausse confirmation dans le HTML public');
+  if (file.endsWith('confirmation.html')) assert(html.includes('<div id="root"></div>'), 'Fausse confirmation dans le HTML public');
 }
 assert((await readFile('dist/robots.txt', 'utf8')).includes('Sitemap: https://ecgplusgn.com/sitemap.xml'));
 console.log(`${urls.length} pages préconstruites, métadonnées, sitemap, assets et états non indexables vérifiés.`);

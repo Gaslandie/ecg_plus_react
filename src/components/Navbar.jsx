@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/img/logo-160.webp';
 import { useI18n } from '../i18n/I18nContext.jsx';
+import { languagePath } from '../i18n/paths.js';
 import { services, servicePath } from '../data/services';
 
 function NavDropdown({ label, links, active }) {
@@ -34,7 +35,7 @@ function NavDropdown({ label, links, active }) {
 }
 
 export default function Navbar() {
-  const { t, lang, setLang } = useI18n();
+  const { t, lang } = useI18n();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -105,8 +106,10 @@ export default function Navbar() {
             </ul>
             <Link to="/contact" className="ds-btn ds-btn--accent ecg-nav__project">{t('homePage.contact.cta')}<i className="bi bi-arrow-up-right" aria-hidden="true" /></Link>
             <div className="ecg-langswitch" role="group" aria-label={t('a11y.langSwitch')}>
-              {['fr', 'en'].map(language => <button key={language} type="button" lang={language} aria-pressed={lang === language}
-                aria-label={t(language === 'fr' ? 'a11y.langFr' : 'a11y.langEn')} onClick={() => setLang(language)}>{language.toUpperCase()}</button>)}
+              {['fr', 'en'].map(language => <a key={language} lang={language} hrefLang={language}
+                href={`${languagePath(location.pathname, language)}${location.search}${location.hash}`}
+                aria-current={lang === language ? 'page' : undefined}
+                aria-label={t(language === 'fr' ? 'a11y.langFr' : 'a11y.langEn')}>{language.toUpperCase()}</a>)}
             </div>
           </div>
         </div>

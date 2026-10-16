@@ -31,6 +31,7 @@
 .contact-form__notice a { display: inline-block; color: inherit; text-decoration: underline; text-underline-offset: 3px; padding-block: 6px; }
 .contact-form__retry { display: flex; align-items: flex-start; gap: 12px; padding-block: 12px; cursor: pointer; }
 .contact-form__retry input { flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px; accent-color: var(--ds-primary); }
+.contact-form__captcha { display: grid; gap: 12px; margin-top: 24px; }
 .contact-form__submit { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding-top: 28px; }
 .contact-form__submit p { flex: 1 1 180px; font-size: var(--ds-fs-small); margin: 0; }
 .contact-form__submit button:disabled { opacity: 1; background: #536566; border-color: #536566; color: var(--ds-white); cursor: wait; }

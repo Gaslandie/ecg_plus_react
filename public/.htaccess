@@ -1,5 +1,8 @@
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
+<If "%{REQUEST_URI} =~ m#^/en(?:/|$)#">
+  ErrorDocument 404 /en/404.html
+</If>
 # Les routes applicatives restent sans slash, même si un dossier porte leur nom.
 # Désactiver le listing lorsque la redirection automatique des dossiers est coupée.
 Options -Indexes
@@ -25,12 +28,13 @@ DirectorySlash Off
   RewriteRule ^ https://ecgplusgn.com%{REQUEST_URI} [R=301,L]
 
   # Une seule URL publique par page ; les .html sont les fichiers de déploiement.
-  RewriteCond %{THE_REQUEST} \s/+index\.html[?\s] [NC]
-  RewriteRule ^index\.html$ / [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+(?:en/)?index\.html[?\s] [NC]
+  RewriteRule ^(en/)?index\.html$ /$1 [R=301,L]
+  RewriteRule ^en$ /en/ [R=301,L]
   RewriteCond %{THE_REQUEST} \s/+[^?\s]+\.html[?\s] [NC]
-  RewriteRule ^(?!404\.html$)(.+)\.html$ /$1 [R=301,L]
-  RewriteRule ^(presentation|expertiseservices|realisations|contact|confirmation)/$ /$1 [R=301,L]
-  RewriteRule ^(realisations/[^/]+)/$ /$1 [R=301,L]
+  RewriteRule ^(?!(?:en/)?404\.html$)(.+)\.html$ /$1 [R=301,L]
+  RewriteRule ^((?:en/)?(?:presentation|expertiseservices|realisations|contact|confirmation))/$ /$1 [R=301,L]
+  RewriteRule ^((?:en/)?realisations/[^/]+)/$ /$1 [R=301,L]
 
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.+)$ $1.html [END]
@@ -51,9 +55,9 @@ DirectorySlash Off
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
   Header always set X-XSS-Protection "0"
-  # Scripts locaux uniquement. Seul l'envoi Web3Forms peut sortir du site.
+  # Scripts locaux et hCaptcha uniquement. Web3Forms vérifie le jeton côté serveur.
   # Aucun script ni bloc de style en ligne n'est autorisé.
-  Header always set Content-Security-Policy "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; frame-src 'none'; form-action 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; frame-src https://hcaptcha.com https://*.hcaptcha.com; form-action 'self'; script-src 'self' https://hcaptcha.com https://*.hcaptcha.com; script-src-attr 'none'; style-src 'self' https://hcaptcha.com https://*.hcaptcha.com; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com https://hcaptcha.com https://*.hcaptcha.com"
   # Première activation limitée à 24 h, sur HTTPS et les deux hôtes vérifiés.
   # Aucun includeSubDomains/preload : les services mail ne sont pas dans ce périmètre.
   Header always set Strict-Transport-Security "max-age=86400" "expr=%{HTTPS} == 'on' && %{HTTP_HOST} =~ m#^(www\.)?ecgplusgn\.com(?::[0-9]+)?$#"

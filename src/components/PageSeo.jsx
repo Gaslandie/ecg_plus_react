@@ -7,7 +7,7 @@ export default function PageSeo() {
   const { pathname } = useLocation();
   const { lang } = useI18n();
   useEffect(() => {
-    const seo = getPageSeo(pathname, lang);
+    const seo = getPageSeo(lang === 'en' ? `/en${pathname}` : pathname, lang);
     // Même source que le HTML préconstruit ; aucune balise canonique concurrente.
     document.head.querySelectorAll('[data-ecg-seo], title, meta[name="description"], meta[name="robots"], link[rel="canonical"]').forEach(node => node.remove());
     document.head.insertAdjacentHTML('beforeend', renderSeoHead(seo));

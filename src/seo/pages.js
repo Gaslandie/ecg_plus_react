@@ -1,5 +1,6 @@
 import { projects, projectPath } from '../data/projects.js';
 import { translations } from '../i18n/translations.js';
+import { languageFromPath, languagePath, withoutLanguage } from '../i18n/paths.js';
 import shareImage from '../assets/img/share-default.jpg';
 import shareKankan from '../assets/img/share-kankan.jpg';
 import shareDubreka from '../assets/img/share-dubreka.jpg';
@@ -10,24 +11,27 @@ import shareR4 from '../assets/img/share-r4.jpg';
 import logo from '../assets/img/logo-160.webp';
 
 export const SITE_URL = 'https://ecgplusgn.com';
-export const publicPaths = ['/', '/presentation', '/expertiseservices', '/realisations', '/contact', ...projects.map(projectPath)];
+const frenchPaths = ['/', '/presentation', '/expertiseservices', '/realisations', '/contact', ...projects.map(projectPath)];
+export const publicPaths = [...frenchPaths, ...frenchPaths.map(path => languagePath(path, 'en'))];
 export const normalizePath = path => path.replace(/\/+$/, '') || '/';
 export const getPageComponentName = pathname => ({
   '/': 'Home', '/presentation': 'Presentation', '/expertiseservices': 'ExpertiseServices',
   '/realisations': 'Realisations', '/contact': 'Contact', '/confirmation': 'Confirmation',
-}[normalizePath(pathname)] || (/^\/realisations\/[^/]+$/.test(normalizePath(pathname)) ? 'ProjectDetails' : 'NotFound'));
+}[withoutLanguage(pathname)] || (/^\/realisations\/[^/]+$/.test(withoutLanguage(pathname)) ? 'ProjectDetails' : 'NotFound'));
 const absolute = path => new URL(path, SITE_URL).href;
 const projectShareImages = { kankan: shareKankan, dubreka: shareDubreka, ansoumania: shareAnsoumania, kagbelen: shareKagbelen, hangar: shareHangar, r4: shareR4 };
 
-export function getPageSeo(pathname, lang = 'fr') {
-  const path = normalizePath(pathname);
+export function getPageSeo(pathname, lang = languageFromPath(pathname)) {
+  const path = withoutLanguage(pathname);
+  const localized = languagePath(pathname, lang);
   const dict = translations[lang] || translations.fr;
   const pageKey = { '/': 'home', '/presentation': 'presentation', '/expertiseservices': 'services', '/realisations': 'projects', '/contact': 'contact', '/confirmation': 'confirmation' }[path];
   const project = projects.find(item => projectPath(item) === path);
   const title = project ? `${dict.realisationsPage.projects.cards[project.key].title} | ECG PLUS` : dict.seo[pageKey || 'notFound'].title;
   const description = project ? dict.portfolio.details[project.key].intro : dict.seo[pageKey || 'notFound'].description;
-  const indexable = publicPaths.includes(path);
-  const canonical = indexable ? absolute(path) : null;
+  const indexable = publicPaths.includes(localized);
+  const canonical = indexable ? absolute(localized) : null;
+  const alternates = indexable ? ['fr', 'en'].map(language => ({ language, href: absolute(languagePath(pathname, language)) })) : [];
   const image = absolute(projectShareImages[project?.key] || shareImage);
   const organization = {
     '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'ECG PLUS SARL', url: SITE_URL,
@@ -40,12 +44,12 @@ export function getPageSeo(pathname, lang = 'fr') {
     ...(project ? { primaryImageOfPage: { '@type': 'ImageObject', url: image } } : {}),
   }, ...(project ? [{
     '@type': 'BreadcrumbList', itemListElement: [
-      { '@type': 'ListItem', position: 1, name: dict.nav.home, item: `${SITE_URL}/` },
-      { '@type': 'ListItem', position: 2, name: dict.nav.realisations, item: `${SITE_URL}/realisations` },
+      { '@type': 'ListItem', position: 1, name: dict.nav.home, item: absolute(languagePath('/', lang)) },
+      { '@type': 'ListItem', position: 2, name: dict.nav.realisations, item: absolute(languagePath('/realisations', lang)) },
       { '@type': 'ListItem', position: 3, name: dict.realisationsPage.projects.cards[project.key].title, item: canonical },
     ],
   }] : [])] } : null;
-  return { title, description, canonical, image, imageWidth: 1200, imageHeight: 630, imageType: 'image/jpeg', imageAlt: project ? dict.portfolio.details[project.key].imageAlt : dict.seo.imageAlt, lang, indexable, structuredData };
+  return { title, description, canonical, alternates, image, imageWidth: 1200, imageHeight: 630, imageType: 'image/jpeg', imageAlt: project ? dict.portfolio.details[project.key].imageAlt : dict.seo.imageAlt, lang, indexable, structuredData };
 }
 
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
@@ -57,6 +61,8 @@ export function renderSeoHead(seo) {
     `<title>${escapeHtml(seo.title)}</title>`, meta('description', seo.description),
     meta('robots', seo.indexable ? 'index,follow,max-image-preview:large' : 'noindex,follow'),
     seo.canonical && `<link data-ecg-seo rel="canonical" href="${seo.canonical}" />`,
+    ...seo.alternates.map(({ language, href }) => `<link data-ecg-seo rel="alternate" hreflang="${language}" href="${href}" />`),
+    seo.alternates.length && `<link data-ecg-seo rel="alternate" hreflang="x-default" href="${seo.alternates[0].href}" />`,
     meta('og:type', 'website', true), meta('og:site_name', 'ECG PLUS', true), meta('og:title', seo.title, true),
     meta('og:description', seo.description, true), seo.canonical && meta('og:url', seo.canonical, true),
     meta('og:image', seo.image, true), meta('og:image:secure_url', seo.image, true),
