@@ -97,7 +97,7 @@ export default function ExpertiseServices() {
                 </div>
                 <div data-reveal>
                   <Photo className="service-domain__visual" image={visual}
-                    alt={project ? t(`portfolio.details.${project.key}.imageAlt`) : pillar.imageAlt}
+                    alt={project ? t(project.card ? `realisationsPage.projects.cards.${project.key}.title` : `portfolio.details.${project.key}.imageAlt`) : pillar.imageAlt}
                     caption={project ? <><span className="service-domain__caption-label">{content.reference}</span><Link to={projectPath(project)} className="ecg-link"><span>{t(`realisationsPage.projects.cards.${project.key}.title`)}</span><i className="bi bi-arrow-up-right" aria-hidden="true" /></Link></> : pillar.caption} />
                 </div>
               </div>
