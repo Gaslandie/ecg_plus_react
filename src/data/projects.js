@@ -47,5 +47,4 @@ export const projects = [
     image: photo(r4640, r41280, 1280, 721, 639) },
 ];
 
-export const projectCategories = ['all', 'batiment', 'genie-civil', 'industrie', 'etudes'];
 export const projectPath = (project) => `/realisations/${project.slug}`;
