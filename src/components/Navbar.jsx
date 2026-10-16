@@ -79,7 +79,9 @@ export default function Navbar() {
           <div><a href="tel:+224623417510"><i className="bi bi-telephone-fill" aria-hidden="true" />+224 623 41 75 10</a><a href="mailto:contact@ecgplusgn.com">contact@ecgplusgn.com</a></div>
         </div>
       </div>
-      <nav ref={navRef} className="ecg-nav" aria-label={t('a11y.mainNav')} onKeyDown={event => {
+      <nav ref={navRef} className="ecg-nav" aria-label={t('a11y.mainNav')} onBlur={event => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false);
+      }} onKeyDown={event => {
         if (event.key === 'Escape' && menuOpen) { setMenuOpen(false); toggleRef.current.focus(); }
       }}>
         <div className="ds-container ecg-nav__inner">

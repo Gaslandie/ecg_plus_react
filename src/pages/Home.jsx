@@ -5,8 +5,8 @@ import ProjectCard from '../components/ProjectCard.jsx';
 import ExpertiseShowcase from '../components/ExpertiseShowcase.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import Photo from '../components/Photo.jsx';
-import team800 from '../assets/img/presen3-800.webp';
-import team1280 from '../assets/img/presen3-1280.webp';
+import company480 from '../assets/img/batiment-480.webp';
+import company800 from '../assets/img/batiment-800.webp';
 import field480 from '../assets/img/histoire-480.webp';
 import field768 from '../assets/img/histoire-768.webp';
 import logo from '../assets/img/logo-160.webp';
@@ -40,8 +40,8 @@ export default function Home() {
             <Link to="/presentation" className="ecg-link"><span>{t('homePage.company.cta')}</span><i className="bi bi-arrow-right" aria-hidden="true" /></Link>
           </div>
           <div className="ecg-home-company__visual" data-reveal>
-            <Photo image={{src:team1280,srcSet:`${team800} 800w, ${team1280} 1280w`,width:1280,height:960}}
-              alt={t('presentationPage.hero.imageAlt')} caption={copy.companyCaption} zoom={false} />
+            <Photo image={{src:company800,srcSet:`${company480} 480w, ${company800} 800w`,width:800,height:600}}
+              alt={copy.companyImageAlt} caption={copy.companyCaption} zoom={false} />
             <div className="ecg-home-company__brand" aria-hidden="true"><img src={logo} width="160" height="141" alt="" loading="lazy" /></div>
           </div>
         </div>

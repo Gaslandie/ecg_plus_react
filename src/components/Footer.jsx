@@ -22,7 +22,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="ecg-footer__col">
-            <h4>{t('footer.quickLinks')}</h4>
+            <h2>{t('footer.quickLinks')}</h2>
             <ul className="ecg-footer__list">
               <li><Link to="/">{t('nav.home')}</Link></li>
               <li><Link to="/presentation">{t('nav.company')}</Link></li>
@@ -32,11 +32,11 @@ export default function Footer() {
             </ul>
           </div>
           <div className="ecg-footer__col">
-            <h4>{t('referenceUi.allExpertise')}</h4>
+            <h2>{t('referenceUi.allExpertise')}</h2>
             <ul className="ecg-footer__list">{services.map(service => <li key={service.key}><Link to={servicePath(service)}>{t(`expertiseServicesPage.pillars.${service.key}.shortTitle`)}</Link></li>)}</ul>
           </div>
           <div className="ecg-footer__col">
-            <h4>{t('nav.contact')}</h4>
+            <h2>{t('nav.contact')}</h2>
             <ul className="ecg-footer__list">
               <li><i className="bi bi-geo-alt-fill" aria-hidden="true" /><span>{t('footer.address')}</span></li>
               <li><i className="bi bi-telephone-fill" aria-hidden="true" /><a href="tel:+224623417510">+224 623 41 75 10</a></li>

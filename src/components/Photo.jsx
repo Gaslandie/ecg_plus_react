@@ -4,17 +4,23 @@ import { useI18n } from '../i18n/I18nContext.jsx';
 export default function Photo({ image, alt, caption, className = '', sizes, priority = false, zoom = true, contain = false }) {
   const { t } = useI18n();
   const dialogRef = useRef(null);
+  const triggerRef = useRef(null);
   const titleId = useId();
   const [opened, setOpened] = useState(false);
   useEffect(() => {
     if (!opened) return undefined;
     const dialog = dialogRef.current;
+    const trigger = triggerRef.current;
     const previousOverflow = document.body.style.overflow;
     dialog.showModal();
     document.body.style.overflow = 'hidden';
     return () => {
       dialog.close();
       document.body.style.overflow = previousOverflow;
+      if (trigger?.isConnected) {
+        trigger.focus({ preventScroll: true });
+        trigger.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+      }
     };
   }, [opened]);
   return (
@@ -22,7 +28,7 @@ export default function Photo({ image, alt, caption, className = '', sizes, prio
       <div className="ecg-photo__frame">
         <img {...image} alt={alt} sizes={sizes || '(max-width: 991px) 100vw, 45vw'}
           loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : undefined} decoding="async" />
-        {zoom && <button type="button" className="ecg-photo__expand" onClick={() => setOpened(true)} aria-haspopup="dialog">
+        {zoom && <button ref={triggerRef} type="button" className="ecg-photo__expand" onClick={() => setOpened(true)} aria-haspopup="dialog">
           <i className="bi bi-arrow-up-right" aria-hidden="true" />{t('referenceUi.enlarge')}<span className="visually-hidden"> — {alt}</span>
         </button>}
       </div>

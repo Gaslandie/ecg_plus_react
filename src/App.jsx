@@ -1,26 +1,16 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PageSeo from './components/PageSeo.jsx';
-import NotFound from './pages/NotFound.jsx';
-import Home from './pages/Home';
-import Presentation from './pages/Presentation';
-import Contact from './pages/Contact';
-import ExpertiseServices from './pages/ExpertiseServices';
-import Realisations from './pages/Realisations';
-import ProjectDetails from './pages/ProjectDetails';
-import Confirmation from './pages/Confirmation';
 import { useI18n } from './i18n/I18nContext.jsx';
 import { useReveal } from './hooks/useReveal.js';
 
 const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function App() {
-  const location = useLocation();
-  const { t } = useI18n();
-  const [showBackToTop, setShowBackToTop] = useState(false);
+function PageContent({ location, pages }) {
+  const { Home, Presentation, ExpertiseServices, Realisations, Contact, ProjectDetails, Confirmation, NotFound } = pages;
   const previousPath = useRef(location.pathname);
 
   // Révélation au défilement des blocs [data-reveal] (recalculée à chaque navigation, filtres compris).
@@ -38,6 +28,27 @@ function App() {
       focusTarget?.focus({ preventScroll: true });
     }
   }, [location.pathname, location.hash]);
+
+  return (
+    <div id="main-content" className="page-transition" key={location.pathname} tabIndex={-1} data-menu-inert="">
+      <Routes location={location}>
+        <Route path="/" element={<Home />} />
+        <Route path="/presentation" element={<Presentation />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/expertiseservices" element={<ExpertiseServices />} />
+        <Route path="/realisations" element={<Realisations />} />
+        <Route path="/realisations/:slug" element={<ProjectDetails />} />
+        <Route path="/confirmation" element={<Confirmation />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
+}
+
+function App({ pages }) {
+  const location = useLocation();
+  const { t } = useI18n();
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -60,24 +71,9 @@ function App() {
         {t('a11y.skipToContent')}
       </a>
       <Navbar />
-      <div
-        id="main-content"
-        className="page-transition"
-        key={location.pathname}
-        tabIndex={-1}
-        data-menu-inert=""
-      >
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/presentation" element={<Presentation />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/expertiseservices" element={<ExpertiseServices />} />
-          <Route path="/realisations" element={<Realisations />} />
-          <Route path="/realisations/:slug" element={<ProjectDetails />} />
-          <Route path="/confirmation" element={<Confirmation />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
+      <Suspense fallback={<div id="main-content" tabIndex={-1}><main className="ecg-section ds-container"><p role="status">{t('a11y.loading')}</p></main></div>}>
+        <PageContent location={location} pages={pages} />
+      </Suspense>
       <Footer />
       <button
         type="button"

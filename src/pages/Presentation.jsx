@@ -10,8 +10,19 @@ import team1280 from '../assets/img/presen3-1280.webp';
 import team1600 from '../assets/img/presen3-1600.webp';
 import field480 from '../assets/img/histoire-480.webp';
 import field768 from '../assets/img/histoire-768.webp';
+import quality480 from '../assets/img/engagement-qualite-securite-480.webp';
+import quality960 from '../assets/img/engagement-qualite-securite-960.webp';
+import environment480 from '../assets/img/engagement-environnement-480.webp';
+import environment960 from '../assets/img/engagement-environnement-960.webp';
+import dialogue480 from '../assets/img/engagement-dialogue-suivi-480.webp';
+import dialogue960 from '../assets/img/engagement-dialogue-suivi-960.webp';
 import '../styles/presentation.css';
 
+const VALUE_IMAGES = [
+  { small: quality480, large: quality960 },
+  { small: environment480, large: environment960 },
+  { small: dialogue480, large: dialogue960 },
+];
 const SECTIONS = ['equipe', 'engagements', 'identite'];
 const revealSection = (id) => {
   const target = document.getElementById(id);
@@ -111,9 +122,16 @@ export default function Presentation() {
           <ol className="ecg-steps ecg-steps--3" data-reveal-group>
             {content.values.items.map((value, index) => (
               <li key={value.title} data-reveal>
-                <span className="ecg-steps__num">0{index + 1}</span>
-                <h3>{value.title}</h3>
-                <p>{value.text}</p>
+                <img className="company-values__image"
+                  src={VALUE_IMAGES[index].large}
+                  srcSet={`${VALUE_IMAGES[index].small} 480w, ${VALUE_IMAGES[index].large} 960w`}
+                  sizes="(max-width: 575px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                  width="960" height="640" loading="lazy" decoding="async" alt={value.imageAlt} />
+                <div className="company-values__body">
+                  <span className="ecg-steps__num">0{index + 1}</span>
+                  <h3>{value.title}</h3>
+                  <p>{value.text}</p>
+                </div>
               </li>
             ))}
           </ol>

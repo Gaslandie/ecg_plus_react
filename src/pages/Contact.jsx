@@ -13,10 +13,52 @@ const ENDPOINT = 'https://api.web3forms.com/submit';
 // Clé publique existante : le destinataire reste configuré chez Web3Forms.
 const ACCESS_KEY = '4cd0b824-f70a-4e1e-8f73-6a69021e83c8';
 const REQUIRED_FIELDS = ['name', 'email', 'message'];
+const FORM_FIELDS = ['name', 'email', 'phone', 'service', 'message'];
+const FIELD_LIMITS = { name: 150, email: 254, phone: 50, message: 5000 };
+const RECENT_SUBMISSION_KEY = 'ecg-contact-recent';
+const RECENT_SUBMISSION_TTL = 10 * 60 * 1000;
+let recentSubmission = null;
+
+// Garde-fou de l'onglet uniquement : Web3Forms ne documente pas de clé
+// d'idempotence serveur. Aucun nom, email ou message n'est stocké ici.
+async function submissionFingerprint(values) {
+  if (!window.crypto?.subtle) return null;
+  const data = JSON.stringify(['name', 'email', 'phone', 'service', 'message'].map(key => values[key] || ''));
+  const hash = await window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(data));
+  return Array.from(new Uint8Array(hash), byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+function readRecentSubmission() {
+  try {
+    const stored = window.sessionStorage.getItem(RECENT_SUBMISSION_KEY);
+    if (stored) recentSubmission = JSON.parse(stored);
+  } catch { /* La mémoire de cet onglet reste utilisable si le stockage est bloqué. */ }
+  const age = Date.now() - recentSubmission?.at;
+  if (!recentSubmission || !/^[a-f0-9]{64}$/.test(recentSubmission.fingerprint)
+    || !['pending', 'sent'].includes(recentSubmission.status) || !Number.isFinite(age)
+    || age < 0 || age >= RECENT_SUBMISSION_TTL) return null;
+  return recentSubmission;
+}
+
+function rememberSubmission(fingerprint, status) {
+  if (!fingerprint) return;
+  recentSubmission = { fingerprint, status, at: Date.now() };
+  try {
+    window.sessionStorage.setItem(RECENT_SUBMISSION_KEY, JSON.stringify(recentSubmission));
+  } catch { /* Le garde-fou en mémoire reste actif. */ }
+}
+
+function forgetSubmission(fingerprint) {
+  if (!fingerprint || readRecentSubmission()?.fingerprint !== fingerprint) return;
+  recentSubmission = null;
+  try { window.sessionStorage.removeItem(RECENT_SUBMISSION_KEY); } catch { /* Stockage bloqué. */ }
+}
 
 function validateField(field) {
-  if (!field.value.trim()) return 'required';
-  if (field.type === 'email' && field.validity.typeMismatch) return 'email';
+  if (REQUIRED_FIELDS.includes(field.name) && !field.value.trim()) return 'required';
+  if (field.value.length > FIELD_LIMITS[field.name]) return 'tooLong';
+  if (field.type === 'email' && field.value && field.validity.typeMismatch) return 'email';
+  if (field.name === 'service' && field.value && !services.some(service => service.id === field.value)) return 'service';
   return null;
 }
 
@@ -28,26 +70,37 @@ const Contact = () => {
   const [errors, setErrors] = useState({});
   const [validationAttempt, setValidationAttempt] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isCoolingDown, setIsCoolingDown] = useState(false);
+  const [retryAcknowledged, setRetryAcknowledged] = useState(false);
   const [submitError, setSubmitError] = useState(null);
   const errorSummaryRef = useRef(null);
   const submitErrorRef = useRef(null);
   const requestRef = useRef(null);
+  const retryUntilRef = useRef(0);
+  const cooldownTimerRef = useRef(null);
 
   useEffect(() => {
-    if (validationAttempt) errorSummaryRef.current?.focus();
+    if (validationAttempt) {
+      errorSummaryRef.current?.focus({ preventScroll: true });
+      errorSummaryRef.current?.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+    }
   }, [validationAttempt]);
 
   useEffect(() => {
-    if (submitError) submitErrorRef.current?.focus();
+    if (submitError) {
+      submitErrorRef.current?.focus({ preventScroll: true });
+      submitErrorRef.current?.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+    }
   }, [submitError]);
 
   useEffect(() => () => {
     requestRef.current?.abort();
     requestRef.current = null;
+    window.clearTimeout(cooldownTimerRef.current);
   }, []);
 
   const updateFieldError = (field) => {
-    if (!REQUIRED_FIELDS.includes(field.name)) return;
+    if (!FORM_FIELDS.includes(field.name)) return;
     const error = validateField(field);
     setErrors(previous => {
       const next = { ...previous };
@@ -59,10 +112,14 @@ const Contact = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (requestRef.current) return;
+    if (requestRef.current || Date.now() < retryUntilRef.current) return;
     const form = event.currentTarget;
+    if (form.elements.namedItem('botcheck').checked) {
+      setSubmitError('blocked');
+      return;
+    }
     const nextErrors = {};
-    for (const name of REQUIRED_FIELDS) {
+    for (const name of FORM_FIELDS) {
       const error = validateField(form.elements.namedItem(name));
       if (error) nextErrors[name] = error;
     }
@@ -73,18 +130,41 @@ const Contact = () => {
       return;
     }
 
-    const values = Object.fromEntries(new FormData(form));
+    // Contrôles de confort côté navigateur ; le serveur Web3Forms reste responsable
+    // du filtrage réel. Ne transmettre que les champs prévus, jamais un champ ajouté.
+    const values = Object.fromEntries(FORM_FIELDS.map(name => [name, form.elements.namedItem(name).value.trim()]));
     const controller = new AbortController();
     requestRef.current = controller;
     setIsSubmitting(true);
+    let fingerprint = null;
+    let requestSent = false;
+    let confirmed = false;
+    let retryDelay = 2000;
     const timeout = window.setTimeout(() => controller.abort(), 25000);
     try {
+      fingerprint = await submissionFingerprint(values);
+      if (requestRef.current !== controller || controller.signal.aborted) return;
+      const recent = readRecentSubmission();
+      if (fingerprint && recent?.fingerprint === fingerprint) {
+        if (recent.status === 'sent') {
+          setSubmitError('duplicate');
+          return;
+        }
+        if (!retryAcknowledged) {
+          setSubmitError('unconfirmed');
+          return;
+        }
+      }
+      // Ce marqueur reste présent si la page est quittée ou rechargée avant la réponse.
+      rememberSubmission(fingerprint, 'pending');
+      setRetryAcknowledged(false);
+      requestSent = true;
       const response = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         signal: controller.signal,
         body: JSON.stringify({
-          ...Object.fromEntries(Object.entries(values).map(([key, value]) => [key, value.trim()])),
+          ...values,
           access_key: ACCESS_KEY,
           subject: copy.form.emailSubject,
           from_name: 'ECG PLUS',
@@ -94,15 +174,29 @@ const Contact = () => {
       });
       if (requestRef.current !== controller) return;
       if (response.status === 429) {
+        forgetSubmission(fingerprint);
+        const retryAfter = response.headers.get('Retry-After');
+        const delay = retryAfter && /^\d+$/.test(retryAfter)
+          ? Number(retryAfter) * 1000 : Date.parse(retryAfter) - Date.now();
+        // Web3Forms annonce un blocage d'une heure en l'absence de précision.
+        // La borne haute évite le débordement du minuteur du navigateur.
+        retryDelay = Math.min(Math.max(Number.isFinite(delay) ? delay : 3600000, 2000), 2147483647);
         setSubmitError('rateLimited');
         return;
       }
       const data = await response.json();
       if (requestRef.current !== controller) return;
       if (response.ok && data.success === true) {
+        confirmed = true;
+        rememberSubmission(fingerprint, 'sent');
+        form.reset();
         navigate('/confirmation', { state: { contactSubmitted: true } });
-      } else {
+      } else if (response.status < 500 && data.success === false) {
+        forgetSubmission(fingerprint);
         setSubmitError('failed');
+      } else {
+        // Une erreur serveur peut survenir après réception : ne pas inviter à renvoyer aveuglément.
+        setSubmitError('unconfirmed');
       }
     } catch {
       // Une réponse perdue ne prouve pas un échec de livraison. Aucun nouvel envoi automatique.
@@ -111,19 +205,26 @@ const Contact = () => {
       window.clearTimeout(timeout);
       if (requestRef.current === controller) {
         requestRef.current = null;
+        // Un retour immédiat peut interrompre la navigation avant le démontage.
+        // Le marqueur « sent » bloque toujours les doublons, sans figer le formulaire.
         setIsSubmitting(false);
+        if (!confirmed && requestSent) {
+          retryUntilRef.current = Date.now() + retryDelay;
+          setIsCoolingDown(true);
+          cooldownTimerRef.current = window.setTimeout(() => setIsCoolingDown(false), retryDelay);
+        }
       }
     }
   };
 
-  const errorText = (name) => errors[name] === 'email'
-    ? copy.form.errors.email
-    : copy.form.errors[name];
+  const errorText = (name) => ['tooLong', 'service'].includes(errors[name])
+    ? copy.form.errors[errors[name]]
+    : errors[name] === 'email' ? copy.form.errors.email : copy.form.errors[name];
 
   const fieldProps = (name, hint) => ({
     id: `contact-${name}`,
     name,
-    required: true,
+    required: REQUIRED_FIELDS.includes(name),
     'aria-invalid': errors[name] ? 'true' : undefined,
     'aria-describedby': [hint, errors[name] && `contact-${name}-error`].filter(Boolean).join(' ') || undefined,
     onBlur: event => updateFieldError(event.target),
@@ -159,13 +260,17 @@ const Contact = () => {
               <h2 id="contact-form-title">{t('referenceUi.contactFormTitle')}</h2>
               <p id="contact-required">{copy.form.required}</p>
             </div>
-            <form className="contact-form" onSubmit={handleSubmit} noValidate aria-labelledby="contact-form-title" aria-describedby="contact-required">
+            <form className="contact-form" onSubmit={handleSubmit} onChange={event => {
+              if (event.target.id === 'contact-confirm-resend') return;
+              setRetryAcknowledged(false);
+              if (submitError === 'duplicate' || submitError === 'unconfirmed') setSubmitError(null);
+            }} noValidate aria-labelledby="contact-form-title" aria-describedby="contact-required">
               <noscript><p>{copy.form.noScript} <a href="mailto:contact@ecgplusgn.com">contact@ecgplusgn.com</a></p></noscript>
               {Object.keys(errors).length > 0 && (
                 <div className="contact-form__notice" ref={errorSummaryRef} tabIndex={-1}>
                   <h3>{copy.form.errors.title}</h3>
                   <ul>
-                    {REQUIRED_FIELDS.filter(name => errors[name]).map(name => (
+                    {FORM_FIELDS.filter(name => errors[name]).map(name => (
                       <li key={name}>
                         <a href={`#contact-${name}`} onClick={event => {
                           event.preventDefault();
@@ -181,44 +286,53 @@ const Contact = () => {
                 <input type="checkbox" name="botcheck" hidden tabIndex={-1} autoComplete="off" />
                 <div className="contact-form__field">
                   <label htmlFor="contact-name">{copy.form.name} <span aria-hidden="true">*</span></label>
-                  <input {...fieldProps('name')} type="text" autoComplete="name" maxLength={150} />
+                  <input {...fieldProps('name')} type="text" autoComplete="name" maxLength={FIELD_LIMITS.name} />
                   {fieldError('name')}
                 </div>
                 <div className="contact-form__field">
                   <label htmlFor="contact-phone">{copy.form.phone} <span className="contact-form__optional">{copy.form.optional}</span></label>
-                  <input id="contact-phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" maxLength={50} />
+                  <input {...fieldProps('phone')} type="tel" autoComplete="tel" inputMode="tel" maxLength={FIELD_LIMITS.phone} />
+                  {fieldError('phone')}
                 </div>
                 <div className="contact-form__field">
                   <label htmlFor="contact-email">{copy.form.email} <span aria-hidden="true">*</span></label>
-                  <input {...fieldProps('email')} type="email" autoComplete="email" inputMode="email" maxLength={254} />
+                  <input {...fieldProps('email')} type="email" autoComplete="email" inputMode="email" maxLength={FIELD_LIMITS.email} />
                   {fieldError('email')}
                 </div>
 
                 <div className="contact-form__field">
                   <label htmlFor="contact-service">{t('referenceUi.contactService')} <span className="contact-form__optional">{copy.form.optional}</span></label>
-                  <select id="contact-service" name="service" defaultValue="">
+                  <select {...fieldProps('service')} defaultValue="">
                     <option value="">{t('referenceUi.chooseService')}</option>
                     {services.map(service => <option key={service.key} value={service.id}>{t(`expertiseServicesPage.pillars.${service.key}.shortTitle`)}</option>)}
                   </select>
+                  {fieldError('service')}
                 </div>
                 <div className="contact-form__field contact-form__field--full">
                   <label htmlFor="contact-message">{copy.form.message} <span aria-hidden="true">*</span></label>
                   <p id="contact-message-hint" className="contact-form__hint">{copy.form.messageHint}</p>
-                  <textarea {...fieldProps('message', 'contact-message-hint')} rows={5} maxLength={5000} />
+                  <textarea {...fieldProps('message', 'contact-message-hint contact-message-safety')} rows={5} maxLength={FIELD_LIMITS.message} />
+                  <p id="contact-message-safety" className="contact-form__hint">{copy.form.note}</p>
                   {fieldError('message')}
                 </div>
               </fieldset>
-              <div role="status" className="contact-form__status">{isSubmitting ? copy.form.sending : ''}</div>
+              <div role="status" className="contact-form__status">{isSubmitting ? copy.form.sending : isCoolingDown ? copy.form.wait : ''}</div>
               {submitError && (
                 <div className="contact-form__notice" ref={submitErrorRef} tabIndex={-1}>
-                  <h3>{copy.form.errors.sendTitle}</h3>
+                  <h3>{submitError === 'duplicate' ? copy.form.errors.duplicateTitle : copy.form.errors.sendTitle}</h3>
                   <p>{copy.form.errors[submitError]}</p>
                   <a href="mailto:contact@ecgplusgn.com">contact@ecgplusgn.com</a>
+                  {submitError === 'unconfirmed' && (
+                    <label className="contact-form__retry" htmlFor="contact-confirm-resend">
+                      <input id="contact-confirm-resend" type="checkbox" checked={retryAcknowledged} onChange={event => setRetryAcknowledged(event.target.checked)} />
+                      <span>{copy.form.confirmResend}</span>
+                    </label>
+                  )}
                 </div>
               )}
               <div className="contact-form__submit">
-                <button className="ds-btn ds-btn--pill ds-btn--dark" type="submit" disabled={isSubmitting || !clientReady}>
-                  {isSubmitting ? copy.form.sending : copy.form.submit}<i className="bi bi-arrow-right" aria-hidden="true" />
+                <button className="ds-btn ds-btn--pill ds-btn--dark" type="submit" disabled={isSubmitting || isCoolingDown || !clientReady || (submitError === 'unconfirmed' && !retryAcknowledged)}>
+                  {isSubmitting ? copy.form.sending : isCoolingDown ? copy.form.wait : submitError === 'unconfirmed' && retryAcknowledged ? copy.form.resend : copy.form.submit}<i className="bi bi-arrow-right" aria-hidden="true" />
                 </button>
               </div>
             </form>

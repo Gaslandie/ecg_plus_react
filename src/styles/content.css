@@ -3,7 +3,7 @@
 .ecg-section { padding-block: var(--ds-section-py); }
 .ecg-section--paper { background: var(--ds-paper); }
 .ecg-section--tight { padding-block: 64px; }
-.ecg-page [id], #realisations { scroll-margin-top: calc(var(--navbar-height,93px) + 24px); }
+.ecg-page [id], #realisations { scroll-margin-top: 12px; }
 .ecg-page [tabindex='-1']:focus { outline: none; }
 .ecg-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; }
 .ecg-eyebrow { display: flex; align-items: center; gap: 16px; margin: 0 0 16px; color: var(--ds-accent-ink); font: 700 .75rem/1.5 var(--ds-font-display); letter-spacing: .16em; text-transform: uppercase; }

@@ -1,8 +1,8 @@
-/* Manrope variable, distribuée sous licence OFL (Manrope-OFL.txt). */
+/* Manrope variable, sous-ensemble latin étendu FR/EN ; licence OFL conservée. */
 @font-face {
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 200 800;
   font-display: swap;
-  src: url('./manrope-variable.woff2') format('woff2');
+  src: url('./manrope-latin-variable.woff2') format('woff2');
 }

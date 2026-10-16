@@ -42,7 +42,7 @@ export const translations = {
                   "text": "Une entreprise ancrée en Guinée"
             },
             {
-                  "title": "Public & privé",
+                  "title": "Secteurs public et privé",
                   "text": "Des solutions adaptées à chaque projet"
             }
       ],
@@ -50,6 +50,7 @@ export const translations = {
       "companyTitle": "Une équipe pour construire durablement.",
       "companyText": "Depuis Manéah, ECG PLUS SARL accompagne les maîtres d’ouvrage publics et privés dans leurs projets de construction et de génie civil. Ingénieurs, techniciens et équipes de chantier réunissent leurs compétences, de l’étude à la réalisation.",
       "companyCaption": "Des compétences réunies, au plus près du terrain.",
+      "companyImageAlt": "Cinq professionnels casqués autour des armatures métalliques des fondations d’un bâtiment.",
       "expertiseTitle": "Quatre expertises. Une même exigence.",
       "methodCaption": "Préparer, coordonner et construire ensemble.",
       "contactEyebrow": "Construisons la suite",
@@ -102,11 +103,11 @@ export const translations = {
       },
       "contact": {
         "title": "Contact et demande de projet | ECG PLUS Guinée",
-        "description": "Contactez ECG PLUS à Manéah, Coyah, pour vos projets de construction et d’ingénierie en Guinée. Formulaire, téléphone, email et horaires du bureau."
+        "description": "Contactez ECG PLUS à Manéah, Coyah, pour vos projets de construction et d’ingénierie en Guinée. Formulaire, téléphone, e-mail et horaires du bureau."
       },
       "confirmation": {
         "title": "Message envoyé | ECG PLUS",
-        "description": "Confirmation de votre demande auprès de ECG PLUS. Retrouvez les coordonnées pour compléter votre dossier."
+        "description": "Confirmation de votre demande auprès d’ECG PLUS. Retrouvez nos coordonnées pour compléter votre dossier."
       },
       "notFound": {
         "title": "Page introuvable | ECG PLUS",
@@ -148,12 +149,12 @@ export const translations = {
     },
     footer: {
       contactUs: "Contactez-Nous",
-      quickLinks: "Liens Rapides",
+      quickLinks: "Liens rapides",
       rights: "Tous droits réservés.",
-      address: "Manéah, Préfecture de Coyah, République de Guinée",
-      emailLabel: "Envoyer un email à ECG PLUS",
+      address: "Manéah, préfecture de Coyah, République de Guinée",
+      emailLabel: "Envoyer un e-mail à ECG PLUS",
       whatsappLabel: "Contacter via WhatsApp",
-      linkedinLabel: "Profil LinkedIn ECG PLUS",
+      linkedinLabel: "Ouvrir LinkedIn",
       tagline: "Entreprise de construction générale et de travaux publics, basée à Manéah (Coyah), République de Guinée.",
     },
     home: {
@@ -337,7 +338,7 @@ export const translations = {
             ctaPrimary: "Découvrir ce projet",
           },
           r4: {
-            eyebrow: "Études & ingénierie · Visualisation 3D",
+            eyebrow: "Études et ingénierie · Visualisation 3D",
             title: "Donner forme à votre projet",
             subtitle: "De la conception à la modélisation : découvrez nos études de bâtiments R+4.",
             ctaPrimary: "Explorer les modélisations",
@@ -346,7 +347,7 @@ export const translations = {
         eyebrow: "ECG PLUS SARL · Manéah, Coyah",
         title: "Construction et génie civil en Guinée",
         subtitle:
-          "Bâtiments, ouvrages publics, installations électriques et études techniques : ECG PLUS intervient pour des maîtres d'ouvrage publics et privés, de la conception à la livraison.",
+          "Bâtiments, ouvrages publics, installations électriques et études techniques : ECG PLUS intervient pour des maîtres d’ouvrage publics et privés, de la conception à la livraison.",
         ctaPrimary: "Découvrir nos réalisations",
         ctaSecondary: "Parlons de votre projet",
         scroll: "Découvrir",
@@ -401,7 +402,7 @@ export const translations = {
         eyebrow: "Contact",
         title: "Parlons de votre projet",
         text:
-          "Appel d'offres, projet de construction, installation énergétique ou étude technique : écrivez-nous ou appelez-nous, notre équipe vous répond.",
+          "Appels d’offres, projets de construction, installations énergétiques ou études techniques : écrivez-nous ou appelez-nous. Notre équipe vous répondra.",
         phoneLabel: "Téléphone",
         emailLabel: "E-mail",
         addressLabel: "Siège",
@@ -420,7 +421,7 @@ export const translations = {
       "followup": {
         "eyebrow": "Pour la suite",
         "title": "Un document à ajouter ?",
-        "text": "Adressez vos plans ou documents par email, en précisant votre nom et le projet concerné.",
+        "text": "Adressez vos plans ou documents par e-mail, en précisant votre nom et le projet concerné.",
         "subject": "Complément à ma demande — ECG PLUS",
         "phoneLabel": "Vous préférez nous appeler ?"
       }
@@ -446,10 +447,10 @@ export const translations = {
         "roles": [
           {
             "title": "Métiers du chantier",
-            "text": "Ingénieurs, techniciens superviseurs, ouvriers qualifiés et équipe de dépannage."
+            "text": "Ingénieurs, techniciens de supervision, ouvriers qualifiés et équipe de dépannage."
           },
           {
-            "title": "Conseil & coordination",
+            "title": "Conseil et coordination",
             "text": "Conseillers techniques, ingénieurs en génie civil et gestionnaires de projet."
           },
           {
@@ -467,15 +468,18 @@ export const translations = {
         "vision": "Notre vision : construire durablement, selon les exigences de chaque client.",
         "items": [
           {
-            "title": "Qualité & sécurité",
+            "title": "Qualité et sécurité",
+            "imageAlt": "Deux professionnels portant des casques, des gants et des gilets de sécurité dans un atelier.",
             "text": "Placer la qualité d’exécution et la sécurité des équipes au centre des interventions."
           },
           {
             "title": "Respect de l’environnement",
+            "imageAlt": "Installation industrielle et grue à proximité d’une zone boisée.",
             "text": "Prendre en compte l’environnement du chantier et le respect des riverains."
           },
           {
-            "title": "Dialogue & suivi",
+            "title": "Dialogue et suivi",
+            "imageAlt": "Deux professionnels casqués examinent ensemble un document sur un chantier.",
             "text": "Favoriser un suivi transparent avec le client, de l’étude à la livraison."
           }
         ]
@@ -542,7 +546,7 @@ export const translations = {
       "viewProject": "Découvrir le projet",
       "imageKinds": {
         "photo": "Photographie",
-        "mixed": "Photo & vue 3D",
+        "mixed": "Photo et vue 3D",
         "render": "Vue 3D"
       },
       "contactEyebrow": "Votre prochain projet",
@@ -566,11 +570,11 @@ export const translations = {
       "details": {
         "kankan": {
           "intro": "Une bibliothèque municipale à Kankan, un ouvrage public parmi nos références en Guinée.",
-          "description": "La vue intérieure présente une salle aménagée avec des rangées de sièges et un espace de projection. Cette référence est associée à l’année 2023.",
+          "description": "La vue intérieure présente une salle aménagée avec des rangées de sièges et un espace de projection. Cette référence date de 2023.",
           "imageAlt": "Salle intérieure de la bibliothèque municipale de Kankan, avec des rangées de sièges."
         },
         "dubreka": {
-          "intro": "Une résidence privée à Dubréka Fihaima, présentée sur la période 2020 – 2021.",
+          "intro": "Une résidence privée à Dubréka Fihaima. Cette référence porte sur la période 2020 – 2021.",
           "description": "Le visuel rapproche une photographie du chantier et une représentation 3D de la façade. Il permet de découvrir le volume du bâtiment, sa toiture et ses balcons.",
           "imageAlt": "Résidence Dubréka Fihaima : photographie du chantier en haut et représentation 3D en bas."
         },
@@ -632,34 +636,34 @@ export const translations = {
         view: "Voir les Projets",
         cards: {
           kankan: {
-            badge: "Ouvrage Public",
-            title: "Bibliothèque Municipale de Kankan",
+            badge: "Ouvrage public",
+            title: "Bibliothèque municipale de Kankan",
             meta: "Kankan • 2023",
           },
           dubreka: {
             badge: "Résidentiel",
-            title: "Résidence Privée Dubréka Fihaima",
-            meta: "Dubréka • 2020 - 2021",
+            title: "Résidence privée Dubréka Fihaima",
+            meta: "Dubréka • 2020 – 2021",
           },
           kagbelen: {
-            badge: "Génie Civil",
-            title: "Projet Kagbelen Dondolikhouré",
+            badge: "Génie civil",
+            title: "Projet de Kagbelen Dondolikhouré",
             meta: "Kagbelen • Construction durable",
           },
           r4: {
-            badge: "Bureau d'Études",
-            title: "Conceptions & Modélisations R+4",
+            badge: "Bureau d’études",
+            title: "Conceptions et modélisations R+4",
             meta: "Optimisation structurelle",
           },
           hangar: {
             badge: "Industriel",
-            title: "Hangars & Bâtiments Logistiques",
+            title: "Hangars et bâtiments logistiques",
             meta: "Zone industrielle • Construction métallique",
           },
           ansoumania: {
-            badge: "Bâtiment Mixte",
-            title: "Immeuble R+2 Ansoumaniah",
-            meta: "Cimenterie • 2023 - 2024",
+            badge: "Bâtiment mixte",
+            title: "Immeuble R+2 à Ansoumaniah",
+            meta: "Cimenterie • 2023 – 2024",
           },
         },
       },
@@ -796,7 +800,7 @@ export const translations = {
         "eyebrow": "Un contact direct",
         "title": "Notre équipe à votre écoute.",
         "phoneTitle": "Téléphone",
-        "emailTitle": "Email",
+        "emailTitle": "E-mail",
         "hqTitle": "Siège social",
         "hqAddress": "Manéah, préfecture de Coyah, République de Guinée",
         "map": "Situer Manéah sur la carte",
@@ -814,7 +818,7 @@ export const translations = {
         "noScript": "Activez JavaScript pour utiliser le formulaire, ou écrivez-nous directement à",
         "required": "Les champs marqués d’un * sont obligatoires.",
         "name": "Nom complet",
-        "email": "Email",
+        "email": "E-mail",
         "company": "Société",
         "phone": "Téléphone",
         "optional": "(facultatif)",
@@ -829,19 +833,27 @@ export const translations = {
         },
         "message": "Votre message",
         "messageHint": "Précisez le besoin, le lieu du projet et, si vous les connaissez, son avancement et le calendrier envisagé.",
-        "note": "Indiquez uniquement les informations utiles à votre demande.",
+        "note": "N’indiquez jamais de mot de passe, de données bancaires ou d’autres informations confidentielles.",
         "submit": "Envoyer le message",
         "sending": "Envoi en cours…",
+        "wait": "Patientez avant de réessayer…",
+        "resend": "Renvoyer le message",
+        "confirmResend": "J’ai compris que mon message a peut-être déjà été reçu et je souhaite le renvoyer.",
         "emailSubject": "Nouvelle demande depuis le site ECG PLUS",
         "errors": {
           "title": "Vérifiez les champs suivants",
           "name": "Renseignez votre nom.",
-          "email": "Saisissez une adresse email valide.",
+          "email": "Saisissez une adresse e-mail valide.",
           "message": "Décrivez votre besoin en quelques mots.",
+          "tooLong": "Ce champ dépasse la longueur autorisée. Raccourcissez votre saisie.",
+          "service": "Choisissez une expertise dans la liste proposée.",
+          "blocked": "L’envoi a été bloqué par le contrôle anti-spam. Contactez-nous par e-mail si le problème persiste.",
           "sendTitle": "Envoi non confirmé",
-          "failed": "Votre demande n’a pas été acceptée. Vos informations sont conservées dans ce formulaire. Réessayez ou contactez-nous par email.",
-          "rateLimited": "Trop de tentatives d’envoi. Patientez avant de réessayer ou contactez-nous par email. Vos informations restent dans le formulaire.",
-          "unconfirmed": "Nous n’avons pas reçu de confirmation d’envoi. Votre message a peut-être été transmis. Vos informations restent dans le formulaire ; vous pouvez nous contacter par email pour vérifier sa réception."
+          "duplicateTitle": "Message déjà envoyé",
+          "duplicate": "Ce même message a déjà été envoyé avec succès dans cet onglet au cours des dix dernières minutes. Vous n’avez pas besoin de le renvoyer. Pour une autre demande, modifiez votre message.",
+          "failed": "Votre demande n’a pas été acceptée. Vos informations sont conservées dans ce formulaire. Réessayez ou contactez-nous par e-mail.",
+          "rateLimited": "Trop de tentatives d’envoi. Patientez avant de réessayer ou contactez-nous par e-mail. Vos informations restent dans le formulaire.",
+          "unconfirmed": "Nous n’avons pas reçu de confirmation d’envoi. Votre message a peut-être été transmis. Vos informations restent dans le formulaire ; vous pouvez nous contacter par e-mail pour vérifier sa réception."
         }
       },
       "faq": {
@@ -866,7 +878,7 @@ export const translations = {
     },
     expertiseServicesPage: {
       "hero": {
-        "eyebrow": "Expertise & Services",
+        "eyebrow": "Expertises et services",
         "title": "Votre projet, nos expertises.",
         "subtitle": "Construction, énergie, industrie et études : quatre domaines pour accompagner vos projets en Guinée.",
         "contact": "Parlons de votre projet",
@@ -880,8 +892,8 @@ export const translations = {
       "reference": "Référence à découvrir",
       "pillars": {
         "p1": {
-          "shortTitle": "Bâtiments & travaux publics",
-          "heading": "Bâtiments & travaux publics",
+          "shortTitle": "Bâtiments et travaux publics",
+          "heading": "Bâtiments et travaux publics",
           "lead": "Construire un bâtiment, aménager des infrastructures ou réhabiliter un ouvrage existant, pour les acteurs publics et privés.",
           "items": [
             "Bâtiments résidentiels, commerciaux et à plusieurs niveaux.",
@@ -890,11 +902,11 @@ export const translations = {
             "Terrassement, voirie, réseaux divers et gros œuvre."
           ],
           "contact": "Échanger sur vos travaux",
-          "title": "Construction Générale & Travaux Publics"
+          "title": "Construction générale et travaux publics"
         },
         "p2": {
-          "shortTitle": "Énergie & électricité",
-          "heading": "Énergie & électricité",
+          "shortTitle": "Énergie et électricité",
+          "heading": "Énergie et électricité",
           "lead": "Concevoir, installer et entretenir les systèmes qui alimentent vos bâtiments et vos équipements.",
           "items": [
             "Installation et maintenance de groupes électrogènes.",
@@ -905,11 +917,11 @@ export const translations = {
           "contact": "Parler de vos besoins en énergie",
           "imageAlt": "Équipe devant des équipements électriques et des systèmes de stockage d’énergie.",
           "caption": "Équipe et équipements électriques",
-          "title": "Ingénierie Électrique & Systèmes Autonomes"
+          "title": "Ingénierie électrique et systèmes autonomes"
         },
         "p3": {
-          "shortTitle": "Industrie & solutions techniques",
-          "heading": "Industrie & solutions techniques",
+          "shortTitle": "Industrie et solutions techniques",
+          "heading": "Industrie et solutions techniques",
           "lead": "Des travaux spécialisés pour les installations industrielles, les sites miniers et leurs infrastructures.",
           "items": [
             "Fondations spéciales et structures de génie civil.",
@@ -918,11 +930,11 @@ export const translations = {
             "Campements et bases-vie pour les projets miniers."
           ],
           "contact": "Préparer votre projet industriel",
-          "title": "Solutions Multi-techniques et Industrie"
+          "title": "Solutions multitechniques et industrie"
         },
         "p4": {
-          "shortTitle": "Études & approvisionnement",
-          "heading": "Études & approvisionnement",
+          "shortTitle": "Études et approvisionnement",
+          "heading": "Études et approvisionnement",
           "lead": "Préparer les choix techniques de votre projet et organiser la fourniture des matériaux et équipements nécessaires.",
           "items": [
             "Études de faisabilité, plans et devis.",
@@ -931,7 +943,7 @@ export const translations = {
             "Conseil et assistance technique à la gestion de projet."
           ],
           "contact": "Discuter de votre étude",
-          "title": "Étude, Expertise Bâtiment & Commerce Général"
+          "title": "Études, expertise du bâtiment et commerce général"
         }
       },
       "process": {
@@ -940,7 +952,7 @@ export const translations = {
         "intro": "Un accompagnement de l’étude au suivi des installations, selon les besoins de votre projet.",
         "steps": [
           {
-            "title": "Étude & conseil",
+            "title": "Étude et conseil",
             "text": "Analyser le besoin, étudier la faisabilité et établir un devis détaillé."
           },
           {
@@ -1051,6 +1063,7 @@ export const translations = {
       "companyTitle": "A team building for the long term.",
       "companyText": "Based in Manéah, ECG PLUS SARL supports public and private clients with their construction and civil engineering projects. Engineers, technicians and site teams combine their skills, from initial studies to delivery.",
       "companyCaption": "Bringing skills together, close to the field.",
+      "companyImageAlt": "Five professionals wearing hard hats around the steel reinforcement of a building’s foundations.",
       "expertiseTitle": "Four areas of expertise. One shared commitment.",
       "methodCaption": "Planning, coordinating and building together.",
       "contactEyebrow": "Building what comes next",
@@ -1154,7 +1167,7 @@ export const translations = {
       address: "Manéah, Coyah Prefecture, Republic of Guinea",
       emailLabel: "Email ECG PLUS",
       whatsappLabel: "Contact via WhatsApp",
-      linkedinLabel: "ECG PLUS LinkedIn profile",
+      linkedinLabel: "Open LinkedIn",
       tagline: "General construction and public works company based in Manéah (Coyah), Republic of Guinea.",
     },
     home: {
@@ -1429,7 +1442,7 @@ export const translations = {
     presentationPage: {
       "hero": {
         "eyebrow": "The company · ECG PLUS",
-        "title": "A team to build with in Guinea.",
+        "title": "A team building for Guinea.",
         "intro": "Based in Manéah, in Coyah prefecture, ECG PLUS SARL supports construction and public works projects for public and private clients in Guinea.",
         "imageAlt": "Three team members wearing helmets and ECG PLUS vests, standing with electrical equipment.",
         "caption": "The team and its electrical equipment."
@@ -1447,10 +1460,10 @@ export const translations = {
         "roles": [
           {
             "title": "On-site trades",
-            "text": "Engineers, technical supervisors, skilled workers and repair crews."
+            "text": "Engineers, site supervisors, skilled workers and repair crews."
           },
           {
-            "title": "Advice & coordination",
+            "title": "Advice and coordination",
             "text": "Technical advisors, civil engineers and project managers."
           },
           {
@@ -1469,14 +1482,17 @@ export const translations = {
         "items": [
           {
             "title": "Quality & safety",
+            "imageAlt": "Two professionals wearing hard hats, gloves and safety vests in a workshop.",
             "text": "Make the quality of the work and the safety of our teams central to our operations."
           },
           {
             "title": "Respect for the environment",
+            "imageAlt": "An industrial installation and a crane near a wooded area.",
             "text": "Consider the environment around each site and the people who live nearby."
           },
           {
             "title": "Communication & follow-up",
+            "imageAlt": "Two professionals wearing hard hats review a document together on a construction site.",
             "text": "Encourage transparent communication with the client, from initial studies to delivery."
           }
         ]
@@ -1567,11 +1583,11 @@ export const translations = {
       "details": {
         "kankan": {
           "intro": "A municipal library in Kankan, a public building among our references in Guinea.",
-          "description": "The interior photograph shows a furnished room with rows of seats and a projection area. This reference is associated with 2023.",
+          "description": "The interior photograph shows a furnished room with rows of seats and a projection area. This reference dates from 2023.",
           "imageAlt": "Interior of Kankan municipal library with rows of seats."
         },
         "dubreka": {
-          "intro": "A private residence in Dubréka Fihaima, presented for the period 2020 – 2021.",
+          "intro": "A private residence in Dubréka Fihaima. This reference covers the period 2020 – 2021.",
           "description": "The visual combines a construction photograph and a 3D view of the facade, showing the building’s volume, roof and balconies.",
           "imageAlt": "Dubréka Fihaima residence: construction photograph above and 3D view below."
         },
@@ -1639,28 +1655,28 @@ export const translations = {
           },
           dubreka: {
             badge: "Residential",
-            title: "Private Residence Dubréka Fihaima",
-            meta: "Dubréka • 2020 - 2021",
+            title: "Private residence in Dubréka Fihaima",
+            meta: "Dubréka • 2020–2021",
           },
           kagbelen: {
             badge: "Civil Engineering",
-            title: "Kagbelen Dondolikhouré Project",
+            title: "Kagbelen Dondolikhouré project",
             meta: "Kagbelen • Sustainable construction",
           },
           r4: {
             badge: "Design Office",
-            title: "R+4 Designs & Modeling",
+            title: "R+4 designs and modelling",
             meta: "Structural optimization",
           },
           hangar: {
             badge: "Industrial",
-            title: "Hangars & Logistics Buildings",
+            title: "Hangars and logistics buildings",
             meta: "Industrial zone • Steel construction",
           },
           ansoumania: {
             badge: "Mixed‑use Building",
-            title: "R+2 Building Ansoumaniah",
-            meta: "Cimenterie • 2023 - 2024",
+            title: "R+2 building in Ansoumaniah",
+            meta: "Cimenterie • 2023–2024",
           },
         },
       },
@@ -1830,16 +1846,24 @@ export const translations = {
         },
         "message": "Your message",
         "messageHint": "Describe your needs and the project location. Include its current stage and proposed timeline, if known.",
-        "note": "Include only information relevant to your enquiry.",
+        "note": "Never include passwords, bank details or other confidential information.",
         "submit": "Send message",
         "sending": "Sending…",
+        "wait": "Please wait before trying again…",
+        "resend": "Send the message again",
+        "confirmResend": "I understand that my message may already have been received and I want to send it again.",
         "emailSubject": "New enquiry from the ECG PLUS website",
         "errors": {
           "title": "Check the following fields",
           "name": "Enter your name.",
           "email": "Enter a valid email address.",
           "message": "Tell us briefly what you need.",
+          "tooLong": "This field exceeds the allowed length. Shorten your entry.",
+          "service": "Choose an area of expertise from the list.",
+          "blocked": "The anti-spam check blocked this submission. Email us if the problem persists.",
           "sendTitle": "Submission not confirmed",
+          "duplicateTitle": "Message already sent",
+          "duplicate": "This same message was successfully sent in this tab within the last ten minutes. You do not need to send it again. For a different enquiry, change your message.",
           "failed": "Your enquiry was not accepted. Your details remain in this form. Try again or contact us by email.",
           "rateLimited": "Too many submission attempts. Wait before trying again or contact us by email. Your details remain in the form.",
           "unconfirmed": "We have not received confirmation of your submission. Your message may have been sent. Your details remain in the form; you can email us to check whether it was received."
@@ -1891,7 +1915,7 @@ export const translations = {
             "Earthworks, roads, utility networks and structural work."
           ],
           "contact": "Discuss your construction needs",
-          "title": "General Construction & Public Works"
+          "title": "General construction and public works"
         },
         "p2": {
           "shortTitle": "Energy & electrical systems",
@@ -1906,7 +1930,7 @@ export const translations = {
           "contact": "Discuss your energy needs",
           "imageAlt": "Team with electrical equipment and energy storage systems.",
           "caption": "Team and electrical equipment",
-          "title": "Electrical Engineering & Autonomous Systems"
+          "title": "Electrical engineering and autonomous systems"
         },
         "p3": {
           "shortTitle": "Industry & technical services",
@@ -1919,7 +1943,7 @@ export const translations = {
             "Camps and site facilities for mining projects."
           ],
           "contact": "Plan your industrial project",
-          "title": "Multi‑technical Solutions & Industry"
+          "title": "Technical solutions and industry"
         },
         "p4": {
           "shortTitle": "Engineering & procurement",
@@ -1932,7 +1956,7 @@ export const translations = {
             "Technical advice and project management assistance."
           ],
           "contact": "Discuss your engineering needs",
-          "title": "Studies, Building Expertise & General Trade"
+          "title": "Studies, building assessment and general trade"
         }
       },
       "process": {
